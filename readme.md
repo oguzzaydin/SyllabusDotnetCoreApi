@@ -1,3 +1,2 @@
-##DPA
 
-![alt text](dpa-Api/Architecture.png)
+![alt text](https://raw.githubusercontent.com/oguzzaydin/dpa-Api/master/dpa-Api/Architecture.png)
