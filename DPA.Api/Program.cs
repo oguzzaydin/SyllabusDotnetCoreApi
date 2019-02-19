@@ -10,15 +10,11 @@ using Microsoft.Extensions.Logging;
 
 namespace DPA.Api
 {
-    public class Program
+    public static class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            CreateWebHostBuilder(args).Build().Run();
+            WebHost.CreateDefaultBuilder().UseStartup<Startup>().Build().Run();
         }
-
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
     }
 }
