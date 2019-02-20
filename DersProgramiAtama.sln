@@ -3,20 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPA.Api", "DPA.Api\DPA.Api.csproj", "{816E20C2-F8BF-4B51-AB31-E59BF6FB73AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPA.Api", "DPA.Api\DPA.Api.csproj", "{816E20C2-F8BF-4B51-AB31-E59BF6FB73AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPA.IoC", "DPA.IoC\DPA.IoC.csproj", "{AE38D6FD-2F4C-48F4-ABEA-A2BD13C1E423}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPA.IoC", "DPA.IoC\DPA.IoC.csproj", "{AE38D6FD-2F4C-48F4-ABEA-A2BD13C1E423}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C0828556-8A0C-41B9-B2D2-267664830FD4} = {C0828556-8A0C-41B9-B2D2-267664830FD4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPA.Application", "DPA.Application\DPA.Application.csproj", "{C0828556-8A0C-41B9-B2D2-267664830FD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPA.Application", "DPA.Application\DPA.Application.csproj", "{C0828556-8A0C-41B9-B2D2-267664830FD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPA.Model", "DPA.Model\DPA.Model.csproj", "{8A735B03-7602-416D-AB75-58CBC94FC269}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPA.Model", "DPA.Model\DPA.Model.csproj", "{8A735B03-7602-416D-AB75-58CBC94FC269}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C016A076-0367-4C5A-AE69-3ADC3F126474} = {C016A076-0367-4C5A-AE69-3ADC3F126474}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPA.Database", "DPA.Database\DPA.Database.csproj", "{77E6AA02-765F-41ED-8ED6-B928D1B8E3E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPA.Database", "DPA.Database\DPA.Database.csproj", "{77E6AA02-765F-41ED-8ED6-B928D1B8E3E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPA.Domain", "DPA.Domain\DPA.Domain.csproj", "{5760BC35-D151-4260-BD0F-7F49B8FADBD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPA.Domain", "DPA.Domain\DPA.Domain.csproj", "{5760BC35-D151-4260-BD0F-7F49B8FADBD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPA.CrossCutting", "DPA.CrossCutting\DPA.CrossCutting.csproj", "{C016A076-0367-4C5A-AE69-3ADC3F126474}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +53,10 @@ Global
 		{5760BC35-D151-4260-BD0F-7F49B8FADBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5760BC35-D151-4260-BD0F-7F49B8FADBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5760BC35-D151-4260-BD0F-7F49B8FADBD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C016A076-0367-4C5A-AE69-3ADC3F126474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C016A076-0367-4C5A-AE69-3ADC3F126474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C016A076-0367-4C5A-AE69-3ADC3F126474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C016A076-0367-4C5A-AE69-3ADC3F126474}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
