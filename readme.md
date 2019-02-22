@@ -2,12 +2,12 @@
 
 ## Architecture
 
-![Architecture](./Architecture.png)
+![Architecture](./images/Architecture.png)
 
 ## Prototip Entity Relation Diagram
 
-![BasicEntityRelationDiagram](./BasicEntityRelationDiagram.png)
+![BasicEntityRelationDiagram](./images/BasicEntityRelationDiagram.png)
 
 ## Entity Relation Diagram
 
-![EntityRelationDiagram](./EntityRelationDiagram.png)
+![EntityRelationDiagram](./images/EntityRelationDiagram.png)
