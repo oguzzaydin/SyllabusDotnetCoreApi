@@ -28,7 +28,7 @@ namespace DPA.Api
             application.UseResponseCaching();
             application.UseStaticFiles();
             application.UseMvcWithDefaultRoute();
-            //application.UseHealthChecks("/healthz");
+            application.UseHealthChecks("/healthz");
             application.UseSwaggerDefault("api");
         }
 

@@ -11,14 +11,15 @@ namespace DPA.Database.Database
         {
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
-                UserId = 1,
+                Id = 1,
                 Name = "Administrator",
                 Surname = "Administrator",
                 Email = "administrator@administrator.com",
-                Login = new Hash().Create("admin"),
+                UserName = new Hash().Create("admin"),
                 Password = new Hash().Create("123456"),
                 Roles = Roles.User | Roles.Admin,
-                Status = Status.Active
+                Status = Status.Active,
+                Title = Title.Administrator
             });
         }
     }

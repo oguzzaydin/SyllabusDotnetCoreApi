@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DotNetCore.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DPA.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [RouteController]
     public class ValuesController : ControllerBase
     {
         // GET api/values

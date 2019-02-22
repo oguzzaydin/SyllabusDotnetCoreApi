@@ -1,5 +1,9 @@
 # ASP.NET Core Ders Programı Atama Api
 
-## Roadmap
+## Architecture
 
-![Roadmap](./Architecture.png)
+![Architecture](./Architecture.png)
+
+## Entity Relation Diagram
+
+![EntityRelationDiagram](./EntityRelationDiagram.png)
