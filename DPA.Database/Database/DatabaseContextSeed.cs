@@ -1,4 +1,5 @@
-﻿using DotNetCore.Security;
+﻿using System;
+using DotNetCore.Security;
 using DPA.Model.Entities;
 using DPA.Model.Enums;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ namespace DPA.Database.Database
                 Email = "administrator@administrator.com",
                 UserName = new Hash().Create("admin"),
                 Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
                 Roles = Roles.User | Roles.Admin,
                 Status = Status.Active,
                 Title = Title.Administrator
