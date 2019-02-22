@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPA.Database", "DPA.Databas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPA.Domain", "DPA.Domain\DPA.Domain.csproj", "{5760BC35-D151-4260-BD0F-7F49B8FADBD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPA.CrossCutting", "DPA.CrossCutting\DPA.CrossCutting.csproj", "{C016A076-0367-4C5A-AE69-3ADC3F126474}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPA.CrossCutting", "DPA.CrossCutting\DPA.CrossCutting.csproj", "{C016A076-0367-4C5A-AE69-3ADC3F126474}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
