@@ -45,6 +45,15 @@ namespace DPA.Application
             return new SuccessDataResult<long>(constraintEntity.Id);
         }
 
+        public async Task<IResult> DeleteAsync(long constraintId)
+        {
+            await ConstraintRepository.DeleteAsync(constraintId);
+
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessResult();
+        }
+
         public async Task<IEnumerable<ConstraintModel>> ListAsync()
         {
             return await ConstraintRepository.ListAsync<ConstraintModel>();
@@ -53,6 +62,11 @@ namespace DPA.Application
         public async Task<PagedList<ConstraintModel>> ListAsync(PagedListParameters parameters)
         {
             return await ConstraintRepository.ListAsync<ConstraintModel>(parameters);
+        }
+
+        public async Task<ConstraintModel> SelectAsync(long constraintId)
+        {
+            return await ConstraintRepository.SelectAsync<ConstraintModel>(constraintId);
         }
 
         public async Task<IResult> UpdateAsync(long constraintId, UpdateConstraintModel updateConstraintModel)

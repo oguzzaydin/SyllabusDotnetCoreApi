@@ -42,6 +42,20 @@ namespace DPA.Api
             return new ActionIResult(result);
         }
 
+        [HttpDelete("{constraintId}")]
+        public async Task<IActionResult> DeleteAsync(long constraintId)
+        {
+            var result = await ConstraintService.DeleteAsync(constraintId);
+
+            return new ActionIResult(result);
+        }
+
+        [HttpGet("{constraintId}")]
+        public async Task<ConstraintModel> SelectAsync(long constraintId)
+        {
+            return await ConstraintService.SelectAsync(constraintId);
+        }
+
 
     }
 }

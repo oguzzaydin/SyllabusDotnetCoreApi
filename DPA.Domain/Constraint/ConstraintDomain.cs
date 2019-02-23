@@ -87,7 +87,8 @@ namespace DPA.Domain
             UpdatedDate = DateTime.Now;
         }
 
-        public void Update(UpdateConstraintModel updateConstraintModel) {
+        public void Update(UpdateConstraintModel updateConstraintModel)
+        {
             Title = updateConstraintModel.Title;
             Description = updateConstraintModel.Description;
             IsFreeDay = updateConstraintModel.IsFreeDay;
