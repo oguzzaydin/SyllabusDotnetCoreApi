@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DPA.Model.Enums
+namespace DPA.Model
 {
     [Flags]
     public enum Roles

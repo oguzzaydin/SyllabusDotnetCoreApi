@@ -1,5 +1,7 @@
 ﻿using DotNetCore.IoC;
-using DPA.Database.Database;
+using DPA.Application;
+using DPA.Database;
+using DPA.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
@@ -22,11 +24,12 @@ namespace DPA.IoC
                 .ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning))
             );
 
-            //services.AddClassesMatchingInterfacesFrom
-            //(
-            //    typeof(IUserService).Assembly,
-            //    typeof(IDatabaseUnitOfWork).Assembly
-            //);
+            services.AddClassesMatchingInterfacesFrom
+            (
+               typeof(IUserService).Assembly,
+               typeof(IDatabaseUnitOfWork).Assembly,
+               typeof(IUserDomainService).Assembly
+            );
 
         }
     }

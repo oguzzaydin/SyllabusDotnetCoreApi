@@ -1,10 +1,9 @@
 ﻿using System;
 using DotNetCore.Security;
-using DPA.Model.Entities;
-using DPA.Model.Enums;
+using DPA.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace DPA.Database.Database
+namespace DPA.Database
 {
     public sealed class DatabaseContextSeed
     {

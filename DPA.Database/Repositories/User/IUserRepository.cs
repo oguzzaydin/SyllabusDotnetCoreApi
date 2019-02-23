@@ -1,14 +1,10 @@
-﻿using System.Threading.Tasks;
-using DotNetCore.Repositories;
-using DPA.Model.Entities;
-using DPA.Model.Models;
-using DPA.Model.Models.SignedInModel;
-using DPA.Model.Models.SignInModel;
+using System.Threading.Tasks;
+using DPA.Model;
 
-namespace DPA.Database.Repositories.User
+namespace DPA.Database
 {
-    public interface IUserRepository : IRelationalRepository<UserEntity>
+    public interface IUserRepository
     {
-        Task<SignedInModel> SignInAsync(SignInModel signInModel);
+        Task<SignedInModel> SignInAsync(SignInModel signInModel); 
     }
 }

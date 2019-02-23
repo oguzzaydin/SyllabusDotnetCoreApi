@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DPA.Database.Database
+namespace DPA.Database
 {
     public sealed class DatabaseContext : DbContext
     {

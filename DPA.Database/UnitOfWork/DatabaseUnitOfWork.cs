@@ -1,7 +1,7 @@
-﻿using DPA.Database.Database;
+﻿using DPA.Database;
 using System.Threading.Tasks;
 
-namespace DPA.Database.UnitOfWork
+namespace DPA.Database
 {
     public sealed class DatabaseUnitOfWork : IDatabaseUnitOfWork
     {

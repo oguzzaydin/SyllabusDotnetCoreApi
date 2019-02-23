@@ -1,4 +1,4 @@
-using DPA.Model.Entities;
+using DPA.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace DPA.Database.EntityConfiguration

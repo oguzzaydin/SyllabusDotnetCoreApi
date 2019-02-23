@@ -1,9 +1,8 @@
-﻿using DPA.Model.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DPA.Model.Entities
+namespace DPA.Model
 {
     public class UserEntity : BaseEntity
     {

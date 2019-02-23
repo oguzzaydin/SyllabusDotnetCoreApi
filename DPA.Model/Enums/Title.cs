@@ -1,4 +1,4 @@
-namespace DPA.Model.Enums
+namespace DPA.Model
 {
     public enum Title
     {

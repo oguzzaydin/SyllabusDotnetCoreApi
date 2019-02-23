@@ -1,6 +1,5 @@
-using DPA.Model.Enums;
 
-namespace DPA.Model.Models.SignedInModel
+namespace DPA.Model
 {
     public class SignedInModel
     {

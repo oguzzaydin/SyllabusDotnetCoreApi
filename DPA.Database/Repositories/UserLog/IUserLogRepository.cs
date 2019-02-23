@@ -1,10 +1,10 @@
 ﻿using DotNetCore.Repositories;
-using DPA.Model.Entities;
+using DPA.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DPA.Database.Repositories.UserLog
+namespace DPA.Database
 {
     public interface IUserLogRepository : IRelationalRepository<UserLogEntity> { }
 

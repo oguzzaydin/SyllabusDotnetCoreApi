@@ -10,7 +10,6 @@
 
 namespace DPA.CrossCutting.Resources {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace DPA.CrossCutting.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DPA.CrossCutting.Resources.Texts", typeof(Texts).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DPA.CrossCutting.Resources.Texts", typeof(Texts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,7 +61,7 @@ namespace DPA.CrossCutting.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login or password is invalid..
+        ///   Looks up a localized string similar to Kullanıcı adı veya şifre hatalı.
         /// </summary>
         public static string AuthenticationInvalid {
             get {

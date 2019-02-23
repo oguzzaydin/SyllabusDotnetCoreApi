@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DPA.Model.Entities
+namespace DPA.Model
 {
     public class TimeEntity : BaseEntity
     {

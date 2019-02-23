@@ -1,4 +1,4 @@
-namespace DPA.Model.Entities
+namespace DPA.Model
 {
     public class UserLessonEntity: BaseEntity
     {

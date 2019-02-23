@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DPA.Application\DPA.Application.csproj" />
     <ProjectReference Include="..\DPA.Database\DPA.Database.csproj" />
   </ItemGroup>
 

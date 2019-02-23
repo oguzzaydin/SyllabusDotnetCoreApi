@@ -1,6 +1,5 @@
-using DPA.Model.Enums;
 
-namespace DPA.Model.Entities
+namespace DPA.Model
 {
     public class ConstraintEntity : BaseEntity
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DPA.Model.Entities
+namespace DPA.Model
 {
     public class UnitLessonEntity : BaseEntity
     {

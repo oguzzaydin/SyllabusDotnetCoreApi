@@ -1,6 +1,6 @@
 using System;
 
-namespace DPA.Model.Entities
+namespace DPA.Model
 {
     public class BaseEntity
     {

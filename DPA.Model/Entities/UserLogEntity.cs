@@ -1,7 +1,6 @@
-﻿using DPA.Model.Enums;
-using System;
+﻿using System;
 
-namespace DPA.Model.Entities
+namespace DPA.Model
 {
     public class UserLogEntity: BaseEntity
     {

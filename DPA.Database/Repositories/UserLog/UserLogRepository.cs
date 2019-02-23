@@ -1,9 +1,9 @@
 ﻿using DotNetCore.EntityFrameworkCore;
-using DPA.Database.Database;
-using DPA.Model.Entities;
+using DPA.Database;
+using DPA.Model;
 
 
-namespace DPA.Database.Repositories.UserLog
+namespace DPA.Database
 {
     public sealed class UserLogRepository : EntityFrameworkCoreRepository<UserLogEntity>, IUserLogRepository
     {
