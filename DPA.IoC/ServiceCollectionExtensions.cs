@@ -17,7 +17,7 @@ namespace DPA.IoC
         {
             services.AddHash();
             services.AddLogger(configuration);
-            services.AddJsonWebToken(Guid.NewGuid().ToString(), TimeSpan.FromHours(12));
+            services.AddJsonWebToken(Guid.NewGuid().ToString(), TimeSpan.FromDays(12));
 
             services.AddDbContextEnsureCreatedMigrate<DatabaseContext>(options => options
                 .UseSqlServer(configuration.GetConnectionString(nameof(DatabaseContext)))

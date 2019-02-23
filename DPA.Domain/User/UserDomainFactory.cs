@@ -4,6 +4,49 @@ namespace DPA.Domain
 {
     public static class UserDomainFactory
     {
+        public static UserDomain Create(AddUserModel addUserModel)
+        {
+            return new UserDomain
+            (
+                addUserModel.Name,
+                addUserModel.Surname,
+                addUserModel.Email,
+                addUserModel.UserName,
+                addUserModel.Password,
+                addUserModel.Title,
+                addUserModel.Roles
+            );
+        }
+
+         public static UserDomain Create(UpdateUserModel updateUserModel)
+        {
+            return new UserDomain
+            (
+                updateUserModel.Name,
+                updateUserModel.Surname,
+                updateUserModel.Email,
+                null,
+                null,
+                updateUserModel.Title,
+                updateUserModel.Roles
+            );
+        }
+
+        public static UserDomain Create(UserEntity userEntity)
+        {
+            return new UserDomain
+            (
+                userEntity.Id,
+                userEntity.Name,
+                userEntity.Surname,
+                userEntity.Email,
+                userEntity.UserName,
+                userEntity.Password,
+                userEntity.Title,
+                userEntity.Roles
+            );
+        }
+
         public static UserDomain Create(SignInModel signInModel)
         {
             return new UserDomain

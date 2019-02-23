@@ -5,8 +5,7 @@ namespace DPA.Domain
 {
     public class UserDomain
     {
-
-        protected internal UserDomain(object userId, string username, string password)
+        protected internal UserDomain(string username, string password)
         {
             UserName = username;
             Password = password;
@@ -18,11 +17,53 @@ namespace DPA.Domain
             Roles = roles;
         }
 
-        public UserDomain(string login, string password)
+        protected internal UserDomain
+        (
+            long id,
+            string name,
+            string surname,
+            string email,
+            string username,
+            string password,
+            Title title,
+            Roles roles
+        )
         {
-            UserName = login;
+            Id = id;
+            Name = name;
+            Surname = surname;
+            Email = email;
+            UserName = username;
             Password = password;
+            Roles = roles;
+            Title = title;
+
         }
+
+
+     
+
+        protected internal UserDomain
+        (
+            string name,
+            string surname,
+            string email,
+            string username,
+            string password,
+            Title title,
+            Roles roles
+        )
+        {
+            Name = name;
+            Surname = surname;
+            Email = email;
+            UserName = username;
+            Password = password;
+            Roles = roles;
+            Title = title;
+
+        }
+
 
         public long Id { get; private set; }
 
@@ -48,8 +89,20 @@ namespace DPA.Domain
 
         public void Add()
         {
-            Roles = Roles.User;
+            Roles = Roles.User; // TODO: bolum baskanı user ekler
             Status = Status.Active;
+            CreatedDate = DateTime.Now;
+            UpdatedDate = DateTime.Now;
+        }
+
+        public void Update(UpdateUserModel updateUserModel)
+        {
+            Name = updateUserModel.Name;
+            Surname = updateUserModel.Surname;
+            Email = updateUserModel.Email;
+            Title = updateUserModel.Title;
+            Roles = updateUserModel.Roles;
+            UpdatedDate = DateTime.Now;
         }
 
     }
