@@ -1,11 +1,12 @@
 using DPA.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DPA.Database.EntityConfiguration
 {
     public sealed class ConstraintEntityConfiguration : IEntityTypeConfiguration<ConstraintEntity>
     {
-        public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<ConstraintEntity> builder)
+        public void Configure(EntityTypeBuilder<ConstraintEntity> builder)
         {
             builder.ToTable("Constraints", "User");
 
@@ -18,6 +19,7 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.IsFreeDay).IsRequired();
             builder.Property(x => x.WeeklyHour).IsRequired();
             builder.Property(x => x.EducationType).IsRequired();
+            builder.Property(x => x.UserId).IsRequired();
 
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.UpdatedDate).IsRequired();

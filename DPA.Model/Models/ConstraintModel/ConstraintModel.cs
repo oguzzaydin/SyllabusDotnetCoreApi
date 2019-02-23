@@ -1,7 +1,6 @@
-
 namespace DPA.Model
 {
-    public class ConstraintEntity : BaseEntity
+    public class ConstraintModel
     {
         public string Title { get; set; }
 
@@ -15,9 +14,6 @@ namespace DPA.Model
 
         public EducationType EducationType { get; set; }
 
-
         public long UserId { get; set; }
-
-        public virtual UserEntity User { get; set; }
     }
 }

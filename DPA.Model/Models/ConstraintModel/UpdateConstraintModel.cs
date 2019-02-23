@@ -1,7 +1,6 @@
-
 namespace DPA.Model
 {
-    public class ConstraintEntity : BaseEntity
+    public class UpdateConstraintModel
     {
         public string Title { get; set; }
 
@@ -14,10 +13,5 @@ namespace DPA.Model
         public WeeklyHour WeeklyHour { get; set; }
 
         public EducationType EducationType { get; set; }
-
-
-        public long UserId { get; set; }
-
-        public virtual UserEntity User { get; set; }
     }
 }
