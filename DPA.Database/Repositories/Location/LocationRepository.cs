@@ -5,7 +5,7 @@ namespace DPA.Database
 {
     public sealed class LocationRepository : EntityFrameworkCoreRepository<LocationEntity>, ILocationRepository
     {
-        protected LocationRepository(DatabaseContext context) : base(context)
+        public LocationRepository(DatabaseContext context) : base(context)
         {
         }
     }
