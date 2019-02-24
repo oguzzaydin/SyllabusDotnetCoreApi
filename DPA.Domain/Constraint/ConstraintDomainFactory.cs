@@ -16,14 +16,14 @@ namespace DPA.Domain
             );
         }
 
-         public static ConstraintDomain Create(UpdateConstraintModel addConstraintModel) {
+         public static ConstraintDomain Create(UpdateConstraintModel updateConstraintModel) {
             return new ConstraintDomain(
-                addConstraintModel.Title,
-                addConstraintModel.Description,
-                addConstraintModel.IsFreeDay,
-                addConstraintModel.IsActive,
-                addConstraintModel.WeeklyHour,
-                addConstraintModel.EducationType
+                updateConstraintModel.Title,
+                updateConstraintModel.Description,
+                updateConstraintModel.IsFreeDay,
+                updateConstraintModel.IsActive,
+                updateConstraintModel.WeeklyHour,
+                updateConstraintModel.EducationType
             );
         }
 

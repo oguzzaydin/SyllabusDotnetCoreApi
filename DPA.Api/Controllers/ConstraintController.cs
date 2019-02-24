@@ -9,7 +9,7 @@ namespace DPA.Api
 {
     [ApiController]
     [RouteController]
-    public class ConstraintController: ControllerBase
+    public class ConstraintController : ControllerBase
     {
         public ConstraintController(IConstraintService constraintService)
         {
@@ -19,10 +19,10 @@ namespace DPA.Api
         private IConstraintService ConstraintService { get; }
 
         [HttpPost("{userId}/Add")]
-        public async Task<IActionResult> AddAsync(long userId, AddConstraintModel addConstraintModel) 
+        public async Task<IActionResult> AddAsync(long userId, AddConstraintModel addConstraintModel)
         {
             addConstraintModel.UserId = userId;
-            
+
             var result = await ConstraintService.AddAsync(addConstraintModel);
 
             return new ActionIResult(result);
@@ -37,7 +37,7 @@ namespace DPA.Api
         [HttpPut("{constraintId}")]
         public async Task<IActionResult> UpdateAsync(long constraintId, UpdateConstraintModel updateConstraintModel)
         {
-            var result  = await ConstraintService.UpdateAsync(constraintId, updateConstraintModel);
+            var result = await ConstraintService.UpdateAsync(constraintId, updateConstraintModel);
 
             return new ActionIResult(result);
         }
