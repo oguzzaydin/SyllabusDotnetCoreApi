@@ -1,40 +1,96 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DotNetCore.Mapping;
 using DotNetCore.Objects;
+using DPA.Database;
+using DPA.Domain;
 using DPA.Model;
 
 namespace DPA.Application
 {
     public sealed class LocationService : ILocationService
     {
-        public Task<IDataResult<long>> AddAsync(AddLocationModel addLocationModel)
+        public LocationService(
+            IDatabaseUnitOfWork databaseUnitOfWork,
+            ILocationRepository locationRepository
+        )
         {
-            throw new System.NotImplementedException();
+            DatabaseUnitOfWork = databaseUnitOfWork;
+            LocationRepository = locationRepository;
         }
 
-        public Task<IResult> DeleteAsync(long locationId)
+        private IDatabaseUnitOfWork DatabaseUnitOfWork { get; }
+
+        private ILocationRepository LocationRepository { get; }
+
+        public async Task<IDataResult<long>> AddAsync(AddLocationModel addLocationModel)
         {
-            throw new System.NotImplementedException();
+            var validation = new LocationModelValidator().Valid(addLocationModel);
+
+            if (!validation.Success)
+            {
+                return new ErrorDataResult<long>(validation.Message);
+            }
+
+            var locationDomain = LocationDomainFactory.Create(addLocationModel);
+
+            locationDomain.Add();
+
+            var locationEntity = locationDomain.Map<LocationEntity>();
+
+            await LocationRepository.AddAsync(locationEntity);
+
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessDataResult<long>(locationEntity.Id);
         }
 
-        public Task<IEnumerable<LocationModel>> ListAsync()
+        public async Task<IResult> DeleteAsync(long locationId)
         {
-            throw new System.NotImplementedException();
+            await LocationRepository.DeleteAsync(locationId);
+
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessResult();
         }
 
-        public Task<PagedList<LocationModel>> ListAsync(PagedListParameters parameters)
+        public async Task<IEnumerable<LocationModel>> ListAsync()
         {
-            throw new System.NotImplementedException();
+            return await LocationRepository.ListAsync<LocationModel>();
         }
 
-        public Task<LocationModel> SelectAsync(long locationId)
+        public async Task<PagedList<LocationModel>> ListAsync(PagedListParameters parameters)
         {
-            throw new System.NotImplementedException();
+            return await LocationRepository.ListAsync<LocationModel>(parameters);
         }
 
-        public Task<IResult> UpdateAsync(long locationId, UpdateLocationModel updateLocationModel)
+        public async Task<LocationModel> SelectAsync(long locationId)
         {
-            throw new System.NotImplementedException();
+            return await LocationRepository.SelectAsync<LocationModel>(locationId);
+        }
+
+        public async Task<IResult> UpdateAsync(long locationId, UpdateLocationModel updateLocationModel)
+        {
+            var validation = new LocationModelValidator().Valid(updateLocationModel);
+
+            if (!validation.Success)
+            {
+                return new ErrorDataResult<long>(validation.Message);
+            }
+
+            var locationEntity = await LocationRepository.SelectAsync(locationId);
+
+            var locationDomain = LocationDomainFactory.Create(locationEntity);
+
+            locationDomain.Update(updateLocationModel);
+
+            locationEntity = locationDomain.Map<LocationEntity>();
+
+            await LocationRepository.UpdateAsync(locationEntity, locationEntity.Id);
+
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessResult();
         }
     }
 }

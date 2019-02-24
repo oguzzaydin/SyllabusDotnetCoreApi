@@ -1,40 +1,96 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DotNetCore.Mapping;
 using DotNetCore.Objects;
+using DPA.Database;
+using DPA.Domain;
 using DPA.Model;
 
 namespace DPA.Application
 {
     public sealed class DepartmanService : IDepartmanService
     {
-        public Task<IDataResult<long>> AddAsync(AddDepartmanModel addDepartmanModel)
+        public DepartmanService(
+            IDatabaseUnitOfWork databaseUnitOfWork,
+            IDepartmanRepository departmanRepository
+        )
         {
-            throw new System.NotImplementedException();
+            DatabaseUnitOfWork = databaseUnitOfWork;
+            DepartmanRepository = departmanRepository;
         }
 
-        public Task<IResult> DeleteAsync(long departmanId)
+        private IDatabaseUnitOfWork DatabaseUnitOfWork { get; }
+
+        private IDepartmanRepository DepartmanRepository { get; }
+
+        public async Task<IDataResult<long>> AddAsync(AddDepartmanModel addDepartmanModel)
         {
-            throw new System.NotImplementedException();
+            var validation = new DepartmanModelValidator().Valid(addDepartmanModel);
+
+            if (!validation.Success)
+            {
+                return new ErrorDataResult<long>(validation.Message);
+            }
+
+            var departmanDomain = DepartmanDomainFactory.Create(addDepartmanModel);
+
+            departmanDomain.Add();
+
+            var departmanEntity = departmanDomain.Map<DepartmanEntity>();
+
+            await DepartmanRepository.AddAsync(departmanEntity);
+
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessDataResult<long>(departmanEntity.Id);
         }
 
-        public Task<IEnumerable<DepartmanModel>> ListAsync()
+        public async Task<IResult> DeleteAsync(long departmanId)
         {
-            throw new System.NotImplementedException();
+            await DepartmanRepository.DeleteAsync(departmanId);
+
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessResult();
         }
 
-        public Task<PagedList<DepartmanModel>> ListAsync(PagedListParameters parameters)
+        public async Task<IEnumerable<DepartmanModel>> ListAsync()
         {
-            throw new System.NotImplementedException();
+            return await DepartmanRepository.ListAsync<DepartmanModel>();
         }
 
-        public Task<DepartmanModel> SelectAsync(long departmanId)
+        public async Task<PagedList<DepartmanModel>> ListAsync(PagedListParameters parameters)
         {
-            throw new System.NotImplementedException();
+            return await DepartmanRepository.ListAsync<DepartmanModel>(parameters);
         }
 
-        public Task<IResult> UpdateAsync(long departmanId, UpdateDepartmanModel updateDepartmanModel)
+        public async Task<DepartmanModel> SelectAsync(long departmanId)
         {
-            throw new System.NotImplementedException();
+            return await DepartmanRepository.SelectAsync<DepartmanModel>(departmanId);
+        }
+
+        public async Task<IResult> UpdateAsync(long departmanId, UpdateDepartmanModel updateDepartmanModel)
+        {
+            var validation = new DepartmanModelValidator().Valid(updateDepartmanModel);
+
+            if (!validation.Success)
+            {
+                return new ErrorDataResult<long>(validation.Message);
+            }
+
+            var departmanEntity = await DepartmanRepository.SelectAsync(departmanId);
+
+            var departmanDomain = DepartmanDomainFactory.Create(departmanEntity);
+
+            departmanDomain.Update(updateDepartmanModel);
+
+            departmanEntity = departmanDomain.Map<DepartmanEntity>();
+
+            await DepartmanRepository.UpdateAsync(departmanEntity, departmanEntity.Id);
+
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessResult();
         }
     }
 }
