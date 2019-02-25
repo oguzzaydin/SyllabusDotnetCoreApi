@@ -11,15 +11,18 @@ namespace DPA.Application
     {
         public DepartmanLessonService(
             IDatabaseUnitOfWork databaseUnitOfWork,
-            IDepartmanLessonRepository departmanLessonRepository
+            IDepartmanLessonRepository departmanLessonRepository,
+            ILessonRepository lessonRepository
         )
         {
             DatabaseUnitOfWork = databaseUnitOfWork;    
             DepartmanLessonRepository = departmanLessonRepository;
+            LessonRepository = lessonRepository;
         }
 
         private IDatabaseUnitOfWork DatabaseUnitOfWork { get; }
         private IDepartmanLessonRepository DepartmanLessonRepository { get; }
+        private ILessonRepository LessonRepository { get; }
 
         public async Task<IDataResult<long>> AddAsync(AddDepartmanLessonModel addDepartmanLessonModel)
         {
@@ -39,6 +42,15 @@ namespace DPA.Application
             await DatabaseUnitOfWork.SaveChangesAsync();
 
             return new SuccessDataResult<long>(DepartmanLessonEntity.DepartmanLessonId);
+        }
+
+        public async Task<IDataResult<LessonEntity>> ListLessonAsync(long lessonId)
+        {
+            var lessons = await LessonRepository.ListAsync(x => x.LessonId == lessonId);
+
+            var result = lessons.Map<LessonEntity>();
+
+            return  new SuccessDataResult<LessonEntity>(result);
         }
     }
 }

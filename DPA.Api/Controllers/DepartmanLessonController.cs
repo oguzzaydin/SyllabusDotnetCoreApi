@@ -24,5 +24,13 @@ namespace DPA.Api.Controllers
 
             return new ActionIResult(result);
         }
+
+        [HttpGet("{departmanId}")]
+        public async Task<IActionResult> GetLessonAsync(long departmanId)
+        {
+            var result = await DepartmanLessonService.ListLessonAsync(departmanId);
+
+            return new ActionIResult(result);
+        }
     }
 }
