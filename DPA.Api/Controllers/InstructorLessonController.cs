@@ -8,7 +8,7 @@ namespace DPA.Api
 {
     [ApiController]
     [RouteController]
-    public class InstructorLessonController
+    public class InstructorLessonController : ControllerBase
     {
         public InstructorLessonController(IUserLessonService userLessonService)
         {
