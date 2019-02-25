@@ -11,7 +11,7 @@ namespace DPA.Domain
                 addUserModel.Name,
                 addUserModel.Surname,
                 addUserModel.Email,
-                addUserModel.UserName,
+                addUserModel.Login,
                 addUserModel.Password,
                 addUserModel.Title,
                 addUserModel.Roles
@@ -40,7 +40,7 @@ namespace DPA.Domain
                 userEntity.Name,
                 userEntity.Surname,
                 userEntity.Email,
-                userEntity.UserName,
+                userEntity.Login,
                 userEntity.Password,
                 userEntity.Title,
                 userEntity.Roles
@@ -51,7 +51,7 @@ namespace DPA.Domain
         {
             return new UserDomain
             (
-                signInModel.UserName,
+                signInModel.Login,
                 signInModel.Password
             );
         }

@@ -14,7 +14,7 @@ namespace DPA.Database
         {
             return SingleOrDefaultAsync<SignedInModel>
             (
-                userEntity => userEntity.UserName.Equals(signInModel.UserName)
+                userEntity => userEntity.Login.Equals(signInModel.Login)
                 && userEntity.Password.Equals(signInModel.Password)
                 && userEntity.Status == Status.Active
             );

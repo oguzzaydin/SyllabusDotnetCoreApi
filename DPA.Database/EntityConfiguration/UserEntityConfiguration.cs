@@ -13,13 +13,13 @@ namespace DPA.Database.EntityConfiguration
 
             builder.HasKey(x => x.UserId);
             builder.HasIndex(x => x.Email).IsUnique();
-            builder.HasIndex(x => x.UserName).IsUnique();
+            builder.HasIndex(x => x.Login).IsUnique();
 
             builder.Property(x => x.UserId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Surname).IsRequired().HasMaxLength(200);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(300);
-            builder.Property(x => x.UserName).IsRequired().HasMaxLength(100);
+            builder.Property(x => x.Login).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Password).IsRequired().HasMaxLength(500);
             builder.Property(x => x.Roles).IsRequired();
             builder.Property(x => x.Status).IsRequired();

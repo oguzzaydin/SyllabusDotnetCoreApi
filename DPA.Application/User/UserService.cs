@@ -36,7 +36,7 @@ namespace DPA.Application
                 return new ErrorDataResult<long>(validation.Message);
             }
 
-            addUserModel.UserName = UserDomainService.GenerateHash(addUserModel.UserName);
+            addUserModel.Login = UserDomainService.GenerateHash(addUserModel.Login);
 
             addUserModel.Password = UserDomainService.GenerateHash(addUserModel.Password);
 
@@ -86,7 +86,7 @@ namespace DPA.Application
                 return new ErrorDataResult<SignedInModel>(validation.Message);
             }
 
-            signInModel.UserName = UserDomainService.GenerateHash(signInModel.UserName);
+            signInModel.Login = UserDomainService.GenerateHash(signInModel.Login);
 
             signInModel.Password = UserDomainService.GenerateHash(signInModel.Password);
 

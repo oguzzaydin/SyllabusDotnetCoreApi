@@ -5,9 +5,9 @@ namespace DPA.Domain
 {
     public class UserDomain
     {
-        protected internal UserDomain(string username, string password)
+        protected internal UserDomain(string login, string password)
         {
-            UserName = username;
+            Login = login;
             Password = password;
         }
 
@@ -23,7 +23,7 @@ namespace DPA.Domain
             string name,
             string surname,
             string email,
-            string username,
+            string login,
             string password,
             Title title,
             Roles roles
@@ -33,7 +33,7 @@ namespace DPA.Domain
             Name = name;
             Surname = surname;
             Email = email;
-            UserName = username;
+            Login = login;
             Password = password;
             Roles = roles;
             Title = title;
@@ -48,7 +48,7 @@ namespace DPA.Domain
             string name,
             string surname,
             string email,
-            string username,
+            string login,
             string password,
             Title title,
             Roles roles
@@ -57,7 +57,7 @@ namespace DPA.Domain
             Name = name;
             Surname = surname;
             Email = email;
-            UserName = username;
+            Login = login;
             Password = password;
             Roles = roles;
             Title = title;
@@ -73,7 +73,7 @@ namespace DPA.Domain
 
         public string Email { get; private set; }
 
-        public string UserName { get; private set; }
+        public string Login { get; private set; }
 
         public string Password { get; private set; }
 
