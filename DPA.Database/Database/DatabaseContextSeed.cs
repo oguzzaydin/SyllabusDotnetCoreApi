@@ -11,7 +11,7 @@ namespace DPA.Database
         {
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
-                Id = 1,
+                UserId = 1,
                 Name = "Administrator",
                 Surname = "Administrator",
                 Email = "administrator@administrator.com",

@@ -4,6 +4,8 @@ namespace DPA.Model
 {
     public class UnitLessonEntity : BaseEntity
     {
+        public long UnitLessonId { get; set; }
+        
         public long LessonId { get; set; }
 
         public long UserId { get; set; }

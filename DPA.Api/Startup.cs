@@ -1,9 +1,12 @@
-﻿using DotNetCore.AspNetCore;
+﻿using System.Collections.Generic;
+using System.Linq;
+using DotNetCore.AspNetCore;
 using DPA.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace DPA.Api
 {
@@ -23,6 +26,7 @@ namespace DPA.Api
         {
             application.UseExceptionDefault(Environment);
             application.UseCorsDefault();
+            application.UseHttpsRedirection();
             application.UseAuthentication();
             application.UseResponseCompression();
             application.UseResponseCaching();
@@ -42,6 +46,7 @@ namespace DPA.Api
             services.AddMvcDefault();
             services.AddHealthChecks();
             services.AddSwaggerDefault("api");
+            services.AddSwaggerGenExtension();
         }
     }
 }

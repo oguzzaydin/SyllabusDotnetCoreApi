@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DPA.Database.EntityConfiguration
 {
-    public class LocationEntityConfiguration : IEntityTypeConfiguration<LocationEntity>
+    public sealed class LocationEntityConfiguration : IEntityTypeConfiguration<LocationEntity>
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<LocationEntity> builder)
         {
             builder.ToTable("Locations", "Faculty");
 
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.HasKey(x => x.LocationId);
+            builder.Property(x => x.LocationId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.Title).IsRequired();
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.UpdatedDate).IsRequired();

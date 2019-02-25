@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DPA.Database.EntityConfiguration
 {
-    public class TimeEntityConfiguration : IEntityTypeConfiguration<TimeEntity>
+    public sealed class TimeEntityConfiguration : IEntityTypeConfiguration<TimeEntity>
     {
         public void Configure(EntityTypeBuilder<TimeEntity> builder)
         {
             builder.ToTable("Times", "Syllabus");
 
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.TimeId);
 
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(x => x.TimeId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.StarDate).IsRequired();
             builder.Property(x => x.EndDate).IsRequired();
             builder.Property(x => x.CreatedDate).IsRequired();

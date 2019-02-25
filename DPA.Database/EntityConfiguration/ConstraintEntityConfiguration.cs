@@ -10,9 +10,9 @@ namespace DPA.Database.EntityConfiguration
         {
             builder.ToTable("Constraints", "User");
 
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.ConstraintId);
 
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(x => x.ConstraintId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.Title).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Description).IsRequired().HasMaxLength(100);
             builder.Property(x => x.IsActive).IsRequired();

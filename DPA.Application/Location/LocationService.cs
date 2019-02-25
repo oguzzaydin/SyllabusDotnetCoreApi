@@ -42,7 +42,7 @@ namespace DPA.Application
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 
-            return new SuccessDataResult<long>(locationEntity.Id);
+            return new SuccessDataResult<long>(locationEntity.LocationId);
         }
 
         public async Task<IResult> DeleteAsync(long locationId)
@@ -86,7 +86,7 @@ namespace DPA.Application
 
             locationEntity = locationDomain.Map<LocationEntity>();
 
-            await LocationRepository.UpdateAsync(locationEntity, locationEntity.Id);
+            await LocationRepository.UpdateAsync(locationEntity, locationEntity.LocationId);
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 

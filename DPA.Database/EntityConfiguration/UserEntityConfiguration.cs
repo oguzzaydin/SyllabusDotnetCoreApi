@@ -1,4 +1,5 @@
-﻿using DPA.Model;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using DPA.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,12 +11,11 @@ namespace DPA.Database.EntityConfiguration
         {
             builder.ToTable("Users", "User");
 
-            builder.HasKey(x => x.Id);
-
+            builder.HasKey(x => x.UserId);
             builder.HasIndex(x => x.Email).IsUnique();
             builder.HasIndex(x => x.UserName).IsUnique();
 
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(x => x.UserId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Surname).IsRequired().HasMaxLength(200);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(300);

@@ -5,6 +5,7 @@ namespace DPA.Model
 {
     public class TimeEntity : BaseEntity
     {
+        public long TimeId { get; set; }
 
         public DateTime StarDate { get; set; }
 

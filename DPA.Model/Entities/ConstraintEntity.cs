@@ -3,6 +3,8 @@ namespace DPA.Model
 {
     public class ConstraintEntity : BaseEntity
     {
+        public long ConstraintId { get; set; }
+        
         public string Title { get; set; }
 
         public string Description { get; set; }

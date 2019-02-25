@@ -25,7 +25,7 @@ namespace DPA.Domain
         public static DepartmanDomain Create(DepartmanEntity departmanEntity)
         {
             return new DepartmanDomain(
-                departmanEntity.Id,
+                departmanEntity.DepartmanId,
                 departmanEntity.Title,
                 departmanEntity.DepartmanCode,
                 departmanEntity.FacultyId

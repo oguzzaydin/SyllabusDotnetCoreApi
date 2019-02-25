@@ -13,5 +13,8 @@ namespace DPA.Model
         public WeeklyHour WeeklyHour { get; set; }
 
         public EducationType EducationType { get; set; }
+
+        public long UserId { get; set; }
+
     }
 }

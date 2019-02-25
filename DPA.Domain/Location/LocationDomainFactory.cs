@@ -23,7 +23,7 @@ namespace DPA.Domain
         public static LocationDomain Create(LocationEntity locationEntity)
         {
             return new LocationDomain(
-                locationEntity.Id,
+                locationEntity.LocationId,
                 locationEntity.Title,
                 locationEntity.FacultyId
             );

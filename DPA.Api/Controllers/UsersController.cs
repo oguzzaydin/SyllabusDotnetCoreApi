@@ -19,7 +19,7 @@ namespace DPA.Api
 
         private IUserService UserService { get; }
 
-        [HttpPost("Add")]
+        [HttpPost]
         public async Task<IActionResult> AddAsync(AddUserModel addUserModel)
         {
             var result = await UserService.AddAsync(addUserModel);

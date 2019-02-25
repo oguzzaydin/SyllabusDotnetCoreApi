@@ -20,7 +20,7 @@ namespace DPA.Domain
 
         public static FacultyDomain Create(FacultyEntity facultyEntity) {
             return new FacultyDomain(
-                facultyEntity.Id,
+                facultyEntity.FacultyId,
                 facultyEntity.Title,
                 facultyEntity.FacultyCode
             );

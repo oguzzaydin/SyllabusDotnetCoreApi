@@ -36,7 +36,7 @@ namespace DPA.Domain
         {
             return new UserDomain
             (
-                userEntity.Id,
+                userEntity.UserId,
                 userEntity.Name,
                 userEntity.Surname,
                 userEntity.Email,

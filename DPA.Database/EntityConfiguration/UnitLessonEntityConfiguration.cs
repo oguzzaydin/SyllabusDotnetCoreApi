@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DPA.Database.EntityConfiguration
 {
-    public class UnitLessonEntityConfiguration : IEntityTypeConfiguration<UnitLessonEntity>
+    public sealed class UnitLessonEntityConfiguration : IEntityTypeConfiguration<UnitLessonEntity>
     {
         public void Configure(EntityTypeBuilder<UnitLessonEntity> builder)
         {
             builder.ToTable("UnitLessons", "Syllabus");
 
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.HasKey(x => x.UnitLessonId);
+            builder.Property(x => x.UnitLessonId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.UpdatedDate).IsRequired();
 

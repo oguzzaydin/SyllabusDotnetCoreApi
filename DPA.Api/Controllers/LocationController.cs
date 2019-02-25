@@ -18,7 +18,7 @@ namespace DPA.Api
 
         private ILocationService LocationService { get; }
 
-        [HttpPost("Add")]
+        [HttpPost]
         public async Task<IActionResult> AddAsync(AddLocationModel addLocationModel)
         {
             var result = await LocationService.AddAsync(addLocationModel);

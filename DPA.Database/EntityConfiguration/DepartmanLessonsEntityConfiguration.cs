@@ -3,15 +3,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DPA.Database.EntityConfiguration
 {
-    public class DepartmanLessonsEntityConfiguration : IEntityTypeConfiguration<DepartmanLessonEntity>
+    public sealed class DepartmanLessonsEntityConfiguration : IEntityTypeConfiguration<DepartmanLessonEntity>
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<DepartmanLessonEntity> builder)
         {
             builder.ToTable("DepartmanLessons", "Faculty");
 
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.DepartmanLessonId);
 
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(x => x.DepartmanLessonId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.UpdatedDate).IsRequired();
 

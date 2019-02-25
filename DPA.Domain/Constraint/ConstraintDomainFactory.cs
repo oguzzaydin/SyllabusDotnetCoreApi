@@ -23,19 +23,21 @@ namespace DPA.Domain
                 updateConstraintModel.IsFreeDay,
                 updateConstraintModel.IsActive,
                 updateConstraintModel.WeeklyHour,
-                updateConstraintModel.EducationType
+                updateConstraintModel.EducationType,
+                updateConstraintModel.UserId
             );
         }
 
          public static ConstraintDomain Create(ConstraintEntity constraintEntity) {
             return new ConstraintDomain(
-                constraintEntity.Id,
+                constraintEntity.ConstraintId,
                 constraintEntity.Title,
                 constraintEntity.Description,
                 constraintEntity.IsFreeDay,
                 constraintEntity.IsActive,
                 constraintEntity.WeeklyHour,
-                constraintEntity.EducationType
+                constraintEntity.EducationType,
+                constraintEntity.CreatedDate
             );
         }
     }

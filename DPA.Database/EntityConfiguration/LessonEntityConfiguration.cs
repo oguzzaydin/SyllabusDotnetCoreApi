@@ -3,16 +3,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DPA.Database.EntityConfiguration
 {
-    public class LessonEntityConfiguration : IEntityTypeConfiguration<LessonEntity>
+    public sealed class LessonEntityConfiguration : IEntityTypeConfiguration<LessonEntity>
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<LessonEntity> builder)
         {
             builder.ToTable("Lessons", "Faculty");
 
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.LessonId);
 
 
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(x => x.LessonId).IsRequired().ValueGeneratedOnAdd();
     
             builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
             builder.Property(x => x.WeeklyHour).IsRequired().HasMaxLength(5);

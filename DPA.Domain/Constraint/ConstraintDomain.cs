@@ -5,6 +5,7 @@ namespace DPA.Domain
 {
     public class ConstraintDomain
     {
+        // Update
         protected internal ConstraintDomain(
             string title,
             string description,
@@ -24,7 +25,6 @@ namespace DPA.Domain
             UserId = userId;
         }
 
-        // Update
         protected internal ConstraintDomain(
           string title,
           string description,
@@ -43,25 +43,27 @@ namespace DPA.Domain
         }
 
         protected internal ConstraintDomain(
-          long id,
+          long constraintId,
           string title,
           string description,
           bool isFreeDay,
           bool isActive,
           WeeklyHour weeklyHour,
-          EducationType educationType
+          EducationType educationType,
+          DateTime createdDate
         )
         {
-            Id = id;
+            ConstraintId = constraintId;
             Title = title;
             Description = description;
             IsFreeDay = isFreeDay;
             IsActive = isActive;
             WeeklyHour = weeklyHour;
             EducationType = educationType;
+            CreatedDate = createdDate;
         }
 
-        public long Id { get; private set; }
+        public long ConstraintId { get; private set; }
 
         public string Title { get; private set; }
 
@@ -95,6 +97,7 @@ namespace DPA.Domain
             IsActive = updateConstraintModel.IsActive;
             WeeklyHour = updateConstraintModel.WeeklyHour;
             EducationType = updateConstraintModel.EducationType;
+            UserId = updateConstraintModel.UserId;
             UpdatedDate = DateTime.Now;
         }
     }

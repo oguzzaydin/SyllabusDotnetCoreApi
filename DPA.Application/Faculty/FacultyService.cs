@@ -42,7 +42,7 @@ namespace DPA.Application
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 
-            return new SuccessDataResult<long>(facultyEntity.Id);
+            return new SuccessDataResult<long>(facultyEntity.FacultyId);
         }
 
         public async Task<IResult> DeleteAsync(long facultyId)
@@ -86,7 +86,7 @@ namespace DPA.Application
 
             facultyEntity = facultyDomain.Map<FacultyEntity>();
 
-            await FacultyRepository.UpdateAsync(facultyEntity, facultyEntity.Id);
+            await FacultyRepository.UpdateAsync(facultyEntity, facultyEntity.FacultyId);
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 

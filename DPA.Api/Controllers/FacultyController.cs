@@ -18,7 +18,7 @@ namespace DPA.Api
 
         private IFacultyService FacultyService { get; }
 
-        [HttpPost("Add")]
+        [HttpPost]
         public async Task<IActionResult> AddAsync(AddFacultyModel addFacultyModel)
         {
             var result = await FacultyService.AddAsync(addFacultyModel);

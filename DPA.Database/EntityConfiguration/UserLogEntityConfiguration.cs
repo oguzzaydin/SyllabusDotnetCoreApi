@@ -10,9 +10,9 @@ namespace DPA.Database.EntityConfiguration
         {
             builder.ToTable("UsersLogs", "User");
 
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.UserLogId);
 
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(x => x.UserLogId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.UserId).IsRequired();
             builder.Property(x => x.LogType).IsRequired();
             builder.Property(x => x.Content).IsRequired(false).HasMaxLength(8000);

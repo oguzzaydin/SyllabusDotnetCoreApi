@@ -50,7 +50,7 @@ namespace DPA.Application
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 
-            return new SuccessDataResult<long>(userEntity.Id);
+            return new SuccessDataResult<long>(userEntity.UserId);
         }
 
         public async Task<IResult> DeleteAsync(long userId)
@@ -135,7 +135,7 @@ namespace DPA.Application
 
             userEntity = userDomain.Map<UserEntity>();
 
-            await UserRepository.UpdateAsync(userEntity, userEntity.Id);
+            await UserRepository.UpdateAsync(userEntity, userEntity.UserId);
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 

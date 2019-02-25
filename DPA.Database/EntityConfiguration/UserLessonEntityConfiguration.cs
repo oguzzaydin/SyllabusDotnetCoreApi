@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DPA.Database.EntityConfiguration
 {
-    public class UserLessonEntityConfiguration : IEntityTypeConfiguration<UserLessonEntity>
+    public sealed class UserLessonEntityConfiguration : IEntityTypeConfiguration<UserLessonEntity>
     {
         public void Configure(EntityTypeBuilder<UserLessonEntity> builder)
         {
             builder.ToTable("UserLessons", "User");
 
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.UserLessonId);
 
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(x => x.UserLessonId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.UpdatedDate).IsRequired();
 

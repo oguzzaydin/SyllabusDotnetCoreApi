@@ -10,9 +10,9 @@ namespace DPA.Database.EntityConfiguration
         {
             builder.ToTable("Departmans", "Faculty");
 
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.DepartmanId);
 
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(x => x.DepartmanId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.Title).IsRequired().HasMaxLength(200);
             builder.Property(x => x.DepartmanCode).IsRequired().HasMaxLength(50);
             builder.Property(x => x.CreatedDate).IsRequired();

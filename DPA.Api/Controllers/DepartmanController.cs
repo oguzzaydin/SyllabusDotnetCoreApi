@@ -18,7 +18,7 @@ namespace DPA.Api
 
         private IDepartmanService DepartmanService { get; }
 
-        [HttpPost("Add")]
+        [HttpPost]
         public async Task<IActionResult> AddAsync(AddDepartmanModel addDepartmanModel)
         {
             var result = await DepartmanService.AddAsync(addDepartmanModel);

@@ -4,6 +4,8 @@ namespace DPA.Model
 {
     public class LocationEntity: BaseEntity
     {
+        public long LocationId { get; set; }
+        
         public string Title { get; set; }
 
         public long FacultyId { get; set; }

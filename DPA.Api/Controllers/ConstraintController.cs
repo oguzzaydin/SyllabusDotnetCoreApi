@@ -18,7 +18,7 @@ namespace DPA.Api
 
         private IConstraintService ConstraintService { get; }
 
-        [HttpPost("{userId}/Add")]
+        [HttpPost("{userId}")]
         public async Task<IActionResult> AddAsync(long userId, AddConstraintModel addConstraintModel)
         {
             addConstraintModel.UserId = userId;

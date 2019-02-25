@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DPA.Database.EntityConfiguration
 {
-    public class SyllabusEntityConfiguration : IEntityTypeConfiguration<SyllabusEntity>
+    public sealed class SyllabusEntityConfiguration : IEntityTypeConfiguration<SyllabusEntity>
     {
         public void Configure(EntityTypeBuilder<SyllabusEntity> builder)
         {
             builder.ToTable("Syllabuses", "Syllabus");
 
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.HasKey(x => x.SyllabusId);
+            builder.Property(x => x.SyllabusId).IsRequired().ValueGeneratedOnAdd();
 
             builder.Property(x => x.Year).IsRequired();
             builder.Property(x => x.PeriodType).IsRequired();

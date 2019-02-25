@@ -19,7 +19,7 @@ namespace DPA.Api
 
         private ILessonService LessonService { get; }
 
-        [HttpPost("Add")]
+        [HttpPost]
         public async Task<IActionResult> AddAsync(AddLessonModel addLessonModel)
         {
             var result = await LessonService.AddAsync(addLessonModel);

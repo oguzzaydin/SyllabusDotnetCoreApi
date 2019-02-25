@@ -42,9 +42,8 @@ namespace DPA.Application
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 
-            return new SuccessDataResult<long>(constraintEntity.Id);
+            return new SuccessDataResult<long>(constraintEntity.ConstraintId);
         }
-
         public async Task<IResult> DeleteAsync(long constraintId)
         {
             await ConstraintRepository.DeleteAsync(constraintId);
@@ -86,7 +85,7 @@ namespace DPA.Application
 
             constraintEntity = constraintDomain.Map<ConstraintEntity>();
 
-            await ConstraintRepository.UpdateAsync(constraintEntity, constraintEntity.Id);
+            await ConstraintRepository.UpdateAsync(constraintEntity, constraintEntity.ConstraintId);
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 
