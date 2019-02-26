@@ -23,6 +23,6 @@ namespace DPA.Application
 
         Task<UserModel> SelectAsync(long userId);
 
-        //Task SignOutAsync(SignOutModel signOutModel);
+        Task SignOutAsync(SignOutModel signOutModel);
     }
 }

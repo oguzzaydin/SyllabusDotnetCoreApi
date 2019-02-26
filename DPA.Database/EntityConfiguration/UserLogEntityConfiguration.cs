@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DPA.Database.EntityConfiguration
+namespace DPA.Database
 {
     public sealed class UserLogEntityConfiguration : IEntityTypeConfiguration<UserLogEntity>
     {
@@ -16,8 +16,7 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.UserId).IsRequired();
             builder.Property(x => x.LogType).IsRequired();
             builder.Property(x => x.Content).IsRequired(false).HasMaxLength(8000);
-            builder.Property(x => x.CreatedDate).IsRequired();
-            builder.Property(x => x.UpdatedDate).IsRequired();
+            builder.Property(x => x.DateTime).IsRequired();
 
             builder.HasOne(x => x.User).WithMany(x => x.UsersLogs).HasForeignKey(x => x.UserId);
         }

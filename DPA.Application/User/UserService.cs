@@ -13,6 +13,7 @@ namespace DPA.Application
         public UserService(
             IDatabaseUnitOfWork databaseUnitOfWork,
             IUserDomainService userDomainService,
+            IUserLogService userLogService,
             IUserRepository userRepository
         )
         {
@@ -26,6 +27,9 @@ namespace DPA.Application
         private IUserDomainService UserDomainService { get; }
 
         private IUserRepository UserRepository { get; }
+
+        private IUserLogService UserLogService { get; }
+
 
         public async Task<IDataResult<long>> AddAsync(AddUserModel addUserModel)
         {
@@ -99,6 +103,8 @@ namespace DPA.Application
                 return new ErrorDataResult<SignedInModel>(validation.Message);
             }
 
+            await AddUserLogAsync(signedInModel.UserId, LogType.SignIn).ConfigureAwait(false);
+
             return new SuccessDataResult<SignedInModel>(signedInModel);
         }
 
@@ -116,6 +122,11 @@ namespace DPA.Application
             var tokenModel = new TokenModel(token);
 
             return new SuccessDataResult<TokenModel>(tokenModel);
+        }
+
+        public async Task SignOutAsync(SignOutModel signOutModel)
+        {
+            await AddUserLogAsync(signOutModel.UserId, LogType.SignOut).ConfigureAwait(false);
         }
 
         public async Task<IResult> UpdateAsync(long userId, UpdateUserModel updateUserModel)
@@ -140,6 +151,13 @@ namespace DPA.Application
             await DatabaseUnitOfWork.SaveChangesAsync();
 
             return new SuccessResult();
+        }
+
+        private async Task AddUserLogAsync(long userId, LogType logType)
+        {
+            var userLogModel = new UserLogModel(userId, logType);
+
+            await UserLogService.AddAsync(userLogModel);
         }
     }
 }

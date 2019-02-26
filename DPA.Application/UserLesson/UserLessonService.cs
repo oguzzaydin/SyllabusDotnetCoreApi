@@ -71,12 +71,12 @@ namespace DPA.Application
 
         public async Task<IResult> UpdateInstructorAsync(long userId, UpdateUserLessonModel updateUserLessonModel)
         {
-            return await Update(updateUserLessonModel, x => x.LessonId == updateUserLessonModel.LessonId && x.UserId == userId);
+            return await Update(updateUserLessonModel, x => x.LessonId == updateUserLessonModel.LessonId && x.UserId == userId).ConfigureAwait(false);;
         }
 
         public async Task<IResult> UpdateLessonAsync(long lessonId, UpdateUserLessonModel updateUserLessonModel)
         {
-            return await Update(updateUserLessonModel, x => x.UserId == updateUserLessonModel.UserId && x.LessonId == lessonId);
+            return await Update(updateUserLessonModel, x => x.UserId == updateUserLessonModel.UserId && x.LessonId == lessonId).ConfigureAwait(false);;
         }
 
         private async Task<IResult> Update(UpdateUserLessonModel updateUserLessonModel, Expression<Func<UserLessonEntity, bool>> where)

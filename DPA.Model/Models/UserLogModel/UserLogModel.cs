@@ -1,9 +1,15 @@
-﻿using System;
+using System;
 
 namespace DPA.Model
 {
-    public class UserLogEntity : BaseEntity
+    public class UserLogModel
     {
+        public UserLogModel(long userId, LogType logType)
+        {
+            UserId = userId;
+            LogType = logType;
+        }
+
         public long UserLogId { get; set; }
 
         public long UserId { get; set; }
@@ -13,7 +19,5 @@ namespace DPA.Model
         public string Content { get; set; }
 
         public DateTime DateTime { get; set; }
-
-        public virtual UserEntity User { get; set; }
     }
 }
