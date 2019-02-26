@@ -8,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-
 namespace DPA.IoC
 {
     public static class ServiceCollectionExtensions
@@ -30,7 +29,6 @@ namespace DPA.IoC
                typeof(IDatabaseUnitOfWork).Assembly,
                typeof(IUserDomainService).Assembly
             );
-
         }
     }
 }

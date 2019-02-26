@@ -3,8 +3,7 @@ using DPA.Model;
 
 namespace DPA.Database
 {
-    public interface IConstraintRepository  : IRelationalRepository<ConstraintEntity>
+    public interface IConstraintRepository : IRelationalRepository<ConstraintEntity>
     {
-         
     }
 }

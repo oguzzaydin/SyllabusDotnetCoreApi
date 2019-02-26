@@ -1,6 +1,6 @@
-using System.Threading.Tasks;
 using DotNetCore.Objects;
 using DPA.Model;
+using System.Threading.Tasks;
 
 namespace DPA.Application
 {

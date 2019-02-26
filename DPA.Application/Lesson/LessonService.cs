@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using DotNetCore.Mapping;
 using DotNetCore.Objects;
 using DPA.Database;
 using DPA.Domain;
 using DPA.Model;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DPA.Application
 {
@@ -22,7 +22,6 @@ namespace DPA.Application
         private IDatabaseUnitOfWork DatabaseUnitOfWork { get; }
 
         private ILessonRepository LessonRepository { get; }
-        
 
         public async Task<IDataResult<long>> AddAsync(AddLessonModel addLessonModel)
         {
@@ -42,7 +41,7 @@ namespace DPA.Application
             await LessonRepository.AddAsync(lessonEntity);
 
             await DatabaseUnitOfWork.SaveChangesAsync();
-            
+
             return new SuccessDataResult<long>(lessonEntity.LessonId);
         }
 

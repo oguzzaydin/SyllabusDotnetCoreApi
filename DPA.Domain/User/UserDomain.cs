@@ -37,11 +37,7 @@ namespace DPA.Domain
             Password = password;
             Roles = roles;
             Title = title;
-
         }
-
-
-     
 
         protected internal UserDomain
         (
@@ -61,9 +57,7 @@ namespace DPA.Domain
             Password = password;
             Roles = roles;
             Title = title;
-
         }
-
 
         public long Id { get; private set; }
 
@@ -104,6 +98,5 @@ namespace DPA.Domain
             Roles = updateUserModel.Roles;
             UpdatedDate = DateTime.Now;
         }
-
     }
 }

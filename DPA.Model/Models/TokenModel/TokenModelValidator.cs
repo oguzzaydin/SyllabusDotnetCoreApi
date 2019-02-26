@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace DPA.Model
 {
-    public sealed class TokenModelValidator: Validator<TokenModel>
+    public sealed class TokenModelValidator : Validator<TokenModel>
     {
         public TokenModelValidator()
         {

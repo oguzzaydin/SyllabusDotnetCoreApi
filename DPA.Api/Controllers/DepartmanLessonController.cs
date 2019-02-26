@@ -1,8 +1,9 @@
-using System.Threading.Tasks;
 using DotNetCore.AspNetCore;
 using DPA.Application;
 using DPA.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DPA.Api.Controllers
 {
@@ -25,12 +26,10 @@ namespace DPA.Api.Controllers
             return new ActionIResult(result);
         }
 
-        [HttpGet("{departmanId}")]
-        public async Task<IActionResult> GetLessonAsync(long departmanId)
+        [HttpGet("{departmanId}/lessons")]
+        public async Task<IEnumerable<LessonModel>> GetLessonAsync(long departmanId)
         {
-            var result = await DepartmanLessonService.ListLessonAsync(departmanId);
-
-            return new ActionIResult(result);
+            return await DepartmanLessonService.ListLessonAsync(departmanId);
         }
     }
 }

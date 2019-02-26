@@ -3,8 +3,7 @@ using DPA.Model;
 
 namespace DPA.Database
 {
-    public interface ILocationRepository  : IRelationalRepository<LocationEntity>
+    public interface ILocationRepository : IRelationalRepository<LocationEntity>
     {
-         
     }
 }

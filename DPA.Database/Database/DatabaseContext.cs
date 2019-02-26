@@ -1,11 +1,5 @@
 ﻿using DotNetCore.EntityFrameworkCore;
-using DPA.Model;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace DPA.Database
 {

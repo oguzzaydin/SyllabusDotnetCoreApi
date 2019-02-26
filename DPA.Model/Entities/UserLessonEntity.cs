@@ -1,9 +1,9 @@
 namespace DPA.Model
 {
-    public class UserLessonEntity: BaseEntity
+    public class UserLessonEntity : BaseEntity
     {
         public long UserLessonId { get; set; }
-        
+
         public long UserId { get; set; }
 
         public long LessonId { get; set; }

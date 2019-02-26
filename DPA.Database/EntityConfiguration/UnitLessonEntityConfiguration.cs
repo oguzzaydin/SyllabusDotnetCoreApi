@@ -21,7 +21,6 @@ namespace DPA.Database.EntityConfiguration
             builder.HasOne(x => x.Syllabus).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LessonId);
 
             builder.HasMany(x => x.TimeEntities).WithOne(x => x.UnitLesson).HasForeignKey(x => x.UnitLessonId);
-
         }
     }
 }

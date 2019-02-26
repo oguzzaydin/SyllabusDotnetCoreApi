@@ -1,6 +1,7 @@
-using System.Threading.Tasks;
 using DotNetCore.Objects;
 using DPA.Model;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DPA.Application
 {
@@ -8,6 +9,6 @@ namespace DPA.Application
     {
         Task<IDataResult<long>> AddAsync(AddDepartmanLessonModel addDepartmanLessonModel);
 
-        Task<IDataResult<LessonEntity>> ListLessonAsync(long departmanId);
+        Task<IEnumerable<LessonModel>> ListLessonAsync(long departmanId);
     }
 }

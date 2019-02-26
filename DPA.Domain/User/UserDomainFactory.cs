@@ -18,7 +18,7 @@ namespace DPA.Domain
             );
         }
 
-         public static UserDomain Create(UpdateUserModel updateUserModel)
+        public static UserDomain Create(UpdateUserModel updateUserModel)
         {
             return new UserDomain
             (

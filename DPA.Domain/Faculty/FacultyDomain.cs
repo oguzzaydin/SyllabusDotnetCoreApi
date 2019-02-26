@@ -1,16 +1,18 @@
-using System;
 using DPA.Model;
+using System;
 
 namespace DPA.Domain
 {
     public class FacultyDomain
     {
-        protected internal FacultyDomain(string title, string facultyCode) {
+        protected internal FacultyDomain(string title, string facultyCode)
+        {
             Title = title;
             FacultyCode = facultyCode;
         }
 
-        protected internal FacultyDomain(long id, string title, string facultyCode) {
+        protected internal FacultyDomain(long id, string title, string facultyCode)
+        {
             Id = id;
             Title = title;
             FacultyCode = facultyCode;
@@ -26,12 +28,14 @@ namespace DPA.Domain
 
         public DateTime UpdatedDate { get; private set; }
 
-        public void Add() {
+        public void Add()
+        {
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }
 
-        public void Update(UpdateFacultyModel updateFacultyModel) {
+        public void Update(UpdateFacultyModel updateFacultyModel)
+        {
             Title = updateFacultyModel.Title;
             FacultyCode = updateFacultyModel.FacultyCode;
             UpdatedDate = DateTime.Now;

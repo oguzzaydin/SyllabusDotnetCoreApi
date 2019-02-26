@@ -3,8 +3,7 @@ using DPA.Model;
 
 namespace DPA.Database
 {
-    public interface IDepartmanLessonRepository  : IRelationalRepository<DepartmanLessonEntity>
+    public interface IDepartmanLessonRepository : IRelationalRepository<DepartmanLessonEntity>
     {
-         
     }
 }

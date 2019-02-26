@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DPA.Database.Database
 {
@@ -10,7 +7,7 @@ namespace DPA.Database.Database
     {
         public DatabaseContext CreateDbContext(string[] args)
         {
-            const string connectionString = "Server=DESKTOP-8KG7SA7\\SQLEXPRESS;Database=DpaDB;Integrated Security=true;Connection Timeout=5;";
+            const string connectionString = "Server=DESKTOP-3GVQRBO\\SQLEXPRESS;Database=DpaDB;Integrated Security=true;Connection Timeout=5;";
 
             var builder = new DbContextOptionsBuilder<DatabaseContext>();
 

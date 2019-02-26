@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using DotNetCore.Mapping;
 using DotNetCore.Objects;
 using DPA.Database;
 using DPA.Domain;
 using DPA.Model;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DPA.Application
 {

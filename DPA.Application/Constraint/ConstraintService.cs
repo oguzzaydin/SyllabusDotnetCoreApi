@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using DotNetCore.Mapping;
 using DotNetCore.Objects;
 using DPA.Database;
 using DPA.Domain;
 using DPA.Model;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DPA.Application
 {
@@ -44,6 +44,7 @@ namespace DPA.Application
 
             return new SuccessDataResult<long>(constraintEntity.ConstraintId);
         }
+
         public async Task<IResult> DeleteAsync(long constraintId)
         {
             await ConstraintRepository.DeleteAsync(constraintId);
@@ -72,7 +73,7 @@ namespace DPA.Application
         {
             var validation = new UpdateConstraintModelValidator().Valid(updateConstraintModel);
 
-             if (!validation.Success)
+            if (!validation.Success)
             {
                 return new ErrorResult(validation.Message);
             }

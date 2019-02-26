@@ -17,7 +17,6 @@ namespace DPA.Domain
             DepartmanId = departmanId;
         }
 
-
         public long DepartmanLessonId { get; set; }
 
         public long LessonId { get; set; }

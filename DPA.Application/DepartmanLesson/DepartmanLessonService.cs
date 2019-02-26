@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using DotNetCore.Mapping;
 using DotNetCore.Objects;
@@ -15,7 +17,7 @@ namespace DPA.Application
             ILessonRepository lessonRepository
         )
         {
-            DatabaseUnitOfWork = databaseUnitOfWork;    
+            DatabaseUnitOfWork = databaseUnitOfWork;
             DepartmanLessonRepository = departmanLessonRepository;
             LessonRepository = lessonRepository;
         }
@@ -44,13 +46,12 @@ namespace DPA.Application
             return new SuccessDataResult<long>(DepartmanLessonEntity.DepartmanLessonId);
         }
 
-        public async Task<IDataResult<LessonEntity>> ListLessonAsync(long lessonId)
+        public async Task<IEnumerable<LessonModel>> ListLessonAsync(long departmanId)
         {
-            var lessons = await LessonRepository.ListAsync(x => x.LessonId == lessonId);
+            var departmanLesson = await DepartmanLessonRepository.ListAsync<DepartmanLessonEntity>(x => x.DepartmanId == departmanId, y => y.Lesson);
 
-            var result = lessons.Map<LessonEntity>();
-
-            return  new SuccessDataResult<LessonEntity>(result);
+            return departmanLesson.Select(x => x.Lesson).Map<IEnumerable<LessonModel>>();
         }
+
     }
 }

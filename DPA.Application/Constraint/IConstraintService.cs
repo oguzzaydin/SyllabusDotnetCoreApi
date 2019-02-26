@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using DotNetCore.Objects;
 using DPA.Model;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DPA.Application
 {
@@ -18,6 +18,5 @@ namespace DPA.Application
         Task<IResult> UpdateAsync(long constraintId, UpdateConstraintModel updateConstraintModel);
 
         Task<ConstraintModel> SelectAsync(long constraintId);
-
     }
 }

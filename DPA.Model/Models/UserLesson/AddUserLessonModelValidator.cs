@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace DPA.Model
 {
-     public sealed class AddUserLessonModelValidator : Validator<AddUserLessonModel>
+    public sealed class AddUserLessonModelValidator : Validator<AddUserLessonModel>
     {
         public AddUserLessonModelValidator()
         {

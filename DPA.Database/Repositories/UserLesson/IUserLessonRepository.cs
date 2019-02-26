@@ -5,6 +5,5 @@ namespace DPA.Database
 {
     public interface IUserLessonRepository : IRelationalRepository<UserLessonEntity>
     {
-         
     }
 }

@@ -1,4 +1,3 @@
-
 namespace DPA.Model
 {
     public class SignedInModel

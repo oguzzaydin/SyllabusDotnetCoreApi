@@ -1,7 +1,7 @@
-﻿using System;
-using DotNetCore.Security;
+﻿using DotNetCore.Security;
 using DPA.Model;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace DPA.Database
 {
@@ -109,6 +109,20 @@ namespace DPA.Database
                 WeeklyHour = WeeklyHour.TenHour
             });
 
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 4,
+                Name = "Mat I",
+                LessonCode = "BM211",
+                Group = "B",
+                AKTS = AKTS.Nine,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                EducationType = EducationType.Tumu,
+                WeeklyHour = WeeklyHour.FiveHour
+            });
+
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
                 UserLessonId = 1,
@@ -194,7 +208,7 @@ namespace DPA.Database
 
             modelBuilder.Entity<DepartmanEntity>().HasData(new DepartmanEntity
             {
-                DepartmanId = 2,
+                DepartmanId = 3,
                 Title = "İlahiyat. Bolumu",
                 DepartmanCode = "BM310",
                 FacultyId = 1,
@@ -202,7 +216,33 @@ namespace DPA.Database
                 UpdatedDate = DateTime.Now
             });
 
+            modelBuilder.Entity<DepartmanLessonEntity>().HasData(new DepartmanLessonEntity
+            {
+                DepartmanLessonId = 1,
+                LessonId = 1,
+                DepartmanId = 1
+            });
 
+            modelBuilder.Entity<DepartmanLessonEntity>().HasData(new DepartmanLessonEntity
+            {
+                DepartmanLessonId = 2,
+                LessonId = 2,
+                DepartmanId = 1
+            });
+
+            modelBuilder.Entity<DepartmanLessonEntity>().HasData(new DepartmanLessonEntity
+            {
+                DepartmanLessonId = 3,
+                LessonId = 3,
+                DepartmanId = 1
+            });
+
+            modelBuilder.Entity<DepartmanLessonEntity>().HasData(new DepartmanLessonEntity
+            {
+                DepartmanLessonId = 4,
+                LessonId = 4,
+                DepartmanId = 1
+            });
         }
     }
 }

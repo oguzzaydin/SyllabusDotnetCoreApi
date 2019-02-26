@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace DPA.Model
 {
-     public sealed class SignInModelValidator : Validator<SignInModel>
+    public sealed class SignInModelValidator : Validator<SignInModel>
     {
         public SignInModelValidator() : base(Texts.AuthenticationInvalid)
         {

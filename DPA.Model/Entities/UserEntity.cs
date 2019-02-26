@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DPA.Model
 {
@@ -23,7 +21,6 @@ namespace DPA.Model
         public Status Status { get; set; }
 
         public Title Title { get; set; }
-
 
         public virtual ICollection<UserLogEntity> UsersLogs { get; set; } = new HashSet<UserLogEntity>(); //LOG
 

@@ -1,13 +1,12 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using DotNetCore.AspNetCore;
 using DPA.Application;
 using DPA.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DPA.Api
 {
-    
     [ApiController]
     [RouteController]
     public class LessonController : ControllerBase

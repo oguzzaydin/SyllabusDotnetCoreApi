@@ -1,4 +1,3 @@
-using System;
 using DPA.Model;
 
 namespace DPA.Domain
@@ -23,7 +22,6 @@ namespace DPA.Domain
             );
         }
 
-
         public static UserLessonDomain Create(UserLessonEntity userLessonEntity)
         {
             return new UserLessonDomain
@@ -33,6 +31,5 @@ namespace DPA.Domain
                 userLessonEntity.LessonId
             );
         }
-
     }
 }

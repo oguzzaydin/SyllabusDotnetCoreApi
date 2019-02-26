@@ -1,5 +1,5 @@
-using System;
 using DPA.Model;
+using System;
 
 namespace DPA.Domain
 {

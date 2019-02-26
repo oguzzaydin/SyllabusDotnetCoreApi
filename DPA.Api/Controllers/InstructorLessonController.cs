@@ -1,8 +1,8 @@
-using System.Threading.Tasks;
 using DotNetCore.AspNetCore;
 using DPA.Application;
 using DPA.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace DPA.Api
 {

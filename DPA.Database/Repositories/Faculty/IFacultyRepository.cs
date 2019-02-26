@@ -5,6 +5,5 @@ namespace DPA.Database
 {
     public interface IFacultyRepository : IRelationalRepository<FacultyEntity>
     {
-         
     }
 }

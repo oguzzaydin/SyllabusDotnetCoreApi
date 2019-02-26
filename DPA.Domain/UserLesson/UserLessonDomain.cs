@@ -1,11 +1,12 @@
-using System;
 using DPA.Model;
+using System;
 
 namespace DPA.Domain
 {
     public class UserLessonDomain
     {
-        protected internal UserLessonDomain(long userId, long lessonId) {
+        protected internal UserLessonDomain(long userId, long lessonId)
+        {
             UserId = userId;
             LessonId = lessonId;
         }
@@ -13,8 +14,9 @@ namespace DPA.Domain
         protected internal UserLessonDomain(
           long userLessonId,
           long userId,
-          long lessonId  
-        ) {
+          long lessonId
+        )
+        {
             UserLessonId = userLessonId;
             UserId = userId;
             LessonId = lessonId;
@@ -22,7 +24,7 @@ namespace DPA.Domain
         }
 
         public long UserLessonId { get; private set; }
-        
+
         public long UserId { get; private set; }
 
         public long LessonId { get; private set; }
@@ -31,7 +33,8 @@ namespace DPA.Domain
 
         public DateTime UpdatedDate { get; private set; }
 
-        public void Update(UpdateUserLessonModel updateUserLessonModel) {
+        public void Update(UpdateUserLessonModel updateUserLessonModel)
+        {
             UserId = updateUserLessonModel.UserId;
             LessonId = updateUserLessonModel.LessonId;
             UpdatedDate = DateTime.Now;

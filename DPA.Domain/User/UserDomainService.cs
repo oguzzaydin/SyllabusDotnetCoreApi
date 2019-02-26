@@ -34,6 +34,5 @@ namespace DPA.Domain
 
             return JsonWebToken.Encode(claims);
         }
-
     }
 }

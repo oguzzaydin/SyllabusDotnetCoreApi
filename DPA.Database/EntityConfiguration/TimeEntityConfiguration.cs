@@ -19,7 +19,6 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.UpdatedDate).IsRequired();
 
             builder.HasOne(x => x.UnitLesson).WithMany(x => x.TimeEntities).HasForeignKey(x => x.UnitLessonId);
-
         }
     }
 }

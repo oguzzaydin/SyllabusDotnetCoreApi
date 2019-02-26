@@ -4,7 +4,8 @@ namespace DPA.Domain
 {
     public static class ConstraintDomainFactory
     {
-        public static ConstraintDomain Create(AddConstraintModel addConstraintModel) {
+        public static ConstraintDomain Create(AddConstraintModel addConstraintModel)
+        {
             return new ConstraintDomain(
                 addConstraintModel.Title,
                 addConstraintModel.Description,
@@ -16,7 +17,8 @@ namespace DPA.Domain
             );
         }
 
-         public static ConstraintDomain Create(UpdateConstraintModel updateConstraintModel) {
+        public static ConstraintDomain Create(UpdateConstraintModel updateConstraintModel)
+        {
             return new ConstraintDomain(
                 updateConstraintModel.Title,
                 updateConstraintModel.Description,
@@ -28,7 +30,8 @@ namespace DPA.Domain
             );
         }
 
-         public static ConstraintDomain Create(ConstraintEntity constraintEntity) {
+        public static ConstraintDomain Create(ConstraintEntity constraintEntity)
+        {
             return new ConstraintDomain(
                 constraintEntity.ConstraintId,
                 constraintEntity.Title,

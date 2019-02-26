@@ -31,7 +31,5 @@ namespace DPA.Domain
                 departmanEntity.FacultyId
             );
         }
-
-
     }
 }

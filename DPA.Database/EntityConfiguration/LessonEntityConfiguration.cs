@@ -11,9 +11,8 @@ namespace DPA.Database.EntityConfiguration
 
             builder.HasKey(x => x.LessonId);
 
-
             builder.Property(x => x.LessonId).IsRequired().ValueGeneratedOnAdd();
-    
+
             builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
             builder.Property(x => x.WeeklyHour).IsRequired().HasMaxLength(5);
             builder.Property(x => x.LessonCode).IsRequired().HasMaxLength(5);
@@ -28,7 +27,6 @@ namespace DPA.Database.EntityConfiguration
             builder.HasMany(x => x.UserLessons).WithOne(x => x.Lesson).HasForeignKey(x => x.LessonId);
             builder.HasMany(x => x.DepartmanLessons).WithOne(x => x.Lesson).HasForeignKey(x => x.LessonId);
             builder.HasMany(x => x.UnitLessons).WithOne(x => x.Lesson).HasForeignKey(x => x.LessonId);
-            
         }
     }
 }

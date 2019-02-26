@@ -1,5 +1,5 @@
-using System;
 using DPA.Model;
+using System;
 
 namespace DPA.Domain
 {
@@ -13,7 +13,8 @@ namespace DPA.Domain
             LessonType lessonType,
             EducationType educationType,
             WeeklyHour weeklyHour
-        ) {
+        )
+        {
             Name = name;
             LessonCode = lessonCode;
             Group = group;
@@ -22,32 +23,33 @@ namespace DPA.Domain
             EducationType = educationType;
             WeeklyHour = weeklyHour;
         }
-        
 
         public string Name { get; private set; }
 
         public string LessonCode { get; private set; }
 
         public string Group { get; private set; }
-        
+
         public AKTS AKTS { get; private set; }
 
         public LessonType LessonType { get; private set; }
 
         public EducationType EducationType { get; private set; }
-        
+
         public WeeklyHour WeeklyHour { get; private set; }
 
         public DateTime CreatedDate { get; private set; }
 
         public DateTime UpdatedDate { get; private set; }
 
-        public void Add() {
+        public void Add()
+        {
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }
 
-        public void Update(UpdateLessonModel updateLessonModel) {
+        public void Update(UpdateLessonModel updateLessonModel)
+        {
             Name = updateLessonModel.Name;
             LessonCode = updateLessonModel.LessonCode;
             Group = updateLessonModel.Group;
@@ -57,6 +59,5 @@ namespace DPA.Domain
             EducationType = updateLessonModel.EducationType;
             UpdatedDate = DateTime.Now;
         }
-
     }
 }

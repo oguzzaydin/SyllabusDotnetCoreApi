@@ -1,6 +1,6 @@
-using System.Threading.Tasks;
 using DotNetCore.EntityFrameworkCore;
 using DPA.Model;
+using System.Threading.Tasks;
 
 namespace DPA.Database
 {

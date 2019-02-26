@@ -2,10 +2,10 @@ using System.Collections.Generic;
 
 namespace DPA.Model
 {
-    public class FacultyEntity: BaseEntity
+    public class FacultyEntity : BaseEntity
     {
         public long FacultyId { get; set; }
-        
+
         public string Title { get; set; }
 
         public string FacultyCode { get; set; }
