@@ -22,6 +22,8 @@ namespace DPA.Model
 
         public Title Title { get; set; }
 
+        public virtual DepartmanEntity Departman { get; set; }
+
         public virtual ICollection<UserLogEntity> UsersLogs { get; set; } = new HashSet<UserLogEntity>(); //LOG
 
         public virtual ICollection<ConstraintEntity> Constraints { get; set; } = new HashSet<ConstraintEntity>();

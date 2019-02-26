@@ -19,6 +19,7 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.UpdatedDate).IsRequired();
 
             builder.HasMany(x => x.UnitLessons).WithOne(x => x.Syllabus).HasForeignKey(x => x.SyllabusId);
+            builder.HasOne(x => x.Departman).WithMany(x => x.Syllabus).HasForeignKey(x => x.DepartmanId);
         }
     }
 }
