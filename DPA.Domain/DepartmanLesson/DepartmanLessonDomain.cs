@@ -1,4 +1,5 @@
 using System;
+using DPA.Model;
 
 namespace DPA.Domain
 {
@@ -10,11 +11,17 @@ namespace DPA.Domain
             LessonId = lessonId;
         }
 
-        protected internal DepartmanLessonDomain(long departmanLessonId, long lessonId, long departmanId)
+        protected internal DepartmanLessonDomain(
+            long departmanLessonId, 
+            long lessonId, 
+            long departmanId,
+            DateTime createdDate
+            )
         {
             DepartmanLessonId = departmanLessonId;
             LessonId = lessonId;
             DepartmanId = departmanId;
+            CreatedDate = createdDate;
         }
 
         public long DepartmanLessonId { get; set; }
@@ -26,5 +33,12 @@ namespace DPA.Domain
         public DateTime CreatedDate { get; private set; }
 
         public DateTime UpdatedDate { get; private set; }
+
+        public void Update(UpdateDepartmanLessonModel updateDepartmanLessonModel) 
+        {
+            LessonId = updateDepartmanLessonModel.LessonId;
+            DepartmanId = updateDepartmanLessonModel.DepartmanId;
+            UpdatedDate = DateTime.Now;
+        }
     }
 }

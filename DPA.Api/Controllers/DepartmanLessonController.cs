@@ -27,9 +27,39 @@ namespace DPA.Api.Controllers
         }
 
         [HttpGet("{departmanId}/lessons")]
-        public async Task<IEnumerable<LessonModel>> GetLessonAsync(long departmanId)
+        public async Task<IEnumerable<LessonModel>> ListLessonAsync(long departmanId)
         {
             return await DepartmanLessonService.ListLessonAsync(departmanId);
+        }
+
+        [HttpGet("{lessonId}/departmans")]
+        public async Task<IEnumerable<DepartmanModel>> ListDepartmanAsync(long lessonId)
+        {
+            return await DepartmanLessonService.ListDepartmanAsync(lessonId);
+        }
+
+        [HttpDelete("{departmanId}/departman/{lessonId}/lesson")]
+        public async Task<ActionIResult> DeleteLesssonAsync(long departmanId, long lessonId)
+        {
+            var result = await DepartmanLessonService.DeleteLessonAsync(departmanId, lessonId);
+
+            return new ActionIResult(result);
+        }
+
+        [HttpPut("{lessonId}/lesson")]
+        public async Task<IActionResult> UpdateLessonAsync(long lessonId, UpdateDepartmanLessonModel updateDepartmanLessonModel)
+        {
+            var result = await DepartmanLessonService.UpdateLessonAsync(lessonId, updateDepartmanLessonModel);
+
+            return new ActionIResult(result);
+        }
+
+        [HttpPut("{departmanId}/departman")]
+        public async Task<IActionResult> UpdateDepartmanAsync(long departmanId, UpdateDepartmanLessonModel updateDepartmanLessonModel)
+        {
+            var result = await DepartmanLessonService.UpdateDepartmanAsync(departmanId, updateDepartmanLessonModel);
+
+            return new ActionIResult(result);
         }
     }
 }

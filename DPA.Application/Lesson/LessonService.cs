@@ -20,7 +20,6 @@ namespace DPA.Application
         }
 
         private IDatabaseUnitOfWork DatabaseUnitOfWork { get; }
-
         private ILessonRepository LessonRepository { get; }
 
         public async Task<IDataResult<long>> AddAsync(AddLessonModel addLessonModel)

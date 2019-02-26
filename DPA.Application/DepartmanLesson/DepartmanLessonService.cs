@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using DotNetCore.Mapping;
 using DotNetCore.Objects;
@@ -13,18 +15,15 @@ namespace DPA.Application
     {
         public DepartmanLessonService(
             IDatabaseUnitOfWork databaseUnitOfWork,
-            IDepartmanLessonRepository departmanLessonRepository,
-            ILessonRepository lessonRepository
+            IDepartmanLessonRepository departmanLessonRepository
         )
         {
             DatabaseUnitOfWork = databaseUnitOfWork;
             DepartmanLessonRepository = departmanLessonRepository;
-            LessonRepository = lessonRepository;
         }
 
         private IDatabaseUnitOfWork DatabaseUnitOfWork { get; }
         private IDepartmanLessonRepository DepartmanLessonRepository { get; }
-        private ILessonRepository LessonRepository { get; }
 
         public async Task<IDataResult<long>> AddAsync(AddDepartmanLessonModel addDepartmanLessonModel)
         {
@@ -46,11 +45,61 @@ namespace DPA.Application
             return new SuccessDataResult<long>(DepartmanLessonEntity.DepartmanLessonId);
         }
 
+        public async Task<IResult> DeleteLessonAsync(long departmanId, long lessonId)
+        {
+            await DepartmanLessonRepository.DeleteAsync(x => x.DepartmanId == departmanId && x.LessonId == lessonId);
+
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessResult();
+        }
+
+        public async Task<IEnumerable<DepartmanModel>> ListDepartmanAsync(long lessonId)
+        {
+            var departmanLesson = await DepartmanLessonRepository.ListAsync<DepartmanLessonEntity>(x => x.LessonId == lessonId, y => y.Departman);
+
+            return departmanLesson.Select(x => x.Departman).Map<IEnumerable<DepartmanModel>>();
+        }
+
         public async Task<IEnumerable<LessonModel>> ListLessonAsync(long departmanId)
         {
             var departmanLesson = await DepartmanLessonRepository.ListAsync<DepartmanLessonEntity>(x => x.DepartmanId == departmanId, y => y.Lesson);
 
             return departmanLesson.Select(x => x.Lesson).Map<IEnumerable<LessonModel>>();
+        }
+
+        public async Task<IResult> UpdateLessonAsync(long lessonId, UpdateDepartmanLessonModel updateDepartmanLessonModel)
+        {
+            return await Update(updateDepartmanLessonModel, x => x.DepartmanId == updateDepartmanLessonModel.DepartmanId && x.LessonId == lessonId);
+        }
+
+        public async Task<IResult> UpdateDepartmanAsync(long departmanId, UpdateDepartmanLessonModel updateDepartmanLessonModel)
+        {
+            return await Update(updateDepartmanLessonModel, x => x.LessonId == updateDepartmanLessonModel.LessonId && x.DepartmanId == departmanId);
+        }
+
+        private async Task<IResult> Update(UpdateDepartmanLessonModel updateDepartmanLessonModel, Expression<Func<DepartmanLessonEntity, bool>> where)
+        {
+            var validation = new UpdateDepartmanLessonModelValidator().Valid(updateDepartmanLessonModel);
+
+            if (!validation.Success)
+            {
+                return new ErrorDataResult<long>(validation.Message);
+            }
+
+            var departmanLessonEntity = await DepartmanLessonRepository.SingleOrDefaultAsync(where);
+
+            var departmanLessonDomain = DepartmanLessonDomainFactory.Create(departmanLessonEntity);
+
+            departmanLessonDomain.Update(updateDepartmanLessonModel);
+
+            departmanLessonEntity = departmanLessonDomain.Map<DepartmanLessonEntity>();
+
+            await DepartmanLessonRepository.UpdateAsync(departmanLessonEntity, departmanLessonEntity.DepartmanLessonId);
+
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessResult();
         }
 
     }
