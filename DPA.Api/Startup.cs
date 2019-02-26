@@ -44,6 +44,7 @@ namespace DPA.Api
             services.AddHealthChecks();
             services.AddSwaggerDefault("api");
             services.AddSwaggerGenExtension();
+            services.AddSwaggerDocExtensions();
         }
     }
 }

@@ -5,6 +5,12 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\Online\Desktop\SyllabusDotnetCoreApi\DPA.Api\Comments.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591;</NoWarn>
+    <OutputPath>bin\Debug\netcoreapp2.2\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="DotNetCore.AspNetCore" Version="6.18.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />

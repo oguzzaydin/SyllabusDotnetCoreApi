@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DPA.Api</name>
+    </assembly>
+    <members>
+        <member name="M:DPA.Api.UsersController.SignInAsync(DPA.Model.SignInModel)">
+            <summary>
+            Retrieves a specific product by unique id
+            </summary>
+            <remarks>Awesomeness!</remarks>
+            <response code="200">Product created</response>
+            <response code="400">Product has missing/invalid values</response>
+            <response code="500">Oops! Can't create your product right now</response>
+        </member>
+    </members>
+</doc>
