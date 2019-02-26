@@ -1,5 +1,6 @@
 using DotNetCore.AspNetCore;
 using DotNetCore.Extensions;
+using DotNetCore.Objects;
 using DPA.Application;
 using DPA.Model;
 using Microsoft.AspNetCore.Authorization;
@@ -29,15 +30,16 @@ namespace DPA.Api
             return new ActionIResult(result);
         }
         /// <summary>
-        /// Retrieves a specific product by unique id
+        /// Kullanıcı girişi yapılan methodu
         /// </summary>
-        /// <remarks>Awesomeness!</remarks>
-        /// <response code="200">Product created</response>
-        /// <response code="400">Product has missing/invalid values</response>
-        /// <response code="500">Oops! Can't create your product right now</response>
+        /// <remarks>SignIn Methodu Açıklaması!</remarks>
+        /// <response code="200">Başarılı giriş yapıldığında aşağadıki model dönmektedir.</response>
+        /// <response code="400">SignInModel yok veya valid değil ise  (Aşağıdaki model örnek amaçlı hatalı olarak verilmiştir.)
+        /// Kullanıcı adı veya şifresi hatalı mesajı dönecektir.</response>
+        /// <response code="500">Oops! Kullanıcı girişi şu anda yapılamadı</response>
         [AllowAnonymous]
         [HttpPost("SignIn")]
-        [ProducesResponseType(typeof(SignInModel), 200)]
+        [ProducesResponseType(typeof(IDataResult<TokenModel>), 200)]
         [ProducesResponseType(typeof(IDictionary<string, string>), 400)]
         [ProducesResponseType(500)]
         public async Task<IActionResult> SignInAsync(SignInModel signInModel)
@@ -47,6 +49,10 @@ namespace DPA.Api
             return new ActionIResult(result);
         }
 
+        /// <summary>
+        /// Kullanıcı çıkış yaparken log tutulması içindir.
+        /// </summary>
+        /// <remarks>SignOut Methodu Açıklaması!</remarks>
         [HttpPost("SignOut")]
         public Task SignOutAsync()
         {
@@ -55,7 +61,18 @@ namespace DPA.Api
             return UserService.SignOutAsync(signOutModel);
         }
 
+        /// <summary>
+        /// Kullanıcı silme işlemi şuan için sadece sistem yetkili tarafından yapılacaktır.
+        /// </summary>
+        /// <remarks>User Delete Methodu Açıklaması!</remarks>
+        /// <response code="200">Başarılı giriş yapıldığında aşağadıki model dönmektedir.</response>
+        /// <response code="400">Gönderilen Id ye ait kullanıcı mevcut değil veya id gönderilmediyse</response>
+        /// <response code="500">Oops! Kullanıcı şu anda silinemedi</response>
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{userId}")]
+        [ProducesResponseType(typeof(IActionResult), 200)]
+        [ProducesResponseType(typeof(IDictionary<string, string>), 400)]
+        [ProducesResponseType(500)]
         public async Task<IActionResult> DeleteAsync(long userId)
         {
             var result = await UserService.DeleteAsync(userId);

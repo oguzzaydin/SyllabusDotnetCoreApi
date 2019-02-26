@@ -6,12 +6,28 @@
     <members>
         <member name="M:DPA.Api.UsersController.SignInAsync(DPA.Model.SignInModel)">
             <summary>
-            Retrieves a specific product by unique id
+            Kullanıcı girişi yapılan methodu
             </summary>
-            <remarks>Awesomeness!</remarks>
-            <response code="200">Product created</response>
-            <response code="400">Product has missing/invalid values</response>
-            <response code="500">Oops! Can't create your product right now</response>
+            <remarks>SignIn Methodu Açıklaması!</remarks>
+            <response code="200">Başarılı giriş yapıldığında aşağadıki model dönmektedir.</response>
+            <response code="400">SignInModel yok veya valid değil ise  (Aşağıdaki model örnek amaçlı hatalı olarak verilmiştir.)
+            Kullanıcı adı veya şifresi hatalı mesajı dönecektir.</response>
+            <response code="500">Oops! Kullanıcı girişi şu anda yapılamadı</response>
+        </member>
+        <member name="M:DPA.Api.UsersController.SignOutAsync">
+            <summary>
+            Kullanıcı çıkış yaparken log tutulması içindir.
+            </summary>
+            <remarks>SignOut Methodu Açıklaması!</remarks>
+        </member>
+        <member name="M:DPA.Api.UsersController.DeleteAsync(System.Int64)">
+            <summary>
+            Kullanıcı silme işlemi şuan için sadece sistem yetkili tarafından yapılacaktır.
+            </summary>
+            <remarks>User Delete Methodu Açıklaması!</remarks>
+            <response code="200">Başarılı giriş yapıldığında aşağadıki model dönmektedir.</response>
+            <response code="400">Gönderilen Id ye ait kullanıcı mevcut değil veya id gönderilmediyse</response>
+            <response code="500">Oops! Kullanıcı şu anda silinemedi</response>
         </member>
     </members>
 </doc>
