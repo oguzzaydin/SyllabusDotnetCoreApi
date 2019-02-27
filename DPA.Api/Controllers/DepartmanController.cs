@@ -32,11 +32,17 @@ namespace DPA.Api
             return await DepartmanService.SingleOrDefaultUserAsync(departmanId);
         }
 
+        [HttpGet("{departmanId}/syllabus")]
+        public async Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long departmanId)
+        {
+            return await DepartmanService.SingleOrDefaultSyllabusAsync(departmanId);
+        }
+
         [HttpGet]
         public async Task<IEnumerable<DepartmanModel>> ListAsync()
         {
             return await DepartmanService.ListAsync();
-        }
+        }   
 
         [HttpPut("{departmanId}")]
         public async Task<IActionResult> UpdateAsync(long departmanId, UpdateDepartmanModel updateDepartmanModel)

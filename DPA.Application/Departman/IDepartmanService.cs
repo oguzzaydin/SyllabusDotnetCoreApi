@@ -22,5 +22,7 @@ namespace DPA.Application
         Task<DepartmanModel> SelectAsync(long departmanId);
 
         Task<UserModel> SingleOrDefaultUserAsync(long departmanId);
+
+        Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long departmanId);
     }
 }

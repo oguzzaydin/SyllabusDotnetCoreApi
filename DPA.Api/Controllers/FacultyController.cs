@@ -32,6 +32,8 @@ namespace DPA.Api
             return await FacultyService.ListAsync();
         }
 
+     
+
         [HttpPut("{facultyId}")]
         public async Task<IActionResult> UpdateAsync(long facultyId, UpdateFacultyModel updateFacultyModel)
         {

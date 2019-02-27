@@ -64,6 +64,11 @@ namespace DPA.Application
             return await LocationRepository.ListAsync<LocationModel>(parameters);
         }
 
+        public async Task<IEnumerable<LocationModel>> ListLocationsAsync(long facultyId)
+        {
+            return await LocationRepository.ListAsync<LocationModel>(x => x.FacultyId == facultyId);
+        }
+
         public async Task<LocationModel> SelectAsync(long locationId)
         {
             return await LocationRepository.SelectAsync<LocationModel>(locationId);

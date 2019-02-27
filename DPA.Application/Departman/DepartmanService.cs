@@ -69,6 +69,11 @@ namespace DPA.Application
             return await DepartmanRepository.SelectAsync<DepartmanModel>(departmanId);
         }
 
+        public async Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long departmanId)
+        {
+            return await DepartmanRepository.SingleOrDefaultAsync<SyllabusModel>(x => x.DepartmanId == departmanId, x => x.Syllabus.Map<SyllabusModel>());
+        }
+
         public async Task<UserModel> SingleOrDefaultUserAsync(long departmanId)
         {
             return  await DepartmanRepository.SingleOrDefaultAsync<UserModel>(x => x.DepartmanId == departmanId, x => x.User.Map<UserModel>());

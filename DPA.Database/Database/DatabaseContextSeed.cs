@@ -222,6 +222,8 @@ namespace DPA.Database
             {
                 DepartmanLessonId = 1,
                 LessonId = 1,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
                 DepartmanId = 1
             });
 
@@ -229,6 +231,8 @@ namespace DPA.Database
             {
                 DepartmanLessonId = 2,
                 LessonId = 2,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
                 DepartmanId = 1
             });
 
@@ -236,6 +240,8 @@ namespace DPA.Database
             {
                 DepartmanLessonId = 3,
                 LessonId = 3,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
                 DepartmanId = 1
             });
 
@@ -243,7 +249,283 @@ namespace DPA.Database
             {
                 DepartmanLessonId = 4,
                 LessonId = 4,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
                 DepartmanId = 1
+            });
+
+            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            {
+                LocationId = 1,
+                Title = "1201",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                FacultyId = 1
+            });
+
+            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            {
+                LocationId = 2,
+                Title = "1201",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                FacultyId = 1
+            });
+
+            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            {
+                LocationId = 3,
+                Title = "1201",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                FacultyId = 1
+            });
+
+            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            {
+                LocationId = 4,
+                Title = "1201",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                FacultyId = 1
+            });
+
+            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            {
+                LocationId = 5,
+                Title = "1201",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                FacultyId = 1
+            });
+
+            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            {
+                LocationId = 6,
+                Title = "1201",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                FacultyId = 1
+            });
+
+            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            {
+                LocationId = 7,
+                Title = "1201",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                FacultyId = 1
+            });
+
+            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            {
+                LocationId = 8,
+                Title = "1201",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                FacultyId = 1
+            });
+
+            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            {
+                LocationId = 9,
+                Title = "1201",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                FacultyId = 1
+            });
+
+            modelBuilder.Entity<SyllabusEntity>().HasData(new SyllabusEntity
+            {
+                SyllabusId = 1,
+                Year = 2018,
+                PeriodType = PeriodType.Bahar,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmanId = 1,
+            });
+
+            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            {
+                UnitLessonId = 1,
+                LessonId = 1,
+                UserId = 2,
+                LocationId = 3,
+                SyllabusId = 1
+            });
+
+             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            {
+                UnitLessonId = 2,
+                LessonId = 1,
+                UserId = 2,
+                LocationId = 1,
+                SyllabusId = 1
+            });
+
+             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            {
+                UnitLessonId = 3,
+                LessonId = 1,
+                UserId = 2,
+                LocationId = 7,
+                SyllabusId = 1
+            });
+
+             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            {
+                UnitLessonId = 4,
+                LessonId = 1,
+                UserId = 2,
+                LocationId = 3,
+                SyllabusId = 1
+            });
+
+             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            {
+                UnitLessonId = 5,
+                LessonId = 1,
+                UserId = 2,
+                LocationId = 4,
+                SyllabusId = 1
+            });
+
+             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            {
+                UnitLessonId = 6,
+                LessonId = 1,
+                UserId = 2,
+                LocationId = 5,
+                SyllabusId = 1
+            });
+
+             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            {
+                UnitLessonId = 7,
+                LessonId = 1,
+                UserId = 2,
+                LocationId = 3,
+                SyllabusId = 1
+            });
+
+             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            {
+                UnitLessonId = 8,
+                LessonId = 1,
+                UserId = 2,
+                LocationId = 6,
+                SyllabusId = 1
+            });
+
+             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            {
+                UnitLessonId = 9,
+                LessonId = 1,
+                UserId = 2,
+                LocationId = 7,
+                SyllabusId = 1
+            });
+
+             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            {
+                UnitLessonId = 10,
+                LessonId = 1,
+                UserId = 2,
+                LocationId = 8,
+                SyllabusId = 1
+            });
+
+            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
+            {
+                TimeId = 1,
+                StarDate = DateTime.Now.ToLocalTime(),
+                EndDate = DateTime.Now.ToLocalTime(),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                UnitLessonId = 1
+            });
+
+            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
+            {
+                TimeId = 2,
+                StarDate = DateTime.Now.ToLocalTime(),
+                EndDate = DateTime.Now.ToLocalTime(),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                UnitLessonId = 1
+            });
+
+
+            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
+            {
+                TimeId = 3,
+                StarDate = DateTime.Now.ToLocalTime(),
+                EndDate = DateTime.Now.ToLocalTime(),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                UnitLessonId = 1
+            });
+
+            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
+            {
+                TimeId = 4,
+                StarDate = DateTime.Now.ToLocalTime(),
+                EndDate = DateTime.Now.ToLocalTime(),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                UnitLessonId = 1
+            });
+
+            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
+            {
+                TimeId = 5,
+                StarDate = DateTime.Now.ToLocalTime(),
+                EndDate = DateTime.Now.ToLocalTime(),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                UnitLessonId = 1
+            });
+
+
+            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
+            {
+                TimeId = 6,
+                StarDate = DateTime.Now.ToLocalTime(),
+                EndDate = DateTime.Now.ToLocalTime(),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                UnitLessonId = 1
+            });
+
+            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
+            {
+                TimeId = 7,
+                StarDate = DateTime.Now.ToLocalTime(),
+                EndDate = DateTime.Now.ToLocalTime(),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                UnitLessonId = 1
+            });
+
+
+            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
+            {
+                TimeId = 8,
+                StarDate = DateTime.Now.ToLocalTime(),
+                EndDate = DateTime.Now.ToLocalTime(),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                UnitLessonId = 1
+            });
+
+            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
+            {
+                TimeId = 9,
+                StarDate = DateTime.Now.ToLocalTime(),
+                EndDate = DateTime.Now.ToLocalTime(),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                UnitLessonId = 1
             });
         }
     }

@@ -15,6 +15,8 @@ namespace DPA.Application
 
         Task<PagedList<LocationModel>> ListAsync(PagedListParameters parameters);
 
+        Task<IEnumerable<LocationModel>> ListLocationsAsync(long facultyId);
+
         Task<IResult> UpdateAsync(long locationId, UpdateLocationModel updateLocationModel);
 
         Task<LocationModel> SelectAsync(long locationId);

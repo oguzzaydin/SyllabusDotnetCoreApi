@@ -32,6 +32,12 @@ namespace DPA.Api
             return await LocationService.ListAsync();
         }
 
+        [HttpGet("{facultyId}/locations")]
+        public async Task<IEnumerable<LocationModel>> ListLocationsAsync(long facultyId)
+        {
+            return await LocationService.ListLocationsAsync(facultyId).ConfigureAwait(false);
+        }
+
         [HttpPut("{LocationId}")]
         public async Task<IActionResult> UpdateAsync(long locationId, UpdateLocationModel updateLocationModel)
         {
