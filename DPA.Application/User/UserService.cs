@@ -20,6 +20,7 @@ namespace DPA.Application
             DatabaseUnitOfWork = databaseUnitOfWork;
             UserDomainService = userDomainService;
             UserRepository = userRepository;
+            UserLogService = userLogService;
         }
 
         private IDatabaseUnitOfWork DatabaseUnitOfWork { get; }

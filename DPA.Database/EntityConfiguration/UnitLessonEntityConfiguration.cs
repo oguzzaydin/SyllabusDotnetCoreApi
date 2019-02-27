@@ -18,8 +18,7 @@ namespace DPA.Database.EntityConfiguration
             builder.HasOne(x => x.Lesson).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LessonId);
             builder.HasOne(x => x.User).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LessonId);
             builder.HasOne(x => x.Location).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LessonId);
-            builder.HasOne(x => x.Syllabus).WithMany(x => x.UnitLessons)
-            .HasForeignKey(x => x.LessonId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.Syllabus).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LessonId).OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(x => x.TimeEntities).WithOne(x => x.UnitLesson).HasForeignKey(x => x.UnitLessonId);
         }

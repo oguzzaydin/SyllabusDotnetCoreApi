@@ -17,12 +17,14 @@ namespace DPA.Domain
             long id,
             string title,
             string departmanCode,
-            long facultyId)
+            long facultyId,
+            long userId)
         {
             Id = id;
             Title = title;
             DepartmanCode = departmanCode;
             FacultyId = facultyId;
+            UserId = userId;
         }
 
         public long Id { get; private set; }
@@ -32,6 +34,8 @@ namespace DPA.Domain
         public string DepartmanCode { get; private set; }
 
         public long FacultyId { get; private set; }
+
+        public long UserId { get; private set; }
 
         public DateTime CreatedDate { get; private set; }
 
@@ -49,6 +53,18 @@ namespace DPA.Domain
             DepartmanCode = updateDepartmanModel.DepartmanCode;
             FacultyId = updateDepartmanModel.FacultyId;
             UpdatedDate = DateTime.Now;
+            UserId = updateDepartmanModel.UserId;
         }
+
+        public void Update(DepartmanEntity departmanEntity)
+        {
+            Title = departmanEntity.Title;
+            DepartmanCode = departmanEntity.DepartmanCode;
+            FacultyId = departmanEntity.FacultyId;
+            UpdatedDate = DateTime.Now;
+            UserId = departmanEntity.UserId.Value;
+        }
+
+
     }
 }

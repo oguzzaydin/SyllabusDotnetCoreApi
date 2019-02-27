@@ -2,6 +2,8 @@ namespace DPA.Model
 {
     public class UserModel
     {
+        public long UserId { get; set; }
+        
         public string Name { get; set; }
 
         public string Surname { get; set; }

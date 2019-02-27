@@ -26,6 +26,12 @@ namespace DPA.Api
             return new ActionIResult(result);
         }
 
+        [HttpGet("{departmanId}/user")]
+        public async Task<UserModel> SingleOrDefaultUserAsync(long departmanId)
+        {
+            return await DepartmanService.SingleOrDefaultUserAsync(departmanId);
+        }
+
         [HttpGet]
         public async Task<IEnumerable<DepartmanModel>> ListAsync()
         {
@@ -36,6 +42,14 @@ namespace DPA.Api
         public async Task<IActionResult> UpdateAsync(long departmanId, UpdateDepartmanModel updateDepartmanModel)
         {
             var result = await DepartmanService.UpdateAsync(departmanId, updateDepartmanModel);
+
+            return new ActionIResult(result);
+        }
+
+        [HttpPut("{departmanId}/user/{userId}")]
+        public async Task<IActionResult> UpdateUserAsync(long departmanId, long userId)
+        {
+            var result = await DepartmanService.UpdateUserAsync(departmanId, userId);
 
             return new ActionIResult(result);
         }

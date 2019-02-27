@@ -17,6 +17,10 @@ namespace DPA.Application
 
         Task<IResult> UpdateAsync(long departmanId, UpdateDepartmanModel updateDepartmanModel);
 
+        Task<IResult> UpdateUserAsync(long departmanId, long userId);
+
         Task<DepartmanModel> SelectAsync(long departmanId);
+
+        Task<UserModel> SingleOrDefaultUserAsync(long departmanId);
     }
 }

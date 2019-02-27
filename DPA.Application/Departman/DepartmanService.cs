@@ -69,6 +69,11 @@ namespace DPA.Application
             return await DepartmanRepository.SelectAsync<DepartmanModel>(departmanId);
         }
 
+        public async Task<UserModel> SingleOrDefaultUserAsync(long departmanId)
+        {
+            return  await DepartmanRepository.SingleOrDefaultAsync<UserModel>(x => x.DepartmanId == departmanId, x => x.User.Map<UserModel>());
+        }
+
         public async Task<IResult> UpdateAsync(long departmanId, UpdateDepartmanModel updateDepartmanModel)
         {
             var validation = new DepartmanModelValidator().Valid(updateDepartmanModel);
@@ -85,6 +90,21 @@ namespace DPA.Application
             departmanDomain.Update(updateDepartmanModel);
 
             departmanEntity = departmanDomain.Map<DepartmanEntity>();
+
+            await DepartmanRepository.UpdateAsync(departmanEntity, departmanEntity.DepartmanId);
+
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessResult();
+        }
+
+        public async Task<IResult> UpdateUserAsync(long departmanId, long userId)
+        {
+            var departmanEntity = await DepartmanRepository.SelectAsync(departmanId);
+
+            var departmanDomain = DepartmanDomainFactory.Create(departmanEntity);
+
+            departmanEntity.UserId = userId;
 
             await DepartmanRepository.UpdateAsync(departmanEntity, departmanEntity.DepartmanId);
 
