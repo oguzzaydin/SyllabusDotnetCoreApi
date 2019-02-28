@@ -9,6 +9,7 @@ namespace DPA.Database
     {
         public void Seed(ModelBuilder modelBuilder)
         {
+            //*************************** KULLANICILAR *********************/
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 1,
@@ -19,7 +20,7 @@ namespace DPA.Database
                 Password = new Hash().Create("123456"),
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                Roles = Roles.User | Roles.Admin,
+                Roles = Roles.Administrator,
                 Status = Status.Active,
                 Title = Title.Administrator
             });
@@ -27,18 +28,144 @@ namespace DPA.Database
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 2,
-                Name = "Admin",
-                Surname = "Admin",
-                Email = "admin@admin.com",
-                Login = new Hash().Create("baskan"),
+                Name = "Celal",
+                Surname = "Çeken",
+                Email = "celalceken@sakarya.edu.tr",
+                Login = new Hash().Create("celal"),
                 Password = new Hash().Create("123456"),
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                Roles = Roles.User | Roles.Admin,
+                Roles = Roles.User,
                 Status = Status.Active,
-                Title = Title.Administrator
+                Title = Title.Profesör
             });
 
+
+            // Bölüm başkanı
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 3,
+                Name = "Cemil",
+                Surname = "Öz",
+                Email = "coz@sakarya.edu.tr",
+                Login = new Hash().Create("cemil"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.Admin,
+                Status = Status.Active,
+                Title = Title.Profesör
+            });
+
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 4,
+                Name = "Ümit",
+                Surname = "Kocabıçak",
+                Email = "umit@sakarya.edu.tr",
+                Login = new Hash().Create("umit"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.User,
+                Status = Status.Active,
+                Title = Title.Profesör
+            });
+
+
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 5,
+                Name = "Ahmet",
+                Surname = "Zengin",
+                Email = "azengin@sakarya.edu.tr",
+                Login = new Hash().Create("ahmetzengin"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.User,
+                Status = Status.Active,
+                Title = Title.Doçent
+            });
+
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 6,
+                Name = "Ahmet",
+                Surname = "Özmen",
+                Email = "ozmen@sakarya.edu.tr",
+                Login = new Hash().Create("umitozmen"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.User,
+                Status = Status.Active,
+                Title = Title.Doçent
+            });
+
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 7,
+                Name = "Cüneyt",
+                Surname = "Bayılmış",
+                Email = "cbayilmis@sakarya.edu.tr",
+                Login = new Hash().Create("cuneyt"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.User,
+                Status = Status.Active,
+                Title = Title.Doçent
+            });
+
+
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 8,
+                Name = "Ahmet",
+                Surname = "Arslan",
+                Email = "ahmetarslan@sakarya.edu.tr",
+                Login = new Hash().Create("ahmetarslan"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.User,
+                Status = Status.Active,
+                Title = Title.AraştırmaGörevlisi
+            });
+
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 9,
+                Name = "Beyza",
+                Surname = "Eken",
+                Email = "beken@sakarya.edu.tr",
+                Login = new Hash().Create("beyza"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.User,
+                Status = Status.Active,
+                Title = Title.AraştırmaGörevlisi
+            });
+
+
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 10,
+                Name = "Deniz",
+                Surname = "Balta",
+                Email = "ddural@sakarya.edu.tr",
+                Login = new Hash().Create("deniz"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.User,
+                Status = Status.Active,
+                Title = Title.AraştırmaGörevlisi
+            });
+
+            //*************************** KULLANICI KISITLARI *********************/
             modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
             {
                 ConstraintId = 1,
@@ -67,10 +194,11 @@ namespace DPA.Database
                 UserId = 2
             });
 
+            //*************************** DERSLER *********************/
             modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
             {
                 LessonId = 1,
-                Name = "Veritabanı",
+                Name = "Programlamaya Giriş",
                 LessonCode = "BM211",
                 Group = "A",
                 AKTS = AKTS.Five,
@@ -354,7 +482,7 @@ namespace DPA.Database
                 SyllabusId = 1
             });
 
-             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
             {
                 UnitLessonId = 2,
                 LessonId = 1,
@@ -363,7 +491,7 @@ namespace DPA.Database
                 SyllabusId = 1
             });
 
-             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
             {
                 UnitLessonId = 3,
                 LessonId = 1,
@@ -372,7 +500,7 @@ namespace DPA.Database
                 SyllabusId = 1
             });
 
-             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
             {
                 UnitLessonId = 4,
                 LessonId = 1,
@@ -381,7 +509,7 @@ namespace DPA.Database
                 SyllabusId = 1
             });
 
-             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
             {
                 UnitLessonId = 5,
                 LessonId = 1,
@@ -390,7 +518,7 @@ namespace DPA.Database
                 SyllabusId = 1
             });
 
-             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
             {
                 UnitLessonId = 6,
                 LessonId = 1,
@@ -399,7 +527,7 @@ namespace DPA.Database
                 SyllabusId = 1
             });
 
-             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
             {
                 UnitLessonId = 7,
                 LessonId = 1,
@@ -408,7 +536,7 @@ namespace DPA.Database
                 SyllabusId = 1
             });
 
-             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
             {
                 UnitLessonId = 8,
                 LessonId = 1,
@@ -417,7 +545,7 @@ namespace DPA.Database
                 SyllabusId = 1
             });
 
-             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
             {
                 UnitLessonId = 9,
                 LessonId = 1,
@@ -426,7 +554,7 @@ namespace DPA.Database
                 SyllabusId = 1
             });
 
-             modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
+            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
             {
                 UnitLessonId = 10,
                 LessonId = 1,

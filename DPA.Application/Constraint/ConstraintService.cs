@@ -80,6 +80,13 @@ namespace DPA.Application
 
             var constraintEntity = await ConstraintRepository.SelectAsync(constraintId);
 
+            var nullObjectValidation = new NullObjectValidation<ConstraintEntity>().Valid(constraintEntity);
+
+            if (!nullObjectValidation.Success)
+            {
+                return new ErrorResult(nullObjectValidation.Message);
+            }
+
             var constraintDomain = ConstraintDomainFactory.Create(constraintEntity);
 
             constraintDomain.Update(updateConstraintModel);

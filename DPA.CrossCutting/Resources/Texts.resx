@@ -120,4 +120,7 @@
   <data name="AuthenticationInvalid" xml:space="preserve">
     <value>Kullanıcı adı veya şifre hatalı</value>
   </data>
+  <data name="NullObject" xml:space="preserve">
+    <value>Kayıt bulunamadı.</value>
+  </data>
 </root>

@@ -68,5 +68,14 @@ namespace DPA.CrossCutting.Resources {
                 return ResourceManager.GetString("AuthenticationInvalid", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kayıt bulunamadı..
+        /// </summary>
+        public static string NullObject {
+            get {
+                return ResourceManager.GetString("NullObject", resourceCulture);
+            }
+        }
     }
 }
