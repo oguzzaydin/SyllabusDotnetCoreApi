@@ -89,6 +89,13 @@ namespace DPA.Application
             }
 
             var userLessonEntity = await UserLessonRepository.SingleOrDefaultAsync(where);
+            
+            var nullObjectValidation = new NullObjectValidation<UserLessonEntity>().Valid(userLessonEntity);
+
+            if (!nullObjectValidation.Success)
+            {
+                return new ErrorResult(nullObjectValidation.Message);
+            }
 
             var userLessonDomain = UserLessonDomainFactory.Create(updateUserLessonModel);
 

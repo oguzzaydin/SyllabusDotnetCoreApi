@@ -80,6 +80,13 @@ namespace DPA.Application
 
             var facultyEntity = await FacultyRepository.SelectAsync(facultyId);
 
+            var nullObjectValidation = new NullObjectValidation<FacultyEntity>().Valid(facultyEntity);
+
+            if (!nullObjectValidation.Success)
+            {
+                return new ErrorResult(nullObjectValidation.Message);
+            }
+
             var facultyDomain = FacultyDomainFactory.Create(facultyEntity);
 
             facultyDomain.Update(updateFacultyModel);

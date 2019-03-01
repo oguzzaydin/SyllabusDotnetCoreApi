@@ -85,6 +85,13 @@ namespace DPA.Application
 
             var locationEntity = await LocationRepository.SelectAsync(locationId);
 
+            var nullObjectValidation = new NullObjectValidation<LocationEntity>().Valid(locationEntity);
+
+            if (!nullObjectValidation.Success)
+            {
+                return new ErrorResult(nullObjectValidation.Message);
+            }
+
             var locationDomain = LocationDomainFactory.Create(locationEntity);
 
             locationDomain.Update(updateLocationModel);

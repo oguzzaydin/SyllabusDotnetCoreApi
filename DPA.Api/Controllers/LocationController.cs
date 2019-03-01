@@ -1,12 +1,14 @@
 using DotNetCore.AspNetCore;
 using DPA.Application;
 using DPA.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DPA.Api
 {
+    [Authorize(Roles = "Admin")]
     [ApiController]
     [RouteController]
     public class LocationController : ControllerBase
@@ -18,6 +20,10 @@ namespace DPA.Api
 
         private ILocationService LocationService { get; }
 
+
+        /// <summary>
+        /// Derslik sınıf Role = Admin   CRUD işlemleri
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> AddAsync(AddLocationModel addLocationModel)
         {

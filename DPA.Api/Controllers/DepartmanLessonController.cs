@@ -1,12 +1,14 @@
 using DotNetCore.AspNetCore;
 using DPA.Application;
 using DPA.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DPA.Api.Controllers
 {
+    [Authorize(Roles = "Administrator, Admin")]
     [ApiController]
     [RouteController]
     public class DepartmanLessonController : ControllerBase

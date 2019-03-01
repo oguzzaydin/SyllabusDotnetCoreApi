@@ -79,6 +79,13 @@ namespace DPA.Application
 
             var lessonEntity = await LessonRepository.SelectAsync(lessonId);
 
+            var nullObjectValidation = new NullObjectValidation<LessonEntity>().Valid(lessonEntity);
+
+            if (!nullObjectValidation.Success)
+            {
+                return new ErrorResult(nullObjectValidation.Message);
+            }
+
             var lessonDomain = LessonDomainFactory.Create(lessonEntity);
 
             lessonDomain.Update(updateLessonModel);

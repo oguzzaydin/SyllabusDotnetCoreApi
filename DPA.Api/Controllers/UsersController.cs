@@ -22,13 +22,32 @@ namespace DPA.Api
 
         private IUserService UserService { get; }
 
-        [HttpPost]
-        public async Task<IActionResult> AddAsync([FromQuery, BindRequired]AddUserModel addUserModel)
+        /// <summary>
+        /// Bölüm başkanı ekle buralarda "userId" gönderme o modelden çıkacak
+        /// </summary>
+        /// <remarks>AddHeadOfDepartmantAsync Methodu Açıklaması!</remarks>
+        [Authorize(Roles = "Administrator")]
+        [HttpPost("headOfDepartmant")]
+        public async Task<IActionResult> AddHeadOfDepartmantAsync(AddUserModel addUserModel)
         {
-            var result = await UserService.AddAsync(addUserModel);
+            var result = await UserService.AddHeadOfDepartmantAsync(addUserModel);
 
             return new ActionIResult(result);
         }
+
+        /// <summary>
+        /// Öğretim elemanı ekle buralarda "userId" gönderme o modelden çıkacak
+        /// </summary>
+        /// <remarks>AddHeadOfDepartmantAsync Methodu Açıklaması!</remarks>
+        [Authorize(Roles = "Admin")]
+        [HttpPost("instructor")]
+        public async Task<IActionResult> AddInstructorAsync(AddUserModel addUserModel)
+        {
+            var result = await UserService.AddInstructorAsync(addUserModel);
+
+            return new ActionIResult(result);
+        }
+
         /// <summary>
         /// Kullanıcı girişi yapılan methodu
         /// </summary>

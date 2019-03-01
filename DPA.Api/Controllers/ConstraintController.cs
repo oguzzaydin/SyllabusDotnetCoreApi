@@ -1,12 +1,14 @@
 using DotNetCore.AspNetCore;
 using DPA.Application;
 using DPA.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DPA.Api
 {
+    [Authorize(Roles = "Admin, User")]
     [ApiController]
     [RouteController]
     public class ConstraintController : ControllerBase
@@ -18,6 +20,9 @@ namespace DPA.Api
 
         private IConstraintService ConstraintService { get; }
 
+        /// <summary>
+        /// Kısıt Ekleme hangi kullanıcı ROL Admin ve User için
+        /// </summary>
         [HttpPost("{userId}")]
         public async Task<IActionResult> AddAsync(long userId, AddConstraintModel addConstraintModel)
         {
@@ -28,12 +33,18 @@ namespace DPA.Api
             return new ActionIResult(result);
         }
 
+        /// <summary>
+        /// Tüm Kısıtları listeler
+        /// </summary>
         [HttpGet]
         public async Task<IEnumerable<ConstraintModel>> ListAsync()
         {
             return await ConstraintService.ListAsync();
         }
 
+        /// <summary>
+        /// Update
+        /// </summary>
         [HttpPut("{constraintId}")]
         public async Task<IActionResult> UpdateAsync(long constraintId, UpdateConstraintModel updateConstraintModel)
         {
@@ -42,6 +53,9 @@ namespace DPA.Api
             return new ActionIResult(result);
         }
 
+        /// <summary>
+        /// Delete
+        /// </summary>
         [HttpDelete("{constraintId}")]
         public async Task<IActionResult> DeleteAsync(long constraintId)
         {
@@ -50,6 +64,9 @@ namespace DPA.Api
             return new ActionIResult(result);
         }
 
+        /// <summary>
+        /// GetById
+        /// </summary>
         [HttpGet("{constraintId}")]
         public async Task<ConstraintModel> SelectAsync(long constraintId)
         {

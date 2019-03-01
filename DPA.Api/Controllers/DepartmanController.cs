@@ -1,12 +1,14 @@
 using DotNetCore.AspNetCore;
 using DPA.Application;
 using DPA.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DPA.Api
 {
+    [Authorize(Roles = "Administrator, Admin")]
     [ApiController]
     [RouteController]
     public class DepartmanController : ControllerBase
@@ -18,6 +20,11 @@ namespace DPA.Api
 
         private IDepartmanService DepartmanService { get; }
 
+
+
+        /// <summary>
+        /// Bölüm ekleme CRUD işlemleri Role = Administrator, Admin
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> AddAsync(AddDepartmanModel addDepartmanModel)
         {
@@ -26,12 +33,17 @@ namespace DPA.Api
             return new ActionIResult(result);
         }
 
+        /// <summary>
+        /// Bölümün öğretim üyelerini getirir
+        /// </summary>
         [HttpGet("{departmanId}/user")]
         public async Task<UserModel> SingleOrDefaultUserAsync(long departmanId)
         {
             return await DepartmanService.SingleOrDefaultUserAsync(departmanId);
         }
-
+        /// <summary>
+        /// Bölüme ait ders programlarını getirir
+        /// </summary>
         [HttpGet("{departmanId}/syllabus")]
         public async Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long departmanId)
         {
@@ -42,7 +54,7 @@ namespace DPA.Api
         public async Task<IEnumerable<DepartmanModel>> ListAsync()
         {
             return await DepartmanService.ListAsync();
-        }   
+        }
 
         [HttpPut("{departmanId}")]
         public async Task<IActionResult> UpdateAsync(long departmanId, UpdateDepartmanModel updateDepartmanModel)
@@ -52,6 +64,9 @@ namespace DPA.Api
             return new ActionIResult(result);
         }
 
+        /// <summary>
+        /// Bölümün öğretim üyelerini günceller
+        /// </summary>
         [HttpPut("{departmanId}/user/{userId}")]
         public async Task<IActionResult> UpdateUserAsync(long departmanId, long userId)
         {

@@ -46,8 +46,7 @@ namespace DPA.Domain
             string email,
             string login,
             string password,
-            Title title,
-            Roles roles
+            Title title
         )
         {
             Name = name;
@@ -55,7 +54,6 @@ namespace DPA.Domain
             Email = email;
             Login = login;
             Password = password;
-            Roles = roles;
             Title = title;
         }
 
@@ -81,9 +79,9 @@ namespace DPA.Domain
 
         public Title Title { get; private set; }
 
-        public void Add()
+        public void Add(Roles role)
         {
-            Roles = Roles.User; // TODO: bolum baskanı user ekler
+            Roles = role; // TODO: bolum baskanı user ekler
             Status = Status.Active;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
@@ -95,7 +93,6 @@ namespace DPA.Domain
             Surname = updateUserModel.Surname;
             Email = updateUserModel.Email;
             Title = updateUserModel.Title;
-            Roles = updateUserModel.Roles;
             UpdatedDate = DateTime.Now;
         }
     }

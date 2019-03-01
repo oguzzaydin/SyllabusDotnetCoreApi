@@ -31,8 +31,17 @@ namespace DPA.Application
 
         private IUserLogService UserLogService { get; }
 
+        public async Task<IDataResult<long>> AddHeadOfDepartmantAsync(AddUserModel addUserModel)
+        {
+            return await AddAsync(Roles.Admin, addUserModel).ConfigureAwait(false);
+        }
 
-        public async Task<IDataResult<long>> AddAsync(AddUserModel addUserModel)
+        public async Task<IDataResult<long>> AddInstructorAsync(AddUserModel addUserModel)
+        {
+            return await AddAsync(Roles.User, addUserModel).ConfigureAwait(false);
+        }
+
+        private async Task<IDataResult<long>> AddAsync(Roles role, AddUserModel addUserModel)
         {
             var validation = new AddUserModelValidator().Valid(addUserModel);
 
@@ -47,7 +56,7 @@ namespace DPA.Application
 
             var userDomain = UserDomainFactory.Create(addUserModel);
 
-            userDomain.Add();
+            userDomain.Add(role);
 
             var userEntity = userDomain.Map<UserEntity>();
 
@@ -57,6 +66,8 @@ namespace DPA.Application
 
             return new SuccessDataResult<long>(userEntity.UserId);
         }
+
+
 
         public async Task<IResult> DeleteAsync(long userId)
         {
@@ -140,6 +151,13 @@ namespace DPA.Application
             }
 
             var userEntity = await UserRepository.SelectAsync(userId);
+
+            var nullObjectValidation = new NullObjectValidation<UserEntity>().Valid(userEntity);
+
+            if (!nullObjectValidation.Success)
+            {
+                return new ErrorResult(nullObjectValidation.Message);
+            }
 
             var userDomain = UserDomainFactory.Create(userEntity);
 

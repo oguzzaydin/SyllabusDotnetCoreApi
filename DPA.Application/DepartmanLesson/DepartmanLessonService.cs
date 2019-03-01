@@ -88,6 +88,13 @@ namespace DPA.Application
             }
 
             var departmanLessonEntity = await DepartmanLessonRepository.SingleOrDefaultAsync(where);
+            
+            var nullObjectValidation = new NullObjectValidation<DepartmanLessonEntity>().Valid(departmanLessonEntity);
+
+            if (!nullObjectValidation.Success)
+            {
+                return new ErrorResult(nullObjectValidation.Message);
+            }
 
             var departmanLessonDomain = DepartmanLessonDomainFactory.Create(departmanLessonEntity);
 
