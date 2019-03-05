@@ -115,7 +115,7 @@ namespace DPA.Api
 
         [AllowAnonymous]
         [HttpGet("{userId}")]
-        public async Task<UserModel> SelectAsync(long userId)
+        public async Task<ListUserModel> SelectAsync(long userId)
         {
             return await UserService.SelectAsync(userId);
         }

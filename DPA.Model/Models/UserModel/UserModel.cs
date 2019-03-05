@@ -10,6 +10,8 @@ namespace DPA.Model
 
         public string Email { get; set; }
 
+        public Roles Roles { get; set; }
+
         public Title Title { get; set; }
     }
 }

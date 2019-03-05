@@ -23,7 +23,7 @@ namespace DPA.Application
 
         Task<PagedList<UserModel>> ListAsync(PagedListParameters parameters);
 
-        Task<UserModel> SelectAsync(long userId);
+        Task<ListUserModel> SelectAsync(long userId);
 
         Task SignOutAsync(SignOutModel signOutModel);
     }

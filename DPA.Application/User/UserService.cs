@@ -88,9 +88,10 @@ namespace DPA.Application
             return await UserRepository.ListAsync<UserModel>(parameters);
         }
 
-        public async Task<UserModel> SelectAsync(long userId)
+        public async Task<ListUserModel> SelectAsync(long userId)
         {
-            return await UserRepository.SelectAsync<UserModel>(userId);
+            return await  UserRepository.SelectAsync<ListUserModel>(userId);
+
         }
 
         public async Task<IDataResult<SignedInModel>> SignInAsync(SignInModel signInModel)
