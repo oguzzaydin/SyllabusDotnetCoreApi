@@ -34,7 +34,7 @@ namespace DPA.Api
         }
 
         [HttpGet]
-        public async Task<IEnumerable<FacultyModel>> ListAsync()
+        public async Task<IEnumerable<ListFacultyModel>> ListAsync()
         {
             return await FacultyService.ListAsync();
         }
@@ -58,7 +58,7 @@ namespace DPA.Api
         }
 
         [HttpGet("{facultyId}")]
-        public async Task<FacultyModel> SelectAsync(long facultyId)
+        public async Task<ListFacultyModel> SelectAsync(long facultyId)
         {
             return await FacultyService.SelectAsync(facultyId);
         }

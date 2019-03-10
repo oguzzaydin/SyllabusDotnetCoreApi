@@ -11,12 +11,12 @@ namespace DPA.Application
 
         Task<IResult> DeleteAsync(long constraintId);
 
-        Task<IEnumerable<ConstraintModel>> ListAsync();
+        Task<IEnumerable<ListConstraintModel>> ListAsync();
 
-        Task<PagedList<ConstraintModel>> ListAsync(PagedListParameters parameters);
+        Task<PagedList<ListConstraintModel>> ListAsync(PagedListParameters parameters);
 
         Task<IResult> UpdateAsync(long constraintId, UpdateConstraintModel updateConstraintModel);
 
-        Task<ConstraintModel> SelectAsync(long constraintId);
+        Task<ListConstraintModel> SelectAsync(long constraintId);
     }
 }

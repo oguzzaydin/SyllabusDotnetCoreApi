@@ -131,8 +131,10 @@ namespace DPA.Application
             }
 
             var token = UserDomainService.GenerateToken(result.Data);
+           
+            var userInfo = await SelectAsync(result.Data.UserId).ConfigureAwait(false);
 
-            var tokenModel = new TokenModel(token);
+            var tokenModel = new TokenModel(token, userInfo);
 
             return new SuccessDataResult<TokenModel>(tokenModel);
         }

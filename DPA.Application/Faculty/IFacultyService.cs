@@ -11,12 +11,12 @@ namespace DPA.Application
 
         Task<IResult> DeleteAsync(long facultyId);
 
-        Task<IEnumerable<FacultyModel>> ListAsync();
+        Task<IEnumerable<ListFacultyModel>> ListAsync();
 
-        Task<PagedList<FacultyModel>> ListAsync(PagedListParameters parameters);
+        Task<PagedList<ListFacultyModel>> ListAsync(PagedListParameters parameters);
 
         Task<IResult> UpdateAsync(long facultyId, UpdateFacultyModel updateFacultyModel);
 
-        Task<FacultyModel> SelectAsync(long facultyId);
+        Task<ListFacultyModel> SelectAsync(long facultyId);
     }
 }

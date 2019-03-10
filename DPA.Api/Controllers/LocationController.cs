@@ -33,13 +33,13 @@ namespace DPA.Api
         }
 
         [HttpGet]
-        public async Task<IEnumerable<LocationModel>> ListAsync()
+        public async Task<IEnumerable<ListLocationModel>> ListAsync()
         {
             return await LocationService.ListAsync();
         }
 
         [HttpGet("{facultyId}/locations")]
-        public async Task<IEnumerable<LocationModel>> ListLocationsAsync(long facultyId)
+        public async Task<IEnumerable<ListLocationModel>> ListLocationsAsync(long facultyId)
         {
             return await LocationService.ListLocationsAsync(facultyId).ConfigureAwait(false);
         }
@@ -61,7 +61,7 @@ namespace DPA.Api
         }
 
         [HttpGet("{locationId}")]
-        public async Task<LocationModel> SelectAsync(long locationId)
+        public async Task<ListLocationModel> SelectAsync(long locationId)
         {
             return await LocationService.SelectAsync(locationId);
         }

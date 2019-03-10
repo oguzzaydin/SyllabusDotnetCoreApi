@@ -11,14 +11,14 @@ namespace DPA.Application
 
         Task<IResult> DeleteAsync(long locationId);
 
-        Task<IEnumerable<LocationModel>> ListAsync();
+        Task<IEnumerable<ListLocationModel>> ListAsync();
 
-        Task<PagedList<LocationModel>> ListAsync(PagedListParameters parameters);
+        Task<PagedList<ListLocationModel>> ListAsync(PagedListParameters parameters);
 
-        Task<IEnumerable<LocationModel>> ListLocationsAsync(long facultyId);
+        Task<IEnumerable<ListLocationModel>> ListLocationsAsync(long facultyId);
 
         Task<IResult> UpdateAsync(long locationId, UpdateLocationModel updateLocationModel);
 
-        Task<LocationModel> SelectAsync(long locationId);
+        Task<ListLocationModel> SelectAsync(long locationId);
     }
 }

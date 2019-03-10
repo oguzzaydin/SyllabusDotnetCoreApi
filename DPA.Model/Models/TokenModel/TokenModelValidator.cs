@@ -9,6 +9,7 @@ namespace DPA.Model
         {
             RuleFor(x => x).NotNull();
             RuleFor(x => x.Token).NotNull().NotEmpty();
+            RuleFor(x => x.UserInfo).NotNull().NotEmpty();
         }
     }
 }

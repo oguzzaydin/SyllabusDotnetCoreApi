@@ -37,7 +37,7 @@ namespace DPA.Api
         /// Tüm Kısıtları listeler
         /// </summary>
         [HttpGet]
-        public async Task<IEnumerable<ConstraintModel>> ListAsync()
+        public async Task<IEnumerable<ListConstraintModel>> ListAsync()
         {
             return await ConstraintService.ListAsync();
         }
@@ -68,7 +68,7 @@ namespace DPA.Api
         /// GetById
         /// </summary>
         [HttpGet("{constraintId}")]
-        public async Task<ConstraintModel> SelectAsync(long constraintId)
+        public async Task<ListConstraintModel> SelectAsync(long constraintId)
         {
             return await ConstraintService.SelectAsync(constraintId);
         }

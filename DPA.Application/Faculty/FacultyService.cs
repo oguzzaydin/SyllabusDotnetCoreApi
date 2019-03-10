@@ -54,19 +54,19 @@ namespace DPA.Application
             return new SuccessResult();
         }
 
-        public async Task<IEnumerable<FacultyModel>> ListAsync()
+        public async Task<IEnumerable<ListFacultyModel>> ListAsync()
         {
-            return await FacultyRepository.ListAsync<FacultyModel>();
+            return await FacultyRepository.ListAsync<ListFacultyModel>();
         }
 
-        public async Task<PagedList<FacultyModel>> ListAsync(PagedListParameters parameters)
+        public async Task<PagedList<ListFacultyModel>> ListAsync(PagedListParameters parameters)
         {
-            return await FacultyRepository.ListAsync<FacultyModel>(parameters);
+            return await FacultyRepository.ListAsync<ListFacultyModel>(parameters);
         }
 
-        public async Task<FacultyModel> SelectAsync(long facultyId)
+        public async Task<ListFacultyModel> SelectAsync(long facultyId)
         {
-            return await FacultyRepository.SelectAsync<FacultyModel>(facultyId);
+            return await FacultyRepository.SelectAsync<ListFacultyModel>(facultyId);
         }
 
         public async Task<IResult> UpdateAsync(long facultyId, UpdateFacultyModel updateFacultyModel)

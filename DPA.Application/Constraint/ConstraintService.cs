@@ -54,19 +54,19 @@ namespace DPA.Application
             return new SuccessResult();
         }
 
-        public async Task<IEnumerable<ConstraintModel>> ListAsync()
+        public async Task<IEnumerable<ListConstraintModel>> ListAsync()
         {
-            return await ConstraintRepository.ListAsync<ConstraintModel>();
+            return await ConstraintRepository.ListAsync<ListConstraintModel>();
         }
 
-        public async Task<PagedList<ConstraintModel>> ListAsync(PagedListParameters parameters)
+        public async Task<PagedList<ListConstraintModel>> ListAsync(PagedListParameters parameters)
         {
-            return await ConstraintRepository.ListAsync<ConstraintModel>(parameters);
+            return await ConstraintRepository.ListAsync<ListConstraintModel>(parameters);
         }
 
-        public async Task<ConstraintModel> SelectAsync(long constraintId)
+        public async Task<ListConstraintModel> SelectAsync(long constraintId)
         {
-            return await ConstraintRepository.SelectAsync<ConstraintModel>(constraintId);
+            return await ConstraintRepository.SelectAsync<ListConstraintModel>(constraintId);
         }
 
         public async Task<IResult> UpdateAsync(long constraintId, UpdateConstraintModel updateConstraintModel)

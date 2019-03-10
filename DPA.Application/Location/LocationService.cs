@@ -54,24 +54,24 @@ namespace DPA.Application
             return new SuccessResult();
         }
 
-        public async Task<IEnumerable<LocationModel>> ListAsync()
+        public async Task<IEnumerable<ListLocationModel>> ListAsync()
         {
-            return await LocationRepository.ListAsync<LocationModel>();
+            return await LocationRepository.ListAsync<ListLocationModel>();
         }
 
-        public async Task<PagedList<LocationModel>> ListAsync(PagedListParameters parameters)
+        public async Task<PagedList<ListLocationModel>> ListAsync(PagedListParameters parameters)
         {
-            return await LocationRepository.ListAsync<LocationModel>(parameters);
+            return await LocationRepository.ListAsync<ListLocationModel>(parameters);
         }
 
-        public async Task<IEnumerable<LocationModel>> ListLocationsAsync(long facultyId)
+        public async Task<IEnumerable<ListLocationModel>> ListLocationsAsync(long facultyId)
         {
-            return await LocationRepository.ListAsync<LocationModel>(x => x.FacultyId == facultyId);
+            return await LocationRepository.ListAsync<ListLocationModel>(x => x.FacultyId == facultyId);
         }
 
-        public async Task<LocationModel> SelectAsync(long locationId)
+        public async Task<ListLocationModel> SelectAsync(long locationId)
         {
-            return await LocationRepository.SelectAsync<LocationModel>(locationId);
+            return await LocationRepository.SelectAsync<ListLocationModel>(locationId);
         }
 
         public async Task<IResult> UpdateAsync(long locationId, UpdateLocationModel updateLocationModel)
