@@ -2,8 +2,6 @@ namespace DPA.Model
 {
     public class LessonModel
     {
-        public long LessonId { get; set; }
-
         public string Name { get; set; }
 
         public string LessonCode { get; set; }

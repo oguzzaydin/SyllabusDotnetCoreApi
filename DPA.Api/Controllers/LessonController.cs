@@ -29,7 +29,7 @@ namespace DPA.Api
         }
 
         [HttpGet]
-        public async Task<IEnumerable<LessonModel>> ListAsync()
+        public async Task<IEnumerable<ListLessonModel>> ListAsync()
         {
             return await LessonService.ListAsync();
         }

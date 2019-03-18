@@ -93,6 +93,8 @@ namespace DPA.Application
 
             facultyEntity = facultyDomain.Map<FacultyEntity>();
 
+            facultyEntity.FacultyId = facultyId;
+
             await FacultyRepository.UpdateAsync(facultyEntity, facultyEntity.FacultyId);
 
             await DatabaseUnitOfWork.SaveChangesAsync();

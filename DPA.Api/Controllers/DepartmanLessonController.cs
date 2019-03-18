@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DPA.Api.Controllers
 {
-    [Authorize(Roles = "Administrator, Admin")]
+    // [Authorize(Roles = "Administrator, Admin")]
     [ApiController]
     [RouteController]
     public class DepartmanLessonController : ControllerBase

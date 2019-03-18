@@ -8,7 +8,6 @@ namespace DPA.Model
         public DepartmanLessonModelValidator()
         {
             RuleFor(x => x).NotNull();
-            RuleFor(x => x.DepartmanLessonId).NotNull().NotEmpty();
             RuleFor(x => x.DepartmanId).NotNull().NotEmpty();
             RuleFor(x => x.LessonId).NotNull().NotEmpty();
         }

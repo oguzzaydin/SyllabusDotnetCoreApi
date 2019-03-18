@@ -53,14 +53,14 @@ namespace DPA.Application
             return new SuccessResult();
         }
 
-        public async Task<IEnumerable<LessonModel>> ListAsync()
+        public async Task<IEnumerable<ListLessonModel>> ListAsync()
         {
-            return await LessonRepository.ListAsync<LessonModel>();
+            return await LessonRepository.ListAsync<ListLessonModel>();
         }
 
-        public async Task<PagedList<LessonModel>> ListAsync(PagedListParameters parameters)
+        public async Task<PagedList<ListLessonModel>> ListAsync(PagedListParameters parameters)
         {
-            return await LessonRepository.ListAsync<LessonModel>(parameters);
+            return await LessonRepository.ListAsync<ListLessonModel>(parameters);
         }
 
         public async Task<LessonModel> SelectAsync(long lessonId)

@@ -38,6 +38,8 @@ namespace DPA.Application
 
             var departmanEntity = departmanDomain.Map<DepartmanEntity>();
 
+            departmanEntity.UserId = null;
+
             await DepartmanRepository.AddAsync(departmanEntity);
 
             await DatabaseUnitOfWork.SaveChangesAsync();
@@ -54,14 +56,14 @@ namespace DPA.Application
             return new SuccessResult();
         }
 
-        public async Task<IEnumerable<DepartmanModel>> ListAsync()
+        public async Task<IEnumerable<ListDepartmanModel>> ListAsync()
         {
-            return await DepartmanRepository.ListAsync<DepartmanModel>();
+            return await DepartmanRepository.ListAsync<ListDepartmanModel>();
         }
 
-        public async Task<PagedList<DepartmanModel>> ListAsync(PagedListParameters parameters)
+        public async Task<PagedList<ListDepartmanModel>> ListAsync(PagedListParameters parameters)
         {
-            return await DepartmanRepository.ListAsync<DepartmanModel>(parameters);
+            return await DepartmanRepository.ListAsync<ListDepartmanModel>(parameters);
         }
 
         public async Task<DepartmanModel> SelectAsync(long departmanId)

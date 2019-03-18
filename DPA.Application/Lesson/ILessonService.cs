@@ -11,9 +11,9 @@ namespace DPA.Application
 
         Task<IResult> DeleteAsync(long lessonId);
 
-        Task<IEnumerable<LessonModel>> ListAsync();
+        Task<IEnumerable<ListLessonModel>> ListAsync();
 
-        Task<PagedList<LessonModel>> ListAsync(PagedListParameters parameters);
+        Task<PagedList<ListLessonModel>> ListAsync(PagedListParameters parameters);
 
         Task<IResult> UpdateAsync(long lessonId, UpdateLessonModel updateLessonModel);
 

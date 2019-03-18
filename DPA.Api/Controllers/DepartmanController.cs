@@ -51,7 +51,7 @@ namespace DPA.Api
         }
 
         [HttpGet]
-        public async Task<IEnumerable<DepartmanModel>> ListAsync()
+        public async Task<IEnumerable<ListDepartmanModel>> ListAsync()
         {
             return await DepartmanService.ListAsync();
         }

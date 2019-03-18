@@ -11,9 +11,9 @@ namespace DPA.Application
 
         Task<IResult> DeleteAsync(long departmanId);
 
-        Task<IEnumerable<DepartmanModel>> ListAsync();
+        Task<IEnumerable<ListDepartmanModel>> ListAsync();
 
-        Task<PagedList<DepartmanModel>> ListAsync(PagedListParameters parameters);
+        Task<PagedList<ListDepartmanModel>> ListAsync(PagedListParameters parameters);
 
         Task<IResult> UpdateAsync(long departmanId, UpdateDepartmanModel updateDepartmanModel);
 
