@@ -24,11 +24,8 @@ namespace DPA.Application
         }
 
         private IDatabaseUnitOfWork DatabaseUnitOfWork { get; }
-
         private IUserDomainService UserDomainService { get; }
-
         private IUserRepository UserRepository { get; }
-
         private IUserLogService UserLogService { get; }
 
         public async Task<IDataResult<long>> AddHeadOfDepartmantAsync(AddUserModel addUserModel)
@@ -51,17 +48,11 @@ namespace DPA.Application
             }
 
             addUserModel.Login = UserDomainService.GenerateHash(addUserModel.Login);
-
             addUserModel.Password = UserDomainService.GenerateHash(addUserModel.Password);
-
             var userDomain = UserDomainFactory.Create(addUserModel);
-
             userDomain.Add(role);
-
             var userEntity = userDomain.Map<UserEntity>();
-
             await UserRepository.AddAsync(userEntity);
-
             await DatabaseUnitOfWork.SaveChangesAsync();
 
             return new SuccessDataResult<long>(userEntity.UserId);
@@ -72,9 +63,7 @@ namespace DPA.Application
         public async Task<IResult> DeleteAsync(long userId)
         {
             await UserRepository.DeleteAsync(userId);
-
             await DatabaseUnitOfWork.SaveChangesAsync();
-
             return new SuccessResult();
         }
 
@@ -91,7 +80,6 @@ namespace DPA.Application
         public async Task<ListUserModel> SelectAsync(long userId)
         {
             return await  UserRepository.SelectAsync<ListUserModel>(userId);
-
         }
 
         public async Task<IDataResult<SignedInModel>> SignInAsync(SignInModel signInModel)
@@ -104,11 +92,8 @@ namespace DPA.Application
             }
 
             signInModel.Login = UserDomainService.GenerateHash(signInModel.Login);
-
             signInModel.Password = UserDomainService.GenerateHash(signInModel.Password);
-
             var signedInModel = await UserRepository.SignInAsync(signInModel);
-
             validation = new SignedInModelValidator().Valid(signedInModel);
 
             if (!validation.Success)
@@ -131,9 +116,7 @@ namespace DPA.Application
             }
 
             var token = UserDomainService.GenerateToken(result.Data);
-           
             var userInfo = await SelectAsync(result.Data.UserId).ConfigureAwait(false);
-
             var tokenModel = new TokenModel(token, userInfo);
 
             return new SuccessDataResult<TokenModel>(tokenModel);
@@ -154,7 +137,6 @@ namespace DPA.Application
             }
 
             var userEntity = await UserRepository.SelectAsync(userId);
-
             var nullObjectValidation = new NullObjectValidation<UserEntity>().Valid(userEntity);
 
             if (!nullObjectValidation.Success)
@@ -163,13 +145,9 @@ namespace DPA.Application
             }
 
             var userDomain = UserDomainFactory.Create(userEntity);
-
             userDomain.Update(updateUserModel);
-
             userEntity = userDomain.Map<UserEntity>();
-
             await UserRepository.UpdateAsync(userEntity, userEntity.UserId);
-
             await DatabaseUnitOfWork.SaveChangesAsync();
 
             return new SuccessResult();
@@ -178,7 +156,6 @@ namespace DPA.Application
         private async Task AddUserLogAsync(long userId, LogType logType)
         {
             var userLogModel = new UserLogModel(userId, logType);
-
             await UserLogService.AddAsync(userLogModel);
         }
     }
