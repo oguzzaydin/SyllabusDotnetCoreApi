@@ -6,16 +6,15 @@ using DPA.Model;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
-namespace DPA.Test
+namespace DPA.IntegrationTest
 {
         public class TestServer
         {
             protected readonly Microsoft.AspNetCore.TestHost.TestServer Server;
             protected readonly HttpClient Client;
-
-            private TokenModel Token { get; set; }
 
             public TestServer()
             {
@@ -37,16 +36,18 @@ namespace DPA.Test
                 }));
                 response.EnsureSuccessStatusCode();
                 var responseJson = await response.Content.ReadAsStringAsync();
-                Token = JsonConvert.DeserializeObject<TokenModel>(responseJson);
-                Client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Token.Token}");
+                var model = JsonConvert.DeserializeObject<TokenModelTest>(responseJson);
+                Client.DefaultRequestHeaders.Add("Authorization", $"Bearer {model.data.Token}");
             }
 
             [SetUp]
             protected virtual void Init()
             {
-
-
             }
         }
 
+        class TokenModelTest
+        {
+            public TokenModel data { get; set; }
+        }
 }

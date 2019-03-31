@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPA.Domain", "DPA.Domain\DP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPA.CrossCutting", "DPA.CrossCutting\DPA.CrossCutting.csproj", "{C016A076-0367-4C5A-AE69-3ADC3F126474}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPA.Test", "DPA.Integration.Test\DPA.Test.csproj", "{A0035F10-DA4A-4C51-967E-3ED123648991}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPA.IntegrationTest", "DPA.IntegrationTest\DPA.IntegrationTest.csproj", "{A0035F10-DA4A-4C51-967E-3ED123648991}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9902A0C7-19C1-44EA-99F9-E0410D82E9C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,5 +71,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0E8CEED0-5BB0-4E8C-AB37-17BEFF205A0A}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A0035F10-DA4A-4C51-967E-3ED123648991} = {9902A0C7-19C1-44EA-99F9-E0410D82E9C2}
 	EndGlobalSection
 EndGlobal

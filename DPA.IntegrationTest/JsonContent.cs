@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Text;
 
-namespace DPA.Test
+namespace DPA.IntegrationTest
 {
     public class JsonContent : StringContent
     {
