@@ -14,14 +14,14 @@ namespace DPA.Domain
         protected internal DepartmanLessonDomain(
             long departmanLessonId, 
             long lessonId, 
-            long departmanId,
-            DateTime createdDate
+            long departmanId
+            //DateTime createdDate
             )
         {
             DepartmanLessonId = departmanLessonId;
             LessonId = lessonId;
             DepartmanId = departmanId;
-            CreatedDate = createdDate;
+            CreatedDate = DateTime.Now;
         }
 
         public long DepartmanLessonId { get; set; }

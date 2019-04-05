@@ -3,6 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DPA.Database\DPA.Database.csproj" />
     <ProjectReference Include="..\DPA.Domain\DPA.Domain.csproj" />

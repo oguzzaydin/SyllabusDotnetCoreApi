@@ -29,13 +29,13 @@ namespace DPA.Api.Controllers
         }
 
         [HttpGet("{departmanId}/lessons")]
-        public async Task<IEnumerable<LessonModel>> ListLessonAsync(long departmanId)
+        public async Task<IEnumerable<ListLessonModel>> ListLessonAsync(long departmanId)
         {
             return await DepartmanLessonService.ListLessonAsync(departmanId);
         }
 
         [HttpGet("{lessonId}/departmans")]
-        public async Task<IEnumerable<DepartmanModel>> ListDepartmanAsync(long lessonId)
+        public async Task<IEnumerable<ListDepartmanModel>> ListDepartmanAsync(long lessonId)
         {
             return await DepartmanLessonService.ListDepartmanAsync(lessonId);
         }

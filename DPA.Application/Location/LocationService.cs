@@ -98,6 +98,8 @@ namespace DPA.Application
 
             locationEntity = locationDomain.Map<LocationEntity>();
 
+            locationEntity.LocationId = locationId;
+
             await LocationRepository.UpdateAsync(locationEntity, locationEntity.LocationId);
 
             await DatabaseUnitOfWork.SaveChangesAsync();

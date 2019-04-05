@@ -55,18 +55,18 @@ namespace DPA.Application
             return new SuccessResult();
         }
 
-        public async Task<IEnumerable<UserModel>> ListInstructorAsync(long lessonId)
+        public async Task<IEnumerable<ListUserModel>> ListInstructorAsync(long lessonId)
         {
             var userLesson = await UserLessonRepository.ListAsync<UserLessonEntity>(x => x.LessonId == lessonId, y => y.User);
 
-            return userLesson.Select(x => x.User).Map<IEnumerable<UserModel>>();
+            return userLesson.Select(x => x.User).Map<IEnumerable<ListUserModel>>();
         }
 
-        public async Task<IEnumerable<LessonModel>> ListLessonAsync(long userId)
+        public async Task<IEnumerable<ListLessonModel>> ListLessonAsync(long userId)
         {
             var userLesson = await UserLessonRepository.ListAsync<UserLessonEntity>(x => x.UserId == userId, y => y.Lesson);
 
-            return userLesson.Select(x => x.Lesson).Map<IEnumerable<LessonModel>>();
+            return userLesson.Select(x => x.Lesson).Map<IEnumerable<ListLessonModel>>();
         }
 
         public async Task<IResult> UpdateInstructorAsync(long userId, UpdateUserLessonModel updateUserLessonModel)

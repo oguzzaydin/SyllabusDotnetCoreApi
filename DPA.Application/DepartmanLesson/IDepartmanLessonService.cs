@@ -9,9 +9,9 @@ namespace DPA.Application
     {
         Task<IDataResult<long>> AddAsync(AddDepartmanLessonModel addDepartmanLessonModel);
 
-        Task<IEnumerable<LessonModel>> ListLessonAsync(long departmanId);
+        Task<IEnumerable<ListLessonModel>> ListLessonAsync(long departmanId);
 
-        Task<IEnumerable<DepartmanModel>> ListDepartmanAsync(long lessonId);
+        Task<IEnumerable<ListDepartmanModel>> ListDepartmanAsync(long lessonId);
 
         Task<IResult> DeleteLessonAsync(long departmanId, long lessonId);
 

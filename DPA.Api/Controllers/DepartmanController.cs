@@ -34,7 +34,7 @@ namespace DPA.Api
         }
 
         /// <summary>
-        /// Bölümün öğretim üyelerini getirir
+        /// Bölüm Başkanını getirir
         /// </summary>
         [HttpGet("{departmanId}/user")]
         public async Task<UserModel> SingleOrDefaultUserAsync(long departmanId)
@@ -48,6 +48,15 @@ namespace DPA.Api
         public async Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long departmanId)
         {
             return await DepartmanService.SingleOrDefaultSyllabusAsync(departmanId);
+        }
+
+        /// <summary>
+        /// Bölüm Başkanı için Bölüm bilgilerini getirir
+        /// </summary>
+        [HttpGet("getDepartmentForHeadOfDepartment/{userId}")]
+        public async Task<ListDepartmanModel> getDepartmentForHeadOfDepartmentAsync(long userId)
+        {
+            return await DepartmanService.getDepartmentForHeadOfDepartmentAsync(userId);
         }
 
         [HttpGet]
@@ -65,7 +74,7 @@ namespace DPA.Api
         }
 
         /// <summary>
-        /// Bölümün öğretim üyelerini günceller
+        /// Bölüm Başkanını Günceller
         /// </summary>
         [HttpPut("{departmanId}/user/{userId}")]
         public async Task<IActionResult> UpdateUserAsync(long departmanId, long userId)

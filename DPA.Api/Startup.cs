@@ -1,4 +1,5 @@
-﻿using DotNetCore.AspNetCore;
+﻿using AutoMapper;
+using DotNetCore.AspNetCore;
 using DPA.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,6 +41,7 @@ namespace DPA.Api
             services.AddAuthenticationDefault();
             services.AddResponseCompression();
             services.AddResponseCaching();
+            //services.AddAutoMapper();
             services.AddMvcDefault();
             services.AddHealthChecks();
             services.AddSwaggerDefault("api");

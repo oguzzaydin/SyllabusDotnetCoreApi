@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace DPA.Api
 {
 
-    [Authorize(Roles = "Administrator")]
     [ApiController]
     [RouteController]
     public class FacultyController : ControllerBase
@@ -26,6 +25,8 @@ namespace DPA.Api
         /// Fakülte Role = Administrator  CRUD işlemleri
         /// </summary>
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
+
         public async Task<IActionResult> AddAsync(AddFacultyModel addFacultyModel)
         {
             var result = await FacultyService.AddAsync(addFacultyModel);
@@ -34,6 +35,7 @@ namespace DPA.Api
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator, Admin, User")]
         public async Task<IEnumerable<ListFacultyModel>> ListAsync()
         {
             return await FacultyService.ListAsync();
@@ -42,6 +44,8 @@ namespace DPA.Api
      
 
         [HttpPut("{facultyId}")]
+        [Authorize(Roles = "Administrator")]
+
         public async Task<IActionResult> UpdateAsync(long facultyId, UpdateFacultyModel updateFacultyModel)
         {
             var result = await FacultyService.UpdateAsync(facultyId, updateFacultyModel);
@@ -50,6 +54,8 @@ namespace DPA.Api
         }
 
         [HttpDelete("{facultyId}")]
+        [Authorize(Roles = "Administrator")]
+
         public async Task<IActionResult> DeleteAsync(long facultyId)
         {
             var result = await FacultyService.DeleteAsync(facultyId);
@@ -58,6 +64,7 @@ namespace DPA.Api
         }
 
         [HttpGet("{facultyId}")]
+        [Authorize(Roles = "Administrator, Admin, User")]
         public async Task<ListFacultyModel> SelectAsync(long facultyId)
         {
             return await FacultyService.SelectAsync(facultyId);

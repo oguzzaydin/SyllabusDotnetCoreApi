@@ -9,16 +9,17 @@ namespace DPA.Domain
             return new DepartmanLessonDomain(
                 departmanLessonEntity.DepartmanLessonId,
                 departmanLessonEntity.LessonId,
-                departmanLessonEntity.DepartmanId,
-                departmanLessonEntity.CreatedDate
+                departmanLessonEntity.DepartmanId
+                //departmanLessonEntity.CreatedDate
             );
         }
 
         public static DepartmanLessonDomain Create(AddDepartmanLessonModel addDepartmanLessonModel)
         {
             return new DepartmanLessonDomain(
-                addDepartmanLessonModel.DepartmanId,
-                addDepartmanLessonModel.LessonId
+                addDepartmanLessonModel.LessonId,
+                addDepartmanLessonModel.DepartmanId
+
             );
         }
 

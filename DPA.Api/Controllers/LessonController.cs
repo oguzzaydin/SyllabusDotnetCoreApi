@@ -51,7 +51,7 @@ namespace DPA.Api
         }
 
         [HttpGet("{lessonId}")]
-        public async Task<LessonModel> SelectAsync(long lessonId)
+        public async Task<ListLessonModel> SelectAsync(long lessonId)
         {
             return await LessonService.SelectAsync(lessonId);
         }

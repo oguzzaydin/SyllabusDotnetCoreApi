@@ -69,7 +69,7 @@ namespace DPA.Application
 
         public async Task<IEnumerable<UserModel>> ListAsync()
         {
-            return await UserRepository.ListAsync<UserModel>();
+            return await UserRepository.ListAsync<ListUserModel>();
         }
 
         public async Task<PagedList<UserModel>> ListAsync(PagedListParameters parameters)
@@ -147,6 +147,7 @@ namespace DPA.Application
             var userDomain = UserDomainFactory.Create(userEntity);
             userDomain.Update(updateUserModel);
             userEntity = userDomain.Map<UserEntity>();
+            userEntity.UserId = userId;
             await UserRepository.UpdateAsync(userEntity, userEntity.UserId);
             await DatabaseUnitOfWork.SaveChangesAsync();
 

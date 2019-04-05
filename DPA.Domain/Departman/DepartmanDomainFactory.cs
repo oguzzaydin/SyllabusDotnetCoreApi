@@ -29,7 +29,7 @@ namespace DPA.Domain
                 departmanEntity.Title,
                 departmanEntity.DepartmanCode,
                 departmanEntity.FacultyId,
-                departmanEntity.UserId.Value
+                departmanEntity.UserId.GetValueOrDefault()
             );
         }
     }

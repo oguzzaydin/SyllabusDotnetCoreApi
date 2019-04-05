@@ -29,13 +29,13 @@ namespace DPA.Api
         }
 
         [HttpGet("{userId}/lessons")]
-        public async Task<IEnumerable<LessonModel>> ListLessonAsync(long userId)
+        public async Task<IEnumerable<ListLessonModel>> ListLessonAsync(long userId)
         {
             return await UserLessonService.ListLessonAsync(userId);
         }
 
         [HttpGet("{lessonId}/instuctors")]
-        public async Task<IEnumerable<UserModel>> ListInstructorAsync(long lessonId)
+        public async Task<IEnumerable<ListUserModel>> ListInstructorAsync(long lessonId)
         {
             return await UserLessonService.ListInstructorAsync(lessonId);
         }

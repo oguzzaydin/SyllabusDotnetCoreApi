@@ -17,6 +17,6 @@ namespace DPA.Application
 
         Task<IResult> UpdateAsync(long lessonId, UpdateLessonModel updateLessonModel);
 
-        Task<LessonModel> SelectAsync(long lessonId);
+        Task<ListLessonModel> SelectAsync(long lessonId);
     }
 }

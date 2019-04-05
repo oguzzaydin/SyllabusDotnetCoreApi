@@ -54,18 +54,18 @@ namespace DPA.Application
             return new SuccessResult();
         }
 
-        public async Task<IEnumerable<DepartmanModel>> ListDepartmanAsync(long lessonId)
+        public async Task<IEnumerable<ListDepartmanModel>> ListDepartmanAsync(long lessonId)
         {
             var departmanLesson = await DepartmanLessonRepository.ListAsync<DepartmanLessonEntity>(x => x.LessonId == lessonId, y => y.Departman);
 
-            return departmanLesson.Select(x => x.Departman).Map<IEnumerable<DepartmanModel>>();
+            return departmanLesson.Select(x => x.Departman).Map<IEnumerable<ListDepartmanModel>>();
         }
 
-        public async Task<IEnumerable<LessonModel>> ListLessonAsync(long departmanId)
+        public async Task<IEnumerable<ListLessonModel>> ListLessonAsync(long departmanId)
         {
             var departmanLesson = await DepartmanLessonRepository.ListAsync<DepartmanLessonEntity>(x => x.DepartmanId == departmanId, y => y.Lesson);
 
-            return departmanLesson.Select(x => x.Lesson).Map<IEnumerable<LessonModel>>();
+            return departmanLesson.Select(x => x.Lesson).Map<IEnumerable<ListLessonModel>>();
         }
 
         public async Task<IResult> UpdateLessonAsync(long lessonId, UpdateDepartmanLessonModel updateDepartmanLessonModel)

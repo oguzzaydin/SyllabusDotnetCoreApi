@@ -63,9 +63,9 @@ namespace DPA.Application
             return await LessonRepository.ListAsync<ListLessonModel>(parameters);
         }
 
-        public async Task<LessonModel> SelectAsync(long lessonId)
+        public async Task<ListLessonModel> SelectAsync(long lessonId)
         {
-            return await LessonRepository.SelectAsync<LessonModel>(lessonId);
+            return await LessonRepository.SelectAsync<ListLessonModel>(lessonId);
         }
 
         public async Task<IResult> UpdateAsync(long lessonId, UpdateLessonModel updateLessonModel)
@@ -91,6 +91,8 @@ namespace DPA.Application
             lessonDomain.Update(updateLessonModel);
 
             lessonEntity = lessonDomain.Map<LessonEntity>();
+
+            lessonEntity.LessonId = lessonId;
 
             await LessonRepository.UpdateAsync(lessonEntity, lessonEntity.LessonId);
 

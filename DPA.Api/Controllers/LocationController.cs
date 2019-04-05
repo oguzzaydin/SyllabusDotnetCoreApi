@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DPA.Api
 {
-    [Authorize(Roles = "Admin")]
+
     [ApiController]
     [RouteController]
     public class LocationController : ControllerBase
@@ -25,6 +25,7 @@ namespace DPA.Api
         /// Derslik sınıf Role = Admin   CRUD işlemleri
         /// </summary>
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AddAsync(AddLocationModel addLocationModel)
         {
             var result = await LocationService.AddAsync(addLocationModel);
@@ -33,18 +34,21 @@ namespace DPA.Api
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator, Admin, User")]
         public async Task<IEnumerable<ListLocationModel>> ListAsync()
         {
             return await LocationService.ListAsync();
         }
 
         [HttpGet("{facultyId}/locations")]
+        [Authorize(Roles = "Administrator, Admin, User")]
         public async Task<IEnumerable<ListLocationModel>> ListLocationsAsync(long facultyId)
         {
             return await LocationService.ListLocationsAsync(facultyId).ConfigureAwait(false);
         }
 
         [HttpPut("{LocationId}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> UpdateAsync(long locationId, UpdateLocationModel updateLocationModel)
         {
             var result = await LocationService.UpdateAsync(locationId, updateLocationModel);
@@ -53,6 +57,7 @@ namespace DPA.Api
         }
 
         [HttpDelete("{locationId}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteAsync(long locationId)
         {
             var result = await LocationService.DeleteAsync(locationId);
@@ -61,6 +66,7 @@ namespace DPA.Api
         }
 
         [HttpGet("{locationId}")]
+        [Authorize(Roles = "Administrator, Admin, User")]
         public async Task<ListLocationModel> SelectAsync(long locationId)
         {
             return await LocationService.SelectAsync(locationId);
