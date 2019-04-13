@@ -28,7 +28,7 @@ namespace DPA.Application
         private IUserRepository UserRepository { get; }
         private IUserLogService UserLogService { get; }
 
-        public async Task<IDataResult<long>> AddHeadOfDepartmantAsync(AddUserModel addUserModel)
+        public async Task<IDataResult<long>> AddHeadOfDepartmenttAsync(AddUserModel addUserModel)
         {
             return await AddAsync(Roles.Admin, addUserModel).ConfigureAwait(false);
         }

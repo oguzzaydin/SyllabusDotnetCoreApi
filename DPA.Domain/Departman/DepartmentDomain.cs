@@ -3,26 +3,26 @@ using System;
 
 namespace DPA.Domain
 {
-    public class DepartmanDomain
+    public class DepartmentDomain
     {
-        protected internal DepartmanDomain(string title, string departmanCode, long facultyId)
+        protected internal DepartmentDomain(string title, string departmentCode, long facultyId)
         {
             Title = title;
-            DepartmanCode = departmanCode;
+            DepartmentCode = departmentCode;
             FacultyId = facultyId;
         }
 
-        protected internal DepartmanDomain
+        protected internal DepartmentDomain
         (
             long id,
             string title,
-            string departmanCode,
+            string departmentCode,
             long facultyId,
             long userId)
         {
             Id = id;
             Title = title;
-            DepartmanCode = departmanCode;
+            DepartmentCode = departmentCode;
             FacultyId = facultyId;
             UserId = userId;
         }
@@ -31,7 +31,7 @@ namespace DPA.Domain
 
         public string Title { get; private set; }
 
-        public string DepartmanCode { get; private set; }
+        public string DepartmentCode { get; private set; }
 
         public long FacultyId { get; private set; }
 
@@ -47,22 +47,22 @@ namespace DPA.Domain
             UpdatedDate = DateTime.Now;
         }
 
-        public void Update(UpdateDepartmanModel updateDepartmanModel)
+        public void Update(UpdateDepartmentModel updateDepartmentModel)
         {
-            Title = updateDepartmanModel.Title;
-            DepartmanCode = updateDepartmanModel.DepartmanCode;
-            FacultyId = updateDepartmanModel.FacultyId;
+            Title = updateDepartmentModel.Title;
+            DepartmentCode = updateDepartmentModel.DepartmentCode;
+            FacultyId = updateDepartmentModel.FacultyId;
             UpdatedDate = DateTime.Now;
-            UserId = updateDepartmanModel.UserId;
+            UserId = updateDepartmentModel.UserId;
         }
 
-        public void Update(DepartmanEntity departmanEntity)
+        public void Update(DepartmentEntity DepartmentEntity)
         {
-            Title = departmanEntity.Title;
-            DepartmanCode = departmanEntity.DepartmanCode;
-            FacultyId = departmanEntity.FacultyId;
+            Title = DepartmentEntity.Title;
+            DepartmentCode = DepartmentEntity.DepartmentCode;
+            FacultyId = DepartmentEntity.FacultyId;
             UpdatedDate = DateTime.Now;
-            UserId = departmanEntity.UserId.Value;
+            UserId = DepartmentEntity.HeadOfDepartmentId.Value;
         }
 
 

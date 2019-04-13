@@ -11,14 +11,14 @@ namespace DPA.Api
     [Authorize(Roles = "Administrator, Admin")]
     [ApiController]
     [RouteController]
-    public class DepartmanController : ControllerBase
+    public class DepartmentController : ControllerBase
     {
-        public DepartmanController(IDepartmanService departmanService)
+        public DepartmentController(IDepartmentService departmentService)
         {
-            DepartmanService = departmanService;
+            DepartmentService = departmentService;
         }
 
-        private IDepartmanService DepartmanService { get; }
+        private IDepartmentService DepartmentService { get; }
 
 
 
@@ -26,9 +26,9 @@ namespace DPA.Api
         /// Bölüm ekleme CRUD işlemleri Role = Administrator, Admin
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> AddAsync(AddDepartmanModel addDepartmanModel)
+        public async Task<IActionResult> AddAsync(AddDepartmentModel addDepartmentModel)
         {
-            var result = await DepartmanService.AddAsync(addDepartmanModel);
+            var result = await DepartmentService.AddAsync(addDepartmentModel);
 
             return new ActionIResult(result);
         }
@@ -36,39 +36,39 @@ namespace DPA.Api
         /// <summary>
         /// Bölüm Başkanını getirir
         /// </summary>
-        [HttpGet("{departmanId}/user")]
-        public async Task<UserModel> SingleOrDefaultUserAsync(long departmanId)
+        [HttpGet("{DepartmentId}/user")]
+        public async Task<UserModel> SingleOrDefaultUserAsync(long DepartmentId)
         {
-            return await DepartmanService.SingleOrDefaultUserAsync(departmanId);
+            return await DepartmentService.SingleOrDefaultUserAsync(DepartmentId);
         }
         /// <summary>
         /// Bölüme ait ders programlarını getirir
         /// </summary>
-        [HttpGet("{departmanId}/syllabus")]
-        public async Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long departmanId)
+        [HttpGet("{DepartmentId}/syllabus")]
+        public async Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long DepartmentId)
         {
-            return await DepartmanService.SingleOrDefaultSyllabusAsync(departmanId);
+            return await DepartmentService.SingleOrDefaultSyllabusAsync(DepartmentId);
         }
 
         /// <summary>
         /// Bölüm Başkanı için Bölüm bilgilerini getirir
         /// </summary>
         [HttpGet("getDepartmentForHeadOfDepartment/{userId}")]
-        public async Task<ListDepartmanModel> getDepartmentForHeadOfDepartmentAsync(long userId)
+        public async Task<ListDepartmentModel> GetDepartmentForHeadOfDepartmentAsync(long userId)
         {
-            return await DepartmanService.getDepartmentForHeadOfDepartmentAsync(userId);
+            return await DepartmentService.GetDepartmentForHeadOfDepartmentAsync(userId);
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ListDepartmanModel>> ListAsync()
+        public async Task<IEnumerable<ListDepartmentModel>> ListAsync()
         {
-            return await DepartmanService.ListAsync();
+            return await DepartmentService.ListAsync();
         }
 
-        [HttpPut("{departmanId}")]
-        public async Task<IActionResult> UpdateAsync(long departmanId, UpdateDepartmanModel updateDepartmanModel)
+        [HttpPut("{DepartmentId}")]
+        public async Task<IActionResult> UpdateAsync(long DepartmentId, UpdateDepartmentModel updateDepartmentModel)
         {
-            var result = await DepartmanService.UpdateAsync(departmanId, updateDepartmanModel);
+            var result = await DepartmentService.UpdateAsync(DepartmentId, updateDepartmentModel);
 
             return new ActionIResult(result);
         }
@@ -76,26 +76,26 @@ namespace DPA.Api
         /// <summary>
         /// Bölüm Başkanını Günceller
         /// </summary>
-        [HttpPut("{departmanId}/user/{userId}")]
-        public async Task<IActionResult> UpdateUserAsync(long departmanId, long userId)
+        [HttpPut("{DepartmentId}/user/{userId}")]
+        public async Task<IActionResult> UpdateUserAsync(long DepartmentId, long userId)
         {
-            var result = await DepartmanService.UpdateUserAsync(departmanId, userId);
+            var result = await DepartmentService.UpdateUserAsync(DepartmentId, userId);
 
             return new ActionIResult(result);
         }
 
-        [HttpDelete("{departmanId}")]
-        public async Task<IActionResult> DeleteAsync(long departmanId)
+        [HttpDelete("{DepartmentId}")]
+        public async Task<IActionResult> DeleteAsync(long DepartmentId)
         {
-            var result = await DepartmanService.DeleteAsync(departmanId);
+            var result = await DepartmentService.DeleteAsync(DepartmentId);
 
             return new ActionIResult(result);
         }
 
-        [HttpGet("{departmanId}")]
-        public async Task<DepartmanModel> SelectAsync(long departmanId)
+        [HttpGet("{DepartmentId}")]
+        public async Task<DepartmentModel> SelectAsync(long DepartmentId)
         {
-            return await DepartmanService.SelectAsync(departmanId);
+            return await DepartmentService.SelectAsync(DepartmentId);
         }
     }
 }

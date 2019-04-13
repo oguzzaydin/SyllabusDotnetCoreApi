@@ -1,8 +1,8 @@
 namespace DPA.Model
 {
-    public class ListDepartmanModel : DepartmanModel
+    public class ListDepartmentModel : DepartmentModel
     {
-        public long DepartmanId { get; set; }
+        public long DepartmentId { get; set; }
 
         public long? UserId { get; set; } = null;
 

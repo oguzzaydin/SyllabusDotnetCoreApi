@@ -8,7 +8,7 @@ namespace DPA.Database.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<UserLessonEntity> builder)
         {
-            builder.ToTable("UserLessons", "User");
+            builder.ToTable("UserLesson", "User");
 
             builder.HasKey(x => x.UserLessonId);
 

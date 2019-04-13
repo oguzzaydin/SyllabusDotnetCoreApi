@@ -2,6 +2,7 @@
 using DPA.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 
 namespace DPA.Database
 {
@@ -9,7 +10,9 @@ namespace DPA.Database
     {
         public void Seed(ModelBuilder modelBuilder)
         {
-            //*************************** KULLANICILAR *********************/
+
+            #region KULLANICILAR
+
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 1,
@@ -24,7 +27,6 @@ namespace DPA.Database
                 Status = Status.Active,
                 Title = Title.Administrator
             });
-
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 2,
@@ -37,11 +39,8 @@ namespace DPA.Database
                 UpdatedDate = DateTime.Now,
                 Roles = Roles.User,
                 Status = Status.Active,
-                Title = Title.Profesör
+                Title = Title.Profesor
             });
-
-
-            // Bölüm başkanı
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 3,
@@ -54,9 +53,8 @@ namespace DPA.Database
                 UpdatedDate = DateTime.Now,
                 Roles = Roles.Admin,
                 Status = Status.Active,
-                Title = Title.Profesör
+                Title = Title.Profesor
             });
-
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 4,
@@ -69,10 +67,8 @@ namespace DPA.Database
                 UpdatedDate = DateTime.Now,
                 Roles = Roles.User,
                 Status = Status.Active,
-                Title = Title.Profesör
+                Title = Title.Profesor
             });
-
-
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 5,
@@ -85,9 +81,8 @@ namespace DPA.Database
                 UpdatedDate = DateTime.Now,
                 Roles = Roles.User,
                 Status = Status.Active,
-                Title = Title.Doçent
+                Title = Title.YardimciDocent
             });
-
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 6,
@@ -100,9 +95,8 @@ namespace DPA.Database
                 UpdatedDate = DateTime.Now,
                 Roles = Roles.User,
                 Status = Status.Active,
-                Title = Title.Doçent
+                Title = Title.YardimciDocent
             });
-
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 7,
@@ -115,10 +109,8 @@ namespace DPA.Database
                 UpdatedDate = DateTime.Now,
                 Roles = Roles.User,
                 Status = Status.Active,
-                Title = Title.Doçent
+                Title = Title.YardimciDocent
             });
-
-
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 8,
@@ -131,9 +123,8 @@ namespace DPA.Database
                 UpdatedDate = DateTime.Now,
                 Roles = Roles.User,
                 Status = Status.Active,
-                Title = Title.AraştırmaGörevlisi
+                Title = Title.DocentDoktor
             });
-
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 9,
@@ -146,10 +137,8 @@ namespace DPA.Database
                 UpdatedDate = DateTime.Now,
                 Roles = Roles.User,
                 Status = Status.Active,
-                Title = Title.AraştırmaGörevlisi
+                Title = Title.DocentDoktor
             });
-
-
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
                 UserId = 10,
@@ -162,10 +151,69 @@ namespace DPA.Database
                 UpdatedDate = DateTime.Now,
                 Roles = Roles.User,
                 Status = Status.Active,
-                Title = Title.AraştırmaGörevlisi
+                Title = Title.DocentDoktor
+            });
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 11,
+                Name = "Oguzhan",
+                Surname = "Aydın",
+                Email = "oguz@sakarya.edu.tr",
+                Login = new Hash().Create("oguzaydin"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.User,
+                Status = Status.Active,
+                Title = Title.OgretimGorevlisi
+            });
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 12,
+                Name = "Hasan",
+                Surname = "Tutan",
+                Email = "hasantutan@sakarya.edu.tr",
+                Login = new Hash().Create("hasantutan"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.User,
+                Status = Status.Active,
+                Title = Title.OgretimGorevlisi
+            });
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 13,
+                Name = "Ercan",
+                Surname = "Palabıyık",
+                Email = "ercanpala@sakarya.edu.tr",
+                Login = new Hash().Create("palabiyik"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.User,
+                Status = Status.Active,
+                Title = Title.OgretimGorevlisi
+            });
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity
+            {
+                UserId = 14,
+                Name = "Meltem",
+                Surname = "Aydın",
+                Email = "meltemayy@sakarya.edu.tr",
+                Login = new Hash().Create("meltemaydin"),
+                Password = new Hash().Create("123456"),
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Roles = Roles.User,
+                Status = Status.Active,
+                Title = Title.OgretimGorevlisi
             });
 
-            //*************************** KULLANICI KISITLARI *********************/
+            #endregion
+
+            #region KULLANICI KISITLARI
+
             modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
             {
                 ConstraintId = 1,
@@ -173,13 +221,12 @@ namespace DPA.Database
                 Description = "Description",
                 IsFreeDay = true,
                 IsActive = true,
-                WeeklyHour = WeeklyHour.FifteenHour | WeeklyHour.TenHour,
-                EducationType = EducationType.IIOgretim | EducationType.IOgretim,
+                WeeklyHour = 4,
+                EducationType = EducationType.IOgretim,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 UserId = 2
             });
-
             modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
             {
                 ConstraintId = 2,
@@ -189,81 +236,522 @@ namespace DPA.Database
                 IsActive = true,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                WeeklyHour = WeeklyHour.FifteenHour | WeeklyHour.TenHour,
-                EducationType = EducationType.IIOgretim | EducationType.IOgretim,
-                UserId = 2
+                WeeklyHour = 6,
+                EducationType = EducationType.IIOgretim,
+                UserId = 3
+            });
+            modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
+            {
+                ConstraintId = 3,
+                Title = "Kısıt 3",
+                Description = "Description",
+                IsFreeDay = false,
+                IsActive = true,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                WeeklyHour = 8,
+                EducationType = EducationType.Tumu,
+                UserId = 4
+            });
+            modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
+            {
+                ConstraintId = 4,
+                Title = "Kısıt 4",
+                Description = "Description",
+                IsFreeDay = true,
+                IsActive = true,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                WeeklyHour = 10,
+                EducationType = EducationType.IIOgretim,
+                UserId = 5
+            });
+            modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
+            {
+                ConstraintId = 5,
+                Title = "Kısıt 5",
+                Description = "Description",
+                IsFreeDay = true,
+                IsActive = true,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                WeeklyHour = 12,
+                EducationType = EducationType.IOgretim,
+                UserId = 6
+            });
+            modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
+            {
+                ConstraintId = 6,
+                Title = "Kısıt 6",
+                Description = "Description",
+                IsFreeDay = false,
+                IsActive = true,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                WeeklyHour = 14,
+                EducationType = EducationType.Tumu,
+                UserId = 7
+            });
+            modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
+            {
+                ConstraintId = 7,
+                Title = "Kısıt 7",
+                Description = "Description",
+                IsFreeDay = true,
+                IsActive = true,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                WeeklyHour = 8,
+                EducationType = EducationType.IIOgretim,
+                UserId = 8
+            });
+            modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
+            {
+                ConstraintId = 8,
+                Title = "Kısıt 8",
+                Description = "Description",
+                IsFreeDay = true,
+                IsActive = true,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                WeeklyHour = 10,
+                EducationType = EducationType.IOgretim,
+                UserId = 9
+            });
+            modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
+            {
+                ConstraintId = 9,
+                Title = "Kısıt 9",
+                Description = "Description",
+                IsFreeDay = false,
+                IsActive = true,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                WeeklyHour = 12,
+                EducationType = EducationType.Tumu,
+                UserId = 10
+            });
+            modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
+            {
+                ConstraintId = 10,
+                Title = "Kısıt 10",
+                Description = "Description",
+                IsFreeDay = true,
+                IsActive = true,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                WeeklyHour = 12,
+                EducationType = EducationType.IOgretim,
+                UserId = 11
+            });
+            modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
+            {
+                ConstraintId = 11,
+                Title = "Kısıt 11",
+                Description = "Description",
+                IsFreeDay = true,
+                IsActive = true,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                WeeklyHour = 12,
+                EducationType = EducationType.IIOgretim,
+                UserId = 12
+            });
+            modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
+            {
+                ConstraintId = 12,
+                Title = "Kısıt 12",
+                Description = "Description",
+                IsFreeDay = false,
+                IsActive = true,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                WeeklyHour = 16,
+                EducationType = EducationType.Tumu,
+                UserId = 13
+            });
+            modelBuilder.Entity<ConstraintEntity>().HasData(new ConstraintEntity
+            {
+                ConstraintId = 13,
+                Title = "Kısıt 13",
+                Description = "Description",
+                IsFreeDay = false,
+                IsActive = true,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                WeeklyHour = 16,
+                EducationType = EducationType.Tumu,
+                UserId = 14
             });
 
-            //*************************** DERSLER *********************/
+            #endregion
+
+            #region DERSLER
+
             modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
             {
                 LessonId = 1,
-                Name = "Programlamaya Giriş",
-                LessonCode = "BM211",
-                Group = "A",
-                AKTS = AKTS.Five,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonType = LessonType.Bolum_Secmeli,
-                EducationType = EducationType.IIOgretim,
-                WeeklyHour = WeeklyHour.TenHour
-            });
-
-            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
-            {
-                LessonId = 2,
-                Name = "Web Programlama",
-                LessonCode = "BM211",
-                Group = "A",
-                AKTS = AKTS.Five,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonType = LessonType.Bolum_Secmeli,
-                EducationType = EducationType.IIOgretim,
-                WeeklyHour = WeeklyHour.TenHour
-            });
-
-            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
-            {
-                LessonId = 3,
-                Name = "Mat II",
-                LessonCode = "BM211",
-                Group = "A",
-                AKTS = AKTS.Five,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonType = LessonType.Bolum_Secmeli,
-                EducationType = EducationType.IIOgretim,
-                WeeklyHour = WeeklyHour.TenHour
-            });
-
-            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
-            {
-                LessonId = 4,
-                Name = "Mat I",
-                LessonCode = "BM211",
-                Group = "B",
-                AKTS = AKTS.Nine,
+                Name = "TÜRK DİLİ",
+                LessonCode = "TUR 101",
+                AKTS = 4,
+                Credit = 4,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonType = LessonType.Bolum_Zorunlu,
-                EducationType = EducationType.Tumu,
-                WeeklyHour = WeeklyHour.FiveHour
+                SemesterType = SemesterType.One,
+                WeeklyHour = 4
+            });
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 2,
+                Name = "FİZİK I",
+                LessonCode = "FIZ 111",
+                AKTS = 6,
+                Credit = 4,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                SemesterType = SemesterType.One,
+                WeeklyHour = 5
+            });
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 3,
+                Name = "MATEMATİK I",
+                LessonCode = "MAT 111",
+                AKTS = 6,
+                Credit = 4,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                SemesterType = SemesterType.One,
+                WeeklyHour = 4
+            });
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 4,
+                Name = "LİNEER CEBİR",
+                LessonCode = "MAT 113",
+                AKTS = 4,
+                Credit = 2,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                SemesterType = SemesterType.One,
+                WeeklyHour = 2
+            });
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 5,
+                Name = "BİLGİSAYAR MÜHENDİSLİĞİNE GİRİŞ",
+                LessonCode = "BSM 101",
+                AKTS = 4,
+                Credit = 2,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                SemesterType = SemesterType.One,
+                WeeklyHour = 2
+            });
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 6,
+                Name = "PROGRAMLAMAYA GİRİŞ",
+                LessonCode = "BSM 103",
+                AKTS = 6,
+                Credit = 4,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                SemesterType = SemesterType.One,
+                WeeklyHour = 4
+            });
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 7,
+                Name = "İNGİLİZCE",
+                LessonCode = "ING 190",
+                AKTS = 4,
+                Credit = 4,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                SemesterType = SemesterType.Two,
+                WeeklyHour = 4
+            });
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 8,
+                Name = "FİZİK II",
+                LessonCode = "FIZ 112",
+                AKTS = 6,
+                Credit = 4,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                SemesterType = SemesterType.Two,
+                WeeklyHour = 5
+            });
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 9,
+                Name = "MATEMATİK II",
+                LessonCode = "MAT 112",
+                AKTS = 6,
+                Credit = 4,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                SemesterType = SemesterType.Two,
+                WeeklyHour = 4
+            });
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 10,
+                Name = "NESNEYE DAYALI PROGRAMLAMA",
+                LessonCode = "BSM 102",
+                AKTS = 6,
+                Credit = 4,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                SemesterType = SemesterType.Two,
+                WeeklyHour = 4
+            });
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 11,
+                Name = "WEB TEKNOLOJİLERİ",
+                LessonCode = "BSM 104",
+                AKTS = 4,
+                Credit = 3,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                SemesterType = SemesterType.Two,
+                WeeklyHour = 3
+            });
+            modelBuilder.Entity<LessonEntity>().HasData(new LessonEntity
+            {
+                LessonId = 12,
+                Name = "OLASILIK VE İSTATİSTİK",
+                LessonCode = "IST 108",
+                AKTS = 4,
+                Credit = 3,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonType = LessonType.Bolum_Zorunlu,
+                SemesterType = SemesterType.Two,
+                WeeklyHour = 3
             });
 
+            #endregion
+
+            #region DERS GRUPLARI
+
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 1,
+                LessonId = 1,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 2,
+                LessonId = 1,
+                GroupType = LessonGroupType.B,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 3,
+                LessonId = 2,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 4,
+                LessonId = 2,
+                GroupType = LessonGroupType.B,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 5,
+                LessonId = 3,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 6,
+                LessonId = 3,
+                GroupType = LessonGroupType.B,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 7,
+                LessonId = 4,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 8,
+                LessonId = 5,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 9,
+                LessonId = 6,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 10,
+                LessonId = 6,
+                GroupType = LessonGroupType.B,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 11,
+                LessonId = 7,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 12,
+                LessonId = 7,
+                GroupType = LessonGroupType.B,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 13,
+                LessonId = 8,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 14,
+                LessonId = 8,
+                GroupType = LessonGroupType.B,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 15,
+                LessonId = 9,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 16,
+                LessonId = 9,
+                GroupType = LessonGroupType.B,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 17,
+                LessonId = 10,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 18,
+                LessonId = 10,
+                GroupType = LessonGroupType.B,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 19,
+                LessonId = 11,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 20,
+                LessonId = 11,
+                GroupType = LessonGroupType.B,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 21,
+                LessonId = 12,
+                GroupType = LessonGroupType.A,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+            modelBuilder.Entity<LessonGroupEntity>().HasData(new LessonGroupEntity
+            {
+                LessonGroupId = 22,
+                LessonId = 12,
+                GroupType = LessonGroupType.B,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            });
+
+            #endregion
+
+            #region HOCANIN DERSLERİ
+
+            //----- 1. YARIYIL -----
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
                 UserLessonId = 1,
-                UserId = 2,
+                UserId = 5,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                LessonId = 2
+                LessonId = 1
             });
-
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
                 UserLessonId = 2,
-                UserId = 2,
+                UserId = 8,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 1
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 3,
+                UserId = 11,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 1
@@ -271,390 +759,391 @@ namespace DPA.Database
 
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 3,
+                UserLessonId = 4,
                 UserId = 2,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 2
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 5,
+                UserId = 9,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 2
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 6,
+                UserId = 12,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 2
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 7,
+                UserId = 3,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 3
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 8,
+                UserId = 5,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 3
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 9,
+                UserId = 13,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 3
             });
 
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 10,
+                UserId = 14,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 4
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 11,
+                UserId = 7,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 5
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 12,
+                UserId = 4,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 6
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 13,
+                UserId = 10,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 6
+            });
+
+            //----- 2. YARIYIL -----
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 14,
+                UserId = 11,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 7
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 15,
+                UserId = 12,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 7
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 16,
+                UserId = 10,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 7
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 17,
+                UserId = 5,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 8
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 18,
+                UserId = 13,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 8
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 19,
+                UserId = 8,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 9
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 20,
+                UserId = 9,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 9
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 21,
+                UserId = 14,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 9
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 22,
+                UserId = 2,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 10
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 23,
+                UserId = 3,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 10
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 24,
+                UserId = 6,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 11
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 25,
+                UserId = 7,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 11
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 26,
+                UserId = 4,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 12
+            });
+
+            #endregion
+
+            #region FAKÜLTELER
+
             modelBuilder.Entity<FacultyEntity>().HasData(new FacultyEntity
             {
                 FacultyId = 1,
-                Title = "İlahiyat Fakültesi",
-                FacultyCode = "IL10",
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now
-            });
-
-            modelBuilder.Entity<FacultyEntity>().HasData(new FacultyEntity
-            {
-                FacultyId = 2,
-                Title = "Elektronik Fakültesi",
-                FacultyCode = "IL10",
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now
-            });
-
-            modelBuilder.Entity<FacultyEntity>().HasData(new FacultyEntity
-            {
-                FacultyId = 3,
-                Title = "Güzel Sanatlar Fakültesi",
-                FacultyCode = "IL10",
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now
-            });
-
-            modelBuilder.Entity<FacultyEntity>().HasData(new FacultyEntity
-            {
-                FacultyId = 4,
-                Title = "Bilgisayar Mühendisliği Fakültesi",
+                Title = "BİLGİSAYAR VE BİLİŞİM BİLİMLERİ FAKÜLTESİ",
                 FacultyCode = "BM310",
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now
             });
-
-            modelBuilder.Entity<DepartmanEntity>().HasData(new DepartmanEntity
+            modelBuilder.Entity<FacultyEntity>().HasData(new FacultyEntity
             {
-                DepartmanId = 1,
-                Title = "Bilgisayar Muh. Bolumu",
-                DepartmanCode = "BM310",
+                FacultyId = 2,
+                Title = "Mühendislik Fakültesi",
+                FacultyCode = "MF123",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            });
+            modelBuilder.Entity<FacultyEntity>().HasData(new FacultyEntity
+            {
+                FacultyId = 3,
+                Title = "Hukuk Fakültesi",
+                FacultyCode = "HKK112",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            });
+            modelBuilder.Entity<FacultyEntity>().HasData(new FacultyEntity
+            {
                 FacultyId = 4,
+                Title = "Teknoloji Fakültesi",
+                FacultyCode = "TKL423",
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now
             });
 
-            modelBuilder.Entity<DepartmanEntity>().HasData(new DepartmanEntity
-            {
-                DepartmanId = 2,
-                Title = "İlahiyat. Bolumu",
-                DepartmanCode = "BM310",
-                FacultyId = 1,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now
-            });
+            #endregion
 
-            modelBuilder.Entity<DepartmanEntity>().HasData(new DepartmanEntity
+            #region BÖLÜMLER
+
+            modelBuilder.Entity<DepartmentEntity>().HasData(new DepartmentEntity
             {
-                DepartmanId = 3,
-                Title = "İlahiyat. Bolumu",
-                DepartmanCode = "BM310",
+                DepartmentId = 1,
+                Title = "Bilgisayar Mühendisliği Bölümü",
+                DepartmentCode = "BM310",
                 FacultyId = 1,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                UserId = 1
-
+                HeadOfDepartmentId = 1
             });
 
-            modelBuilder.Entity<DepartmanLessonEntity>().HasData(new DepartmanLessonEntity
+            modelBuilder.Entity<DepartmentEntity>().HasData(new DepartmentEntity
             {
-                DepartmanLessonId = 1,
+                DepartmentId = 2,
+                Title = "Bilişim Sistemleri Mühendisliği Bölümü",
+                DepartmentCode = "BM311",
+                FacultyId = 1,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            });
+
+            modelBuilder.Entity<DepartmentEntity>().HasData(new DepartmentEntity
+            {
+                DepartmentId = 3,
+                Title = "Yazılım Mühendisliği Bölümü",
+                DepartmentCode = "BM312",
+                FacultyId = 1,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            });
+
+            #endregion
+
+            #region FAKÜLTE BÖLÜM İLİŞKİLERİ
+
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
+            {
+                DepartmentLessonId = 1,
                 LessonId = 1,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                DepartmanId = 1
+                DepartmentId = 1
             });
-
-            modelBuilder.Entity<DepartmanLessonEntity>().HasData(new DepartmanLessonEntity
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
             {
-                DepartmanLessonId = 2,
+                DepartmentLessonId = 2,
                 LessonId = 2,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                DepartmanId = 1
+                DepartmentId = 1
             });
-
-            modelBuilder.Entity<DepartmanLessonEntity>().HasData(new DepartmanLessonEntity
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
             {
-                DepartmanLessonId = 3,
+                DepartmentLessonId = 3,
                 LessonId = 3,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                DepartmanId = 1
+                DepartmentId = 1
             });
-
-            modelBuilder.Entity<DepartmanLessonEntity>().HasData(new DepartmanLessonEntity
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
             {
-                DepartmanLessonId = 4,
+                DepartmentLessonId = 4,
                 LessonId = 4,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                DepartmanId = 1
+                DepartmentId = 1
             });
-
-            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
             {
-                LocationId = 1,
-                Title = "1201",
+                DepartmentLessonId = 5,
+                LessonId = 5,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                FacultyId = 1
+                DepartmentId = 1
             });
-
-            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
             {
-                LocationId = 2,
-                Title = "1201",
+                DepartmentLessonId = 6,
+                LessonId = 6,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                FacultyId = 1
+                DepartmentId = 1
             });
-
-            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
             {
-                LocationId = 3,
-                Title = "1201",
+                DepartmentLessonId = 7,
+                LessonId = 7,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                FacultyId = 1
+                DepartmentId = 1
             });
-
-            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
             {
-                LocationId = 4,
-                Title = "1201",
+                DepartmentLessonId = 8,
+                LessonId = 8,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                FacultyId = 1
+                DepartmentId = 1
             });
-
-            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
             {
-                LocationId = 5,
-                Title = "1201",
+                DepartmentLessonId = 9,
+                LessonId = 9,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                FacultyId = 1
+                DepartmentId = 1
             });
-
-            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
             {
-                LocationId = 6,
-                Title = "1201",
+                DepartmentLessonId = 10,
+                LessonId = 10,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                FacultyId = 1
+                DepartmentId = 1
             });
-
-            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
             {
-                LocationId = 7,
-                Title = "1201",
+                DepartmentLessonId = 11,
+                LessonId = 11,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                FacultyId = 1
+                DepartmentId = 1
             });
-
-            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity
             {
-                LocationId = 8,
-                Title = "1201",
+                DepartmentLessonId = 12,
+                LessonId = 12,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                FacultyId = 1
+                DepartmentId = 1
             });
 
-            modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+            #endregion
+
+            #region DERSLİKLER
+
+            for (int i = 0; i < 18; i++)
             {
-                LocationId = 9,
-                Title = "1201",
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                FacultyId = 1
-            });
+                modelBuilder.Entity<LocationEntity>().HasData(new LocationEntity
+                {
+                    LocationId = i + 1,
+                    Title = "100" + i,
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                    FacultyId = 1
+                });
+            }
 
-            modelBuilder.Entity<SyllabusEntity>().HasData(new SyllabusEntity
-            {
-                SyllabusId = 1,
-                Year = 2018,
-                PeriodType = PeriodType.Bahar,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                DepartmanId = 1,
-            });
+            #endregion
 
-            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
-            {
-                UnitLessonId = 1,
-                LessonId = 1,
-                UserId = 2,
-                LocationId = 3,
-                SyllabusId = 1
-            });
-
-            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
-            {
-                UnitLessonId = 2,
-                LessonId = 1,
-                UserId = 2,
-                LocationId = 1,
-                SyllabusId = 1
-            });
-
-            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
-            {
-                UnitLessonId = 3,
-                LessonId = 1,
-                UserId = 2,
-                LocationId = 7,
-                SyllabusId = 1
-            });
-
-            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
-            {
-                UnitLessonId = 4,
-                LessonId = 1,
-                UserId = 2,
-                LocationId = 3,
-                SyllabusId = 1
-            });
-
-            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
-            {
-                UnitLessonId = 5,
-                LessonId = 1,
-                UserId = 2,
-                LocationId = 4,
-                SyllabusId = 1
-            });
-
-            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
-            {
-                UnitLessonId = 6,
-                LessonId = 1,
-                UserId = 2,
-                LocationId = 5,
-                SyllabusId = 1
-            });
-
-            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
-            {
-                UnitLessonId = 7,
-                LessonId = 1,
-                UserId = 2,
-                LocationId = 3,
-                SyllabusId = 1
-            });
-
-            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
-            {
-                UnitLessonId = 8,
-                LessonId = 1,
-                UserId = 2,
-                LocationId = 6,
-                SyllabusId = 1
-            });
-
-            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
-            {
-                UnitLessonId = 9,
-                LessonId = 1,
-                UserId = 2,
-                LocationId = 7,
-                SyllabusId = 1
-            });
-
-            modelBuilder.Entity<UnitLessonEntity>().HasData(new UnitLessonEntity
-            {
-                UnitLessonId = 10,
-                LessonId = 1,
-                UserId = 2,
-                LocationId = 8,
-                SyllabusId = 1
-            });
-
-            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
-            {
-                TimeId = 1,
-                StarDate = DateTime.Now.ToLocalTime(),
-                EndDate = DateTime.Now.ToLocalTime(),
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                UnitLessonId = 1
-            });
-
-            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
-            {
-                TimeId = 2,
-                StarDate = DateTime.Now.ToLocalTime(),
-                EndDate = DateTime.Now.ToLocalTime(),
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                UnitLessonId = 1
-            });
-
-
-            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
-            {
-                TimeId = 3,
-                StarDate = DateTime.Now.ToLocalTime(),
-                EndDate = DateTime.Now.ToLocalTime(),
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                UnitLessonId = 1
-            });
-
-            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
-            {
-                TimeId = 4,
-                StarDate = DateTime.Now.ToLocalTime(),
-                EndDate = DateTime.Now.ToLocalTime(),
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                UnitLessonId = 1
-            });
-
-            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
-            {
-                TimeId = 5,
-                StarDate = DateTime.Now.ToLocalTime(),
-                EndDate = DateTime.Now.ToLocalTime(),
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                UnitLessonId = 1
-            });
-
-
-            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
-            {
-                TimeId = 6,
-                StarDate = DateTime.Now.ToLocalTime(),
-                EndDate = DateTime.Now.ToLocalTime(),
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                UnitLessonId = 1
-            });
-
-            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
-            {
-                TimeId = 7,
-                StarDate = DateTime.Now.ToLocalTime(),
-                EndDate = DateTime.Now.ToLocalTime(),
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                UnitLessonId = 1
-            });
-
-
-            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
-            {
-                TimeId = 8,
-                StarDate = DateTime.Now.ToLocalTime(),
-                EndDate = DateTime.Now.ToLocalTime(),
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                UnitLessonId = 1
-            });
-
-            modelBuilder.Entity<TimeEntity>().HasData(new TimeEntity
-            {
-                TimeId = 9,
-                StarDate = DateTime.Now.ToLocalTime(),
-                EndDate = DateTime.Now.ToLocalTime(),
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                UnitLessonId = 1
-            });
         }
     }
 }

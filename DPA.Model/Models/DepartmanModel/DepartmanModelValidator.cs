@@ -3,13 +3,13 @@ using FluentValidation;
 
 namespace DPA.Model
 {
-    public class DepartmanModelValidator : Validator<DepartmanModel>
+    public class DepartmentModelValidator : Validator<DepartmentModel>
     {
-        public DepartmanModelValidator()
+        public DepartmentModelValidator()
         {
             RuleFor(x => x).NotNull();
             RuleFor(x => x.Title).NotNull().MaximumLength(200);
-            RuleFor(x => x.DepartmanCode).NotNull().MaximumLength(200);
+            RuleFor(x => x.DepartmentCode).NotNull().MaximumLength(200);
             RuleFor(x => x.FacultyId).NotNull();
         }
     }

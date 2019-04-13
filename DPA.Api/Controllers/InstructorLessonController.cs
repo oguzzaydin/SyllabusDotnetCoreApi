@@ -57,7 +57,7 @@ namespace DPA.Api
         }
 
         [HttpPut("{userId}/instructor")]
-        public async Task<IActionResult> UpdateDepartmanAsync(long userId, UpdateUserLessonModel updateUserLessonModel)
+        public async Task<IActionResult> UpdateDepartmentAsync(long userId, UpdateUserLessonModel updateUserLessonModel)
         {
             var result = await UserLessonService.UpdateInstructorAsync(userId, updateUserLessonModel);
 

@@ -10,9 +10,11 @@ namespace DPA.Model
 
         public PeriodType PeriodType { get; set; }
 
-        public long DepartmanId { get; set; }
+        public EducationType EducationType { get; set; }
 
-        public virtual DepartmanEntity Departman { get; set; }
+        public long DepartmentId { get; set; }
+
+        public virtual DepartmentEntity Department { get; set; }
 
         public virtual ICollection<UnitLessonEntity> UnitLessons { get; set; } = new HashSet<UnitLessonEntity>();
     }

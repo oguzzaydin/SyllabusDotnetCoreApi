@@ -1,9 +1,9 @@
 namespace DPA.Model
 {
-    public class AddDepartmanLessonModel
+    public class AddDepartmentLessonModel
     {
         public long LessonId { get; set; }
 
-        public long DepartmanId { get; set; }
+        public long DepartmentId { get; set; }
     }
 }

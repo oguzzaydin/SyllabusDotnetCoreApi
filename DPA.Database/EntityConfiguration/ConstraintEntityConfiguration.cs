@@ -8,7 +8,7 @@ namespace DPA.Database.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<ConstraintEntity> builder)
         {
-            builder.ToTable("Constraints", "User");
+            builder.ToTable("Constraint", "User");
 
             builder.HasKey(x => x.ConstraintId);
 

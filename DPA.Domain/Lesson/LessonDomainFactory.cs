@@ -9,10 +9,8 @@ namespace DPA.Domain
             return new LessonDomain(
                 addLessonModel.Name,
                 addLessonModel.LessonCode,
-                addLessonModel.Group,
                 addLessonModel.AKTS,
                 addLessonModel.LessonType,
-                addLessonModel.EducationType,
                 addLessonModel.WeeklyHour
             );
         }
@@ -22,10 +20,8 @@ namespace DPA.Domain
             return new LessonDomain(
                 updateLessonModel.Name,
                 updateLessonModel.LessonCode,
-                updateLessonModel.Group,
                 updateLessonModel.AKTS,
                 updateLessonModel.LessonType,
-                updateLessonModel.EducationType,
                 updateLessonModel.WeeklyHour
             );
         }
@@ -35,10 +31,8 @@ namespace DPA.Domain
             return new LessonDomain(
                 lessonEntity.Name,
                 lessonEntity.LessonCode,
-                lessonEntity.Group,
                 lessonEntity.AKTS,
                 lessonEntity.LessonType,
-                lessonEntity.EducationType,
                 lessonEntity.WeeklyHour
             );
         }

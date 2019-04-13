@@ -10,7 +10,7 @@ namespace DPA.Model
 
         public bool IsActive { get; set; }
 
-        public WeeklyHour WeeklyHour { get; set; }
+        public int WeeklyHour { get; set; }
 
         public EducationType EducationType { get; set; }
 

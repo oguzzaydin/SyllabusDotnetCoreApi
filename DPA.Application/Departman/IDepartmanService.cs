@@ -5,26 +5,26 @@ using System.Threading.Tasks;
 
 namespace DPA.Application
 {
-    public interface IDepartmanService
+    public interface IDepartmentService
     {
-        Task<IDataResult<long>> AddAsync(AddDepartmanModel addDepartmanModel);
+        Task<IDataResult<long>> AddAsync(AddDepartmentModel addDepartmentModel);
 
-        Task<IResult> DeleteAsync(long departmanId);
+        Task<IResult> DeleteAsync(long departmentId);
 
-        Task<IEnumerable<ListDepartmanModel>> ListAsync();
+        Task<IEnumerable<ListDepartmentModel>> ListAsync();
 
-        Task<PagedList<ListDepartmanModel>> ListAsync(PagedListParameters parameters);
+        Task<PagedList<ListDepartmentModel>> ListAsync(PagedListParameters parameters);
 
-        Task<IResult> UpdateAsync(long departmanId, UpdateDepartmanModel updateDepartmanModel);
+        Task<IResult> UpdateAsync(long departmentId, UpdateDepartmentModel updateDepartmentModel);
 
-        Task<IResult> UpdateUserAsync(long departmanId, long userId);
+        Task<IResult> UpdateUserAsync(long departmentId, long userId);
 
-        Task<DepartmanModel> SelectAsync(long departmanId);
+        Task<DepartmentModel> SelectAsync(long departmentId);
 
-        Task<UserModel> SingleOrDefaultUserAsync(long departmanId);
+        Task<UserModel> SingleOrDefaultUserAsync(long departmentId);
 
-        Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long departmanId);
+        Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long departmentId);
 
-        Task<ListDepartmanModel> getDepartmentForHeadOfDepartmentAsync(long userId);
+        Task<ListDepartmentModel> GetDepartmentForHeadOfDepartmentAsync(long headheadOfDepartmentId);
     }
 }

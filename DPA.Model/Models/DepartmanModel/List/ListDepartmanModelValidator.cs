@@ -3,11 +3,11 @@ using FluentValidation;
 
 namespace DPA.Model
 {
-    public class ListDepartmanModelValidator : Validator<ListDepartmanModel>
+    public class ListDepartmentModelValidator : Validator<ListDepartmentModel>
     {
-        public ListDepartmanModelValidator()
+        public ListDepartmentModelValidator()
         {
-            RuleFor(x => x.DepartmanId).NotNull().NotEmpty();
+            RuleFor(x => x.DepartmentId).NotNull().NotEmpty();
         }
     }
 }

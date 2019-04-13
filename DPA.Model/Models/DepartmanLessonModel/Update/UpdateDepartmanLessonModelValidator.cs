@@ -3,12 +3,12 @@ using FluentValidation;
 
 namespace DPA.Model
 {
-     public sealed class UpdateDepartmanLessonModelValidator : Validator<UpdateDepartmanLessonModel>
+     public sealed class UpdateDepartmentLessonModelValidator : Validator<UpdateDepartmentLessonModel>
     {
-        public UpdateDepartmanLessonModelValidator()
+        public UpdateDepartmentLessonModelValidator()
         {
             RuleFor(x => x).NotNull();
-            RuleFor(x => x.DepartmanId).NotNull().NotEmpty();
+            RuleFor(x => x.DepartmentId).NotNull().NotEmpty();
             RuleFor(x => x.LessonId).NotNull().NotEmpty();
         }
     }

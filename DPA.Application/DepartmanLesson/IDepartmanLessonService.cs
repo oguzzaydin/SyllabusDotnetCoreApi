@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 
 namespace DPA.Application
 {
-    public interface IDepartmanLessonService
+    public interface IDepartmentLessonService
     {
-        Task<IDataResult<long>> AddAsync(AddDepartmanLessonModel addDepartmanLessonModel);
+        Task<IDataResult<long>> AddAsync(AddDepartmentLessonModel addDepartmentLessonModel);
 
-        Task<IEnumerable<ListLessonModel>> ListLessonAsync(long departmanId);
+        Task<IEnumerable<ListLessonModel>> ListLessonAsync(long DepartmentId);
 
-        Task<IEnumerable<ListDepartmanModel>> ListDepartmanAsync(long lessonId);
+        Task<IEnumerable<ListDepartmentModel>> ListDepartmentAsync(long lessonId);
 
-        Task<IResult> DeleteLessonAsync(long departmanId, long lessonId);
+        Task<IResult> DeleteLessonAsync(long DepartmentId, long lessonId);
 
-        Task<IResult> UpdateLessonAsync(long lessonId, UpdateDepartmanLessonModel updateDepartmanLessonModel);
+        Task<IResult> UpdateLessonAsync(long lessonId, UpdateDepartmentLessonModel updateDepartmentLessonModel);
 
-        Task<IResult> UpdateDepartmanAsync(long departmanId, UpdateDepartmanLessonModel updateDepartmanLessonModel);
+        Task<IResult> UpdateDepartmentAsync(long DepartmentId, UpdateDepartmentLessonModel updateDepartmentLessonModel);
     }
 }

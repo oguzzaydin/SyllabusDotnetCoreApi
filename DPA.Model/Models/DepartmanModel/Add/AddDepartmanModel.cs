@@ -1,6 +1,6 @@
 namespace DPA.Model
 {
-    public class AddDepartmanModel : DepartmanModel
+    public class AddDepartmentModel : DepartmentModel
     {
     }
 }

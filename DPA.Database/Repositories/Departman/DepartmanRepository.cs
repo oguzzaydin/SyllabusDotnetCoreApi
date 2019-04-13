@@ -3,9 +3,9 @@ using DPA.Model;
 
 namespace DPA.Database
 {
-    public sealed class DepartmanRepository : EntityFrameworkCoreRepository<DepartmanEntity>, IDepartmanRepository
+    public sealed class DepartmentRepository : EntityFrameworkCoreRepository<DepartmentEntity>, IDepartmentRepository
     {
-        public DepartmanRepository(DatabaseContext context) : base(context)
+        public DepartmentRepository(DatabaseContext context) : base(context)
         {
         }
     }

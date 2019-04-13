@@ -7,7 +7,7 @@ namespace DPA.Application
 {
     public interface IUserService
     {
-        Task<IDataResult<long>> AddHeadOfDepartmantAsync(AddUserModel addUserModel);
+        Task<IDataResult<long>> AddHeadOfDepartmenttAsync(AddUserModel addUserModel);
 
         Task<IDataResult<long>> AddInstructorAsync(AddUserModel addUserModel);
 

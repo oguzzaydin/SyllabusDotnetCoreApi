@@ -7,7 +7,7 @@ namespace DPA.Database.EntityConfiguration
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<LocationEntity> builder)
         {
-            builder.ToTable("Locations", "Faculty");
+            builder.ToTable("Location", "Faculty");
 
             builder.HasKey(x => x.LocationId);
             builder.Property(x => x.LocationId).IsRequired().ValueGeneratedOnAdd();

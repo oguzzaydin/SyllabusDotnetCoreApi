@@ -8,19 +8,15 @@ namespace DPA.Domain
         protected internal LessonDomain(
             string name,
             string lessonCode,
-            string group,
-            AKTS akts,
+            int akts,
             LessonType lessonType,
-            EducationType educationType,
-            WeeklyHour weeklyHour
+            int weeklyHour
         )
         {
             Name = name;
             LessonCode = lessonCode;
-            Group = group;
             AKTS = akts;
             LessonType = lessonType;
-            EducationType = educationType;
             WeeklyHour = weeklyHour;
         }
 
@@ -28,15 +24,11 @@ namespace DPA.Domain
 
         public string LessonCode { get; private set; }
 
-        public string Group { get; private set; }
-
-        public AKTS AKTS { get; private set; }
+        public int AKTS { get; private set; }
 
         public LessonType LessonType { get; private set; }
 
-        public EducationType EducationType { get; private set; }
-
-        public WeeklyHour WeeklyHour { get; private set; }
+        public int WeeklyHour { get; private set; }
 
         public DateTime CreatedDate { get; private set; }
 
@@ -52,11 +44,9 @@ namespace DPA.Domain
         {
             Name = updateLessonModel.Name;
             LessonCode = updateLessonModel.LessonCode;
-            Group = updateLessonModel.Group;
             AKTS = updateLessonModel.AKTS;
             WeeklyHour = updateLessonModel.WeeklyHour;
             LessonType = updateLessonModel.LessonType;
-            EducationType = updateLessonModel.EducationType;
             UpdatedDate = DateTime.Now;
         }
     }

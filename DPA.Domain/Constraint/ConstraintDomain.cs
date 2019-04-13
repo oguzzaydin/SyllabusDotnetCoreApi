@@ -11,7 +11,7 @@ namespace DPA.Domain
             string description,
             bool isFreeDay,
             bool isActive,
-            WeeklyHour weeklyHour,
+            int weeklyHour,
             EducationType educationType,
             long userId
         )
@@ -30,7 +30,7 @@ namespace DPA.Domain
           string description,
           bool isFreeDay,
           bool isActive,
-          WeeklyHour weeklyHour,
+          int weeklyHour,
           EducationType educationType
         )
         {
@@ -48,7 +48,7 @@ namespace DPA.Domain
           string description,
           bool isFreeDay,
           bool isActive,
-          WeeklyHour weeklyHour,
+          int weeklyHour,
           EducationType educationType,
           DateTime createdDate
         )
@@ -73,7 +73,7 @@ namespace DPA.Domain
 
         public bool IsActive { get; private set; }
 
-        public WeeklyHour WeeklyHour { get; private set; }
+        public int WeeklyHour { get; private set; }
 
         public EducationType EducationType { get; private set; }
 

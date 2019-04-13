@@ -1,7 +1,7 @@
 namespace DPA.Model
 {
-    public class ListDepartmanLessonModel : DepartmanLessonModel
+    public class ListDepartmentLessonModel : DepartmentLessonModel
     {
-        public long DepartmanLessonId { get; set; }
+        public long DepartmentLessonEntity { get; set; }
     }
 }

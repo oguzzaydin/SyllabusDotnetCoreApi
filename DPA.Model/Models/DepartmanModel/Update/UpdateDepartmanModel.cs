@@ -1,6 +1,6 @@
 namespace DPA.Model
 {
-    public class UpdateDepartmanModel : DepartmanModel
+    public class UpdateDepartmentModel : DepartmentModel
     {
         public long UserId { get; set; }
     }

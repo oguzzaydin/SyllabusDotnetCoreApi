@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DPA.Model;
 
 namespace DPA.Model
 {
@@ -10,20 +11,22 @@ namespace DPA.Model
 
         public string LessonCode { get; set; }
 
-        public string Group { get; set; }
+        public int AKTS { get; set; }
 
-        public AKTS AKTS { get; set; }
+        public int Credit { get; set; }
+
+        public int WeeklyHour { get; set; }
+
+        public SemesterType SemesterType { get; set; }
 
         public LessonType LessonType { get; set; }
 
-        public EducationType EducationType { get; set; }
-
-        public WeeklyHour WeeklyHour { get; set; }
-
         public virtual ICollection<UserLessonEntity> UserLessons { get; set; } = new HashSet<UserLessonEntity>();
 
-        public virtual ICollection<DepartmanLessonEntity> DepartmanLessons { get; set; } = new HashSet<DepartmanLessonEntity>();
+        public virtual ICollection<DepartmentLessonEntity> DepartmentLessons { get; set; } = new HashSet<DepartmentLessonEntity>();
 
         public virtual ICollection<UnitLessonEntity> UnitLessons { get; set; } = new HashSet<UnitLessonEntity>();
+
+        public virtual ICollection<LessonGroupEntity> LessonGroups { get; set; } = new HashSet<LessonGroupEntity>();
     }
 }

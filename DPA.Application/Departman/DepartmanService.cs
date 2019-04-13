@@ -8,48 +8,48 @@ using System.Threading.Tasks;
 
 namespace DPA.Application
 {
-    public sealed class DepartmanService : IDepartmanService
+    public sealed class DepartmentService : IDepartmentService
     {
-        public DepartmanService(
+        public DepartmentService(
             IDatabaseUnitOfWork databaseUnitOfWork,
-            IDepartmanRepository departmanRepository
+            IDepartmentRepository departmentRepository
         )
         {
             DatabaseUnitOfWork = databaseUnitOfWork;
-            DepartmanRepository = departmanRepository;
+            DepartmentRepository = departmentRepository;
         }
 
         private IDatabaseUnitOfWork DatabaseUnitOfWork { get; }
 
-        private IDepartmanRepository DepartmanRepository { get; }
+        private IDepartmentRepository DepartmentRepository { get; }
 
-        public async Task<IDataResult<long>> AddAsync(AddDepartmanModel addDepartmanModel)
+        public async Task<IDataResult<long>> AddAsync(AddDepartmentModel addDepartmentModel)
         {
-            var validation = new DepartmanModelValidator().Valid(addDepartmanModel);
+            var validation = new DepartmentModelValidator().Valid(addDepartmentModel);
 
             if (!validation.Success)
             {
                 return new ErrorDataResult<long>(validation.Message);
             }
 
-            var departmanDomain = DepartmanDomainFactory.Create(addDepartmanModel);
+            var DepartmentDomain = DepartmentDomainFactory.Create(addDepartmentModel);
 
-            departmanDomain.Add();
+            DepartmentDomain.Add();
 
-            var departmanEntity = departmanDomain.Map<DepartmanEntity>();
+            var DepartmentEntity = DepartmentDomain.Map<DepartmentEntity>();
 
-            departmanEntity.UserId = null;
+            DepartmentEntity.HeadOfDepartmentId = null;
 
-            await DepartmanRepository.AddAsync(departmanEntity);
+            await DepartmentRepository.AddAsync(DepartmentEntity);
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 
-            return new SuccessDataResult<long>(departmanEntity.DepartmanId);
+            return new SuccessDataResult<long>(DepartmentEntity.DepartmentId);
         }
 
-        public async Task<IResult> DeleteAsync(long departmanId)
+        public async Task<IResult> DeleteAsync(long departmentId)
         {
-            await DepartmanRepository.DeleteAsync(departmanId);
+            await DepartmentRepository.DeleteAsync(departmentId);
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 
@@ -58,82 +58,82 @@ namespace DPA.Application
 
 
 
-        public async Task<IEnumerable<ListDepartmanModel>> ListAsync()
+        public async Task<IEnumerable<ListDepartmentModel>> ListAsync()
         {
-            return await DepartmanRepository.ListAsync<ListDepartmanModel>();
+            return await DepartmentRepository.ListAsync<ListDepartmentModel>();
         }
 
-        public async Task<PagedList<ListDepartmanModel>> ListAsync(PagedListParameters parameters)
+        public async Task<PagedList<ListDepartmentModel>> ListAsync(PagedListParameters parameters)
         {
-            return await DepartmanRepository.ListAsync<ListDepartmanModel>(parameters);
+            return await DepartmentRepository.ListAsync<ListDepartmentModel>(parameters);
         }
 
-        public async Task<DepartmanModel> SelectAsync(long departmanId)
+        public async Task<DepartmentModel> SelectAsync(long departmentId)
         {
-            return await DepartmanRepository.SelectAsync<DepartmanModel>(departmanId);
+            return await DepartmentRepository.SelectAsync<DepartmentModel>(departmentId);
         }
 
-        public async Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long departmanId)
+        public async Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long departmentId)
         {
-            return await DepartmanRepository.SingleOrDefaultAsync<SyllabusModel>(x => x.DepartmanId == departmanId, x => x.Syllabus.Map<SyllabusModel>());
+            return await DepartmentRepository.SingleOrDefaultAsync<SyllabusModel>(x => x.DepartmentId == departmentId, x => x.Syllabus.Map<SyllabusModel>());
         }
 
-        public async Task<UserModel> SingleOrDefaultUserAsync(long departmanId)
+        public async Task<UserModel> SingleOrDefaultUserAsync(long departmentId)
         {
-            return await DepartmanRepository.SingleOrDefaultAsync<UserModel>(x => x.DepartmanId == departmanId, x => x.User.Map<UserModel>());
+            return await DepartmentRepository.SingleOrDefaultAsync<UserModel>(x => x.DepartmentId == departmentId, x => x.HeadOfDepartment.Map<UserModel>());
         }
 
-        public async Task<IResult> UpdateAsync(long departmanId, UpdateDepartmanModel updateDepartmanModel)
+        public async Task<IResult> UpdateAsync(long departmentId, UpdateDepartmentModel updateDepartmentModel)
         {
-            var validation = new DepartmanModelValidator().Valid(updateDepartmanModel);
+            var validation = new DepartmentModelValidator().Valid(updateDepartmentModel);
 
             if (!validation.Success)
             {
                 return new ErrorDataResult<long>(validation.Message);
             }
 
-            var departmanEntity = await DepartmanRepository.SelectAsync(departmanId);
+            var DepartmentEntity = await DepartmentRepository.SelectAsync(departmentId);
 
-            var nullObjectValidation = new NullObjectValidation<DepartmanEntity>().Valid(departmanEntity);
+            var nullObjectValidation = new NullObjectValidation<DepartmentEntity>().Valid(DepartmentEntity);
 
             if (!nullObjectValidation.Success)
             {
                 return new ErrorResult(nullObjectValidation.Message);
             }
 
-            var departmanDomain = DepartmanDomainFactory.Create(departmanEntity);
+            var DepartmentDomain = DepartmentDomainFactory.Create(DepartmentEntity);
 
-            departmanDomain.Update(updateDepartmanModel);
+            DepartmentDomain.Update(updateDepartmentModel);
 
-            departmanEntity = departmanDomain.Map<DepartmanEntity>();
+            DepartmentEntity = DepartmentDomain.Map<DepartmentEntity>();
 
-            departmanEntity.DepartmanId = departmanId;
+            DepartmentEntity.DepartmentId = departmentId;
 
-            await DepartmanRepository.UpdateAsync(departmanEntity, departmanEntity.DepartmanId);
-
-            await DatabaseUnitOfWork.SaveChangesAsync();
-
-            return new SuccessResult();
-        }
-
-        public async Task<IResult> UpdateUserAsync(long departmanId, long userId)
-        {
-            var departmanEntity = await DepartmanRepository.SelectAsync(departmanId);
-
-            var departmanDomain = DepartmanDomainFactory.Create(departmanEntity);
-
-            departmanEntity.UserId = userId;
-
-            await DepartmanRepository.UpdateAsync(departmanEntity, departmanEntity.DepartmanId);
+            await DepartmentRepository.UpdateAsync(DepartmentEntity, DepartmentEntity.DepartmentId);
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 
             return new SuccessResult();
         }
 
-        public async Task<ListDepartmanModel> getDepartmentForHeadOfDepartmentAsync(long userId)
+        public async Task<IResult> UpdateUserAsync(long departmentId, long headOfDepartmentId)
         {
-            return await DepartmanRepository.SingleOrDefaultAsync<ListDepartmanModel>(x => x.UserId == userId, x => x.Map<ListDepartmanModel>());
+            var DepartmentEntity = await DepartmentRepository.SelectAsync(departmentId);
+
+            var DepartmentDomain = DepartmentDomainFactory.Create(DepartmentEntity);
+
+            DepartmentEntity.HeadOfDepartmentId = headOfDepartmentId;
+
+            await DepartmentRepository.UpdateAsync(DepartmentEntity, DepartmentEntity.DepartmentId);
+
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessResult();
+        }
+
+        public async Task<ListDepartmentModel> GetDepartmentForHeadOfDepartmentAsync(long headOfDepartmentId)
+        {
+            return await DepartmentRepository.SingleOrDefaultAsync<ListDepartmentModel>(x => x.HeadOfDepartmentId == headOfDepartmentId, x => x.Map<ListDepartmentModel>());
         }
     }
 }

@@ -21,9 +21,9 @@ namespace DPA.Application
         private ISyllabusRepository SyllabusRepository { get; }
 
 
-        public async Task<SyllabusEntity> SelectAsync(long departmanId)
+        public async Task<SyllabusEntity> SelectAsync(long DepartmentId)
         {
-            return await SyllabusRepository.SingleOrDefaultAsync<SyllabusEntity>(x => x.DepartmanId == departmanId);
+            return await SyllabusRepository.SingleOrDefaultAsync<SyllabusEntity>(x => x.DepartmentId == DepartmentId);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace DPA.Model
 
         public Title Title { get; set; }
 
-        public virtual DepartmanEntity Departman { get; set; }
+        public virtual DepartmentEntity Department { get; set; }
 
         public virtual ICollection<UserLogEntity> UsersLogs { get; set; } = new HashSet<UserLogEntity>(); //LOG
 

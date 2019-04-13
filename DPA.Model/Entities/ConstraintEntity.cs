@@ -12,7 +12,8 @@ namespace DPA.Model
 
         public bool IsActive { get; set; }
 
-        public WeeklyHour WeeklyHour { get; set; }
+        // TODO : Haftalık zorunlu verilmesi gereken ders saati React da validan olarak kontrol edilmeli veya Combo ile
+        public int WeeklyHour { get; set; } 
 
         public EducationType EducationType { get; set; }
 

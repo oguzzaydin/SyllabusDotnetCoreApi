@@ -20,7 +20,7 @@ namespace DPA.IntegrationTest.User
         [Category("Integration")]
         [Order(0)]
         [Test]
-        public async Task HeadOfDepartmantShouldBeCreatedSuccessfully()
+        public async Task HeadOfDepartmenttShouldBeCreatedSuccessfully()
         {
             var random = new Random();
             var _mailAddress = Convert.ToChar(random.Next(97, 123)).ToString() + Convert.ToChar(random.Next(97, 123)).ToString() + Convert.ToChar(random.Next(97, 123)).ToString() + "@test.com";
@@ -31,13 +31,14 @@ namespace DPA.IntegrationTest.User
                 Name = "test" + Convert.ToChar(random.Next(97, 123)),
                 Surname = "test" + Convert.ToChar(random.Next(97, 123)),
                 Email = _mailAddress,
-                Title = Title.AraştırmaGörevlisi,
+                Title = Title.OgretimGorevlisi,
                 Roles = Roles.Admin
             };
             await AuthenticationAsync();
-            var createRequest = await Client.PostAsync("/users/headOfDepartmant", new JsonContent(user));
+            var createRequest = await Client.PostAsync("/users/headOfDepartmentt", new JsonContent(user));
             var createResult = await Check.Result<SuccessDataResult<long>>(createRequest);
             createResult.ShouldNotBeNull();
+            _userId = 1;
         }
 
         public void Clear()

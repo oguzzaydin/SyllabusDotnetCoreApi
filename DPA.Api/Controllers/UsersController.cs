@@ -25,12 +25,12 @@ namespace DPA.Api
         /// <summary>
         /// Bölüm başkanı ekle buralarda "userId" gönderme o modelden çıkacak
         /// </summary>
-        /// <remarks>AddHeadOfDepartmantAsync Methodu Açıklaması!</remarks>
+        /// <remarks>AddHeadOfDepartmenttAsync Methodu Açıklaması!</remarks>
         [Authorize(Roles = "Administrator")]
-        [HttpPost("headOfDepartmant")]
-        public async Task<IActionResult> AddHeadOfDepartmantAsync(AddUserModel addUserModel)
+        [HttpPost("headOfDepartmentt")]
+        public async Task<IActionResult> AddHeadOfDepartmenttAsync(AddUserModel addUserModel)
         {
-            var result = await UserService.AddHeadOfDepartmantAsync(addUserModel);
+            var result = await UserService.AddHeadOfDepartmenttAsync(addUserModel);
 
             return new ActionIResult(result);
         }
@@ -38,7 +38,7 @@ namespace DPA.Api
         /// <summary>
         /// Öğretim elemanı ekle buralarda "userId" gönderme o modelden çıkacak
         /// </summary>
-        /// <remarks>AddHeadOfDepartmantAsync Methodu Açıklaması!</remarks>
+        /// <remarks>AddHeadOfDepartmenttAsync Methodu Açıklaması!</remarks>
         [Authorize(Roles = "Admin")]
         [HttpPost("instructor")]
         public async Task<IActionResult> AddInstructorAsync(AddUserModel addUserModel)

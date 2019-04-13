@@ -8,7 +8,7 @@ namespace DPA.Database
     {
         public void Configure(EntityTypeBuilder<UserLogEntity> builder)
         {
-            builder.ToTable("UsersLogs", "User");
+            builder.ToTable("UsersLog", "User");
 
             builder.HasKey(x => x.UserLogId);
 

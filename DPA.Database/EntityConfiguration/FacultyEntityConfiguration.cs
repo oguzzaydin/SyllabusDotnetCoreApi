@@ -7,7 +7,7 @@ namespace DPA.Database.EntityConfiguration
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<FacultyEntity> builder)
         {
-            builder.ToTable("Faculties", "Faculty");
+            builder.ToTable("Faculty", "Faculty");
 
             builder.HasKey(x => x.FacultyId);
 
@@ -18,7 +18,7 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.UpdatedDate).IsRequired();
 
             builder.HasMany(x => x.Locations).WithOne(x => x.Faculty).HasForeignKey(x => x.FacultyId);
-            builder.HasMany(x => x.Departmans).WithOne(x => x.Faculty).HasForeignKey(x => x.FacultyId);
+            builder.HasMany(x => x.Departments).WithOne(x => x.Faculty).HasForeignKey(x => x.FacultyId);
         }
     }
 }

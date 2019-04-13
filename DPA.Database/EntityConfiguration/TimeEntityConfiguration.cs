@@ -8,7 +8,7 @@ namespace DPA.Database.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<TimeEntity> builder)
         {
-            builder.ToTable("Times", "Syllabus");
+            builder.ToTable("Time", "Syllabus");
 
             builder.HasKey(x => x.TimeId);
 

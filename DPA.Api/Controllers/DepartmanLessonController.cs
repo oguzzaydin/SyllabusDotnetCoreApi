@@ -11,55 +11,55 @@ namespace DPA.Api.Controllers
     // [Authorize(Roles = "Administrator, Admin")]
     [ApiController]
     [RouteController]
-    public class DepartmanLessonController : ControllerBase
+    public class DepartmentLessonController : ControllerBase
     {
-        public DepartmanLessonController(IDepartmanLessonService departmanLessonService)
+        public DepartmentLessonController(IDepartmentLessonService departmentLessonService)
         {
-            DepartmanLessonService = departmanLessonService;
+            DepartmentLessonService = departmentLessonService;
         }
 
-        private IDepartmanLessonService DepartmanLessonService { get; }
+        private IDepartmentLessonService DepartmentLessonService { get; }
 
         [HttpPost]
-        public async Task<IActionResult> AddAsync(AddDepartmanLessonModel addDepartmanLessonModel)
+        public async Task<IActionResult> AddAsync(AddDepartmentLessonModel addDepartmentLessonModel)
         {
-            var result = await DepartmanLessonService.AddAsync(addDepartmanLessonModel);
+            var result = await DepartmentLessonService.AddAsync(addDepartmentLessonModel);
 
             return new ActionIResult(result);
         }
 
-        [HttpGet("{departmanId}/lessons")]
-        public async Task<IEnumerable<ListLessonModel>> ListLessonAsync(long departmanId)
+        [HttpGet("{DepartmentId}/lessons")]
+        public async Task<IEnumerable<ListLessonModel>> ListLessonAsync(long DepartmentId)
         {
-            return await DepartmanLessonService.ListLessonAsync(departmanId);
+            return await DepartmentLessonService.ListLessonAsync(DepartmentId);
         }
 
-        [HttpGet("{lessonId}/departmans")]
-        public async Task<IEnumerable<ListDepartmanModel>> ListDepartmanAsync(long lessonId)
+        [HttpGet("{lessonId}/Departments")]
+        public async Task<IEnumerable<ListDepartmentModel>> ListDepartmentAsync(long lessonId)
         {
-            return await DepartmanLessonService.ListDepartmanAsync(lessonId);
+            return await DepartmentLessonService.ListDepartmentAsync(lessonId);
         }
 
-        [HttpDelete("{departmanId}/departman/{lessonId}/lesson")]
-        public async Task<ActionIResult> DeleteLesssonAsync(long departmanId, long lessonId)
+        [HttpDelete("{DepartmentId}/Department/{lessonId}/lesson")]
+        public async Task<ActionIResult> DeleteLesssonAsync(long DepartmentId, long lessonId)
         {
-            var result = await DepartmanLessonService.DeleteLessonAsync(departmanId, lessonId);
+            var result = await DepartmentLessonService.DeleteLessonAsync(DepartmentId, lessonId);
 
             return new ActionIResult(result);
         }
 
         [HttpPut("{lessonId}/lesson")]
-        public async Task<IActionResult> UpdateLessonAsync(long lessonId, UpdateDepartmanLessonModel updateDepartmanLessonModel)
+        public async Task<IActionResult> UpdateLessonAsync(long lessonId, UpdateDepartmentLessonModel updateDepartmentLessonModel)
         {
-            var result = await DepartmanLessonService.UpdateLessonAsync(lessonId, updateDepartmanLessonModel);
+            var result = await DepartmentLessonService.UpdateLessonAsync(lessonId, updateDepartmentLessonModel);
 
             return new ActionIResult(result);
         }
 
-        [HttpPut("{departmanId}/departman")]
-        public async Task<IActionResult> UpdateDepartmanAsync(long departmanId, UpdateDepartmanLessonModel updateDepartmanLessonModel)
+        [HttpPut("{DepartmentId}/Department")]
+        public async Task<IActionResult> UpdateDepartmentAsync(long DepartmentId, UpdateDepartmentLessonModel updateDepartmentLessonModel)
         {
-            var result = await DepartmanLessonService.UpdateDepartmanAsync(departmanId, updateDepartmanLessonModel);
+            var result = await DepartmentLessonService.UpdateDepartmentAsync(DepartmentId, updateDepartmentLessonModel);
 
             return new ActionIResult(result);
         }

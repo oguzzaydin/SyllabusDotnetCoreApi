@@ -12,6 +12,6 @@ namespace DPA.Model
 
         public virtual ICollection<LocationEntity> Locations { get; set; } = new HashSet<LocationEntity>();
 
-        public virtual ICollection<DepartmanEntity> Departmans { get; set; } = new HashSet<DepartmanEntity>();
+        public virtual ICollection<DepartmentEntity> Departments { get; set; } = new HashSet<DepartmentEntity>();
     }
 }

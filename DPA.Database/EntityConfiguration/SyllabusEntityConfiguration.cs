@@ -8,7 +8,7 @@ namespace DPA.Database.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<SyllabusEntity> builder)
         {
-            builder.ToTable("Syllabuses", "Syllabus");
+            builder.ToTable("Syllabus", "Syllabus");
 
             builder.HasKey(x => x.SyllabusId);
             builder.Property(x => x.SyllabusId).IsRequired().ValueGeneratedOnAdd();
@@ -19,7 +19,7 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.UpdatedDate).IsRequired();
 
             builder.HasMany(x => x.UnitLessons).WithOne(x => x.Syllabus).HasForeignKey(x => x.SyllabusId);
-            builder.HasOne(x => x.Departman).WithMany(x => x.Syllabus).HasForeignKey(x => x.DepartmanId);
+            builder.HasOne(x => x.Department).WithMany(x => x.Syllabus).HasForeignKey(x => x.DepartmentId);
         }
     }
 }

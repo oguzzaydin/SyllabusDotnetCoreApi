@@ -8,12 +8,10 @@ namespace DPA.Model
 
         public string Group { get; set; }
 
-        public AKTS AKTS { get; set; }
+        public int AKTS { get; set; }
 
-        public WeeklyHour WeeklyHour { get; set; }
+        public int WeeklyHour { get; set; }
 
         public LessonType LessonType { get; set; }
-
-        public EducationType EducationType { get; set; }
     }
 }

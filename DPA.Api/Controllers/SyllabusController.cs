@@ -20,10 +20,10 @@ namespace DPA.Api
 
         private ISyllabusService SyllabusService { get; }
 
-        [HttpGet("{departmanId}")]
-        public async Task<SyllabusEntity> SingleOrDefaultUserAsync(long departmanId)
+        [HttpGet("{DepartmentId}")]
+        public async Task<SyllabusEntity> SingleOrDefaultUserAsync(long DepartmentId)
         {
-            return await SyllabusService.SelectAsync(departmanId);
+            return await SyllabusService.SelectAsync(DepartmentId);
         }
     }
 }
