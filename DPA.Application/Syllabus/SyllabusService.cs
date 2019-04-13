@@ -12,16 +12,19 @@ namespace DPA.Application
         private readonly IDatabaseUnitOfWork _databaseUnitOfWork;
         private readonly ISyllabusRepository _syllabusRepository;
         private readonly ILessonRepository _lessonRepository;
+        private readonly IDepartmentRepository _departmentRepository;
 
         public SyllabusService(
             IDatabaseUnitOfWork databaseUnitOfWork,
             ISyllabusRepository syllabusRepository,
-            ILessonRepository lessonRepository
+            ILessonRepository lessonRepository,
+            IDepartmentRepository departmentRepository
         )
         {
             _databaseUnitOfWork = databaseUnitOfWork;
             _syllabusRepository = syllabusRepository;
             _lessonRepository = lessonRepository;
+            _departmentRepository = departmentRepository;
         }
 
         public async Task<SyllabusEntity> SelectAsync(long DepartmentId)
@@ -33,7 +36,7 @@ namespace DPA.Application
         {
             try
             {
-                var lessons = await _lessonRepository.GetDepartmentLessons(request.FacultyId, request.DepartmentId, request.SemesterType);
+                var lessons = await _departmentRepository.GetDepartmentLessons(request.FacultyId, request.DepartmentId, request.SemesterType);
             }
             catch
             {
