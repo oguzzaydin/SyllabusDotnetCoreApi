@@ -1,24 +1,31 @@
-﻿using System.Threading.Tasks;
+﻿using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DPA.Database
 {
     public sealed class DatabaseUnitOfWork : IDatabaseUnitOfWork
     {
+        private readonly DatabaseContext _context;
+
         public DatabaseUnitOfWork(DatabaseContext context)
         {
-            Context = context;
+            _context = context;
         }
-
-        private DatabaseContext Context { get; }
 
         public int SaveChanges()
         {
-            return Context.SaveChanges();
+            return _context.SaveChanges();
         }
 
-        public Task<int> SaveChangesAsync()
+        public async Task<int> SaveChangesAsync()
         {
-            return Context.SaveChangesAsync();
+            return await _context.SaveChangesAsync();
+        }
+
+        public void Rollback()
+        {
+            _context.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
         }
     }
 }

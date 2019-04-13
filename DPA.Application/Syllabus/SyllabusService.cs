@@ -1,5 +1,7 @@
+using System;
 using System.Threading.Tasks;
 using DPA.Database;
+using DPA.Database.Exceptions;
 using DPA.Model;
 
 namespace DPA.Application
@@ -7,23 +9,37 @@ namespace DPA.Application
  
     public class SyllabusService : ISyllabusService
     {
+        private readonly IDatabaseUnitOfWork _databaseUnitOfWork;
+        private readonly ISyllabusRepository _syllabusRepository;
+        private readonly ILessonRepository _lessonRepository;
+
         public SyllabusService(
             IDatabaseUnitOfWork databaseUnitOfWork,
-            ISyllabusRepository syllabusRepository
+            ISyllabusRepository syllabusRepository,
+            ILessonRepository lessonRepository
         )
         {
-            DatabaseUnitOfWork = databaseUnitOfWork;
-            SyllabusRepository = syllabusRepository;
+            _databaseUnitOfWork = databaseUnitOfWork;
+            _syllabusRepository = syllabusRepository;
+            _lessonRepository = lessonRepository;
         }
-
-        private IDatabaseUnitOfWork DatabaseUnitOfWork { get; }
-
-        private ISyllabusRepository SyllabusRepository { get; }
-
 
         public async Task<SyllabusEntity> SelectAsync(long DepartmentId)
         {
-            return await SyllabusRepository.SingleOrDefaultAsync<SyllabusEntity>(x => x.DepartmentId == DepartmentId);
+            return await _syllabusRepository.SingleOrDefaultAsync<SyllabusEntity>(x => x.DepartmentId == DepartmentId);
+        }
+
+        public async void CreateSyllabus(CreateSyllabusRequest request)
+        {
+            try
+            {
+                var lessons = await _lessonRepository.GetDepartmentLessons(request.FacultyId, request.DepartmentId, request.SemesterType);
+            }
+            catch
+            {
+                _databaseUnitOfWork.Rollback();
+                throw;
+            }
         }
     }
 }

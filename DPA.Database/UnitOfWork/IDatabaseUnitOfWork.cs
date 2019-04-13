@@ -7,5 +7,7 @@ namespace DPA.Database
         int SaveChanges();
 
         Task<int> SaveChangesAsync();
+
+        void Rollback();
     }
 }

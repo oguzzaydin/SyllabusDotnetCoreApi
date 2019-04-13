@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DotNetCore.AspNetCore;
+using DPA.Database.Error;
 using DPA.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +25,9 @@ namespace DPA.Api
         {
             application.UseExceptionDefault(Environment);
             application.UseCorsDefault();
+
+            application.UseMiddleware<ErrorHandlingMiddleware>();
+
             application.UseHttpsRedirection();
             application.UseAuthentication();
             application.UseResponseCompression();

@@ -12,18 +12,26 @@ namespace DPA.Api
     [RouteController]
     public class SyllabusController : ControllerBase
     {
+        private readonly ISyllabusService _syllabusService;
 
         public SyllabusController(ISyllabusService syllabusService)
         {
-            SyllabusService = syllabusService;
+            _syllabusService = syllabusService;
         }
 
-        private ISyllabusService SyllabusService { get; }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult CreateSyllabus([FromBody] CreateSyllabusRequest request)
+        {
+            _syllabusService.CreateSyllabus(request);
+            return Ok();
+        }
 
         [HttpGet("{DepartmentId}")]
         public async Task<SyllabusEntity> SingleOrDefaultUserAsync(long DepartmentId)
         {
-            return await SyllabusService.SelectAsync(DepartmentId);
+            return await _syllabusService.SelectAsync(DepartmentId);
         }
     }
 }
