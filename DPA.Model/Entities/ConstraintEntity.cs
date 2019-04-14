@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace DPA.Model
 {
     public class ConstraintEntity : BaseEntity

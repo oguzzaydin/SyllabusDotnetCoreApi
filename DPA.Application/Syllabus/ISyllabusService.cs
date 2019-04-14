@@ -5,7 +5,7 @@ namespace DPA.Application
 {
     public interface ISyllabusService
     {
-        void CreateSyllabus(CreateSyllabusRequest request);
+        Task CreateSyllabus(CreateSyllabusRequest request);
         Task<SyllabusEntity> SelectAsync(long DepartmentId);
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using DPA.Model.Enums;
 
 namespace DPA.Model
 {
@@ -6,9 +7,11 @@ namespace DPA.Model
     {
         public long TimeId { get; set; }
 
-        public DateTime StarDate { get; set; }
+        public DayOfTheWeek DayOfTheWeek { get; set; }
 
-        public DateTime EndDate { get; set; }
+        public int StarTime { get; set; }
+
+        public int EndTime { get; set; }
 
         public long UnitLessonId { get; set; }
 

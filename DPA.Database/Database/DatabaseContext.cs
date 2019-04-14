@@ -1,4 +1,5 @@
 ﻿using DotNetCore.EntityFrameworkCore;
+using DPA.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace DPA.Database

@@ -4,6 +4,7 @@ using DPA.Database.Error;
 using DPA.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -46,11 +47,15 @@ namespace DPA.Api
             services.AddResponseCompression();
             services.AddResponseCaching();
             //services.AddAutoMapper();
-            services.AddMvcDefault();
+            //services.AddMvcDefault();
             services.AddHealthChecks();
             services.AddSwaggerDefault("api");
             services.AddSwaggerGenExtension();
             services.AddSwaggerDocExtensions();
+            services.AddMvc()
+            .AddJsonOptions(
+                options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
         }
     }
 }

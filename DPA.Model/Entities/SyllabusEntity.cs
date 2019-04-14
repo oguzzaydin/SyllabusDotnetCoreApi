@@ -8,6 +8,8 @@ namespace DPA.Model
 
         public int Year { get; set; }
 
+        public SemesterType SemesterType { get; set; }
+
         public PeriodType PeriodType { get; set; }
 
         public EducationType EducationType { get; set; }
