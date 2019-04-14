@@ -19,13 +19,9 @@ namespace DPA.Domain
         }
 
         public long Id { get; private set; }
-
         public string Title { get; private set; }
-
         public long FacultyId { get; private set; }
-
         public DateTime CreatedDate { get; private set; }
-
         public DateTime UpdatedDate { get; private set; }
 
         public void Add()

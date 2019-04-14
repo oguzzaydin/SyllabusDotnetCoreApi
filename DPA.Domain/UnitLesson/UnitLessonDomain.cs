@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using DPA.Model;
-using DPA.Model.Enums;
 
 namespace DPA.Domain.UnitLesson
 {
@@ -11,14 +10,12 @@ namespace DPA.Domain.UnitLesson
         (
             long lessonId,
             long userId,
-            long locationId,
-            long syllabusId
+            long locationId
         )
         {
             LessonId = lessonId;
             UserId = userId;
             LocationId = locationId;
-            SyllabusId = syllabusId;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }
@@ -32,10 +29,10 @@ namespace DPA.Domain.UnitLesson
         public DateTime UpdatedDate { get; private set; }
         public virtual List<TimeEntity> TimeEntities { get; private set; } = new List<TimeEntity>();
 
-        public void AddTime(DayOfTheWeek dayOfTheWeek,int startTime, int endTime)
+        public void AddTime(DayOfTheWeekType dayOfTheWeekType,int startTime, int endTime)
         {
             TimeEntities.Add(new TimeEntity{
-                DayOfTheWeek = dayOfTheWeek,
+                DayOfTheWeekType = dayOfTheWeekType,
                 StarTime = startTime,
                 EndTime = endTime,
                 CreatedDate = DateTime.Now,

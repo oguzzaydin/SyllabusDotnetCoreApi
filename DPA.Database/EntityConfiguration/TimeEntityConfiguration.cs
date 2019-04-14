@@ -13,7 +13,7 @@ namespace DPA.Database.EntityConfiguration
             builder.HasKey(x => x.TimeId);
 
             builder.Property(x => x.TimeId).IsRequired().ValueGeneratedOnAdd();
-            builder.Property(x => x.DayOfTheWeek).IsRequired();
+            builder.Property(x => x.DayOfTheWeekType).IsRequired();
             builder.Property(x => x.StarTime).IsRequired();
             builder.Property(x => x.EndTime).IsRequired();
             builder.Property(x => x.CreatedDate).IsRequired();

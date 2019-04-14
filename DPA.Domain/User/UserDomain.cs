@@ -58,25 +58,15 @@ namespace DPA.Domain
         }
 
         public long Id { get; private set; }
-
         public string Name { get; private set; }
-
         public string Surname { get; private set; }
-
         public string Email { get; private set; }
-
         public string Login { get; private set; }
-
         public string Password { get; private set; }
-
         public DateTime CreatedDate { get; private set; }
-
         public DateTime UpdatedDate { get; private set; }
-
         public Roles Roles { get; private set; }
-
         public Status Status { get; private set; }
-
         public Title Title { get; private set; }
 
         public void Add(Roles role)

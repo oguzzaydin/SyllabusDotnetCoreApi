@@ -1,6 +1,6 @@
-namespace DPA.Model.Enums
+namespace DPA.Model
 {
-    public enum DayOfTheWeek
+    public enum DayOfTheWeekType
     {
         One = 1,
         Two = 2,
