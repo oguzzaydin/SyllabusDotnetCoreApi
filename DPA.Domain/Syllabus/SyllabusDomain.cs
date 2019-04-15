@@ -29,8 +29,8 @@ namespace DPA.Domain
 
         public virtual ICollection<UnitLessonEntity> UnitLessons { get; private set; } = new HashSet<UnitLessonEntity>();
 
-        public void AddUnitLesson(ICollection<UnitLessonEntity> unitLessons) {
-            UnitLessons = unitLessons;
+        public void AddUnitLesson(UnitLessonEntity unitLessons) {
+            UnitLessons.Add(unitLessons);
         }
     }
 }

@@ -11,6 +11,7 @@ using DPA.Model.Extensions;
 using DPA.Model.Models.LocationModel.Dtos;
 using DPA.Model.Models.UserModel.Dtos;
 using System;
+using DPA.Model.Models.SyllabusModel.Dtos;
 
 namespace DPA.Application
 {
@@ -53,14 +54,15 @@ namespace DPA.Application
             {
                 var lessons = _lessonRepository.GetDepartmentLessons(request.FacultyId, request.DepartmentId, request.SemesterType);
                 var lesson = lessons.FirstOrDefault();
+                var teachers = _userRepository.GetUserWithConstraintsForLesson(lesson.LessonId);
                 syllabus = SyllabusDomainFactory.Create(request);
-
+                var teacher = TeacherSelection(teachers);
+                CreateSyllabusDefaultTable(request.EducationType);
+                var locationId = ChooseLocation(request.FacultyId, lesson.LessonId);
+                AssignToTeacherOnSyllabus(teacher.UserId, lesson, locationId);
                 // await _syllabusRepository.AddAsync(baseSyllabus);
 
-                CreateUnitLesson(lesson.LessonId, request.FacultyId);
-
                 //await _databaseUnitOfWork.SaveChangesAsync();
-
                 return null;
             }
             catch (Exception ex)
@@ -69,23 +71,6 @@ namespace DPA.Application
                 throw;
             }
         }
-
-        private void CreateUnitLesson(long lessonId, long facultyId)
-        {
-            var teachers = _userRepository.GetUserWithConstraintsForLesson(lessonId);
-            var teacher = TeacherSelection(teachers);
-            var locationId = ChooseLocation(facultyId, lessonId);
-            var unitDomain = UnitLessonDomainFactory.Create(lessonId, teacher.UserId, locationId);
-
-            unit.Add(unitDomain);
-
-
-            // unit.Map<UnitLessonEntity>();
-
-            // TODO : baseUnitLessons boş saat bulunup eklenmeli
-            //unitLessonDomain.AddTime()
-        }
-
         private SyllabusForUserWithConstraintListDto TeacherSelection(List<SyllabusForUserWithConstraintListDto> teachers)
         {
             var firstTeacher = teachers.OrderBy(x => x.Title).FirstOrDefault(); // Öğretmenlerden öncelikli olanları seçer 
@@ -109,11 +94,10 @@ namespace DPA.Application
             }
             else
             {
-                //Unit nesnesinde bulunanlarda farklı ilk buldugunu alır
                 foreach (var item in locations)
                 {
                     //TODO: Sylabuss daki unitlerde gezip bos zamana denk geleni donder buradan
-                    return unit.Find(y => y.LocationId != item.LocationId).LocationId;
+                    return  unit.Find(y => y.LocationId != item.LocationId).LocationId;
                 }
             }
 
@@ -121,27 +105,63 @@ namespace DPA.Application
             // TODO : baseUnitLessons ' a eklenmiş olan birim derslerin Time'larında filtreleme yapıcaktık
             // Time 'larda gezmişken boş saatlerde bulunabilir ve dönülebillir
         }
-
         private void CreateSyllabusDefaultTable(EducationType educationType)
         {
             if ((int)educationType == 1)
-                CreatorTimeTable(7, 15);
+                CreatorTimeTable(9, 15);
             else
                 CreatorTimeTable(15, 23);
                 
         }
-        public void CreatorTimeTable(int startTime, int endTime)
+        private void CreatorTimeTable(int startTime, int endTime)
         {
             for (int i = 1; i < 6; i++)
             {
-                var unitLessonDomain = UnitLessonDomainFactory.Create(0, 0, 0);
-                for (int j = startTime; j < endTime; j++)
+                for (int j = startTime; j <= endTime; j++)
                 {
+                    var unitLessonDomain = UnitLessonDomainFactory.Create();
                     unitLessonDomain.AddTime((DayOfTheWeekType)i, j, j + 1);
                     unit.Add(unitLessonDomain);
-                    syllabus.AddUnitLesson(unit.Map<ICollection<UnitLessonEntity>>());
+                    syllabus.AddUnitLesson(unit.Map<UnitLessonEntity>());
                 }
             }
         }
+        private void AssignToTeacherOnSyllabus(long userId, SyllabusForLessonWithGroupListDto lesson, long locationId) {
+           if (lesson.LessonGroups.Count <= 1)
+           {
+              if ((int)lesson.WeeklyHour <= 2) 
+              {
+                int index = FindEmptyUnit();
+                var syllabusEmptyUnit = syllabus.UnitLessons.ElementAt(index);
+                syllabusEmptyUnit.LessonId = lesson.LessonId;
+                syllabusEmptyUnit.UserId = userId;
+                syllabusEmptyUnit.LocationId = locationId;
+                if (syllabus.UnitLessons.ElementAt(index + 1).LocationId == 0)
+                {
+                  var syllabusNewEmptyUnit = syllabus.UnitLessons.ElementAt(index + 1);
+                  syllabusNewEmptyUnit.LessonId = lesson.LessonId;
+                  syllabusNewEmptyUnit.UserId = userId;
+                  syllabusNewEmptyUnit.LocationId = locationId;
+                } else {
+                  index = FindEmptyUnit();
+                  syllabus.UnitLessons.ElementAt(index).LessonId = lesson.LessonId;
+                  syllabus.UnitLessons.ElementAt(index).UserId = userId;
+                  syllabus.UnitLessons.ElementAt(index).LocationId = locationId;
+                }
+              } else {
+
+              }
+             
+           }
+        }
+        private int FindEmptyUnit() 
+        {
+            var unit = (IList<UnitLessonEntity>)syllabus.UnitLessons.Where(x => x.LocationId == 0);
+            unit.Shuffle();
+            
+            return unit.IndexOf(unit.FirstOrDefault());
+;
+        }
+
     }
 }
