@@ -87,9 +87,9 @@ namespace DPA.Application
         private long ChooseLocation(long facultyId, long lessonId)
         {
             var locations = _locationRepository.GetFacultyLocations(facultyId);
+            locations.Shuffle();
             if (unit.Count == 0)
             {
-                locations.Shuffle();
                 return locations.FirstOrDefault().LocationId;
             }
             else

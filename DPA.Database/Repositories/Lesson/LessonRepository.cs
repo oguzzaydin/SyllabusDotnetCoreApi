@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using DotNetCore.EntityFrameworkCore;
 using DotNetCore.Mapping;
-using DPA.Database.Exceptions;
 using DPA.Model;
 using DPA.Model.Extensions;
 using DPA.Model.Models.SyllabusModel.Dtos;
@@ -24,7 +23,7 @@ namespace DPA.Database
             var lessonGroups = lessons.Include(x => x.LessonGroups).ToList();
             
             if (lessonGroups.Count == 0)
-                throw new UserFriendlyException("Seçiminize uygun dersler bulunamadı.");
+                // throw new UserFriendlyException("Seçiminize uygun dersler bulunamadı.");
 
             lessonGroups.Shuffle();
             return lessonGroups.Map<List<SyllabusForLessonWithGroupListDto>>();

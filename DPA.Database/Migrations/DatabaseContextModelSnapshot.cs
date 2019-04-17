@@ -57,169 +57,169 @@ namespace DPA.Database.Migrations
                         new
                         {
                             ConstraintId = 1L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1231),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(7224),
                             Description = "Description",
                             EducationType = 1,
                             IsActive = true,
                             IsFreeDay = true,
                             Title = "Kısıt 1",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1233),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(7227),
                             UserId = 2L,
                             WeeklyHour = 4
                         },
                         new
                         {
                             ConstraintId = 2L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1650),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(7906),
                             Description = "Description",
                             EducationType = 2,
                             IsActive = true,
                             IsFreeDay = true,
                             Title = "Kısıt 2",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1651),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(7908),
                             UserId = 3L,
                             WeeklyHour = 6
                         },
                         new
                         {
                             ConstraintId = 3L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1680),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(7965),
                             Description = "Description",
                             EducationType = 3,
                             IsActive = true,
                             IsFreeDay = false,
                             Title = "Kısıt 3",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1680),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(7966),
                             UserId = 4L,
                             WeeklyHour = 8
                         },
                         new
                         {
                             ConstraintId = 4L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1694),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(7993),
                             Description = "Description",
                             EducationType = 2,
                             IsActive = true,
                             IsFreeDay = true,
                             Title = "Kısıt 4",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1695),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(7994),
                             UserId = 5L,
                             WeeklyHour = 10
                         },
                         new
                         {
                             ConstraintId = 5L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1708),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8020),
                             Description = "Description",
                             EducationType = 1,
                             IsActive = true,
                             IsFreeDay = true,
                             Title = "Kısıt 5",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1709),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8021),
                             UserId = 6L,
                             WeeklyHour = 12
                         },
                         new
                         {
                             ConstraintId = 6L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1726),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8062),
                             Description = "Description",
                             EducationType = 3,
                             IsActive = true,
                             IsFreeDay = false,
                             Title = "Kısıt 6",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1726),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8063),
                             UserId = 7L,
                             WeeklyHour = 14
                         },
                         new
                         {
                             ConstraintId = 7L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1740),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8093),
                             Description = "Description",
                             EducationType = 2,
                             IsActive = true,
                             IsFreeDay = true,
                             Title = "Kısıt 7",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1741),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8096),
                             UserId = 8L,
                             WeeklyHour = 8
                         },
                         new
                         {
                             ConstraintId = 8L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1754),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8121),
                             Description = "Description",
                             EducationType = 1,
                             IsActive = true,
                             IsFreeDay = true,
                             Title = "Kısıt 8",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1755),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8122),
                             UserId = 9L,
                             WeeklyHour = 10
                         },
                         new
                         {
                             ConstraintId = 9L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1769),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8148),
                             Description = "Description",
                             EducationType = 3,
                             IsActive = true,
                             IsFreeDay = false,
                             Title = "Kısıt 9",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1770),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8149),
                             UserId = 10L,
                             WeeklyHour = 12
                         },
                         new
                         {
                             ConstraintId = 10L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1784),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8177),
                             Description = "Description",
                             EducationType = 1,
                             IsActive = true,
                             IsFreeDay = true,
                             Title = "Kısıt 10",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1785),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8178),
                             UserId = 11L,
                             WeeklyHour = 12
                         },
                         new
                         {
                             ConstraintId = 11L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1798),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8202),
                             Description = "Description",
                             EducationType = 2,
                             IsActive = true,
                             IsFreeDay = true,
                             Title = "Kısıt 11",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1799),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8203),
                             UserId = 12L,
                             WeeklyHour = 12
                         },
                         new
                         {
                             ConstraintId = 12L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1813),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8226),
                             Description = "Description",
                             EducationType = 3,
                             IsActive = true,
                             IsFreeDay = false,
                             Title = "Kısıt 12",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1814),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8228),
                             UserId = 13L,
                             WeeklyHour = 16
                         },
                         new
                         {
                             ConstraintId = 13L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1827),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8250),
                             Description = "Description",
                             EducationType = 3,
                             IsActive = true,
                             IsFreeDay = false,
                             Title = "Kısıt 13",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(1828),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(8250),
                             UserId = 14L,
                             WeeklyHour = 16
                         });
@@ -261,30 +261,30 @@ namespace DPA.Database.Migrations
                         new
                         {
                             DepartmentId = 1L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(5341),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(606),
                             DepartmentCode = "BM310",
                             FacultyId = 1L,
                             HeadOfDepartmentId = 1L,
                             Title = "Bilgisayar Mühendisliği Bölümü",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(5343)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(610)
                         },
                         new
                         {
                             DepartmentId = 2L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(6144),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(1715),
                             DepartmentCode = "BM311",
                             FacultyId = 1L,
                             Title = "Bilişim Sistemleri Mühendisliği Bölümü",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(6145)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(1716)
                         },
                         new
                         {
                             DepartmentId = 3L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(6166),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(1763),
                             DepartmentCode = "BM312",
                             FacultyId = 1L,
                             Title = "Yazılım Mühendisliği Bölümü",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(6167)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(1765)
                         });
                 });
 
@@ -314,98 +314,98 @@ namespace DPA.Database.Migrations
                         new
                         {
                             DepartmentLessonId = 1L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(6942),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3146),
                             DepartmentId = 1L,
                             LessonId = 1L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(6943)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3149)
                         },
                         new
                         {
                             DepartmentLessonId = 2L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7297),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3789),
                             DepartmentId = 1L,
                             LessonId = 2L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7297)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3790)
                         },
                         new
                         {
                             DepartmentLessonId = 3L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7318),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3813),
                             DepartmentId = 1L,
                             LessonId = 3L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7318)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3814)
                         },
                         new
                         {
                             DepartmentLessonId = 4L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7331),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3828),
                             DepartmentId = 1L,
                             LessonId = 4L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7332)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3829)
                         },
                         new
                         {
                             DepartmentLessonId = 5L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7345),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3842),
                             DepartmentId = 1L,
                             LessonId = 5L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7346)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3843)
                         },
                         new
                         {
                             DepartmentLessonId = 6L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7381),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3876),
                             DepartmentId = 1L,
                             LessonId = 6L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7381)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3877)
                         },
                         new
                         {
                             DepartmentLessonId = 7L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7395),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3891),
                             DepartmentId = 1L,
                             LessonId = 7L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7395)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3892)
                         },
                         new
                         {
                             DepartmentLessonId = 8L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7408),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3905),
                             DepartmentId = 1L,
                             LessonId = 8L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7409)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3906)
                         },
                         new
                         {
                             DepartmentLessonId = 9L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7422),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3919),
                             DepartmentId = 1L,
                             LessonId = 9L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7423)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3920)
                         },
                         new
                         {
                             DepartmentLessonId = 10L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7437),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3934),
                             DepartmentId = 1L,
                             LessonId = 10L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7437)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3935)
                         },
                         new
                         {
                             DepartmentLessonId = 11L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7450),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3949),
                             DepartmentId = 1L,
                             LessonId = 11L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7451)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3949)
                         },
                         new
                         {
                             DepartmentLessonId = 12L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7464),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3962),
                             DepartmentId = 1L,
                             LessonId = 12L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(7465)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(3963)
                         });
                 });
 
@@ -435,34 +435,34 @@ namespace DPA.Database.Migrations
                         new
                         {
                             FacultyId = 1L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(2744),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(6087),
                             FacultyCode = "BM310",
                             Title = "BİLGİSAYAR VE BİLİŞİM BİLİMLERİ FAKÜLTESİ",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(2746)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(6090)
                         },
                         new
                         {
                             FacultyId = 2L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(2918),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(6471),
                             FacultyCode = "MF123",
                             Title = "Mühendislik Fakültesi",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(2919)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(6471)
                         },
                         new
                         {
                             FacultyId = 3L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(2938),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(6503),
                             FacultyCode = "HKK112",
                             Title = "Hukuk Fakültesi",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(2938)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(6504)
                         },
                         new
                         {
                             FacultyId = 4L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(2952),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(6524),
                             FacultyCode = "TKL423",
                             Title = "Teknoloji Fakültesi",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(2953)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(6525)
                         });
                 });
 
@@ -502,156 +502,156 @@ namespace DPA.Database.Migrations
                         {
                             LessonId = 1L,
                             AKTS = 4,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(5590),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(4780),
                             Credit = 4,
                             LessonCode = "TUR 101",
                             LessonType = 1,
                             Name = "TÜRK DİLİ",
                             SemesterType = 1,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(5592),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(4785),
                             WeeklyHour = 4
                         },
                         new
                         {
                             LessonId = 2L,
                             AKTS = 6,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6416),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6311),
                             Credit = 4,
                             LessonCode = "FIZ 111",
                             LessonType = 1,
                             Name = "FİZİK I",
                             SemesterType = 1,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6416),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6313),
                             WeeklyHour = 5
                         },
                         new
                         {
                             LessonId = 3L,
                             AKTS = 6,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6449),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6398),
                             Credit = 4,
                             LessonCode = "MAT 111",
                             LessonType = 1,
                             Name = "MATEMATİK I",
                             SemesterType = 1,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6449),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6400),
                             WeeklyHour = 4
                         },
                         new
                         {
                             LessonId = 4L,
                             AKTS = 4,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6467),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6442),
                             Credit = 2,
                             LessonCode = "MAT 113",
                             LessonType = 1,
                             Name = "LİNEER CEBİR",
                             SemesterType = 1,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6467),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6443),
                             WeeklyHour = 2
                         },
                         new
                         {
                             LessonId = 5L,
                             AKTS = 4,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6483),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6470),
                             Credit = 2,
                             LessonCode = "BSM 101",
                             LessonType = 1,
                             Name = "BİLGİSAYAR MÜHENDİSLİĞİNE GİRİŞ",
                             SemesterType = 1,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6483),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6471),
                             WeeklyHour = 2
                         },
                         new
                         {
                             LessonId = 6L,
                             AKTS = 6,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6502),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6501),
                             Credit = 4,
                             LessonCode = "BSM 103",
                             LessonType = 1,
                             Name = "PROGRAMLAMAYA GİRİŞ",
                             SemesterType = 1,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6503),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6502),
                             WeeklyHour = 4
                         },
                         new
                         {
                             LessonId = 7L,
                             AKTS = 4,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6518),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6529),
                             Credit = 4,
                             LessonCode = "ING 190",
                             LessonType = 1,
                             Name = "İNGİLİZCE",
                             SemesterType = 2,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6519),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6530),
                             WeeklyHour = 4
                         },
                         new
                         {
                             LessonId = 8L,
                             AKTS = 6,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6535),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6557),
                             Credit = 4,
                             LessonCode = "FIZ 112",
                             LessonType = 1,
                             Name = "FİZİK II",
                             SemesterType = 2,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6535),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6558),
                             WeeklyHour = 5
                         },
                         new
                         {
                             LessonId = 9L,
                             AKTS = 6,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6551),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6601),
                             Credit = 4,
                             LessonCode = "MAT 112",
                             LessonType = 1,
                             Name = "MATEMATİK II",
                             SemesterType = 2,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6552),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6602),
                             WeeklyHour = 4
                         },
                         new
                         {
                             LessonId = 10L,
                             AKTS = 6,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6569),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6630),
                             Credit = 4,
                             LessonCode = "BSM 102",
                             LessonType = 1,
                             Name = "NESNEYE DAYALI PROGRAMLAMA",
                             SemesterType = 2,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6570),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6631),
                             WeeklyHour = 4
                         },
                         new
                         {
                             LessonId = 11L,
                             AKTS = 4,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6586),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6658),
                             Credit = 3,
                             LessonCode = "BSM 104",
                             LessonType = 1,
                             Name = "WEB TEKNOLOJİLERİ",
                             SemesterType = 2,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6587),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6659),
                             WeeklyHour = 3
                         },
                         new
                         {
                             LessonId = 12L,
                             AKTS = 4,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6603),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6684),
                             Credit = 3,
                             LessonCode = "IST 108",
                             LessonType = 1,
                             Name = "OLASILIK VE İSTATİSTİK",
                             SemesterType = 2,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(6603),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(6685),
                             WeeklyHour = 3
                         });
                 });
@@ -680,178 +680,178 @@ namespace DPA.Database.Migrations
                         new
                         {
                             LessonGroupId = 1L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7560),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8397),
                             GroupType = 1,
                             LessonId = 1L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7562)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8400)
                         },
                         new
                         {
                             LessonGroupId = 2L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7715),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8682),
                             GroupType = 2,
                             LessonId = 1L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7715)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8683)
                         },
                         new
                         {
                             LessonGroupId = 3L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7732),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8712),
                             GroupType = 1,
                             LessonId = 2L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7732)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8713)
                         },
                         new
                         {
                             LessonGroupId = 4L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7752),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8734),
                             GroupType = 2,
                             LessonId = 2L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7753)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8735)
                         },
                         new
                         {
                             LessonGroupId = 5L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7766),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8756),
                             GroupType = 1,
                             LessonId = 3L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7767)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8757)
                         },
                         new
                         {
                             LessonGroupId = 6L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7783),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8782),
                             GroupType = 2,
                             LessonId = 3L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7783)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8783)
                         },
                         new
                         {
                             LessonGroupId = 7L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7796),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8806),
                             GroupType = 1,
                             LessonId = 4L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7797)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8807)
                         },
                         new
                         {
                             LessonGroupId = 8L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7810),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8830),
                             GroupType = 1,
                             LessonId = 5L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7811)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8831)
                         },
                         new
                         {
                             LessonGroupId = 9L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7823),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8853),
                             GroupType = 1,
                             LessonId = 6L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7824)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8854)
                         },
                         new
                         {
                             LessonGroupId = 10L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7838),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8877),
                             GroupType = 2,
                             LessonId = 6L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7839)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8878)
                         },
                         new
                         {
                             LessonGroupId = 11L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7852),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8902),
                             GroupType = 1,
                             LessonId = 7L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7853)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8903)
                         },
                         new
                         {
                             LessonGroupId = 12L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7866),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8927),
                             GroupType = 2,
                             LessonId = 7L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7867)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8928)
                         },
                         new
                         {
                             LessonGroupId = 13L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7880),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8949),
                             GroupType = 1,
                             LessonId = 8L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7880)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8950)
                         },
                         new
                         {
                             LessonGroupId = 14L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7893),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8974),
                             GroupType = 2,
                             LessonId = 8L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7894)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8975)
                         },
                         new
                         {
                             LessonGroupId = 15L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7907),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8998),
                             GroupType = 1,
                             LessonId = 9L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7908)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(8999)
                         },
                         new
                         {
                             LessonGroupId = 16L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7921),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9044),
                             GroupType = 2,
                             LessonId = 9L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7921)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9045)
                         },
                         new
                         {
                             LessonGroupId = 17L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7934),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9085),
                             GroupType = 1,
                             LessonId = 10L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7935)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9087)
                         },
                         new
                         {
                             LessonGroupId = 18L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7949),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9214),
                             GroupType = 2,
                             LessonId = 10L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7949)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9215)
                         },
                         new
                         {
                             LessonGroupId = 19L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7962),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9239),
                             GroupType = 1,
                             LessonId = 11L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7963)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9240)
                         },
                         new
                         {
                             LessonGroupId = 20L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7975),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9262),
                             GroupType = 2,
                             LessonId = 11L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7976)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9263)
                         },
                         new
                         {
                             LessonGroupId = 21L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7988),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9285),
                             GroupType = 1,
                             LessonId = 12L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(7989)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9286)
                         },
                         new
                         {
                             LessonGroupId = 22L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(8001),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9321),
                             GroupType = 2,
                             LessonId = 12L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(8002)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 632, DateTimeKind.Local).AddTicks(9322)
                         });
                 });
 
@@ -880,146 +880,146 @@ namespace DPA.Database.Migrations
                         new
                         {
                             LocationId = 1L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(8537),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5255),
                             FacultyId = 1L,
                             Title = "1000",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(8540)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5257)
                         },
                         new
                         {
                             LocationId = 2L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9288),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5649),
                             FacultyId = 1L,
                             Title = "1001",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9289)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5649)
                         },
                         new
                         {
                             LocationId = 3L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9311),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5687),
                             FacultyId = 1L,
                             Title = "1002",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9312)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5688)
                         },
                         new
                         {
                             LocationId = 4L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9327),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5704),
                             FacultyId = 1L,
                             Title = "1003",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9328)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5704)
                         },
                         new
                         {
                             LocationId = 5L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9342),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5719),
                             FacultyId = 1L,
                             Title = "1004",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9343)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5720)
                         },
                         new
                         {
                             LocationId = 6L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9360),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5737),
                             FacultyId = 1L,
                             Title = "1005",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9361)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5738)
                         },
                         new
                         {
                             LocationId = 7L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9375),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5753),
                             FacultyId = 1L,
                             Title = "1006",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9376)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5753)
                         },
                         new
                         {
                             LocationId = 8L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9390),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5768),
                             FacultyId = 1L,
                             Title = "1007",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9391)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5769)
                         },
                         new
                         {
                             LocationId = 9L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9405),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5783),
                             FacultyId = 1L,
                             Title = "1008",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9406)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5784)
                         },
                         new
                         {
                             LocationId = 10L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9431),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5799),
                             FacultyId = 1L,
                             Title = "1009",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9431)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5800)
                         },
                         new
                         {
                             LocationId = 11L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9446),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5815),
                             FacultyId = 1L,
                             Title = "10010",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9447)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5816)
                         },
                         new
                         {
                             LocationId = 12L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9461),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5830),
                             FacultyId = 1L,
                             Title = "10011",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9462)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5831)
                         },
                         new
                         {
                             LocationId = 13L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9476),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5846),
                             FacultyId = 1L,
                             Title = "10012",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9476)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5846)
                         },
                         new
                         {
                             LocationId = 14L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9490),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5861),
                             FacultyId = 1L,
                             Title = "10013",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9491)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5861)
                         },
                         new
                         {
                             LocationId = 15L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9505),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5876),
                             FacultyId = 1L,
                             Title = "10014",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9506)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5876)
                         },
                         new
                         {
                             LocationId = 16L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9520),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5891),
                             FacultyId = 1L,
                             Title = "10015",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9521)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5891)
                         },
                         new
                         {
                             LocationId = 17L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9535),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5906),
                             FacultyId = 1L,
                             Title = "10016",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9536)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5907)
                         },
                         new
                         {
                             LocationId = 18L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9551),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5923),
                             FacultyId = 1L,
                             Title = "10017",
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(9552)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 634, DateTimeKind.Local).AddTicks(5923)
                         });
                 });
 
@@ -1084,6 +1084,11 @@ namespace DPA.Database.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("Group")
+                        .IsRequired()
+                        .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)))
+                        .HasMaxLength(1);
 
                     b.Property<long>("LessonId");
 
@@ -1154,7 +1159,7 @@ namespace DPA.Database.Migrations
                         new
                         {
                             UserId = 1L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 985, DateTimeKind.Local).AddTicks(8862),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 628, DateTimeKind.Local).AddTicks(6807),
                             Email = "administrator@administrator.com",
                             Login = "1h0ATANFe6x7kMHo1PURE74WI0ayevUwfK/+Ie+IWX/xWrFWngcVUwL/ewryn38EMVMQBFaNo4SaVwgXaBWnDw==",
                             Name = "Administrator",
@@ -1163,12 +1168,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Administrator",
                             Title = 0,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 985, DateTimeKind.Local).AddTicks(8881)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 628, DateTimeKind.Local).AddTicks(6831)
                         },
                         new
                         {
                             UserId = 2L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7451),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(1550),
                             Email = "celalceken@sakarya.edu.tr",
                             Login = "sqqdGm+QyoYM0p0Co1hgYX9aPayWbuCoIpPkN3vm+ntuFm8/mNW901g1mPJP0V/ZdOuD05U5btfuffNNkvRSMQ==",
                             Name = "Celal",
@@ -1177,12 +1182,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Çeken",
                             Title = 1,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7452)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(1551)
                         },
                         new
                         {
                             UserId = 3L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7636),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(1835),
                             Email = "coz@sakarya.edu.tr",
                             Login = "lpe17pCaWVWNiI8dXvCHIEgaSpoTiULAZbWhSDxk1zbEdv3je87szjOl8CFst+hU8hITlcCc2AtvEIAdxgA+ng==",
                             Name = "Cemil",
@@ -1191,12 +1196,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Öz",
                             Title = 1,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7637)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(1836)
                         },
                         new
                         {
                             UserId = 4L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7696),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(1958),
                             Email = "umit@sakarya.edu.tr",
                             Login = "aYoce2dux8eT5/nvryziC97/nrEiqS5+S0hEMEvKhB0fGnI8dbF7AFLAi/+6dnvNOZwnHDJi+9VQwUtKaPeEcA==",
                             Name = "Ümit",
@@ -1205,12 +1210,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Kocabıçak",
                             Title = 1,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7697)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(1960)
                         },
                         new
                         {
                             UserId = 5L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7753),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2074),
                             Email = "azengin@sakarya.edu.tr",
                             Login = "3b8hL6Cd/mm0v6MgNvkKvnoUjLbK/8+JNw/0AIXmtZjxfOcpZYndmXqV8UHH4dI8b1EnJ4LZWNs8lQV74pv2jQ==",
                             Name = "Ahmet",
@@ -1219,12 +1224,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Zengin",
                             Title = 3,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7754)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2076)
                         },
                         new
                         {
                             UserId = 6L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7815),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2207),
                             Email = "ozmen@sakarya.edu.tr",
                             Login = "DQFv5btLPxS0XrNFtrqeFiKSgPMPHwmrdk88CVFWmRBn2jK6vVpms4u8MoLUCvNMEhI99ECRDR8Rh6kuwDy+Zg==",
                             Name = "Ahmet",
@@ -1233,12 +1238,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Özmen",
                             Title = 3,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7816)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2209)
                         },
                         new
                         {
                             UserId = 7L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7871),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2319),
                             Email = "cbayilmis@sakarya.edu.tr",
                             Login = "dOGHhzh1rEnqFOee38OOgEWmQM5Ex3+PtVwdLHWpKNlAjyuX+Zx9m91+f4TmlpEZKHL1hK/SunceSqkZ+m/u2g==",
                             Name = "Cüneyt",
@@ -1247,12 +1252,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Bayılmış",
                             Title = 3,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7871)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2320)
                         },
                         new
                         {
                             UserId = 8L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7933),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2429),
                             Email = "ahmetarslan@sakarya.edu.tr",
                             Login = "h0g/LYGJK7QP9Lo3ZNMnCtlyzkVTVhf3c+S+lA7ExZ/U9XP+84SvRNjjmnYrCMKQS2r6D7TPuuHH75zNwTU4YQ==",
                             Name = "Ahmet",
@@ -1261,12 +1266,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Arslan",
                             Title = 2,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7934)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2431)
                         },
                         new
                         {
                             UserId = 9L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7988),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2544),
                             Email = "beken@sakarya.edu.tr",
                             Login = "1J8MNqnuIyH/yRYMDQUejip91vrhoW+A3YdeD9eAYDtLuWx17l706wt6sXrzabpaW6CePiIxw5YU8jDQqnhMmA==",
                             Name = "Beyza",
@@ -1275,12 +1280,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Eken",
                             Title = 2,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(7989)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2546)
                         },
                         new
                         {
                             UserId = 10L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(8045),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2659),
                             Email = "ddural@sakarya.edu.tr",
                             Login = "+tqmuZBVWUcLTVBaSyXnHUGxLiN8+kdgrkW2Ds9wxhS4wAC/NO+vSPFKLYoWHkZDvtP6gVUSfW77X9FkB/Bimw==",
                             Name = "Deniz",
@@ -1289,12 +1294,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Balta",
                             Title = 2,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(8046)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2661)
                         },
                         new
                         {
                             UserId = 11L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(8099),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2781),
                             Email = "oguz@sakarya.edu.tr",
                             Login = "N2dbG766DJ+GQaFDlEPrH3ioi+ZD9VpnVGVHCtTxZl9nC+ruFrcTi7zgOIydZKCFaBqwKxpowNV2GYBRSPvNbQ==",
                             Name = "Oguzhan",
@@ -1303,12 +1308,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Aydın",
                             Title = 4,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(8100)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2783)
                         },
                         new
                         {
                             UserId = 12L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(8158),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2893),
                             Email = "hasantutan@sakarya.edu.tr",
                             Login = "GgWLS/9l9VKx7d18VXX+K3i3oJ6emqeCCniMnl6Gbg1cJftNXfCWUFao5OpNTaWCw39B/Z/1E5vV2+PPDFFesQ==",
                             Name = "Hasan",
@@ -1317,12 +1322,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Tutan",
                             Title = 4,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(8159)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(2894)
                         },
                         new
                         {
                             UserId = 13L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(8214),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(3005),
                             Email = "ercanpala@sakarya.edu.tr",
                             Login = "PS+3mJHvWnYUHEhmnfo8APwTthPB92Bf2CDAupt1vAWgbc78SYmxb+wL48kZAUB6jHANlNfpH9yuAjRAyF6vlA==",
                             Name = "Ercan",
@@ -1331,12 +1336,12 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Palabıyık",
                             Title = 4,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(8215)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(3007)
                         },
                         new
                         {
                             UserId = 14L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(8267),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(3116),
                             Email = "meltemayy@sakarya.edu.tr",
                             Login = "Ee6akHsxZOrmTyxqSHZL9vRY+MZdM6mUeRwEc7K+dRE8k1k0qagjmU8MN7KF0yVy7EkplM/ZIx90EbzYa4vTdA==",
                             Name = "Meltem",
@@ -1345,7 +1350,7 @@ namespace DPA.Database.Migrations
                             Status = 1,
                             Surname = "Aydın",
                             Title = 4,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 987, DateTimeKind.Local).AddTicks(8268)
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 631, DateTimeKind.Local).AddTicks(3117)
                         });
                 });
 
@@ -1375,209 +1380,209 @@ namespace DPA.Database.Migrations
                         new
                         {
                             UserLessonId = 1L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9123),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(708),
                             LessonId = 1L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9125),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(714),
                             UserId = 5L
                         },
                         new
                         {
                             UserLessonId = 2L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9671),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1507),
                             LessonId = 1L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9672),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1509),
                             UserId = 8L
                         },
                         new
                         {
                             UserLessonId = 3L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9692),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1570),
                             LessonId = 1L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9693),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1572),
                             UserId = 11L
                         },
                         new
                         {
                             UserLessonId = 4L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9706),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1620),
                             LessonId = 2L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9707),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1621),
                             UserId = 2L
                         },
                         new
                         {
                             UserLessonId = 5L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9721),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1667),
                             LessonId = 2L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9721),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1668),
                             UserId = 9L
                         },
                         new
                         {
                             UserLessonId = 6L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9737),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1722),
                             LessonId = 2L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9737),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1724),
                             UserId = 12L
                         },
                         new
                         {
                             UserLessonId = 7L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9750),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1773),
                             LessonId = 3L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9751),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1792),
                             UserId = 3L
                         },
                         new
                         {
                             UserLessonId = 8L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9764),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1843),
                             LessonId = 3L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9764),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1844),
                             UserId = 5L
                         },
                         new
                         {
                             UserLessonId = 9L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9777),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1869),
                             LessonId = 3L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9778),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1870),
                             UserId = 13L
                         },
                         new
                         {
                             UserLessonId = 10L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9802),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1897),
                             LessonId = 4L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9802),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1898),
                             UserId = 14L
                         },
                         new
                         {
                             UserLessonId = 11L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9816),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1921),
                             LessonId = 5L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9817),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1922),
                             UserId = 7L
                         },
                         new
                         {
                             UserLessonId = 12L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9830),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1946),
                             LessonId = 6L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9831),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1947),
                             UserId = 4L
                         },
                         new
                         {
                             UserLessonId = 13L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9843),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1970),
                             LessonId = 6L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9844),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1971),
                             UserId = 10L
                         },
                         new
                         {
                             UserLessonId = 14L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9857),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1994),
                             LessonId = 7L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9857),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(1995),
                             UserId = 11L
                         },
                         new
                         {
                             UserLessonId = 15L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9870),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2017),
                             LessonId = 7L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9871),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2018),
                             UserId = 12L
                         },
                         new
                         {
                             UserLessonId = 16L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9884),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2042),
                             LessonId = 7L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9884),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2043),
                             UserId = 10L
                         },
                         new
                         {
                             UserLessonId = 17L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9897),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2063),
                             LessonId = 8L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9898),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2066),
                             UserId = 5L
                         },
                         new
                         {
                             UserLessonId = 18L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9913),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2115),
                             LessonId = 8L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9914),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2116),
                             UserId = 13L
                         },
                         new
                         {
                             UserLessonId = 19L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9927),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2141),
                             LessonId = 9L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9928),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2142),
                             UserId = 8L
                         },
                         new
                         {
                             UserLessonId = 20L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9941),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2157),
                             LessonId = 9L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9942),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2158),
                             UserId = 9L
                         },
                         new
                         {
                             UserLessonId = 21L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9955),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2171),
                             LessonId = 9L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9955),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2172),
                             UserId = 14L
                         },
                         new
                         {
                             UserLessonId = 22L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9968),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2185),
                             LessonId = 10L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9968),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2186),
                             UserId = 2L
                         },
                         new
                         {
                             UserLessonId = 23L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9981),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2199),
                             LessonId = 10L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9982),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2199),
                             UserId = 3L
                         },
                         new
                         {
                             UserLessonId = 24L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9995),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2212),
                             LessonId = 11L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 988, DateTimeKind.Local).AddTicks(9995),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2213),
                             UserId = 6L
                         },
                         new
                         {
                             UserLessonId = 25L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(8),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2226),
                             LessonId = 11L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(8),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2227),
                             UserId = 7L
                         },
                         new
                         {
                             UserLessonId = 26L,
-                            CreatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(21),
+                            CreatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2240),
                             LessonId = 12L,
-                            UpdatedDate = new DateTime(2019, 4, 15, 22, 7, 12, 989, DateTimeKind.Local).AddTicks(22),
+                            UpdatedDate = new DateTime(2019, 4, 17, 22, 37, 18, 633, DateTimeKind.Local).AddTicks(2241),
                             UserId = 4L
                         });
                 });

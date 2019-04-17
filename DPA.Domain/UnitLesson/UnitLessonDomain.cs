@@ -25,6 +25,7 @@ namespace DPA.Domain.UnitLesson
         public long UserId { get; private set; }
         public long LocationId { get; private set; }
         public long SyllabusId { get; private set; }
+        public char Group { get; private set; }
         public DateTime CreatedDate { get; private set; }
         public DateTime UpdatedDate { get; private set; }
         public virtual List<TimeEntity> TimeEntities { get; private set; } = new List<TimeEntity>();
@@ -39,5 +40,11 @@ namespace DPA.Domain.UnitLesson
                 UpdatedDate = DateTime.Now
             });
         }
+
+        public void AddGroup(UnitLessonEntity unit) 
+        {
+            Group = unit.Group;
+        }
+
     }
 }

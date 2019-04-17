@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DPA.Database.Error.Result
+namespace DPA.Core.Error.Result
 {
     public abstract class ServiceResultBase<TResult> : IServiceResult<TResult>
     {

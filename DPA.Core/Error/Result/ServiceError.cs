@@ -1,5 +1,5 @@
 ﻿using System;
-namespace DPA.Database.Error.Result
+namespace DPA.Core.Error.Result
 {
     public class ServiceError : IServiceError
     {

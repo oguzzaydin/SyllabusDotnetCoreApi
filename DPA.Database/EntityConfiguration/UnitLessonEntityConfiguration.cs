@@ -14,6 +14,7 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.UnitLessonId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.UpdatedDate).IsRequired();
+            builder.Property(x => x.Group).HasMaxLength(1).IsRequired();
 
             builder.HasOne(x => x.Lesson).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LessonId);
             builder.HasOne(x => x.User).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LessonId);

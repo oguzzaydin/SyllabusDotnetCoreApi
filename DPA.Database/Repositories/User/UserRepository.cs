@@ -1,6 +1,5 @@
 using DotNetCore.EntityFrameworkCore;
 using DotNetCore.Mapping;
-using DPA.Database.Exceptions;
 using DPA.Model;
 using DPA.Model.Models.UserModel.Dtos;
 using Microsoft.EntityFrameworkCore;
@@ -23,8 +22,8 @@ namespace DPA.Database
                                     INNER JOIN [User].[User] as u on u.UserId = ul.UserId");
             var userConstraints = users.Include(x => x.Constraints).ToList();
             
-            if (userConstraints.Count == 0)
-                throw new UserFriendlyException($"{lessonId} Id li derse ait hoca bulunamadı.");
+            // if (userConstraints.Count == 0)
+            //     throw new UserFriendlyException($"{lessonId} Id li derse ait hoca bulunamadı.");
             
             return userConstraints.Map<List<SyllabusForUserWithConstraintListDto>>();
         }

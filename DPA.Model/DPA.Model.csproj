@@ -8,8 +8,4 @@
         <PackageReference Include="DotNetCore.Security" Version="6.6.0" />
         <PackageReference Include="DotNetCore.Validation" Version="6.10.0" />
     </ItemGroup>
-       <ItemGroup>
-        <ProjectReference Include="..\DPA.CrossCutting\DPA.CrossCutting.csproj" />
-    </ItemGroup>
-
 </Project>

@@ -1,12 +1,11 @@
 using DotNetCore.Validation;
-using DPA.CrossCutting.Resources;
 using FluentValidation;
 
 namespace DPA.Model
 {
     public sealed class SignedInModelValidator : Validator<SignedInModel>
     {
-        public SignedInModelValidator() : base(Texts.AuthenticationInvalid)
+        public SignedInModelValidator()
         {
             RuleFor(x => x).NotNull();
             RuleFor(x => x.UserId).NotNull();

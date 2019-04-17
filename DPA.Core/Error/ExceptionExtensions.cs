@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DPA.Database.Error.Result;
-using DPA.Database.Exceptions;
+using DPA.Core.Error.Result;
 
-namespace DPA.Database.Error
+namespace DPA.Core.Error
 {
     public static class ExceptionExtensions
     {
-        public static IServiceResult ToServiceResult(this DpaException exception)
+        public static IServiceResult ToServiceResult(this Exceptions.DpaException exception)
         {
             try
             {

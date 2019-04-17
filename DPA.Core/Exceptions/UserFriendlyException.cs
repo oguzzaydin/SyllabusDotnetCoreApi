@@ -1,5 +1,5 @@
 ﻿using System;
-namespace DPA.Database.Exceptions
+namespace DPA.Core.Exceptions
 {
     public class UserFriendlyException : DpaException
     {
