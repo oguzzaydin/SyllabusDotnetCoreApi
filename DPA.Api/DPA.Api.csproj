@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DPA.Core\DPA.Core.csproj" />
+    <ProjectReference Include="..\DPA.IoC\DPA.IoC.csproj" />
   </ItemGroup>
 
 </Project>

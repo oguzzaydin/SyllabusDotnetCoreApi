@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using DotNetCore.AspNetCore;
 using DPA.Core;
-using DPA.Core.Error;
+using DPA.Database.Error;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
