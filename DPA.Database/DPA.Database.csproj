@@ -15,10 +15,4 @@
   <ItemGroup>
     <ProjectReference Include="..\DPA.Model\DPA.Model.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Error\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Error\Result\" />
-  </ItemGroup>
 </Project>

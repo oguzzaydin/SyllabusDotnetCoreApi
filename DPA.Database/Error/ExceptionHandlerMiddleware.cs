@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
-using DPA.Core.Error.Result;
-using DPA.Core.Exceptions;
+using DPA.Database.Error.Result;
+using DPA.Database.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace DPA.Core.Error
+namespace DPA.Database.Error
 {
     public class ErrorHandlingMiddleware
     {

@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DPA.Core.Exceptions;
+using DPA.Database.Exceptions;
 
-namespace DPA.Core
+namespace DPA.Database
 {
     public static class Check
     {

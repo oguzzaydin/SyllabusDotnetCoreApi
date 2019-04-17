@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace DPA.Core.Exceptions
+namespace DPA.Database.Exceptions
 {
     [Serializable]
     public class NotValidatedException : DpaException

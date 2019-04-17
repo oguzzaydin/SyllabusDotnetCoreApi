@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DPA.Core.Error.Result
+namespace DPA.Database.Error.Result
 {
     public class ServiceResult : ServiceResult<int>
     {

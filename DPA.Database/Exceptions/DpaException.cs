@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
 
-namespace DPA.Core.Exceptions
+namespace DPA.Database.Exceptions
 {
     [Serializable]
     public class DpaException : Exception

@@ -8,10 +8,8 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="DotNetCore.IoC" Version="6.8.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\DPA.Application\DPA.Application.csproj" />
     <ProjectReference Include="..\DPA.Database\DPA.Database.csproj" />
   </ItemGroup>
-
 </Project>
