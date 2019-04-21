@@ -23,7 +23,7 @@ namespace DPA.Model.Models.SyllabusModel.Dtos
     {
         public long? LessonGroupId { get; set; }
         public long LessonId { get; set; }
-        public LessonGroupType? GroupType { get; set; }
+        public LessonGroupType GroupType { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
     }

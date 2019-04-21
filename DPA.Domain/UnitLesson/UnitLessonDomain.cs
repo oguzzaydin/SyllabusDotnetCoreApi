@@ -25,26 +25,23 @@ namespace DPA.Domain.UnitLesson
         public long UserId { get; private set; }
         public long LocationId { get; private set; }
         public long SyllabusId { get; private set; }
-        public char Group { get; private set; }
+        public LessonGroupType GroupType { get; private set; }
         public DateTime CreatedDate { get; private set; }
         public DateTime UpdatedDate { get; private set; }
-        public virtual List<TimeEntity> TimeEntities { get; private set; } = new List<TimeEntity>();
-
-        public void AddTime(DayOfTheWeekType dayOfTheWeekType,int startTime, int endTime)
+        public DayOfTheWeekType DayOfTheWeekType { get; private set; }
+        public int StarTime { get; private set; }
+        public int EndTime { get; private set; }
+        public void AddTime(DayOfTheWeekType dayOfTheWeekType, int startTime, int endTime)
         {
-            TimeEntities.Add(new TimeEntity{
-                DayOfTheWeekType = dayOfTheWeekType,
-                StarTime = startTime,
-                EndTime = endTime,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now
-            });
+            DayOfTheWeekType = dayOfTheWeekType;
+            StarTime = startTime;
+            EndTime = endTime;
+            UpdatedDate = DateTime.Now;
         }
 
-        public void AddGroup(UnitLessonEntity unit) 
+        public void AddGroup(UnitLessonEntity unit)
         {
-            Group = unit.Group;
+            GroupType = unit.GroupType;
         }
-
     }
 }

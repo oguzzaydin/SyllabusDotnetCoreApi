@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using DotNetCore.AspNetCore;
+﻿using DotNetCore.AspNetCore;
 using DPA.Core;
 using DPA.Database.Error;
 using Microsoft.AspNetCore.Builder;
