@@ -58,6 +58,9 @@ namespace DPA.Application
                 foreach(var lesson in lessons)
                 {
                    var teachers = _userRepository.GetUserWithConstraintsForLesson(lesson.LessonId);
+                   var teacher = TeacherSelection(teachers);
+                   var teacherForLessons = _lessonRepository.GetLessonsForTeacher(teacher.UserId);
+                   syllabus.AssignToTeacher(teacherForLessons, teacher);
 
                 }
                 // var locationId = ChooseLocation(request.FacultyId, lesson.LessonId);
@@ -77,14 +80,8 @@ namespace DPA.Application
         {
             var firstTeacher = teachers.OrderBy(x => x.Title).FirstOrDefault(); // Öğretmenlerden öncelikli olanları seçer 
             var selectTeachers = teachers.FindAll(x => x.Title == firstTeacher.Title);
-            // if (syllabus.UnitLessons.Count == 0) 
-            // {
-            //     selectTeachers.Shuffle();
-            //     return selectTeachers.FirstOrDefault();
-            // }
-
-            //TODO : Birim dersler eklenmiş ise filtrelemeler ?
-            return null;
+            selectTeachers.Shuffle();
+            return selectTeachers.First();
         }
         private long ChooseLocation(long facultyId, long lessonId)
         {

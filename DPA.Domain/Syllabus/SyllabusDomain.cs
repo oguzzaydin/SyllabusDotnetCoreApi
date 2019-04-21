@@ -6,6 +6,8 @@ using DPA.Domain.UnitLesson;
 using DPA.Model;
 using DPA.Model.Extensions;
 using DPA.Model.Models.SyllabusModel.Dtos;
+using DPA.Model.Models.UserModel.Dtos;
+
 namespace DPA.Domain
 {
     public class SyllabusDomain
@@ -61,14 +63,20 @@ namespace DPA.Domain
             {
                 //3 saat ard arda ata
                 if (lesson.WeeklyHour == 3)
+                {
                     UnitAssignToLesson(lesson.LessonId, 3, groupType);
+                }
                 else
+                {
                     //2 saat art arda ata
                     UnitAssignToLesson(lesson.LessonId, 2, groupType);
-                lesson.WeeklyHour = lesson.WeeklyHour - 2;
+                    lesson.WeeklyHour = lesson.WeeklyHour - 2;
 
-                if (lesson.WeeklyHour != 0)
-                    AssignLessonCheckCriteria(lesson, groupType);
+                    if (lesson.WeeklyHour != 0)
+                    {
+                        AssignLessonCheckCriteria(lesson, groupType);
+                    }
+                }
             }
             else
             {
@@ -92,13 +100,16 @@ namespace DPA.Domain
             {
                 foreach (var item in emptyUnits)
                 {
-                  int index = UnitLessons.IndexOf(item);
-                  UnitLessons[index].LessonId = lessonId;
-                  UnitLessons[index].GroupType = groupType;
+                    int index = UnitLessons.IndexOf(item);
+                    if (index > 0 || index == 0)
+                    {
+                        UnitLessons[index].LessonId = lessonId;
+                        UnitLessons[index].GroupType = groupType;
+                    }
                 }
             }
         }
-        public List<UnitLessonEntity> UnitEmptySearch(int hour)
+        private List<UnitLessonEntity> UnitEmptySearch(int hour)
         {
             var days = new List<DayOfTheWeekType> { DayOfTheWeekType.One, DayOfTheWeekType.Two, DayOfTheWeekType.Three, DayOfTheWeekType.Four, DayOfTheWeekType.Five };
             var units = GetEmptyUnitsForDay(days);
@@ -117,8 +128,14 @@ namespace DPA.Domain
                         days.Remove(units.First().DayOfTheWeekType);
                     }
                     else
+                    {
                         days.Clear();
-                } else {
+                        return emptyUnit;
+                    }
+
+                }
+                else
+                {
                     CreateSyllabusDefaultTable(EducationType);
                     return emptyUnit;
                 }
@@ -133,7 +150,7 @@ namespace DPA.Domain
             {
                 for (int i = 0; i < units.Count; i++)
                 {
-                    if (units[i].EndTime == units[i + 1].StarTime && units[i + 1].EndTime == units[i + 2].StarTime)
+                    if (units.Count >= 3 && units[i].EndTime == units[i + 1].StarTime && units[i + 1].EndTime == units[i + 2].StarTime)
                     {
                         empytUnit.Add(units[i]);
                         if (empytUnit.Count == hour)
@@ -145,7 +162,7 @@ namespace DPA.Domain
             {
                 for (int i = 0; i < units.Count; i++)
                 {
-                    if (units[i].EndTime == units[i + 1].StarTime)
+                    if (units.Count >= 2 && units[i].EndTime == units[i + 1].StarTime)
                     {
                         empytUnit.Add(units[i]);
                         if (empytUnit.Count == hour)
@@ -187,9 +204,18 @@ namespace DPA.Domain
         }
         #endregion
 
-        public void AssignToTeacher() 
+        #region ÖĞRETMEN ATAMA
+        public void AssignToTeacher(List<SyllabusForLessonWithGroupListDto> teacherForLesson, SyllabusForUserWithConstraintListDto teacher)
         {
-            
+            var emptyUnit = UnitLessons.FindAll(x => x.UserId == 0 && teacherForLesson.Contains(teacherForLesson.Find(y => y.LessonId == x.LessonId)));
+
+            // if (teacher.IsFreeDay)
+            // {
+
+            // } else {
+
+            // }
         }
+        #endregion
     }
 }

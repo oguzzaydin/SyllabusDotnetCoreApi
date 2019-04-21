@@ -30,7 +30,7 @@ namespace DPA.Database
             return lessonGroups.Map<List<SyllabusForLessonWithGroupListDto>>();
         }
 
-        public List<LessonEntity> GetLessonsForTeacher(long userId)
+        public List<SyllabusForLessonWithGroupListDto> GetLessonsForTeacher(long userId)
         {
             var lessons = Queryable.FromSql($@"SELECT DISTINCT l.* FROM Faculty.Lesson as l
                             INNER JOIN [User].UserLesson ul on ul.LessonId = l.LessonId
@@ -38,7 +38,7 @@ namespace DPA.Database
 
             // if (lessons.Count == 0)
             //     throw new UserFriendlyException("Seçiminize uygun dersler bulunamadı.");
-            return lessons;
+            return lessons.Map<List<SyllabusForLessonWithGroupListDto>>();;
         }
     }
 }

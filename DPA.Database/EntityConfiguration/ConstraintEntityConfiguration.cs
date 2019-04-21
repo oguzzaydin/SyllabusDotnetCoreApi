@@ -24,7 +24,6 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.UpdatedDate).IsRequired();
 
-            builder.HasOne(x => x.User).WithMany(x => x.Constraints).HasForeignKey(x => x.UserId);
         }
     }
 }

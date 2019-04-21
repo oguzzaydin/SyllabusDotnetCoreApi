@@ -28,10 +28,11 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.UpdatedDate).IsRequired();
 
             builder.HasMany(x => x.UsersLogs).WithOne(x => x.User).HasForeignKey(x => x.UserId);
-            builder.HasMany(x => x.Constraints).WithOne(x => x.User).HasForeignKey(x => x.UserId);
             builder.HasMany(x => x.UserLessons).WithOne(x => x.User).HasForeignKey(x => x.UserId);
             builder.HasMany(x => x.UnitLessons).WithOne(x => x.User).HasForeignKey(x => x.UserId);
+            
             builder.HasOne(x => x.Department).WithOne(x => x.HeadOfDepartment).HasForeignKey<DepartmentEntity>(x => x.HeadOfDepartmentId);
+            builder.HasOne(x => x.Constraint).WithOne(x => x.User).HasForeignKey<ConstraintEntity>(x => x.UserId);
         }
     }
 }

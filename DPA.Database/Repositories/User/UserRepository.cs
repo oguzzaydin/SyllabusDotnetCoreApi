@@ -19,13 +19,13 @@ namespace DPA.Database
         {
             var users = Queryable.FromSql($@"SELECT u.* FROM Faculty.Lesson as l
                                     INNER JOIN [User].UserLesson ul on l.LessonId = {lessonId} and ul.LessonId = l.LessonId
-                                    INNER JOIN [User].[User] as u on u.UserId = ul.UserId");
-            var userConstraints = users.Include(x => x.Constraints).ToList();
+                                    INNER JOIN [User].[User] as u on u.UserId = ul.UserId
+                                    INNER JOIN [User].[Constraint] as c on c.UserId = ul.UserId and u.UserId = c.UserId");
             
             // if (userConstraints.Count == 0)
             //     throw new UserFriendlyException($"{lessonId} Id li derse ait hoca bulunamadı.");
             
-            return userConstraints.Map<List<SyllabusForUserWithConstraintListDto>>();
+            return users.Map<List<SyllabusForUserWithConstraintListDto>>();
         }
 
         public Task<SignedInModel> SignInAsync(SignInModel signInModel)
