@@ -20,9 +20,9 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.EndTime).IsRequired();
 
             builder.HasOne(x => x.Lesson).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LessonId);
-            builder.HasOne(x => x.User).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LessonId);
-            builder.HasOne(x => x.Location).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LessonId);
-            builder.HasOne(x => x.Syllabus).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LessonId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.User).WithMany(x => x.UnitLessons).HasForeignKey(x => x.UserId);
+            builder.HasOne(x => x.Location).WithMany(x => x.UnitLessons).HasForeignKey(x => x.LocationId);
+            builder.HasOne(x => x.Syllabus).WithMany(x => x.UnitLessons).HasForeignKey(x => x.SyllabusId).OnDelete(DeleteBehavior.Restrict);
 
         }
     }

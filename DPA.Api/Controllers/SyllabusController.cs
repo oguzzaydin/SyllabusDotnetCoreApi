@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DotNetCore.AspNetCore;
 using DPA.Application;
@@ -22,16 +23,12 @@ namespace DPA.Api
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult CreateSyllabus([FromBody] CreateSyllabusRequest request)
-        {
-            _syllabusService.CreateSyllabus(request);
-            return Ok();
-        }
+        public async Task<SyllabusEntity> CreateSyllabus([FromBody] CreateSyllabusRequest request)
+            => await _syllabusService.CreateSyllabus(request);
 
+        [AllowAnonymous]
         [HttpGet("{DepartmentId}")]
-        public async Task<SyllabusEntity> SingleOrDefaultUserAsync(long DepartmentId)
-        {
-            return await _syllabusService.SelectAsync(DepartmentId);
-        }
+        public async Task<SyylabusForDepartmentDTo> GetSyllabusForDepartment(long DepartmentId)
+             => await _syllabusService.GetSyllabusForDepartment(DepartmentId);
     }
 }

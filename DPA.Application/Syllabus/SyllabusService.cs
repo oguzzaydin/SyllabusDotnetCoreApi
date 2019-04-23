@@ -40,41 +40,41 @@ namespace DPA.Application
         }
         #endregion
 
-        public async Task<SyllabusEntity> SelectAsync(long DepartmentId)
-        {
-            return await _syllabusRepository.SingleOrDefaultAsync<SyllabusEntity>(x => x.DepartmentId == DepartmentId);
-        }
-
-        public Task CreateSyllabus(CreateSyllabusRequest request)
+        public async Task<SyllabusEntity> CreateSyllabus(CreateSyllabusRequest request)
         {
             try
             {
                 var lessons = _lessonRepository.GetDepartmentLessons(request.FacultyId, request.DepartmentId, request.SemesterType);
+                var syllabusLessons = lessons.Map<List<SyllabusForLessonWithGroupListDto>>();
                 var syllabus = SyllabusDomainFactory.Create(request);
-                //Boş ders programı 1 haftalık oluşturur
                 syllabus.CreateSyllabusDefaultTable(request.EducationType);
+
                 syllabus.AssignToLesson(lessons, request);
 
-                foreach(var lesson in lessons)
-                {
-                   var teachers = _userRepository.GetUserWithConstraintsForLesson(lesson.LessonId);
-                   var teacher = TeacherSelection(teachers);
-                   var teacherForLessons = _lessonRepository.GetLessonsForTeacher(teacher.UserId);
-                   syllabus.AssignToTeacher(teacherForLessons, teacher);
+                AssignToTeacherOnSyllabus(syllabusLessons, syllabus);
+                CheckAssignToTeacherOnSyllabus(syllabusLessons, syllabus);
 
-                }
-                // var locationId = ChooseLocation(request.FacultyId, lesson.LessonId);
-                // AssignToTeacherOnSyllabus(teacher.UserId, lesson, locationId);
-                // await _syllabusRepository.AddAsync(baseSyllabus);
+                AssignToLocationsOnSyllabus(syllabus, request.FacultyId);
+                CheckAssignToLocationOnSyllabus(syllabus, request.FacultyId);
 
-                //await _databaseUnitOfWork.SaveChangesAsync();
-                return null;
+                syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0 && x.UserId == 0 && x.LocationId == 0);
+                syllabus.AddWeeklyHour(syllabus.UnitLessons.Count);
+
+                var syllabusEntity = syllabus.Map<SyllabusEntity>();
+                await _syllabusRepository.AddAsync(syllabusEntity);
+                await _databaseUnitOfWork.SaveChangesAsync();
+                return syllabusEntity;
             }
             catch (Exception ex)
             {
                 _databaseUnitOfWork.Rollback();
                 throw;
             }
+        }
+
+        public async Task<SyylabusForDepartmentDTo> GetSyllabusForDepartment(long departmentId)
+        {
+            return await _syllabusRepository.SingleOrDefaultAsync<SyylabusForDepartmentDTo>(x => x.DepartmentId == departmentId);
         }
         private SyllabusForUserWithConstraintListDto TeacherSelection(List<SyllabusForUserWithConstraintListDto> teachers)
         {
@@ -83,54 +83,35 @@ namespace DPA.Application
             selectTeachers.Shuffle();
             return selectTeachers.First();
         }
-        private long ChooseLocation(long facultyId, long lessonId)
+        private void AssignToTeacherOnSyllabus(List<SyllabusForLessonWithGroupListDto> syllabusLessons, SyllabusDomain syllabus)
+        {
+            foreach (var lesson in syllabusLessons)
+            {
+                var teachers = _userRepository.GetUserWithConstraintsForLesson(lesson.LessonId);
+                var teacher = TeacherSelection(teachers);
+                var teacherForLessons = _lessonRepository.GetLessonsForTeacher(teacher.UserId);
+                syllabus.AssignToTeacher(teacherForLessons, teacher);
+            }
+        }
+        private void CheckAssignToTeacherOnSyllabus(List<SyllabusForLessonWithGroupListDto> syllabusLessons, SyllabusDomain syllabus)
+        {
+            var emptyLessonOnSyllabus = syllabus.UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId == 0);
+            var unAssignLessons = syllabusLessons.FindAll(x => emptyLessonOnSyllabus.Contains(emptyLessonOnSyllabus.Find(y => y.LessonId == x.LessonId))).ToList();
+            if (unAssignLessons.Count >= 0)
+                AssignToTeacherOnSyllabus(unAssignLessons, syllabus);
+        }
+        private void AssignToLocationsOnSyllabus(SyllabusDomain syllabus, long facultyId)
         {
             var locations = _locationRepository.GetFacultyLocations(facultyId);
             locations.Shuffle();
-            // if (unit.Count == 0)
-            // {
-            //     return locations.FirstOrDefault().LocationId;
-            // }
-            // else
-            // {
-            //     foreach (var item in locations)
-            //     {
-            //         //TODO: Sylabuss daki unitlerde gezip bos zamana denk geleni donder buradan
-            //         return  unit.Find(y => y.LocationId != item.LocationId).LocationId;
-            //     }
-            // }
-
-            return -1;
-            // TODO : baseUnitLessons ' a eklenmiş olan birim derslerin Time'larında filtreleme yapıcaktık
-            // Time 'larda gezmişken boş saatlerde bulunabilir ve dönülebillir
+            syllabus.AssignToLocations(locations);
+            syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0 && x.UserId == 0 && x.LocationId == 0);
         }
-        private void AssignToTeacherOnSyllabus(long userId, SyllabusForLessonWithGroupListDto lesson, long locationId) {
-        //    if (lesson.LessonGroups.Count <= 1)
-        //    {
-        //       if ((int)lesson.WeeklyHour <= 2) 
-        //       {
-        //         int index = FindEmptyUnit();
-        //         var syllabusEmptyUnit = syllabus.UnitLessons.ElementAt(index);
-        //         syllabusEmptyUnit.LessonId = lesson.LessonId;
-        //         syllabusEmptyUnit.UserId = userId;
-        //         syllabusEmptyUnit.LocationId = locationId;
-        //         if (syllabus.UnitLessons.ElementAt(index + 1).LocationId == 0)
-        //         {
-        //           var syllabusNewEmptyUnit = syllabus.UnitLessons.ElementAt(index + 1);
-        //           syllabusNewEmptyUnit.LessonId = lesson.LessonId;
-        //           syllabusNewEmptyUnit.UserId = userId;
-        //           syllabusNewEmptyUnit.LocationId = locationId;
-        //         } else {
-        //           index = FindEmptyUnit();
-        //           syllabus.UnitLessons.ElementAt(index).LessonId = lesson.LessonId;
-        //           syllabus.UnitLessons.ElementAt(index).UserId = userId;
-        //           syllabus.UnitLessons.ElementAt(index).LocationId = locationId;
-        //         }
-        //       } else {
-
-        //       }
-             
-        //    }
+        private void CheckAssignToLocationOnSyllabus(SyllabusDomain syllabus, long facultyId)
+        {
+            var emptyLocationOnUnits = syllabus.UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
+            if (emptyLocationOnUnits.Count > 0)
+               AssignToLocationsOnSyllabus(syllabus, facultyId);
         }
     }
 }

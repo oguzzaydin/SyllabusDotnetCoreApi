@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DPA.Model;
 
@@ -5,7 +6,7 @@ namespace DPA.Application
 {
     public interface ISyllabusService
     {
-        Task CreateSyllabus(CreateSyllabusRequest request);
-        Task<SyllabusEntity> SelectAsync(long DepartmentId);
+        Task<SyllabusEntity> CreateSyllabus(CreateSyllabusRequest request);
+        Task<SyylabusForDepartmentDTo> GetSyllabusForDepartment(long departmentId);
     }
 }

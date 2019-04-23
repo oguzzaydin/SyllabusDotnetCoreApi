@@ -5,6 +5,7 @@ using DotNetCore.Mapping;
 using DPA.Domain.UnitLesson;
 using DPA.Model;
 using DPA.Model.Extensions;
+using DPA.Model.Models.LocationModel.Dtos;
 using DPA.Model.Models.SyllabusModel.Dtos;
 using DPA.Model.Models.UserModel.Dtos;
 
@@ -23,7 +24,6 @@ namespace DPA.Domain
         }
 
         #region prop
-        public long SyllabusId { get; private set; }
         public int Year { get; private set; }
         public SemesterType SemesterType { get; private set; }
         public PeriodType PeriodType { get; private set; }
@@ -37,15 +37,39 @@ namespace DPA.Domain
         public virtual List<UnitLessonEntity> UnitLessons { get; private set; } = new List<UnitLessonEntity>();
         #endregion
 
-        #region  DERS ATAMA
         public void AddUnitLesson(UnitLessonEntity unitLessons)
         {
             UnitLessons.Add(unitLessons);
         }
+        #region DEFAULT PROGRAM OLUŞTURMA
+        public void CreateSyllabusDefaultTable(EducationType educationType)
+        {
+            if ((int)educationType == 1)
+                CreatorTimeTable(9, 15);
+            else
+                CreatorTimeTable(15, 23);
+
+        }
+        private void CreatorTimeTable(int startTime, int endTime)
+        {
+            for (int i = 1; i < 6; i++)
+            {
+                for (int j = startTime; j < endTime; j++)
+                {
+                    var unitLessonDomain = UnitLessonDomainFactory.Create();
+                    unitLessonDomain.AddTime((DayOfTheWeekType)i, j, j + 1);
+                    var unitEntity = unitLessonDomain.Map<UnitLessonEntity>();
+                    AddUnitLesson(unitEntity);
+                }
+            }
+        }
+        #endregion
+
+        #region DERS ATAMA
         public void AssignToLesson(IList<SyllabusForLessonWithGroupListDto> lessons, CreateSyllabusRequest request)
         {
             lessons.Shuffle();
-            var lesson = lessons.FirstOrDefault();
+            var lesson = lessons.First();
 
             while (lessons.Count != 0)
             {
@@ -54,7 +78,9 @@ namespace DPA.Domain
                     AssignLessonCheckCriteria(lesson, group.GroupType);
                 }
                 lessons.Remove(lesson);
-                lesson = lessons.FirstOrDefault();
+                lessons.Shuffle();
+                if (lessons.Count > 0)
+                    lesson = lessons.First();
             }
         }
         private void AssignLessonCheckCriteria(SyllabusForLessonWithGroupListDto lesson, LessonGroupType groupType)
@@ -81,39 +107,38 @@ namespace DPA.Domain
             else
             {
                 if (lesson.WeeklyHour == 1)
+                {
                     //1 tane boş birim bul ata
                     UnitAssignToLesson(lesson.LessonId, 1, groupType);
+                }
                 else
+                {
                     // 2 tane aynı günde boş birim bul ard arda ata
                     UnitAssignToLesson(lesson.LessonId, 2, groupType);
+                }
+
             }
         }
         private void UnitAssignToLesson(long lessonId, int hour, LessonGroupType groupType)
         {
             var emptyUnits = UnitEmptySearch(hour);
+
             // index null gelirse yeni tablo oluşmuş demektir orda arama yapmak için
             if (emptyUnits.Count == 0)
-            {
                 emptyUnits = UnitEmptySearch(hour);
-            }
-            else
+
+            int index = 0;
+            foreach (var item in emptyUnits)
             {
-                foreach (var item in emptyUnits)
-                {
-                    int index = UnitLessons.IndexOf(item);
-                    if (index > 0 || index == 0)
-                    {
-                        UnitLessons[index].LessonId = lessonId;
-                        UnitLessons[index].GroupType = groupType;
-                    }
-                }
+                index = UnitLessons.IndexOf(item);
+                UnitLessons[index].LessonId = lessonId;
+                UnitLessons[index].GroupType = groupType;
             }
         }
         private List<UnitLessonEntity> UnitEmptySearch(int hour)
         {
             var days = new List<DayOfTheWeekType> { DayOfTheWeekType.One, DayOfTheWeekType.Two, DayOfTheWeekType.Three, DayOfTheWeekType.Four, DayOfTheWeekType.Five };
             var units = GetEmptyUnitsForDay(days);
-            days.Remove(units.First().DayOfTheWeekType);
             var emptyUnit = new List<UnitLessonEntity>();
 
             //Bu kısımda dizide aranan sayıda boşluk var ise yerler değiştirilip uygun yer açılacak ard arda değil ise
@@ -122,6 +147,8 @@ namespace DPA.Domain
                 if (units.Count == hour || units.Count > hour)
                 {
                     emptyUnit = GetEmptyIndexForUnits(units, hour);
+                    days.Remove(units.First().DayOfTheWeekType);
+
                     if (emptyUnit.Count == 0)
                     {
                         units = GetEmptyUnitsForDay(days);
@@ -146,32 +173,43 @@ namespace DPA.Domain
         {
             var empytUnit = new List<UnitLessonEntity>();
 
-            if (hour == 3)
+            if (units != null)
             {
-                for (int i = 0; i < units.Count; i++)
+                if (hour == 3)
                 {
-                    if (units.Count >= 3 && units[i].EndTime == units[i + 1].StarTime && units[i + 1].EndTime == units[i + 2].StarTime)
+                    for (int i = 0; i < units.Count - 2; i++)
                     {
-                        empytUnit.Add(units[i]);
-                        if (empytUnit.Count == hour)
-                            return empytUnit;
+                        if (units.ElementAtOrDefault(i).EndTime == units.ElementAtOrDefault(i + 1).StarTime && units.ElementAtOrDefault(i + 1).EndTime == units.ElementAtOrDefault(i + 2).StarTime)
+                        {
+                            empytUnit.Add(units.ElementAtOrDefault(i));
+                            empytUnit.Add(units.ElementAtOrDefault(i + 1));
+                            empytUnit.Add(units.ElementAtOrDefault(i + 2));
+                            if (empytUnit.Count == hour)
+                                return empytUnit;
+                        }
                     }
                 }
-            }
-            if (hour == 2)
-            {
-                for (int i = 0; i < units.Count; i++)
+                if (hour == 2)
                 {
-                    if (units.Count >= 2 && units[i].EndTime == units[i + 1].StarTime)
+                    for (int i = 0; i < units.Count - 1; i++)
                     {
-                        empytUnit.Add(units[i]);
-                        if (empytUnit.Count == hour)
-                            return empytUnit;
+                        if (units.ElementAtOrDefault(i).EndTime == units.ElementAtOrDefault(i + 1).StarTime)
+                        {
+                            empytUnit.Add(units.ElementAtOrDefault(i));
+                            empytUnit.Add(units.ElementAtOrDefault(i + 1));
+                            if (empytUnit.Count == hour)
+                                return empytUnit;
+                        }
                     }
                 }
+                if (hour == 1)
+                {
+                    units.Shuffle();
+                    empytUnit.Add(units.FirstOrDefault());
+                }
             }
-            if (hour == 1)
-                empytUnit.Add(units.First());
+
+
 
             return empytUnit;
         }
@@ -181,41 +219,167 @@ namespace DPA.Domain
             var day = days.First();
             return UnitLessons.FindAll(x => x.LessonId == 0 && x.DayOfTheWeekType == day);
         }
-        public void CreateSyllabusDefaultTable(EducationType educationType)
-        {
-            if ((int)educationType == 1)
-                CreatorTimeTable(9, 15);
-            else
-                CreatorTimeTable(15, 23);
 
-        }
-        private void CreatorTimeTable(int startTime, int endTime)
-        {
-            for (int i = 1; i < 6; i++)
-            {
-                for (int j = startTime; j <= endTime; j++)
-                {
-                    var unitLessonDomain = UnitLessonDomainFactory.Create();
-                    unitLessonDomain.AddTime((DayOfTheWeekType)i, j, j + 1);
-                    var unitEntity = unitLessonDomain.Map<UnitLessonEntity>();
-                    AddUnitLesson(unitEntity);
-                }
-            }
-        }
         #endregion
 
         #region ÖĞRETMEN ATAMA
         public void AssignToTeacher(List<SyllabusForLessonWithGroupListDto> teacherForLesson, SyllabusForUserWithConstraintListDto teacher)
         {
             var emptyUnit = UnitLessons.FindAll(x => x.UserId == 0 && teacherForLesson.Contains(teacherForLesson.Find(y => y.LessonId == x.LessonId)));
+            var days = emptyUnit.Select(x => x.DayOfTheWeekType).OrderBy(x => x).Distinct().ToList();
 
-            // if (teacher.IsFreeDay)
-            // {
-
-            // } else {
-
-            // }
+            if (teacher.IsFreeDay && days.Count > 2)
+            {
+                if (days.Count > 3)
+                {
+                    var day = days.First();
+                    // day = 4 ise 1 ve 2.günden rastgele seç
+                    // day = 5 ise 1 ve 3. günden rastgele seç
+                    int randomDay = new Random().Next((int)day, (int)days.Last() - 2);
+                    var units = emptyUnit.FindAll(x => (int)x.DayOfTheWeekType == randomDay && (int)x.DayOfTheWeekType == randomDay + 2);
+                    TaecherTitleControlAndAssign(units, teacher);
+                }
+                else
+                {
+                    TaecherTitleControlAndAssign(emptyUnit, teacher);
+                }
+            }
+            else
+            {
+                TaecherTitleControlAndAssign(emptyUnit, teacher);
+            }
         }
+        //Teacher Title göre once mecburi saat kadar ders ata
+        private void TaecherTitleControlAndAssign(List<UnitLessonEntity> units, SyllabusForUserWithConstraintListDto teacher)
+        {
+            switch (teacher.Title)
+            {
+                case (Title.Profesor):
+                    if (units.Count >= (int)CompulsoryLessonHoursForTitle.Prof)
+                        TitleForMinUnitsAndAssignOnTeacher(units, teacher);
+                    else
+                        PlaceAssingToTeacher(units, teacher);
+                    break;
+                case (Title.DocentDoktor):
+                    if (units.Count >= (int)CompulsoryLessonHoursForTitle.Doc)
+                        TitleForMinUnitsAndAssignOnTeacher(units, teacher);
+                    else
+                        PlaceAssingToTeacher(units, teacher);
+                    break;
+                case (Title.YardimciDocent):
+                    if (units.Count >= (int)CompulsoryLessonHoursForTitle.YrDoc)
+                        TitleForMinUnitsAndAssignOnTeacher(units, teacher);
+                    else
+                        PlaceAssingToTeacher(units, teacher);
+                    break;
+                case (Title.OgretimGorevlisi):
+                    if (units.Count >= (int)CompulsoryLessonHoursForTitle.OgrGor)
+                        TitleForMinUnitsAndAssignOnTeacher(units, teacher);
+                    else
+                        PlaceAssingToTeacher(units, teacher);
+                    break;
+                default:
+                    PlaceAssingToTeacher(units, teacher);
+                    break;
+            }
+        }
+        //Title a göre atanacak dersler aynı güne ve ard arda mı geliyor ona göre atama yap    
+        private void TitleForMinUnitsAndAssignOnTeacher(List<UnitLessonEntity> units, SyllabusForUserWithConstraintListDto teacher)
+        {
+            for (int i = 0; i < units.Count; i++)
+            {
+                var sameLessonUnits = units.FindAll(x => x.GroupType == units[i].GroupType && x.LessonId == units[i].LessonId && x.DayOfTheWeekType == units[i].DayOfTheWeekType);
+
+                if (sameLessonUnits.Count == 3)
+                {
+                    if (sameLessonUnits.ElementAt(0).LessonId == sameLessonUnits.ElementAt(1).LessonId
+                                && sameLessonUnits.ElementAt(0).EndTime == sameLessonUnits.ElementAt(1).StarTime
+                                && sameLessonUnits.ElementAt(1).EndTime == sameLessonUnits.ElementAt(2).StarTime)
+                    {
+                        PlaceAssingToTeacher(sameLessonUnits, teacher);
+                        units.RemoveAll(x => x.LessonId == sameLessonUnits.ElementAt(0).LessonId && x.GroupType == sameLessonUnits.ElementAt(0).GroupType);
+                    }
+                }
+
+                if (sameLessonUnits.Count == 2)
+                {
+                    if (sameLessonUnits.ElementAt(0).LessonId == sameLessonUnits.ElementAt(1).LessonId
+                                   && sameLessonUnits.ElementAt(0).EndTime == sameLessonUnits.ElementAt(1).StarTime)
+                    {
+                        PlaceAssingToTeacher(sameLessonUnits, teacher);
+                        units.RemoveAll(x => x.LessonId == sameLessonUnits.ElementAt(0).LessonId && x.GroupType == sameLessonUnits.ElementAt(0).GroupType && x.DayOfTheWeekType == sameLessonUnits.ElementAt(0).DayOfTheWeekType);
+                    }
+                }
+
+                if (sameLessonUnits.Count == 1)
+                {
+                    PlaceAssingToTeacher(sameLessonUnits, teacher);
+                    units.RemoveAll(x => x.LessonId == sameLessonUnits.ElementAt(0).LessonId && x.GroupType == sameLessonUnits.ElementAt(0).GroupType && x.DayOfTheWeekType == sameLessonUnits.ElementAt(0).DayOfTheWeekType);
+                }
+
+                if (sameLessonUnits.Count > 3)
+                {
+                    PlaceAssingToTeacher(sameLessonUnits, teacher);
+                    units.RemoveAll(x => x.LessonId == sameLessonUnits.ElementAt(0).LessonId && x.GroupType == sameLessonUnits.ElementAt(0).GroupType && x.DayOfTheWeekType == sameLessonUnits.ElementAt(0).DayOfTheWeekType);
+                }
+
+                if (sameLessonUnits.Count == 0)
+                    units.RemoveAt(i);
+            }
+        }
+        private void PlaceAssingToTeacher(List<UnitLessonEntity> units, SyllabusForUserWithConstraintListDto teacher)
+        {
+            int index = 0;
+            foreach (var item in units)
+            {
+                index = UnitLessons.IndexOf(item);
+                UnitLessons[index].UserId = teacher.UserId;
+            }
+        }
+
         #endregion
+
+        #region DERSLİK ATAMA
+        public void AssignToLocations(List<SyllabusForLocationListDto> locations)
+        {
+            var emptyLocationOnUnits = UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
+
+            for (int i = (int)DayOfTheWeekType.One; i <= (int)DayOfTheWeekType.Five; i++)
+            {
+                var sameDayUnits = emptyLocationOnUnits.FindAll(x => x.DayOfTheWeekType == (DayOfTheWeekType)i);
+                for (int j = 0; j < sameDayUnits.Count; j++)
+                {
+                    var units = sameDayUnits.FindAll(x => x.LessonId == sameDayUnits.ElementAt(j).LessonId && x.GroupType == sameDayUnits.ElementAt(j).GroupType && x.DayOfTheWeekType == sameDayUnits.ElementAt(j).DayOfTheWeekType && x.LocationId == 0);
+                    ClearToAssignLocationOnUnit(units, sameDayUnits);
+                    PlaceLocationsOnUnits(units, locations.First());
+                    emptyLocationOnUnits = UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0 && x.LocationId != locations.First().LocationId);
+                    locations.Remove(locations.First());
+                }
+            }
+        }
+        private void ClearToAssignLocationOnUnit(List<UnitLessonEntity> units, List<UnitLessonEntity> sameDayUnits)
+        {
+            foreach (var item in units)
+            {
+                int index = sameDayUnits.IndexOf(item);
+                sameDayUnits.RemoveAt(index);
+            }
+        }
+        private void PlaceLocationsOnUnits(List<UnitLessonEntity> units, SyllabusForLocationListDto location)
+        {
+            int index = 0;
+            foreach (var item in units)
+            {
+                index = UnitLessons.IndexOf(item);
+                UnitLessons[index].LocationId = location.LocationId;
+            }
+        }
+     
+        #endregion
+    
+        public void AddWeeklyHour(int weeklyHour)
+        {
+            WeeklyHour = weeklyHour;
+        }
     }
 }
