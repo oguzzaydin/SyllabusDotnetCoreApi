@@ -2,8 +2,10 @@ using DotNetCore.Mapping;
 using DotNetCore.Objects;
 using DPA.Database;
 using DPA.Domain;
+using DPA.Domain.LessonGroup;
 using DPA.Model;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DPA.Application
@@ -39,6 +41,11 @@ namespace DPA.Application
 
             await LessonRepository.AddAsync(lessonEntity);
 
+            addLessonModel.LessonGroupTypes.ForEach(x => {
+                var domain = LessonGroupDomainFactory.Create(x, lessonEntity.LessonId);
+                lessonEntity.LessonGroups.Add(domain.Map<LessonGroupEntity>());
+            });
+
             await DatabaseUnitOfWork.SaveChangesAsync();
 
             return new SuccessDataResult<long>(lessonEntity.LessonId);
@@ -65,7 +72,11 @@ namespace DPA.Application
 
         public async Task<ListLessonModel> SelectAsync(long lessonId)
         {
-            return await LessonRepository.SelectAsync<ListLessonModel>(lessonId);
+            var lesson = await LessonRepository.FirstOrDefaultAsync<LessonEntity>(x => x.LessonId == lessonId);
+            lesson.LessonGroups = await LessonRepository.FirstOrDefaultAsync(x => x.LessonId == lessonId, y => y.LessonGroups);
+            var lessonModel = lesson.Map<ListLessonModel>();
+            lessonModel.LessonGroups=lesson.LessonGroups.ToList().Map<List<LessonGroups>>();
+            return lessonModel;
         }
 
         public async Task<IResult> UpdateAsync(long lessonId, UpdateLessonModel updateLessonModel)
