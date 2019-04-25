@@ -46,7 +46,8 @@ namespace DPA.Domain
             string email,
             string login,
             string password,
-            Title title
+            Title title,
+            Roles? role
         )
         {
             Name = name;
@@ -55,6 +56,7 @@ namespace DPA.Domain
             Login = login;
             Password = password;
             Title = title;
+            Roles = role;
         }
 
         public long Id { get; private set; }
@@ -65,13 +67,12 @@ namespace DPA.Domain
         public string Password { get; private set; }
         public DateTime CreatedDate { get; private set; }
         public DateTime UpdatedDate { get; private set; }
-        public Roles Roles { get; private set; }
+        public Roles? Roles { get; private set; }
         public Status Status { get; private set; }
         public Title Title { get; private set; }
 
-        public void Add(Roles role)
+        public void Add()
         {
-            Roles = role; // TODO: bolum baskanı user ekler
             Status = Status.Active;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;

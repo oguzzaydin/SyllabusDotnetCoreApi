@@ -15,9 +15,9 @@ namespace DPA.Model
         public Title Title { get; set; }
 
         public virtual ConstraintEntity Constraint { get; set; }
-        public virtual DepartmentEntity Department { get; set; }
         public virtual ICollection<UserLogEntity> UsersLogs { get; set; } = new HashSet<UserLogEntity>(); //LOG
         public virtual ICollection<UserLessonEntity> UserLessons { get; set; } = new HashSet<UserLessonEntity>();
+        public virtual ICollection<DepartmentInstructorEntity> DepartmentInstructors { get; set; } = new HashSet<DepartmentInstructorEntity>();
         public virtual ICollection<UnitLessonEntity> UnitLessons { get; set; } = new HashSet<UnitLessonEntity>();
     }
 }

@@ -28,8 +28,7 @@ namespace DPA.Domain
                 DepartmentEntity.DepartmentId,
                 DepartmentEntity.Title,
                 DepartmentEntity.DepartmentCode,
-                DepartmentEntity.FacultyId,
-                DepartmentEntity.HeadOfDepartmentId.GetValueOrDefault()
+                DepartmentEntity.FacultyId
             );
         }
     }

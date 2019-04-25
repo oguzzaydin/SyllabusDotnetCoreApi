@@ -4,7 +4,7 @@ namespace DPA.Model
 {
     public class SyylabusForDepartmentDTo
     {
-
+        public long SyllabusId { get; set; }
         public int Year { get; set; }
         public SemesterType SemesterType { get; set; }
         public PeriodType PeriodType { get; set; }
@@ -15,6 +15,7 @@ namespace DPA.Model
 
     public class UnitLessonDto
     {
+        public long UnitLessonId { get; set; }
         public int StarTime { get; set; }
         public int EndTime { get; set; }
         public LessonGroupType GroupType { get; set; }
@@ -26,6 +27,7 @@ namespace DPA.Model
 
     public class LessonDto
     {
+        public long LessonId { get; set; }
         public string Name { get; set; }
         public string LessonCode { get; set; }
         public int AKTS { get; set; }
@@ -37,6 +39,7 @@ namespace DPA.Model
 
     public class TeacherDto
     {
+        public long UserId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
@@ -47,6 +50,7 @@ namespace DPA.Model
 
     public class LocationDto
     {
+        public long LocationId { get; set; }
         public string Title { get; set; }
     }
 }

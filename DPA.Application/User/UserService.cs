@@ -28,17 +28,7 @@ namespace DPA.Application
         private IUserRepository UserRepository { get; }
         private IUserLogService UserLogService { get; }
 
-        public async Task<IDataResult<long>> AddHeadOfDepartmenttAsync(AddUserModel addUserModel)
-        {
-            return await AddAsync(Roles.Admin, addUserModel).ConfigureAwait(false);
-        }
-
-        public async Task<IDataResult<long>> AddInstructorAsync(AddUserModel addUserModel)
-        {
-            return await AddAsync(Roles.User, addUserModel).ConfigureAwait(false);
-        }
-
-        private async Task<IDataResult<long>> AddAsync(Roles role, AddUserModel addUserModel)
+        public async Task<IDataResult<long>> AddUserAsync(AddUserModel addUserModel)
         {
             var validation = new AddUserModelValidator().Valid(addUserModel);
 
@@ -50,15 +40,13 @@ namespace DPA.Application
             addUserModel.Login = UserDomainService.GenerateHash(addUserModel.Login);
             addUserModel.Password = UserDomainService.GenerateHash(addUserModel.Password);
             var userDomain = UserDomainFactory.Create(addUserModel);
-            userDomain.Add(role);
+            userDomain.Add();
             var userEntity = userDomain.Map<UserEntity>();
             await UserRepository.AddAsync(userEntity);
             await DatabaseUnitOfWork.SaveChangesAsync();
 
             return new SuccessDataResult<long>(userEntity.UserId);
         }
-
-
 
         public async Task<IResult> DeleteAsync(long userId)
         {
@@ -159,5 +147,6 @@ namespace DPA.Application
             var userLogModel = new UserLogModel(userId, logType);
             await UserLogService.AddAsync(userLogModel);
         }
+
     }
 }

@@ -33,15 +33,10 @@ namespace DPA.Application
             }
 
             var DepartmentDomain = DepartmentDomainFactory.Create(addDepartmentModel);
-
             DepartmentDomain.Add();
-
             var DepartmentEntity = DepartmentDomain.Map<DepartmentEntity>();
 
-            DepartmentEntity.HeadOfDepartmentId = null;
-
             await DepartmentRepository.AddAsync(DepartmentEntity);
-
             await DatabaseUnitOfWork.SaveChangesAsync();
 
             return new SuccessDataResult<long>(DepartmentEntity.DepartmentId);
@@ -50,14 +45,9 @@ namespace DPA.Application
         public async Task<IResult> DeleteAsync(long departmentId)
         {
             await DepartmentRepository.DeleteAsync(departmentId);
-
             await DatabaseUnitOfWork.SaveChangesAsync();
-
             return new SuccessResult();
         }
-
-
-
         public async Task<IEnumerable<ListDepartmentModel>> ListAsync()
         {
             return await DepartmentRepository.ListAsync<ListDepartmentModel>();
@@ -80,7 +70,7 @@ namespace DPA.Application
 
         public async Task<UserModel> SingleOrDefaultUserAsync(long departmentId)
         {
-            return await DepartmentRepository.SingleOrDefaultAsync<UserModel>(x => x.DepartmentId == departmentId, x => x.HeadOfDepartment.Map<UserModel>());
+            return await DepartmentRepository.SingleOrDefaultAsync<UserModel>(x => x.DepartmentId == departmentId);
         }
 
         public async Task<IResult> UpdateAsync(long departmentId, UpdateDepartmentModel updateDepartmentModel)
@@ -102,15 +92,10 @@ namespace DPA.Application
             }
 
             var DepartmentDomain = DepartmentDomainFactory.Create(DepartmentEntity);
-
             DepartmentDomain.Update(updateDepartmentModel);
-
             DepartmentEntity = DepartmentDomain.Map<DepartmentEntity>();
-
             DepartmentEntity.DepartmentId = departmentId;
-
             await DepartmentRepository.UpdateAsync(DepartmentEntity, DepartmentEntity.DepartmentId);
-
             await DatabaseUnitOfWork.SaveChangesAsync();
 
             return new SuccessResult();
@@ -119,13 +104,8 @@ namespace DPA.Application
         public async Task<IResult> UpdateUserAsync(long departmentId, long headOfDepartmentId)
         {
             var DepartmentEntity = await DepartmentRepository.SelectAsync(departmentId);
-
             var DepartmentDomain = DepartmentDomainFactory.Create(DepartmentEntity);
-
-            DepartmentEntity.HeadOfDepartmentId = headOfDepartmentId;
-
             await DepartmentRepository.UpdateAsync(DepartmentEntity, DepartmentEntity.DepartmentId);
-
             await DatabaseUnitOfWork.SaveChangesAsync();
 
             return new SuccessResult();
@@ -133,7 +113,8 @@ namespace DPA.Application
 
         public async Task<ListDepartmentModel> GetDepartmentForHeadOfDepartmentAsync(long headOfDepartmentId)
         {
-            return await DepartmentRepository.SingleOrDefaultAsync<ListDepartmentModel>(x => x.HeadOfDepartmentId == headOfDepartmentId, x => x.Map<ListDepartmentModel>());
+            //Duzenlenecek
+            return await DepartmentRepository.SingleOrDefaultAsync<ListDepartmentModel>(x => x.FacultyId == headOfDepartmentId);
         }
     }
 }

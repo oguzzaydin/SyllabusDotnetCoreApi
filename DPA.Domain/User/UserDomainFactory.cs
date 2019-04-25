@@ -13,7 +13,8 @@ namespace DPA.Domain
                 addUserModel.Email,
                 addUserModel.Login,
                 addUserModel.Password,
-                addUserModel.Title
+                addUserModel.Title,
+                addUserModel.Roles
             );
         }
 
@@ -26,7 +27,8 @@ namespace DPA.Domain
                 updateUserModel.Email,
                 null,
                 null,
-                updateUserModel.Title
+                updateUserModel.Title,
+                null
             );
         }
 

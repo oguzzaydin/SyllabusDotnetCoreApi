@@ -22,45 +22,17 @@ namespace DPA.Api
 
         private IUserService UserService { get; }
 
-        /// <summary>
-        /// Bölüm başkanı ekle buralarda "userId" gönderme o modelden çıkacak
-        /// </summary>
-        /// <remarks>AddHeadOfDepartmenttAsync Methodu Açıklaması!</remarks>
-        [Authorize(Roles = "Administrator")]
-        [HttpPost("headOfDepartmentt")]
-        public async Task<IActionResult> AddHeadOfDepartmenttAsync(AddUserModel addUserModel)
+        [Authorize(Roles = "Administrator, Admin")]
+        [HttpPost()]
+        public async Task<IActionResult> AddUserAsync(AddUserModel addUserModel)
         {
-            var result = await UserService.AddHeadOfDepartmenttAsync(addUserModel);
+            var result = await UserService.AddUserAsync(addUserModel);
 
             return new ActionIResult(result);
         }
 
-        /// <summary>
-        /// Öğretim elemanı ekle buralarda "userId" gönderme o modelden çıkacak
-        /// </summary>
-        /// <remarks>AddHeadOfDepartmenttAsync Methodu Açıklaması!</remarks>
-        [Authorize(Roles = "Admin")]
-        [HttpPost("instructor")]
-        public async Task<IActionResult> AddInstructorAsync(AddUserModel addUserModel)
-        {
-            var result = await UserService.AddInstructorAsync(addUserModel);
-
-            return new ActionIResult(result);
-        }
-
-        /// <summary>
-        /// Kullanıcı girişi yapılan methodu
-        /// </summary>
-        /// <remarks>SignIn Methodu Açıklaması!</remarks>
-        /// <response code="200">Başarılı giriş yapıldığında aşağadıki model dönmektedir.</response>
-        /// <response code="400">SignInModel yok veya valid değil ise  (Aşağıdaki model örnek amaçlı hatalı olarak verilmiştir.)
-        /// Kullanıcı adı veya şifresi hatalı mesajı dönecektir.</response>
-        /// <response code="500">Oops! Kullanıcı girişi şu anda yapılamadı</response>
         [AllowAnonymous]
         [HttpPost("SignIn")]
-        [ProducesResponseType(typeof(IDataResult<TokenModel>), 200)]
-        [ProducesResponseType(typeof(IDictionary<string, string>), 400)]
-        [ProducesResponseType(500)]
         public async Task<IActionResult> SignInAsync(SignInModel signInModel)
         {
             var result = await UserService.SignInJwtAsync(signInModel);
@@ -68,10 +40,7 @@ namespace DPA.Api
             return new ActionIResult(result);
         }
 
-        /// <summary>
-        /// Kullanıcı çıkış yaparken log tutulması içindir.
-        /// </summary>
-        /// <remarks>SignOut Methodu Açıklaması!</remarks>
+
         [HttpPost("SignOut")]
         public Task SignOutAsync()
         {
@@ -80,18 +49,8 @@ namespace DPA.Api
             return UserService.SignOutAsync(signOutModel);
         }
 
-        /// <summary>
-        /// Kullanıcı silme işlemi şuan için sadece sistem yetkili tarafından yapılacaktır.
-        /// </summary>
-        /// <remarks>User Delete Methodu Açıklaması!</remarks>
-        /// <response code="200">Başarılı giriş yapıldığında aşağadıki model dönmektedir.</response>
-        /// <response code="400">Gönderilen Id ye ait kullanıcı mevcut değil veya id gönderilmediyse</response>
-        /// <response code="500">Oops! Kullanıcı şu anda silinemedi</response>
         [Authorize(Roles = "Administrator")]
         [HttpDelete("{userId}")]
-        [ProducesResponseType(typeof(IActionResult), 200)]
-        [ProducesResponseType(typeof(IDictionary<string, string>), 400)]
-        [ProducesResponseType(500)]
         public async Task<IActionResult> DeleteAsync(long userId)
         {
             var result = await UserService.DeleteAsync(userId);

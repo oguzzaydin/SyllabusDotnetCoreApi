@@ -7,24 +7,14 @@ namespace DPA.Application
 {
     public interface IUserService
     {
-        Task<IDataResult<long>> AddHeadOfDepartmenttAsync(AddUserModel addUserModel);
-
-        Task<IDataResult<long>> AddInstructorAsync(AddUserModel addUserModel);
-
+        Task<IDataResult<long>> AddUserAsync(AddUserModel addUserModel);
         Task<IResult> DeleteAsync(long userId);
-
         Task<IDataResult<SignedInModel>> SignInAsync(SignInModel signInModel);
-
         Task<IDataResult<TokenModel>> SignInJwtAsync(SignInModel signInModel);
-
         Task<IResult> UpdateAsync(long userId, UpdateUserModel updateUserModel);
-
         Task<IEnumerable<UserModel>> ListAsync();
-
         Task<PagedList<UserModel>> ListAsync(PagedListParameters parameters);
-
         Task<ListUserModel> SelectAsync(long userId);
-
         Task SignOutAsync(SignOutModel signOutModel);
     }
 }

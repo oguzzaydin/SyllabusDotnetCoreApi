@@ -22,7 +22,5 @@ namespace DPA.Domain
 
             );
         }
-
-
     }
 }

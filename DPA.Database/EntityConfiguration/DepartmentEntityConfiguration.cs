@@ -20,6 +20,7 @@ namespace DPA.Database.EntityConfiguration
 
             builder.HasOne(x => x.Faculty).WithMany(x => x.Departments).HasForeignKey(x => x.FacultyId);
 
+            builder.HasMany(x => x.DepartmentInstructors).WithOne(x => x.Department).HasForeignKey(x => x.DepartmentId);
             builder.HasMany(x => x.DepartmentLessons).WithOne(x => x.Department).HasForeignKey(x => x.DepartmentId);
             builder.HasMany(x => x.Syllabus).WithOne(x => x.Department).HasForeignKey(x => x.SyllabusId);
             

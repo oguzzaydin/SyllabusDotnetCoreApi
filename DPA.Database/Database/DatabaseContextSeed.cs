@@ -1002,7 +1002,6 @@ namespace DPA.Database
                 FacultyId = 1,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                HeadOfDepartmentId = 1
             });
 
             modelBuilder.Entity<DepartmentEntity>().HasData(new DepartmentEntity

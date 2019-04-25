@@ -30,8 +30,8 @@ namespace DPA.Database.EntityConfiguration
             builder.HasMany(x => x.UsersLogs).WithOne(x => x.User).HasForeignKey(x => x.UserId);
             builder.HasMany(x => x.UserLessons).WithOne(x => x.User).HasForeignKey(x => x.UserId);
             builder.HasMany(x => x.UnitLessons).WithOne(x => x.User).HasForeignKey(x => x.UserId);
-            
-            builder.HasOne(x => x.Department).WithOne(x => x.HeadOfDepartment).HasForeignKey<DepartmentEntity>(x => x.HeadOfDepartmentId);
+            builder.HasMany(x => x.DepartmentInstructors).WithOne(x => x.User).HasForeignKey(x => x.UserId);
+
             builder.HasOne(x => x.Constraint).WithOne(x => x.User).HasForeignKey<ConstraintEntity>(x => x.UserId);
         }
     }
