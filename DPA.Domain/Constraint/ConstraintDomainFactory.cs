@@ -13,7 +13,9 @@ namespace DPA.Domain
                 addConstraintModel.IsActive,
                 addConstraintModel.WeeklyHour,
                 addConstraintModel.EducationType,
-                addConstraintModel.UserId
+                addConstraintModel.UserId,
+                addConstraintModel.StartTime,
+                addConstraintModel.EndTime
             );
         }
 
@@ -26,7 +28,9 @@ namespace DPA.Domain
                 updateConstraintModel.IsActive,
                 updateConstraintModel.WeeklyHour,
                 updateConstraintModel.EducationType,
-                updateConstraintModel.UserId
+                updateConstraintModel.UserId,
+                updateConstraintModel.StartTime,
+                updateConstraintModel.EndTime
             );
         }
 
@@ -40,7 +44,9 @@ namespace DPA.Domain
                 constraintEntity.IsActive,
                 constraintEntity.WeeklyHour,
                 constraintEntity.EducationType,
-                constraintEntity.CreatedDate
+                constraintEntity.CreatedDate,
+                constraintEntity.StartTime,
+                constraintEntity.EndTime
             );
         }
     }

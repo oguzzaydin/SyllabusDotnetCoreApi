@@ -11,7 +11,8 @@ namespace DPA.Domain
                 addLessonModel.LessonCode,
                 addLessonModel.AKTS,
                 addLessonModel.LessonType,
-                addLessonModel.WeeklyHour
+                addLessonModel.WeeklyHour,
+                addLessonModel.SemesterType
             );
         }
 
@@ -22,7 +23,8 @@ namespace DPA.Domain
                 updateLessonModel.LessonCode,
                 updateLessonModel.AKTS,
                 updateLessonModel.LessonType,
-                updateLessonModel.WeeklyHour
+                updateLessonModel.WeeklyHour,
+                updateLessonModel.SemesterType
             );
         }
 
@@ -33,7 +35,8 @@ namespace DPA.Domain
                 lessonEntity.LessonCode,
                 lessonEntity.AKTS,
                 lessonEntity.LessonType,
-                lessonEntity.WeeklyHour
+                lessonEntity.WeeklyHour,
+                lessonEntity.SemesterType
             );
         }
     }

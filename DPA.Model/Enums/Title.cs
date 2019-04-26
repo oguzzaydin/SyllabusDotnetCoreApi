@@ -6,6 +6,8 @@ namespace DPA.Model
         Profesor = 1,
         DocentDoktor = 2,
         YardimciDocent = 3,
-        OgretimGorevlisi = 4
+        OgretimGorevlisi = 4,
+        Doktor = 5,
+
     }
 }

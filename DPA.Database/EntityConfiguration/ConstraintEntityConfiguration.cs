@@ -19,6 +19,8 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.IsFreeDay).IsRequired();
             builder.Property(x => x.WeeklyHour).IsRequired();
             builder.Property(x => x.EducationType).IsRequired();
+            builder.Property(x => x.StartTime).IsRequired();
+            builder.Property(x => x.EndTime).IsRequired();
             builder.Property(x => x.UserId).IsRequired();
 
             builder.Property(x => x.CreatedDate).IsRequired();

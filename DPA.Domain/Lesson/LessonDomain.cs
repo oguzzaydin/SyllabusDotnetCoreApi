@@ -11,7 +11,8 @@ namespace DPA.Domain
             string lessonCode,
             int akts,
             LessonType lessonType,
-            int weeklyHour
+            int weeklyHour,
+            SemesterType semesterType
         )
         {
             Name = name;
@@ -19,6 +20,7 @@ namespace DPA.Domain
             AKTS = akts;
             LessonType = lessonType;
             WeeklyHour = weeklyHour;
+            SemesterType = semesterType;
         }
 
         public string Name { get; private set; }
@@ -26,6 +28,7 @@ namespace DPA.Domain
         public int AKTS { get; private set; }
         public LessonType LessonType { get; private set; }
         public int WeeklyHour { get; private set; }
+        public SemesterType SemesterType { get; set; }
         public DateTime CreatedDate { get; private set; }
         public DateTime UpdatedDate { get; private set; }
         public virtual List<LessonGroupEntity> LessonGroupEntities { get; private set; } = new List<LessonGroupEntity>();
