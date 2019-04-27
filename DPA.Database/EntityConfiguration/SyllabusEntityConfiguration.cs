@@ -15,7 +15,6 @@ namespace DPA.Database.EntityConfiguration
 
             builder.Property(x => x.Year).IsRequired();
             builder.Property(x => x.PeriodType).IsRequired();
-            builder.Property(x => x.SemesterType).IsRequired();
             builder.Property(x => x.EducationType).IsRequired();
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.UpdatedDate).IsRequired();

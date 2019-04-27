@@ -44,7 +44,7 @@ namespace DPA.Application
         {
             try
             {
-                var lessons = _lessonRepository.GetDepartmentLessons(request.FacultyId, request.DepartmentId, request.SemesterType);
+                var lessons = _lessonRepository.GetDepartmentLessons(request.FacultyId, request.DepartmentId, request.PeriodType);
                 var syllabusLessons = lessons.Map<List<SyllabusForLessonWithGroupListDto>>();
                 var syllabus = SyllabusDomainFactory.Create(request);
                 syllabus.CreateSyllabusDefaultTable(request.EducationType);
@@ -57,9 +57,7 @@ namespace DPA.Application
                 AssignToLocationsOnSyllabus(syllabus, request.FacultyId);
                 CheckAssignToLocationOnSyllabus(syllabus, request.FacultyId);
 
-                syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0 && x.UserId == 0 && x.LocationId == 0);
                 syllabus.AddWeeklyHour(syllabus.UnitLessons.Count);
-
                 var syllabusEntity = syllabus.Map<SyllabusEntity>();
                 await _syllabusRepository.AddAsync(syllabusEntity);
                 await _databaseUnitOfWork.SaveChangesAsync();
@@ -109,9 +107,15 @@ namespace DPA.Application
         }
         private void CheckAssignToLocationOnSyllabus(SyllabusDomain syllabus, long facultyId)
         {
-            var emptyLocationOnUnits = syllabus.UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
+            var emptyLocationOnUnits = new List<UnitLessonEntity>();
+            emptyLocationOnUnits = syllabus.UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
+            while(emptyLocationOnUnits.Count != 0)
+            {
+               emptyLocationOnUnits = syllabus.UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
             if (emptyLocationOnUnits.Count > 0)
                AssignToLocationsOnSyllabus(syllabus, facultyId);
+            }
         }
+      
     }
 }

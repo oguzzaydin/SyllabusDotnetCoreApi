@@ -5,6 +5,6 @@ namespace DPA.Domain
         Prof = 4,
         Doc = 8,
         YrDoc = 10,
-        OgrGor = 12
+        OgrGor = 12,
     }
 }

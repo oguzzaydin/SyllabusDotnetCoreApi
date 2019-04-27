@@ -16,11 +16,13 @@ namespace DPA.Database
         public LessonRepository(DatabaseContext context) : base(context)
         {
         }
-        public List<SyllabusForLessonWithGroupListDto> GetDepartmentLessons(long facultyId, long departmentId, SemesterType semesterType)
+        public List<SyllabusForLessonWithGroupListDto> GetDepartmentLessons(long facultyId, long departmentId, PeriodType periodType)
         {
+            var number = periodType == PeriodType.Bahar ? 1 : 2;
             var lessons = Queryable.FromSql($@"SELECT l.* FROM Faculty.Department as d
                         INNER JOIN Faculty.DepartmentLesson dl on ( d.FacultyId = {facultyId} and d.DepartmentId = {departmentId} ) and d.DepartmentId = dl.DepartmentId
-                        INNER JOIN Faculty.Lesson l on l.SemesterType = {(int)semesterType} and dl.LessonId = l.LessonId");
+                        INNER JOIN Faculty.Lesson l on  dl.LessonId = l.LessonId
+                        WHERE (l.SemesterType % 2) = {number}");
             var lessonGroups = lessons.Include(x => x.LessonGroups).ToList();
 
             if (lessonGroups.Count == 0)

@@ -6,7 +6,6 @@ namespace DPA.Model
     {
         public long SyllabusId { get; set; }
         public int Year { get; set; }
-        public SemesterType SemesterType { get; set; }
         public PeriodType PeriodType { get; set; }
         public EducationType EducationType { get; set; }
         public int WeeklyHour { get; set; }

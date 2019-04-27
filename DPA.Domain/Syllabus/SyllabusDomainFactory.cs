@@ -9,10 +9,8 @@ namespace DPA.Domain.Syllabus
             return new SyllabusDomain
             (
                 request.DepartmentId,
-                request.SemesterType,
                 request.PeriodType,
-                request.EducationType,
-                request.WeeklyHour
+                request.EducationType
             );
         }
     }

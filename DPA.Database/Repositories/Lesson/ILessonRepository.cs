@@ -8,7 +8,7 @@ namespace DPA.Database
 {
     public interface ILessonRepository : IRelationalRepository<LessonEntity>
     {
-        List<SyllabusForLessonWithGroupListDto> GetDepartmentLessons(long facultyId, long departmentId, SemesterType semesterType);
+        List<SyllabusForLessonWithGroupListDto> GetDepartmentLessons(long facultyId, long departmentId, PeriodType periodType);
         List<SyllabusForLessonWithGroupListDto> GetLessonsForTeacher(long userId);
 
     }

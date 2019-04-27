@@ -13,19 +13,16 @@ namespace DPA.Domain
 {
     public class SyllabusDomain
     {
-        protected internal SyllabusDomain(long departmentId, SemesterType semesterType, PeriodType periodType, EducationType educationType, int weeklyHour)
+        protected internal SyllabusDomain(long departmentId, PeriodType periodType, EducationType educationType)
         {
             DepartmentId = departmentId;
             PeriodType = periodType;
-            SemesterType = semesterType;
             EducationType = educationType;
             Year = (int)educationType == 1 ? DateTime.Now.Year : DateTime.Now.Year + 1;
-            WeeklyHour = weeklyHour;
         }
 
         #region prop
         public int Year { get; private set; }
-        public SemesterType SemesterType { get; private set; }
         public PeriodType PeriodType { get; private set; }
         public EducationType EducationType { get; private set; }
         public int WeeklyHour { get; private set; }
@@ -70,7 +67,6 @@ namespace DPA.Domain
         {
             lessons.Shuffle();
             var lesson = lessons.First();
-
             while (lessons.Count != 0)
             {
                 foreach (var group in lesson.LessonGroups)
@@ -116,23 +112,35 @@ namespace DPA.Domain
                     // 2 tane aynı günde boş birim bul ard arda ata
                     UnitAssignToLesson(lesson.LessonId, 2, groupType);
                 }
-
             }
         }
         private void UnitAssignToLesson(long lessonId, int hour, LessonGroupType groupType)
         {
             var emptyUnits = UnitEmptySearch(hour);
-
+            var isEmpty = new List<UnitLessonEntity>();
             // index null gelirse yeni tablo oluşmuş demektir orda arama yapmak için
             if (emptyUnits.Count == 0)
                 emptyUnits = UnitEmptySearch(hour);
 
-            int index = 0;
-            foreach (var item in emptyUnits)
+            isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits[0].DayOfTheWeekType && x.LessonId == lessonId && x.GroupType == groupType);
+            while (isEmpty.Count != 0)
             {
-                index = UnitLessons.IndexOf(item);
-                UnitLessons[index].LessonId = lessonId;
-                UnitLessons[index].GroupType = groupType;
+                if(emptyUnits.Count > 0) 
+                    isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits[0].DayOfTheWeekType && x.LessonId == lessonId && x.GroupType == groupType);
+                if (isEmpty.Count > 0) 
+                    emptyUnits = UnitEmptySearch(hour);
+                
+            }
+
+            if (isEmpty.Count == 0)
+            {
+                int index = 0;
+                emptyUnits.ForEach(unit =>
+                {
+                    index = UnitLessons.IndexOf(unit);
+                    UnitLessons[index].LessonId = lessonId;
+                    UnitLessons[index].GroupType = groupType;
+                });
             }
         }
         private List<UnitLessonEntity> UnitEmptySearch(int hour)
@@ -147,12 +155,12 @@ namespace DPA.Domain
                 if (units.Count == hour || units.Count > hour)
                 {
                     emptyUnit = GetEmptyIndexForUnits(units, hour);
-                    days.Remove(units.First().DayOfTheWeekType);
+                    days.Remove(units.FirstOrDefault().DayOfTheWeekType);
 
                     if (emptyUnit.Count == 0)
                     {
                         units = GetEmptyUnitsForDay(days);
-                        days.Remove(units.First().DayOfTheWeekType);
+                        days.Remove(units.FirstOrDefault().DayOfTheWeekType);
                     }
                     else
                     {
@@ -343,17 +351,21 @@ namespace DPA.Domain
         public void AssignToLocations(List<SyllabusForLocationListDto> locations)
         {
             var emptyLocationOnUnits = UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
+            var tempLocations = locations.Map<List<SyllabusForLocationListDto>>();
 
             for (int i = (int)DayOfTheWeekType.One; i <= (int)DayOfTheWeekType.Five; i++)
             {
                 var sameDayUnits = emptyLocationOnUnits.FindAll(x => x.DayOfTheWeekType == (DayOfTheWeekType)i);
                 for (int j = 0; j < sameDayUnits.Count; j++)
                 {
-                    var units = sameDayUnits.FindAll(x => x.LessonId == sameDayUnits.ElementAt(j).LessonId && x.GroupType == sameDayUnits.ElementAt(j).GroupType && x.DayOfTheWeekType == sameDayUnits.ElementAt(j).DayOfTheWeekType && x.LocationId == 0);
-                    ClearToAssignLocationOnUnit(units, sameDayUnits);
-                    PlaceLocationsOnUnits(units, locations.First());
-                    emptyLocationOnUnits = UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0 && x.LocationId != locations.First().LocationId);
-                    locations.Remove(locations.First());
+                    var units = sameDayUnits.FindAll(x => x.LessonId == sameDayUnits[j].LessonId && x.GroupType == sameDayUnits[j].GroupType && x.DayOfTheWeekType == sameDayUnits[j].DayOfTheWeekType);
+                    if (locations.FirstOrDefault() != null)
+                    {
+                        PlaceLocationsOnUnits(units, locations.FirstOrDefault(), tempLocations);
+                        ClearToAssignLocationOnUnit(units, sameDayUnits);
+                        emptyLocationOnUnits = UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0 && x.LocationId != locations.FirstOrDefault().LocationId);
+                        locations.Remove(locations.FirstOrDefault());
+                    }
                 }
             }
         }
@@ -365,18 +377,28 @@ namespace DPA.Domain
                 sameDayUnits.RemoveAt(index);
             }
         }
-        private void PlaceLocationsOnUnits(List<UnitLessonEntity> units, SyllabusForLocationListDto location)
+        private void PlaceLocationsOnUnits(List<UnitLessonEntity> units, SyllabusForLocationListDto location, List<SyllabusForLocationListDto> tempLocations)
         {
-            int index = 0;
-            foreach (var item in units)
+            var isEmpty = units.FindAll(x => x.DayOfTheWeekType == units[0].DayOfTheWeekType && x.StarTime == units[0].StarTime && x.LocationId == location.LocationId);
+
+            if (isEmpty.Count > 0)
             {
-                index = UnitLessons.IndexOf(item);
-                UnitLessons[index].LocationId = location.LocationId;
+                tempLocations.Shuffle();
+                AssignToLocations(tempLocations);
+            }
+            else
+            {
+                int index = 0;
+                units.ForEach(item =>
+                {
+                    index = UnitLessons.IndexOf(item);
+                    UnitLessons[index].LocationId = location.LocationId;
+                });
             }
         }
-     
+
         #endregion
-    
+
         public void AddWeeklyHour(int weeklyHour)
         {
             WeeklyHour = weeklyHour;

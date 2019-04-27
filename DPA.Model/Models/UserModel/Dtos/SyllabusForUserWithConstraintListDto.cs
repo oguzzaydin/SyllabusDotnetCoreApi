@@ -8,12 +8,11 @@ namespace DPA.Model.Models.UserModel.Dtos
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public Roles Roles { get; set; }
         public Status Status { get; set; }
         public Title Title { get; set; }
 
+        public int StartTime { get; set; }
+        public int EndTime { get; set; }
         public bool IsFreeDay { get; set; }
         public bool IsActive { get; set; }
         public int WeeklyHour { get; set; } 
