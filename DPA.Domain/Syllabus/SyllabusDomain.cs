@@ -121,15 +121,15 @@ namespace DPA.Domain
             // index null gelirse yeni tablo oluşmuş demektir orda arama yapmak için
             if (emptyUnits.Count == 0)
                 emptyUnits = UnitEmptySearch(hour);
-
-            isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits[0].DayOfTheWeekType && x.LessonId == lessonId && x.GroupType == groupType);
+            if (emptyUnits.Count > 0)
+                isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits[0].DayOfTheWeekType && x.LessonId == lessonId && x.GroupType == groupType);
             while (isEmpty.Count != 0)
             {
-                if(emptyUnits.Count > 0) 
+                if (emptyUnits.Count > 0)
                     isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits[0].DayOfTheWeekType && x.LessonId == lessonId && x.GroupType == groupType);
-                if (isEmpty.Count > 0) 
+                if (isEmpty.Count > 0)
                     emptyUnits = UnitEmptySearch(hour);
-                
+
             }
 
             if (isEmpty.Count == 0)
@@ -236,26 +236,49 @@ namespace DPA.Domain
             var emptyUnit = UnitLessons.FindAll(x => x.UserId == 0 && teacherForLesson.Contains(teacherForLesson.Find(y => y.LessonId == x.LessonId)));
             var days = emptyUnit.Select(x => x.DayOfTheWeekType).OrderBy(x => x).Distinct().ToList();
 
-            if (teacher.IsFreeDay && days.Count > 2)
+            if (teacher.Constraint != null)
             {
-                if (days.Count > 3)
+                if (teacher.Constraint.IsFreeDay && days.Count > 3)
                 {
-                    var day = days.First();
-                    // day = 4 ise 1 ve 2.günden rastgele seç
-                    // day = 5 ise 1 ve 3. günden rastgele seç
-                    int randomDay = new Random().Next((int)day, (int)days.Last() - 2);
-                    var units = emptyUnit.FindAll(x => (int)x.DayOfTheWeekType == randomDay && (int)x.DayOfTheWeekType == randomDay + 2);
-                    TaecherTitleControlAndAssign(units, teacher);
+                    var units = TeacherConstraintFreeDayCase(emptyUnit, teacher, days);
+
+                    if (units.Count > 0)
+                        TaecherTitleControlAndAssign(units, teacher);
+                    else
+                        TaecherTitleControlAndAssign(emptyUnit, teacher);
                 }
                 else
                 {
-                    TaecherTitleControlAndAssign(emptyUnit, teacher);
+                    if (teacher.Constraint.StartTime != 0 && teacher.Constraint.EndTime != 0)
+                    {
+                        var filterByTimeUnit = emptyUnit.FindAll(x => x.StarTime == teacher.Constraint.StartTime && x.EndTime == teacher.Constraint.EndTime);
+                        if (filterByTimeUnit.Count > 0)
+                            TaecherTitleControlAndAssign(filterByTimeUnit, teacher);
+                        else
+                            TaecherTitleControlAndAssign(emptyUnit, teacher);
+                    }
+                    else
+                    {
+                        TaecherTitleControlAndAssign(emptyUnit, teacher);
+                    }
                 }
             }
             else
             {
                 TaecherTitleControlAndAssign(emptyUnit, teacher);
             }
+        }
+        private List<UnitLessonEntity> TeacherConstraintFreeDayCase(List<UnitLessonEntity> emptyUnit, SyllabusForUserWithConstraintListDto teacher, List<DayOfTheWeekType> days)
+        {
+            var day = days.First();
+            int randomDay = new Random().Next((int)day, (int)days.Last() - 2);
+
+            var units = emptyUnit.FindAll(x => (int)x.DayOfTheWeekType == randomDay && (int)x.DayOfTheWeekType == randomDay + 2);
+            if (teacher.Constraint.StartTime != 0 && teacher.Constraint.EndTime != 0)
+                units = units.FindAll(x => x.StarTime == teacher.Constraint.StartTime && x.EndTime == teacher.Constraint.EndTime);
+            if (units.Count == 0)
+                units = emptyUnit.FindAll(x => (int)x.DayOfTheWeekType == randomDay && (int)x.DayOfTheWeekType == randomDay + 2);
+            return units;
         }
         //Teacher Title göre once mecburi saat kadar ders ata
         private void TaecherTitleControlAndAssign(List<UnitLessonEntity> units, SyllabusForUserWithConstraintListDto teacher)
@@ -337,11 +360,25 @@ namespace DPA.Domain
         }
         private void PlaceAssingToTeacher(List<UnitLessonEntity> units, SyllabusForUserWithConstraintListDto teacher)
         {
-            int index = 0;
-            foreach (var item in units)
+            if (units.Count > 0)
             {
-                index = UnitLessons.IndexOf(item);
-                UnitLessons[index].UserId = teacher.UserId;
+                var isSameDayThisTeacher = UnitLessons.FindAll(x => x.UserId == teacher.UserId && x.DayOfTheWeekType == units[0].DayOfTheWeekType && x.LessonId == units[0].LessonId);
+                if (units.Count == 2)
+                {
+                    isSameDayThisTeacher = isSameDayThisTeacher.FindAll(x => x.EndTime == units[0].EndTime && x.EndTime == units[1].EndTime && x.StarTime == units[1].StarTime  && x.StarTime == units[0].StarTime);
+                } else {
+                    isSameDayThisTeacher = isSameDayThisTeacher.FindAll(x => x.EndTime == units[0].EndTime && x.EndTime == units[1].EndTime && x.EndTime == units[2].EndTime &&  x.StarTime == units[1].StarTime && x.StarTime == units[2].StarTime  && x.StarTime == units[0].StarTime);
+                }
+
+                if (isSameDayThisTeacher.Count == 0)
+                {
+                    int index = 0;
+                    units.ForEach(item =>
+                     {
+                         index = UnitLessons.IndexOf(item);
+                         UnitLessons[index].UserId = teacher.UserId;
+                     });
+                }
             }
         }
 

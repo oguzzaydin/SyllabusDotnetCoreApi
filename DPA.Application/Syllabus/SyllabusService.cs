@@ -51,8 +51,8 @@ namespace DPA.Application
 
                 syllabus.AssignToLesson(lessons, request);
 
-                AssignToTeacherOnSyllabus(syllabusLessons, syllabus);
-                CheckAssignToTeacherOnSyllabus(syllabusLessons, syllabus);
+                AssignToTeacherOnSyllabus(syllabusLessons, syllabus, request.EducationType);
+                CheckAssignToTeacherOnSyllabus(syllabusLessons, syllabus, request.EducationType);
 
                 AssignToLocationsOnSyllabus(syllabus, request.FacultyId);
                 CheckAssignToLocationOnSyllabus(syllabus, request.FacultyId);
@@ -74,29 +74,34 @@ namespace DPA.Application
         {
             return await _syllabusRepository.SingleOrDefaultAsync<SyylabusForDepartmentDTo>(x => x.DepartmentId == departmentId);
         }
-        private SyllabusForUserWithConstraintListDto TeacherSelection(List<SyllabusForUserWithConstraintListDto> teachers)
+        private SyllabusForUserWithConstraintListDto TeacherSelection(List<SyllabusForUserWithConstraintListDto> teachers, EducationType educationType)
         {
+            
             var firstTeacher = teachers.OrderBy(x => x.Title).FirstOrDefault(); // Öğretmenlerden öncelikli olanları seçer 
-            var selectTeachers = teachers.FindAll(x => x.Title == firstTeacher.Title);
+            var selectTeachers = teachers.FindAll(x => x.Title == firstTeacher.Title && x.Constraint.EducationType == educationType);
+
+            if(selectTeachers.Count == 0)
+                selectTeachers = teachers.FindAll(x => x.Title == firstTeacher.Title);
+
             selectTeachers.Shuffle();
             return selectTeachers.First();
         }
-        private void AssignToTeacherOnSyllabus(List<SyllabusForLessonWithGroupListDto> syllabusLessons, SyllabusDomain syllabus)
+        private void AssignToTeacherOnSyllabus(List<SyllabusForLessonWithGroupListDto> syllabusLessons, SyllabusDomain syllabus, EducationType educationType)
         {
             foreach (var lesson in syllabusLessons)
             {
                 var teachers = _userRepository.GetUserWithConstraintsForLesson(lesson.LessonId);
-                var teacher = TeacherSelection(teachers);
+                var teacher = TeacherSelection(teachers, educationType);
                 var teacherForLessons = _lessonRepository.GetLessonsForTeacher(teacher.UserId);
                 syllabus.AssignToTeacher(teacherForLessons, teacher);
             }
         }
-        private void CheckAssignToTeacherOnSyllabus(List<SyllabusForLessonWithGroupListDto> syllabusLessons, SyllabusDomain syllabus)
+        private void CheckAssignToTeacherOnSyllabus(List<SyllabusForLessonWithGroupListDto> syllabusLessons, SyllabusDomain syllabus, EducationType educationType)
         {
             var emptyLessonOnSyllabus = syllabus.UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId == 0);
             var unAssignLessons = syllabusLessons.FindAll(x => emptyLessonOnSyllabus.Contains(emptyLessonOnSyllabus.Find(y => y.LessonId == x.LessonId))).ToList();
-            if (unAssignLessons.Count >= 0)
-                AssignToTeacherOnSyllabus(unAssignLessons, syllabus);
+            if (unAssignLessons.Count > 0)
+                AssignToTeacherOnSyllabus(unAssignLessons, syllabus, educationType);
         }
         private void AssignToLocationsOnSyllabus(SyllabusDomain syllabus, long facultyId)
         {

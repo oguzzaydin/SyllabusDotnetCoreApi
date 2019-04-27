@@ -17,15 +17,15 @@ namespace DPA.Database
 
         public List<SyllabusForUserWithConstraintListDto> GetUserWithConstraintsForLesson(long lessonId)
         {
-            var users = Queryable.FromSql($@"SELECT u.* FROM Faculty.Lesson as l
+            var users = Queryable.FromSql($@"SELECT c.StartTime, c.EndTime, c.IsFreeDay, c.WeeklyHour, c.EducationType, u.* FROM Faculty.Lesson as l
                                     INNER JOIN [User].UserLesson ul on l.LessonId = {lessonId} and ul.LessonId = l.LessonId
                                     INNER JOIN [User].[User] as u on u.UserId = ul.UserId
-                                    INNER JOIN [User].[Constraint] as c on c.UserId = ul.UserId and u.UserId = c.UserId");
-            
+                                    LEFT JOIN [User].[Constraint] as c on c.UserId = ul.UserId and u.UserId = c.UserId");
+            var userConstraint = users.Include(x => x.Constraint).ToList();
             // if (userConstraints.Count == 0)
             //     throw new UserFriendlyException($"{lessonId} Id li derse ait hoca bulunamadı.");
             
-            return users.Map<List<SyllabusForUserWithConstraintListDto>>();
+            return userConstraint.Map<List<SyllabusForUserWithConstraintListDto>>();
         }
 
         public Task<SignedInModel> SignInAsync(SignInModel signInModel)
