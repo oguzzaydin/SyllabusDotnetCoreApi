@@ -16,6 +16,7 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.UpdatedDate).IsRequired();
             builder.Property(x => x.GroupType).IsRequired();
             builder.Property(x => x.DayOfTheWeekType).IsRequired();
+            builder.Property(x => x.SemesterType).IsRequired();
             builder.Property(x => x.StarTime).IsRequired();
             builder.Property(x => x.EndTime).IsRequired();
 

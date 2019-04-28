@@ -11,6 +11,7 @@ namespace DPA.Model
         public long SyllabusId { get; set; }
         public int StarTime { get; set; }
         public int EndTime { get; set; }
+        public SemesterType SemesterType { get; set; }
         public LessonGroupType GroupType { get; set; }
         public DayOfTheWeekType DayOfTheWeekType { get; set; }
         public virtual LessonEntity Lesson { get; set; }

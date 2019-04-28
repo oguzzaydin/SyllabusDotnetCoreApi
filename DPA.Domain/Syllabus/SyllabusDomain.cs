@@ -86,12 +86,12 @@ namespace DPA.Domain
                 //3 saat ard arda ata
                 if (lesson.WeeklyHour == 3)
                 {
-                    UnitAssignToLesson(lesson.LessonId, 3, groupType);
+                    UnitAssignToLesson(lesson, 3, groupType);
                 }
                 else
                 {
                     //2 saat art arda ata
-                    UnitAssignToLesson(lesson.LessonId, 2, groupType);
+                    UnitAssignToLesson(lesson, 2, groupType);
                     lesson.WeeklyHour = lesson.WeeklyHour - 2;
 
                     if (lesson.WeeklyHour != 0)
@@ -105,16 +105,16 @@ namespace DPA.Domain
                 if (lesson.WeeklyHour == 1)
                 {
                     //1 tane boş birim bul ata
-                    UnitAssignToLesson(lesson.LessonId, 1, groupType);
+                    UnitAssignToLesson(lesson, 1, groupType);
                 }
                 else
                 {
                     // 2 tane aynı günde boş birim bul ard arda ata
-                    UnitAssignToLesson(lesson.LessonId, 2, groupType);
+                    UnitAssignToLesson(lesson, 2, groupType);
                 }
             }
         }
-        private void UnitAssignToLesson(long lessonId, int hour, LessonGroupType groupType)
+        private void UnitAssignToLesson(SyllabusForLessonWithGroupListDto lesson, int hour, LessonGroupType groupType)
         {
             var emptyUnits = UnitEmptySearch(hour);
             var isEmpty = new List<UnitLessonEntity>();
@@ -122,14 +122,15 @@ namespace DPA.Domain
             if (emptyUnits.Count == 0)
                 emptyUnits = UnitEmptySearch(hour);
             if (emptyUnits.Count > 0)
-                isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits[0].DayOfTheWeekType && x.LessonId == lessonId && x.GroupType == groupType);
+                isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.SemesterType == lesson.SemesterType  && x.GroupType == groupType);
             while (isEmpty.Count != 0)
             {
                 if (emptyUnits.Count > 0)
-                    isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits[0].DayOfTheWeekType && x.LessonId == lessonId && x.GroupType == groupType);
-                if (isEmpty.Count > 0)
+                    isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.SemesterType == lesson.SemesterType && x.GroupType == groupType);
+                if (isEmpty.Count > 0) {
                     emptyUnits = UnitEmptySearch(hour);
-
+                    break;
+                }
             }
 
             if (isEmpty.Count == 0)
@@ -138,7 +139,8 @@ namespace DPA.Domain
                 emptyUnits.ForEach(unit =>
                 {
                     index = UnitLessons.IndexOf(unit);
-                    UnitLessons[index].LessonId = lessonId;
+                    UnitLessons[index].LessonId = lesson.LessonId;
+                    UnitLessons[index].SemesterType = lesson.SemesterType;
                     UnitLessons[index].GroupType = groupType;
                 });
             }
