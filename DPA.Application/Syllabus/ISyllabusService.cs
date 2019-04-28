@@ -7,6 +7,6 @@ namespace DPA.Application
     public interface ISyllabusService
     {
         Task<SyllabusEntity> CreateSyllabus(CreateSyllabusRequest request);
-        Task<SyylabusForDepartmentDTo> GetSyllabusForDepartment(long departmentId);
+        Task<IEnumerable<SyylabusForDepartmentDTo>> GetSyllabusForDepartment(long departmentId);
     }
 }

@@ -70,9 +70,9 @@ namespace DPA.Application
             }
         }
 
-        public async Task<SyylabusForDepartmentDTo> GetSyllabusForDepartment(long departmentId)
+        public async Task<IEnumerable<SyylabusForDepartmentDTo>> GetSyllabusForDepartment(long departmentId)
         {
-            return await _syllabusRepository.SingleOrDefaultAsync<SyylabusForDepartmentDTo>(x => x.DepartmentId == departmentId);
+            return await _syllabusRepository.ListAsync<SyylabusForDepartmentDTo>(x => x.DepartmentId == departmentId);
         }
         private SyllabusForUserWithConstraintListDto TeacherSelection(List<SyllabusForUserWithConstraintListDto> teachers, EducationType educationType)
         {

@@ -8,6 +8,7 @@ namespace DPA.Model
         public int Year { get; set; }
         public PeriodType PeriodType { get; set; }
         public EducationType EducationType { get; set; }
+        public bool IsActive { get; set; }
         public int WeeklyHour { get; set; }
         public long DepartmentId { get; set; }
         public virtual DepartmentEntity Department { get; set; }

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DPA.Api
 {
-    [Authorize(Roles = "Admin, User")]
+    [Authorize(Roles = "Admin")]
     [ApiController]
     [RouteController]
     public class SyllabusController : ControllerBase
@@ -28,7 +28,7 @@ namespace DPA.Api
 
         [AllowAnonymous]
         [HttpGet("{DepartmentId}")]
-        public async Task<SyylabusForDepartmentDTo> GetSyllabusForDepartment(long DepartmentId)
+        public async Task<IEnumerable<SyylabusForDepartmentDTo>> GetSyllabusForDepartment(long DepartmentId)
              => await _syllabusService.GetSyllabusForDepartment(DepartmentId);
     }
 }

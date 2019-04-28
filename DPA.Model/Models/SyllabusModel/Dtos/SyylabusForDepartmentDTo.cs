@@ -9,6 +9,7 @@ namespace DPA.Model
         public PeriodType PeriodType { get; set; }
         public EducationType EducationType { get; set; }
         public int WeeklyHour { get; set; }
+        public bool IsActive { get; set; }
         public ICollection<UnitLessonDto> UnitLessons { get; set; } = new HashSet<UnitLessonDto>();
     }
 

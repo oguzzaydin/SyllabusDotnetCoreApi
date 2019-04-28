@@ -19,6 +19,7 @@ namespace DPA.Domain
             PeriodType = periodType;
             EducationType = educationType;
             Year = (int)educationType == 1 ? DateTime.Now.Year : DateTime.Now.Year + 1;
+            IsActive = false;
         }
 
         #region prop
@@ -26,6 +27,7 @@ namespace DPA.Domain
         public PeriodType PeriodType { get; private set; }
         public EducationType EducationType { get; private set; }
         public int WeeklyHour { get; private set; }
+        public bool IsActive { get; private set; } = false;
         public long DepartmentId { get; private set; }
         public virtual DepartmentEntity Department { get; private set; }
         public DateTime CreatedDate { get; private set; } = DateTime.Now;
@@ -364,15 +366,10 @@ namespace DPA.Domain
         {
             if (units.Count > 0)
             {
-                var isSameDayThisTeacher = UnitLessons.FindAll(x => x.UserId == teacher.UserId && x.DayOfTheWeekType == units[0].DayOfTheWeekType && x.LessonId == units[0].LessonId);
-                if (units.Count == 2)
-                {
-                    isSameDayThisTeacher = isSameDayThisTeacher.FindAll(x => x.EndTime == units[0].EndTime && x.EndTime == units[1].EndTime && x.StarTime == units[1].StarTime  && x.StarTime == units[0].StarTime);
-                } else {
-                    isSameDayThisTeacher = isSameDayThisTeacher.FindAll(x => x.EndTime == units[0].EndTime && x.EndTime == units[1].EndTime && x.EndTime == units[2].EndTime &&  x.StarTime == units[1].StarTime && x.StarTime == units[2].StarTime  && x.StarTime == units[0].StarTime);
-                }
+                var isSameDayThisTeacher = UnitLessons.FindAll(x => x.UserId == teacher.UserId && x.DayOfTheWeekType == units.First().DayOfTheWeekType && x.StarTime == units.First().StarTime);
+                var isSameTeacherEndTime = UnitLessons.FindAll(x => x.UserId == teacher.UserId && x.DayOfTheWeekType == units.Last().DayOfTheWeekType && x.EndTime == units.Last().EndTime);
 
-                if (isSameDayThisTeacher.Count == 0)
+                if (isSameDayThisTeacher.Count == 0 && isSameTeacherEndTime.Count == 0)
                 {
                     int index = 0;
                     units.ForEach(item =>
@@ -380,6 +377,8 @@ namespace DPA.Domain
                          index = UnitLessons.IndexOf(item);
                          UnitLessons[index].UserId = teacher.UserId;
                      });
+                } else {
+                    //Çakısma var
                 }
             }
         }
