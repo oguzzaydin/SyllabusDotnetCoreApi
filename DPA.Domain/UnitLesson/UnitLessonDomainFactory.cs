@@ -1,3 +1,5 @@
+using DPA.Model;
+
 namespace DPA.Domain.UnitLesson
 {
     public static class UnitLessonDomainFactory
@@ -9,6 +11,35 @@ namespace DPA.Domain.UnitLesson
                 lessonId,
                 userId,
                 locationId
+            );
+        }
+
+        public static UnitLessonDomain Create(UpdateUnitLessonModel updateUnitLessonModel)
+        {
+            return new UnitLessonDomain
+            (
+                updateUnitLessonModel.UnitLessonId,
+                updateUnitLessonModel.LocationId,
+                updateUnitLessonModel.StarTime,
+                updateUnitLessonModel.EndTime,
+                updateUnitLessonModel.DayOfTheWeekType
+            );
+        }
+
+        public static UnitLessonDomain Create(UnitLessonEntity unitLessonEntity)
+        {
+            return new UnitLessonDomain
+            (
+                unitLessonEntity.UnitLessonId,
+                unitLessonEntity.LessonId,
+                unitLessonEntity.LocationId,
+                unitLessonEntity.SyllabusId,
+                unitLessonEntity.UserId,
+                unitLessonEntity.StarTime,
+                unitLessonEntity.EndTime,
+                unitLessonEntity.SemesterType,
+                unitLessonEntity.GroupType,
+                unitLessonEntity.DayOfTheWeekType
             );
         }
     }

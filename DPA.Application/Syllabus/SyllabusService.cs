@@ -44,6 +44,7 @@ namespace DPA.Application
         {
             try
             {
+                Check.NotNullOrEmpty(request, "request");
                 var lessons = _lessonRepository.GetDepartmentLessons(request.FacultyId, request.DepartmentId, request.PeriodType);
                 var syllabusLessons = lessons.Map<List<SyllabusForLessonWithGroupListDto>>();
                 var syllabus = SyllabusDomainFactory.Create(request);
