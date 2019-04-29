@@ -3,6 +3,7 @@ using DotNetCore.Objects;
 using DPA.Database;
 using DPA.Domain;
 using DPA.Model;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -101,6 +102,42 @@ namespace DPA.Application
             return new SuccessResult();
         }
 
+        public async Task<IResult> UpdateFirstSyylabusAsync(long departmentId, long firstSyllabusId)
+        {
+            Check.NotNullOrEmpty(firstSyllabusId, "firstSyllabusId");
+            Check.NotNullOrEmpty(departmentId, "departmentId");
+
+            var DepartmentEntity = await DepartmentRepository.SelectAsync(departmentId);
+            Check.NotNullOrEmpty(DepartmentEntity, "DepartmentEntity");
+
+            var DepartmentDomain = DepartmentDomainFactory.Create(DepartmentEntity);
+            DepartmentDomain.FirstActiveSyllabus(firstSyllabusId);
+            DepartmentEntity = DepartmentDomain.Map<DepartmentEntity>();
+            DepartmentEntity.DepartmentId = departmentId;
+            await DepartmentRepository.UpdateAsync(DepartmentEntity, DepartmentEntity.DepartmentId);
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessResult();
+        }
+
+        public async Task<IResult> UpdateSecondSyylabusAsync(long departmentId, long secondSyllabusId)
+        {
+            Check.NotNullOrEmpty(secondSyllabusId, "secondSyllabusId");
+            Check.NotNullOrEmpty(departmentId, "departmentId");
+
+            var DepartmentEntity = await DepartmentRepository.SelectAsync(departmentId);
+            Check.NotNullOrEmpty(DepartmentEntity, "DepartmentEntity");
+
+            var DepartmentDomain = DepartmentDomainFactory.Create(DepartmentEntity);
+            DepartmentDomain.SecondActiveSyllabus(secondSyllabusId);
+            DepartmentEntity = DepartmentDomain.Map<DepartmentEntity>();
+            DepartmentEntity.DepartmentId = departmentId;
+            await DepartmentRepository.UpdateAsync(DepartmentEntity, DepartmentEntity.DepartmentId);
+            await DatabaseUnitOfWork.SaveChangesAsync();
+
+            return new SuccessResult();
+        }
+
         public async Task<IResult> UpdateUserAsync(long departmentId, long headOfDepartmentId)
         {
             var DepartmentEntity = await DepartmentRepository.SelectAsync(departmentId);
@@ -116,5 +153,16 @@ namespace DPA.Application
             //Duzenlenecek
             return await DepartmentRepository.SingleOrDefaultAsync<ListDepartmentModel>(x => x.FacultyId == headOfDepartmentId);
         }
+
+        
+        // public async Task<SyylabusForDepartmentDTo> GetFirstSyllabusForDepartment(long departmentId)
+        // {
+ 
+        // }
+
+        // public async Task<SyylabusForDepartmentDTo> GetSecondSyllabusForDepartment(long departmentId)
+        // {
+        //     return _syllabusRepository.GetSecondSyllabusForDepartment(departmentId);
+        // }
     }
 }

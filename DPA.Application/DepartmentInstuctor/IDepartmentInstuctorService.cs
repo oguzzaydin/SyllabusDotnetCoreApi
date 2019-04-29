@@ -9,6 +9,7 @@ namespace DPA.Application.DepartmentInstuctor
     {
         Task<IDataResult<long>> AddAsync(DepartmentInstructorModel request);
         Task<IEnumerable<ListUserModel>> ListInstructorAsync(long departmentId);
+        Task<IEnumerable<ListDepartmentModel>> ListDepartmentAsync(long userId);
         Task<IResult> DeleteInstructorAsync(long departmentId, long userId);
     }
 }

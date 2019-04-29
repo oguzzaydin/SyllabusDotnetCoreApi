@@ -29,10 +29,12 @@ namespace DPA.Api.Controllers
 
         [HttpGet("{departmentId}/instructors")]
         public async Task<IEnumerable<ListUserModel>> ListInstructorAsync(long departmentId)
-        {
-            return await _departmentInstuctorService.ListInstructorAsync(departmentId);
-        }
-      
+            => await _departmentInstuctorService.ListInstructorAsync(departmentId);
+
+        [HttpGet("{userId}/departments")]
+        public async Task<IEnumerable<ListDepartmentModel>> ListDepartmentAsync(long userId)
+            => await _departmentInstuctorService.ListDepartmentAsync(userId);
+
         [HttpDelete("{departmentId}/instructor/{userId}")]
         public async Task<ActionIResult> DeleteInstructorAsync(long departmentId, long userId)
         {

@@ -15,6 +15,8 @@ namespace DPA.Database.EntityConfiguration
             builder.Property(x => x.DepartmentId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.Title).IsRequired().HasMaxLength(200);
             builder.Property(x => x.DepartmentCode).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.FirstActiveSyllabusId);
+            builder.Property(x => x.SecondActiveSyylabusId);
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.UpdatedDate).IsRequired();
 

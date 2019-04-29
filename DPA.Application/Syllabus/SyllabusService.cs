@@ -40,7 +40,7 @@ namespace DPA.Application
         }
         #endregion
 
-        public async Task<SyllabusEntity> CreateSyllabus(CreateSyllabusRequest request)
+        public async Task<SyylabusForDepartmentDTo> CreateSyllabus(CreateSyllabusRequest request)
         {
             try
             {
@@ -58,10 +58,13 @@ namespace DPA.Application
                 CheckAssignToLocationOnSyllabus(syllabus, request.FacultyId);
 
                 syllabus.AddWeeklyHour(syllabus.UnitLessons.Count);
+
+                syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0 && x.UserId == 0 && x.LocationId == 0);
                 var syllabusEntity = syllabus.Map<SyllabusEntity>();
+                var result = syllabus.Map<SyylabusForDepartmentDTo>();
                 await _syllabusRepository.AddAsync(syllabusEntity);
                 await _databaseUnitOfWork.SaveChangesAsync();
-                return syllabusEntity;
+                return result;
             }
             catch (Exception ex)
             {
@@ -108,7 +111,6 @@ namespace DPA.Application
             var locations = _locationRepository.GetFacultyLocations(facultyId);
             locations.Shuffle();
             syllabus.AssignToLocations(locations);
-            syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0 && x.UserId == 0 && x.LocationId == 0);
         }
         private void CheckAssignToLocationOnSyllabus(SyllabusDomain syllabus, long facultyId)
         {
@@ -121,6 +123,15 @@ namespace DPA.Application
                AssignToLocationsOnSyllabus(syllabus, facultyId);
             }
         }
-      
+
+        public SyylabusForDepartmentDTo GetFirstSyllabusForDepartment(long departmentId)
+        {
+            return  _syllabusRepository.GetFirstSyllabusForDepartment(departmentId);
+        }
+
+        public SyylabusForDepartmentDTo GetSecondSyllabusForDepartment(long departmentId)
+        {
+            return _syllabusRepository.GetSecondSyllabusForDepartment(departmentId);
+        }
     }
 }

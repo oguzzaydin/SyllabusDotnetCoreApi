@@ -23,12 +23,23 @@ namespace DPA.Api
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<SyllabusEntity> CreateSyllabus([FromBody] CreateSyllabusRequest request)
+        public async Task<SyylabusForDepartmentDTo> CreateSyllabus([FromBody] CreateSyllabusRequest request)
             => await _syllabusService.CreateSyllabus(request);
 
         [AllowAnonymous]
-        [HttpGet("{DepartmentId}")]
-        public async Task<IEnumerable<SyylabusForDepartmentDTo>> GetSyllabusForDepartment(long DepartmentId)
-             => await _syllabusService.GetSyllabusForDepartment(DepartmentId);
+        [HttpGet("{departmentId}")]
+        public async Task<IEnumerable<SyylabusForDepartmentDTo>> GetSyllabusForDepartment(long departmentId)
+             => await _syllabusService.GetSyllabusForDepartment(departmentId);
+
+        [AllowAnonymous]
+        [HttpGet("{departmentId}/firstActiveSyllabus")]
+        public SyylabusForDepartmentDTo GetFirstSyllabusForDepartment(long departmentId)
+             =>  _syllabusService.GetFirstSyllabusForDepartment(departmentId);
+
+
+        [AllowAnonymous]
+        [HttpGet("{departmentId}/secondActiveSyllabus")]
+        public  SyylabusForDepartmentDTo GetSecondSyllabusForDepartment(long departmentId)
+             =>  _syllabusService.GetSecondSyllabusForDepartment(departmentId);
     }
 }

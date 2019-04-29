@@ -52,5 +52,12 @@ namespace DPA.Application
             return departmentInstructor.Select(x => x.User).Map<IEnumerable<ListUserModel>>();
         }
 
+        public async Task<IEnumerable<ListDepartmentModel>> ListDepartmentAsync(long userId)
+        {
+            Check.NotNullOrEmpty(userId, "userId");
+            var departmentInstructor = await _departmentInstructorRepository.ListAsync<DepartmentInstructorEntity>(x => x.UserId == userId, y => y.Department);
+            return departmentInstructor.Select(x => x.Department).Map<IEnumerable<ListDepartmentModel>>();
+        }
+
     }
 }

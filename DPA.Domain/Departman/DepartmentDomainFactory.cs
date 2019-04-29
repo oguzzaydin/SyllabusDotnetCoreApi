@@ -28,7 +28,9 @@ namespace DPA.Domain
                 DepartmentEntity.DepartmentId,
                 DepartmentEntity.Title,
                 DepartmentEntity.DepartmentCode,
-                DepartmentEntity.FacultyId
+                DepartmentEntity.FacultyId,
+                DepartmentEntity.FirstActiveSyllabusId,
+                DepartmentEntity.SecondActiveSyylabusId
             );
         }
     }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DPA.Api
 {
-    [Authorize(Roles = "Administrator, Admin")]
+    // [Authorize(Roles = "Administrator, Admin")]
     [ApiController]
     [RouteController]
     public class DepartmentController : ControllerBase
@@ -20,11 +20,6 @@ namespace DPA.Api
 
         private IDepartmentService DepartmentService { get; }
 
-
-
-        /// <summary>
-        /// Bölüm ekleme CRUD işlemleri Role = Administrator, Admin
-        /// </summary>
         [HttpPost]
         public async Task<IActionResult> AddAsync(AddDepartmentModel addDepartmentModel)
         {
@@ -33,26 +28,17 @@ namespace DPA.Api
             return new ActionIResult(result);
         }
 
-        /// <summary>
-        /// Bölüm Başkanını getirir
-        /// </summary>
         [HttpGet("{DepartmentId}/user")]
         public async Task<UserModel> SingleOrDefaultUserAsync(long DepartmentId)
         {
             return await DepartmentService.SingleOrDefaultUserAsync(DepartmentId);
         }
-        /// <summary>
-        /// Bölüme ait ders programlarını getirir
-        /// </summary>
         [HttpGet("{DepartmentId}/syllabus")]
         public async Task<SyllabusModel> SingleOrDefaultSyllabusAsync(long DepartmentId)
         {
             return await DepartmentService.SingleOrDefaultSyllabusAsync(DepartmentId);
         }
 
-        /// <summary>
-        /// Bölüm Başkanı için Bölüm bilgilerini getirir
-        /// </summary>
         [HttpGet("getDepartmentForHeadOfDepartment/{userId}")]
         public async Task<ListDepartmentModel> GetDepartmentForHeadOfDepartmentAsync(long userId)
         {
@@ -72,10 +58,18 @@ namespace DPA.Api
 
             return new ActionIResult(result);
         }
-
-        /// <summary>
-        /// Bölüm Başkanını Günceller
-        /// </summary>
+        [HttpPut("{departmentId}/firstActiveSyllabus/{firstSyllabusId}")]
+        public async Task<IActionResult> UpdateFirstSyylabusAsync(long departmentId, long firstSyllabusId)
+        {
+            var result = await DepartmentService.UpdateFirstSyylabusAsync(departmentId, firstSyllabusId);
+            return new ActionIResult(result);
+        }
+        [HttpPut("{departmentId}/secondActiveSyllabus/{secondSyllabusId}")]
+        public async Task<IActionResult> UpdateSecondSyylabusAsync(long departmentId, long secondSyllabusId)
+        {
+            var result = await DepartmentService.UpdateSecondSyylabusAsync(departmentId, secondSyllabusId);
+            return new ActionIResult(result);
+        }
         [HttpPut("{DepartmentId}/user/{userId}")]
         public async Task<IActionResult> UpdateUserAsync(long DepartmentId, long userId)
         {
@@ -83,7 +77,6 @@ namespace DPA.Api
 
             return new ActionIResult(result);
         }
-
         [HttpDelete("{DepartmentId}")]
         public async Task<IActionResult> DeleteAsync(long DepartmentId)
         {
@@ -91,7 +84,6 @@ namespace DPA.Api
 
             return new ActionIResult(result);
         }
-
         [HttpGet("{DepartmentId}")]
         public async Task<DepartmentModel> SelectAsync(long DepartmentId)
         {

@@ -19,7 +19,6 @@ namespace DPA.Domain
             PeriodType = periodType;
             EducationType = educationType;
             Year = (int)educationType == 1 ? DateTime.Now.Year : DateTime.Now.Year + 1;
-            IsActive = false;
         }
 
         #region prop
@@ -27,7 +26,6 @@ namespace DPA.Domain
         public PeriodType PeriodType { get; private set; }
         public EducationType EducationType { get; private set; }
         public int WeeklyHour { get; private set; }
-        public bool IsActive { get; private set; } = false;
         public long DepartmentId { get; private set; }
         public virtual DepartmentEntity Department { get; private set; }
         public DateTime CreatedDate { get; private set; } = DateTime.Now;
@@ -124,12 +122,13 @@ namespace DPA.Domain
             if (emptyUnits.Count == 0)
                 emptyUnits = UnitEmptySearch(hour);
             if (emptyUnits.Count > 0)
-                isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.SemesterType == lesson.SemesterType  && x.GroupType == groupType);
+                isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.SemesterType == lesson.SemesterType && x.GroupType == groupType);
             while (isEmpty.Count != 0)
             {
                 if (emptyUnits.Count > 0)
                     isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.SemesterType == lesson.SemesterType && x.GroupType == groupType);
-                if (isEmpty.Count > 0) {
+                if (isEmpty.Count > 0)
+                {
                     emptyUnits = UnitEmptySearch(hour);
                     break;
                 }
@@ -377,7 +376,9 @@ namespace DPA.Domain
                          index = UnitLessons.IndexOf(item);
                          UnitLessons[index].UserId = teacher.UserId;
                      });
-                } else {
+                }
+                else
+                {
                     //Çakısma var
                 }
             }
@@ -417,9 +418,10 @@ namespace DPA.Domain
         }
         private void PlaceLocationsOnUnits(List<UnitLessonEntity> units, SyllabusForLocationListDto location, List<SyllabusForLocationListDto> tempLocations)
         {
-            var isEmpty = units.FindAll(x => x.DayOfTheWeekType == units[0].DayOfTheWeekType && x.StarTime == units[0].StarTime && x.LocationId == location.LocationId);
+            var isEmpty = UnitLessons.FindAll(x => x.StarTime == units.First().StarTime && x.LocationId == location.LocationId);
+            var isEmptyEndTime = UnitLessons.FindAll(x => x.DayOfTheWeekType == units.Last().DayOfTheWeekType && x.EndTime == units.First().EndTime && x.LocationId == location.LocationId);
 
-            if (isEmpty.Count > 0)
+            if (isEmpty.Count > 0 || isEmptyEndTime.Count > 0)
             {
                 tempLocations.Shuffle();
                 AssignToLocations(tempLocations);

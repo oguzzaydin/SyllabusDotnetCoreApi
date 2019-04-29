@@ -1982,6 +1982,161 @@ namespace DPA.Database
 
             #endregion
 
+            #region KULLANICI BÖLÜM İLİŞKİLERİ
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 1,
+                UserId = 2,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 2,
+                UserId = 3,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 3,
+                UserId = 4,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 4,
+                UserId = 5,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 5,
+                UserId = 6,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 6,
+                UserId = 7,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 7,
+                UserId = 8,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 8,
+                UserId = 9,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 9,
+                UserId = 10,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 10,
+                UserId = 11,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 11,
+                UserId = 12,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 12,
+                UserId = 13,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 13,
+                UserId = 14,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 14,
+                UserId = 15,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 15,
+                UserId = 16,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 16,
+                UserId = 17,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 17,
+                UserId = 18,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 18,
+                UserId = 19,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            modelBuilder.Entity<DepartmentInstructorEntity>().HasData(new DepartmentInstructorEntity
+            {
+                DepartmentInstructorId = 19,
+                UserId = 20,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                DepartmentId = 1
+            });
+            #endregion
+            
             #region DERS BÖLÜM İLİŞKİLERİ
 
             modelBuilder.Entity<DepartmentLessonEntity>().HasData(new DepartmentLessonEntity

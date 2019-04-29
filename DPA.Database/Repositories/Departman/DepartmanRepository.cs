@@ -8,5 +8,14 @@ namespace DPA.Database
         public DepartmentRepository(DatabaseContext context) : base(context)
         {
         }
+
+        // public async SyylabusForDepartmentDTo GetFirstSyllabusForDepartment(long departmentId)
+        // {
+        //     var syllabuses = await SingleOrDefaultAsync(x => x.DepartmentId == departmentId, p => p.Syllabus);
+
+        //     // if (syllabuses.Count == 0)
+        //     //     throw new UserFriendlyException("Bölüme ait ders programı bulunamadı.");
+        //     return syllabuses.Map<SyylabusForDepartmentDTo>();
+        // }
     }
 }
