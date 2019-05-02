@@ -51,20 +51,23 @@ namespace DPA.Application
                 syllabus.CreateSyllabusDefaultTable(request.EducationType);
 
                 syllabus.AssignToLesson(lessons, request);
+                syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0);
 
                 AssignToTeacherOnSyllabus(syllabusLessons, syllabus, request.EducationType);
                 CheckAssignToTeacherOnSyllabus(syllabusLessons, syllabus, request.EducationType);
+                syllabus.UnitLessons.RemoveAll(x => x.LessonId > 0 && x.UserId == 0);
 
                 AssignToLocationsOnSyllabus(syllabus, request.FacultyId);
                 CheckAssignToLocationOnSyllabus(syllabus, request.FacultyId);
+                syllabus.UnitLessons.RemoveAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
 
                 syllabus.AddWeeklyHour(syllabus.UnitLessons.Count);
-
-                syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0 && x.UserId == 0 && x.LocationId == 0);
                 var syllabusEntity = syllabus.Map<SyllabusEntity>();
-                var result = syllabus.Map<SyylabusForDepartmentDTo>();
+
                 await _syllabusRepository.AddAsync(syllabusEntity);
+
                 await _databaseUnitOfWork.SaveChangesAsync();
+                var result = await GetSyllabus(syllabusEntity.SyllabusId).ConfigureAwait(false);
                 return result;
             }
             catch (Exception ex)
@@ -78,13 +81,19 @@ namespace DPA.Application
         {
             return await _syllabusRepository.ListAsync<SyylabusForDepartmentDTo>(x => x.DepartmentId == departmentId);
         }
+
+        private async Task<SyylabusForDepartmentDTo> GetSyllabus(long syllabusId)
+        {
+            return await _syllabusRepository.SingleOrDefaultAsync<SyylabusForDepartmentDTo>(x => x.SyllabusId == syllabusId);
+        }
+
         private SyllabusForUserWithConstraintListDto TeacherSelection(List<SyllabusForUserWithConstraintListDto> teachers, EducationType educationType)
         {
-            
+
             var firstTeacher = teachers.OrderBy(x => x.Title).FirstOrDefault(); // Öğretmenlerden öncelikli olanları seçer 
             var selectTeachers = teachers.FindAll(x => x.Title == firstTeacher.Title && x.Constraint.EducationType == educationType);
 
-            if(selectTeachers.Count == 0)
+            if (selectTeachers.Count == 0)
                 selectTeachers = teachers.FindAll(x => x.Title == firstTeacher.Title);
 
             selectTeachers.Shuffle();
@@ -99,6 +108,7 @@ namespace DPA.Application
                 var teacherForLessons = _lessonRepository.GetLessonsForTeacher(teacher.UserId);
                 syllabus.AssignToTeacher(teacherForLessons, teacher);
             }
+
         }
         private void CheckAssignToTeacherOnSyllabus(List<SyllabusForLessonWithGroupListDto> syllabusLessons, SyllabusDomain syllabus, EducationType educationType)
         {
@@ -112,22 +122,22 @@ namespace DPA.Application
             var locations = _locationRepository.GetFacultyLocations(facultyId);
             locations.Shuffle();
             syllabus.AssignToLocations(locations);
+            syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0 && x.UserId == 0 && x.LocationId == 0);
         }
         private void CheckAssignToLocationOnSyllabus(SyllabusDomain syllabus, long facultyId)
         {
-            var emptyLocationOnUnits = new List<UnitLessonEntity>();
-            emptyLocationOnUnits = syllabus.UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
-            while(emptyLocationOnUnits.Count != 0)
+            var emptyLocationOnUnits = syllabus.UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
+            while (emptyLocationOnUnits.Count != 0)
             {
-               emptyLocationOnUnits = syllabus.UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
-            if (emptyLocationOnUnits.Count > 0)
-               AssignToLocationsOnSyllabus(syllabus, facultyId);
+                emptyLocationOnUnits = syllabus.UnitLessons.FindAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
+                if (emptyLocationOnUnits.Count > 0)
+                    AssignToLocationsOnSyllabus(syllabus, facultyId);
             }
         }
 
         public SyylabusForDepartmentDTo GetFirstSyllabusForDepartment(long departmentId)
         {
-            return  _syllabusRepository.GetFirstSyllabusForDepartment(departmentId);
+            return _syllabusRepository.GetFirstSyllabusForDepartment(departmentId);
         }
 
         public SyylabusForDepartmentDTo GetSecondSyllabusForDepartment(long departmentId)

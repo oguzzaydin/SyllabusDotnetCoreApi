@@ -72,7 +72,10 @@ namespace DPA.Domain
                 foreach (var group in lesson.LessonGroups)
                 {
                     AssignLessonCheckCriteria(lesson, group.GroupType);
+                    int count2 = UnitLessons.FindAll(x => x.LessonId == lesson.LessonId).Count;
+
                 }
+                int count = UnitLessons.FindAll(x => x.LessonId == lesson.LessonId).Count;
                 lessons.Remove(lesson);
                 lessons.Shuffle();
                 if (lessons.Count > 0)
@@ -81,70 +84,92 @@ namespace DPA.Domain
         }
         private void AssignLessonCheckCriteria(SyllabusForLessonWithGroupListDto lesson, LessonGroupType groupType)
         {
+            var assignLesson = lesson.Map<SyllabusForLessonWithGroupListDto>();
             if (lesson.WeeklyHour > 2)
             {
                 //3 saat ard arda ata
-                if (lesson.WeeklyHour == 3)
+                if (assignLesson.WeeklyHour == 3)
                 {
-                    UnitAssignToLesson(lesson, 3, groupType);
+                    UnitAssignToLesson(assignLesson, 3, groupType);
                 }
                 else
                 {
                     //2 saat art arda ata
-                    UnitAssignToLesson(lesson, 2, groupType);
-                    lesson.WeeklyHour = lesson.WeeklyHour - 2;
+                    UnitAssignToLesson(assignLesson, 2, groupType);
+                    assignLesson.WeeklyHour = assignLesson.WeeklyHour - 2;
 
-                    if (lesson.WeeklyHour != 0)
+                    if (assignLesson.WeeklyHour > 0)
                     {
-                        AssignLessonCheckCriteria(lesson, groupType);
+                        AssignLessonCheckCriteria(assignLesson, groupType);
                     }
                 }
             }
             else
             {
-                if (lesson.WeeklyHour == 1)
+                if (assignLesson.WeeklyHour == 1)
                 {
                     //1 tane boş birim bul ata
-                    UnitAssignToLesson(lesson, 1, groupType);
+                    UnitAssignToLesson(assignLesson, 1, groupType);
                 }
                 else
                 {
                     // 2 tane aynı günde boş birim bul ard arda ata
-                    UnitAssignToLesson(lesson, 2, groupType);
+                    UnitAssignToLesson(assignLesson, 2, groupType);
                 }
             }
         }
         private void UnitAssignToLesson(SyllabusForLessonWithGroupListDto lesson, int hour, LessonGroupType groupType)
         {
             var emptyUnits = UnitEmptySearch(hour);
-            var isEmpty = new List<UnitLessonEntity>();
+            var uniqeGroup = new List<UnitLessonEntity>();
+            var uniqeLesson = new List<UnitLessonEntity>();
+            var uniqeEndtime = new List<UnitLessonEntity>();
             // index null gelirse yeni tablo oluşmuş demektir orda arama yapmak için
             if (emptyUnits.Count == 0)
                 emptyUnits = UnitEmptySearch(hour);
             if (emptyUnits.Count > 0)
-                isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.SemesterType == lesson.SemesterType && x.GroupType == groupType);
-            while (isEmpty.Count != 0)
+                uniqeGroup = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.SemesterType == lesson.SemesterType && x.GroupType == groupType);
+
+            uniqeEndtime = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.Last().DayOfTheWeekType && x.StarTime == emptyUnits.Last().StarTime && x.SemesterType == lesson.SemesterType && x.GroupType == groupType);
+            uniqeGroup = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.StarTime == emptyUnits.First().StarTime && x.SemesterType == lesson.SemesterType && x.GroupType == groupType);
+            uniqeLesson = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.LessonId == lesson.LessonId && x.GroupType == groupType);
+            while (uniqeGroup.Count != 0 || uniqeLesson.Count != 0 || uniqeEndtime.Count != 0)
             {
-                if (emptyUnits.Count > 0)
-                    isEmpty = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.SemesterType == lesson.SemesterType && x.GroupType == groupType);
-                if (isEmpty.Count > 0)
+                if (emptyUnits.Count != 0)
+                {
+                    uniqeGroup = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.StarTime == emptyUnits.First().StarTime && x.SemesterType == lesson.SemesterType && x.GroupType == groupType);
+                    uniqeEndtime = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.Last().DayOfTheWeekType && x.StarTime == emptyUnits.Last().StarTime && x.SemesterType == lesson.SemesterType && x.GroupType == groupType);
+                    uniqeLesson = UnitLessons.FindAll(x => x.DayOfTheWeekType == emptyUnits.First().DayOfTheWeekType && x.LessonId == lesson.LessonId && x.GroupType == groupType);
+                }
+                if (uniqeGroup.Count != 0 || uniqeLesson.Count != 0 || uniqeEndtime.Count != 0)
                 {
                     emptyUnits = UnitEmptySearch(hour);
+                    if (emptyUnits.Count == 0)
+                        emptyUnits = UnitEmptySearch(hour);
+                }
+                if (uniqeGroup.Count == 0 && uniqeLesson.Count == 0 && uniqeEndtime.Count == 0)
+                {
                     break;
+                }
+                else
+                {
+                    emptyUnits = UnitEmptySearch(hour);
+                    if (emptyUnits.Count == 0)
+                        emptyUnits = UnitEmptySearch(hour);
                 }
             }
 
-            if (isEmpty.Count == 0)
+
+            int index = 0;
+            emptyUnits.ForEach(unit =>
             {
-                int index = 0;
-                emptyUnits.ForEach(unit =>
-                {
-                    index = UnitLessons.IndexOf(unit);
-                    UnitLessons[index].LessonId = lesson.LessonId;
-                    UnitLessons[index].SemesterType = lesson.SemesterType;
-                    UnitLessons[index].GroupType = groupType;
-                });
-            }
+
+                index = UnitLessons.IndexOf(unit);
+                UnitLessons[index].LessonId = lesson.LessonId;
+                UnitLessons[index].SemesterType = lesson.SemesterType;
+                UnitLessons[index].GroupType = groupType;
+            });
+
         }
         private List<UnitLessonEntity> UnitEmptySearch(int hour)
         {
@@ -158,19 +183,17 @@ namespace DPA.Domain
                 if (units.Count == hour || units.Count > hour)
                 {
                     emptyUnit = GetEmptyIndexForUnits(units, hour);
-                    days.Remove(units.FirstOrDefault().DayOfTheWeekType);
 
                     if (emptyUnit.Count == 0)
                     {
                         units = GetEmptyUnitsForDay(days);
-                        days.Remove(units.FirstOrDefault().DayOfTheWeekType);
+                        // days.Remove(units.FirstOrDefault().DayOfTheWeekType);
                     }
                     else
                     {
                         days.Clear();
                         return emptyUnit;
                     }
-
                 }
                 else
                 {
@@ -190,12 +213,12 @@ namespace DPA.Domain
                 {
                     for (int i = 0; i < units.Count - 2; i++)
                     {
-                        if (units.ElementAtOrDefault(i).EndTime == units.ElementAtOrDefault(i + 1).StarTime && units.ElementAtOrDefault(i + 1).EndTime == units.ElementAtOrDefault(i + 2).StarTime)
+                        if (units.ElementAt(i).EndTime == units.ElementAt(i + 1).StarTime && units.ElementAt(i + 1).EndTime == units.ElementAt(i + 2).StarTime)
                         {
-                            empytUnit.Add(units.ElementAtOrDefault(i));
-                            empytUnit.Add(units.ElementAtOrDefault(i + 1));
-                            empytUnit.Add(units.ElementAtOrDefault(i + 2));
-                            if (empytUnit.Count == hour)
+                            empytUnit.Add(units.ElementAt(i));
+                            empytUnit.Add(units.ElementAt(i + 1));
+                            empytUnit.Add(units.ElementAt(i + 2));
+                            if (empytUnit.Count == 3)
                                 return empytUnit;
                         }
                     }
@@ -204,11 +227,11 @@ namespace DPA.Domain
                 {
                     for (int i = 0; i < units.Count - 1; i++)
                     {
-                        if (units.ElementAtOrDefault(i).EndTime == units.ElementAtOrDefault(i + 1).StarTime)
+                        if (units.ElementAt(i).EndTime == units.ElementAt(i + 1).StarTime)
                         {
-                            empytUnit.Add(units.ElementAtOrDefault(i));
-                            empytUnit.Add(units.ElementAtOrDefault(i + 1));
-                            if (empytUnit.Count == hour)
+                            empytUnit.Add(units.ElementAt(i));
+                            empytUnit.Add(units.ElementAt(i + 1));
+                            if (empytUnit.Count == 2)
                                 return empytUnit;
                         }
                     }
@@ -217,10 +240,9 @@ namespace DPA.Domain
                 {
                     units.Shuffle();
                     empytUnit.Add(units.FirstOrDefault());
+
                 }
             }
-
-
 
             return empytUnit;
         }
@@ -230,7 +252,6 @@ namespace DPA.Domain
             var day = days.First();
             return UnitLessons.FindAll(x => x.LessonId == 0 && x.DayOfTheWeekType == day);
         }
-
         #endregion
 
         #region ÖĞRETMEN ATAMA
@@ -380,6 +401,12 @@ namespace DPA.Domain
                 else
                 {
                     //Çakısma var
+                    int index = 0;
+                    units.ForEach(item =>
+                     {
+                         index = UnitLessons.IndexOf(item);
+                         UnitLessons[index].UserId = teacher.UserId;
+                     });
                 }
             }
         }
@@ -418,10 +445,9 @@ namespace DPA.Domain
         }
         private void PlaceLocationsOnUnits(List<UnitLessonEntity> units, SyllabusForLocationListDto location, List<SyllabusForLocationListDto> tempLocations)
         {
-            var isEmpty = UnitLessons.FindAll(x => x.StarTime == units.First().StarTime && x.LocationId == location.LocationId);
-            var isEmptyEndTime = UnitLessons.FindAll(x => x.DayOfTheWeekType == units.Last().DayOfTheWeekType && x.EndTime == units.First().EndTime && x.LocationId == location.LocationId);
+            var isEmpty = units.FindAll(x => x.DayOfTheWeekType == units[0].DayOfTheWeekType && x.StarTime == units[0].StarTime && x.LocationId == location.LocationId);
 
-            if (isEmpty.Count > 0 || isEmptyEndTime.Count > 0)
+            if (isEmpty.Count > 0)
             {
                 tempLocations.Shuffle();
                 AssignToLocations(tempLocations);
