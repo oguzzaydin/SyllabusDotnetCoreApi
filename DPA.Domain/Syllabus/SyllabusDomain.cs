@@ -100,7 +100,8 @@ namespace DPA.Domain
 
                 var cakisanGruplar = UnitLessons.FindAll(unit => unit.SemesterType == lesson.SemesterType && unit.GroupType == groupType);
 
-                cakisanGruplar.ForEach(item =>
+
+                foreach (var item in cakisanGruplar.ToList())
                 {
                     for (int i = 0; i < timesAndDays.TimeAndDays.Count; i++)
                     {
@@ -109,7 +110,8 @@ namespace DPA.Domain
 
                         timesAndDays.TimeAndDays[i].Times.RemoveAll(del => del == item.StarTime);
                     }
-                });
+                }
+
 
                 foreach (var gn in timesAndDays.TimeAndDays.ToList())
                 {
