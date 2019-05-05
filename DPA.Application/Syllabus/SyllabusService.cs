@@ -48,7 +48,7 @@ namespace DPA.Application
                 var lessons = _lessonRepository.GetDepartmentLessons(request.FacultyId, request.DepartmentId, request.PeriodType);
                 var syllabusLessons = lessons.Map<List<SyllabusForLessonWithGroupListDto>>();
                 var syllabus = SyllabusDomainFactory.Create(request);
-                syllabus.CreateSyllabusDefaultTable(request.EducationType);
+                // syllabus.CreateSyllabusDefaultTable(request.EducationType);
                 syllabus.AssignToLesson(lessons, request);
                 syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0);
 

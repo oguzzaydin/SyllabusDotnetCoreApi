@@ -88,9 +88,9 @@ namespace DPA.Domain
             // var timesAndDays = new TimesAndDays(EducationType);
             var blocks = UnitToBlock(lesson);
 
-            blocks.ForEach(block =>
-            {
 
+            foreach (var block in blocks.ToList())
+            {
                 var timesAndDays = new TimesAndDays(EducationType);
 
                 var cakisanAynıDers = UnitLessons.FindAll(unit => unit.LessonId == lesson.LessonId && unit.GroupType == groupType).FirstOrDefault();
@@ -111,9 +111,9 @@ namespace DPA.Domain
                     }
                 });
 
-                timesAndDays.TimeAndDays.ForEach(gn =>
+                foreach (var gn in timesAndDays.TimeAndDays.ToList())
                 {
-                    gn.Times.ForEach(st =>
+                    foreach (var st in gn.Times.ToList())
                     {
                         for (int k = 0; k < block.Count - 1; k++)
                         {
@@ -123,20 +123,47 @@ namespace DPA.Domain
                                 if (timesAndDays.TimeAndDays[k].Day != gn.Day)
                                     continue;
 
-                                timesAndDays.TimeAndDays[k].Times.RemoveAll(deltm => deltm == st);    
+                                timesAndDays.TimeAndDays[k].Times.RemoveAll(deltm => deltm == st);
                                 invalid = true;
                             }
-                            if(invalid)
+                            if (invalid)
                                 break;
                         }
-                    });
-                });
+                    }
+
+                }
 
 
+                int secilenSaat = -1;
+                int gunSayisi = timesAndDays.TimeAndDays.Count;
+                DayOfTheWeekType secilenGunId = new DayOfTheWeekType();
+                for (int i = 0; i < gunSayisi; i++)
+                {
+                    timesAndDays.TimeAndDays.Shuffle();
+                    var secilenGun = timesAndDays.TimeAndDays.FirstOrDefault();
+                    if (secilenGun.Times.Count > 0)
+                    {
+                        secilenSaat = secilenGun.Times.Min();
+                        secilenGunId = secilenGun.Day;
+                        break;
+                    }
 
-            });
+                    timesAndDays.TimeAndDays.RemoveAll(x => x.Day == secilenGun.Day);
+                }
+                // if (secilenSaat == -1)
+                //      throw new UserFriendlyException("Program oluşturmak için hatalı veriler var.");
 
+                for (int i = 0; i < block.Count; i++)
+                {
+                    block[i].DayOfTheWeekType = secilenGunId;
+                    block[i].StarTime = secilenSaat + i;
+                    block[i].EndTime = secilenSaat + i + 1;
+                    block[i].GroupType = groupType;
 
+                    UnitLessons.Add(block[i]);
+
+                }
+            }
 
         }
         private List<List<UnitLessonEntity>> UnitToBlock(SyllabusForLessonWithGroupListDto lesson)
