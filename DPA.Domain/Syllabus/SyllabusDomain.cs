@@ -85,40 +85,31 @@ namespace DPA.Domain
         private void AssignLessonCheckCriteria(SyllabusForLessonWithGroupListDto lesson, LessonGroupType groupType)
         {
             var assignLesson = lesson.Map<SyllabusForLessonWithGroupListDto>();
-            var timesAndDays = new TimesAndDays(EducationType);
+            // var timesAndDays = new TimesAndDays(EducationType);
             var blocks = UnitToBlock(lesson);
 
-            if (lesson.WeeklyHour > 2)
-            {
-                //3 saat ard arda ata
-                if (assignLesson.WeeklyHour == 3)
-                {
+            blocks.ForEach(block => {
 
-                }
-                else
-                {
+                var timesAndDays = new TimesAndDays(EducationType);
 
-                    //2 saat art arda ata
-                    assignLesson.WeeklyHour = assignLesson.WeeklyHour - 2;
+                var cakisanAynıDers = UnitLessons.FindAll(unit => unit.LessonId == lesson.LessonId && unit.GroupType == groupType).FirstOrDefault(); 
+
+                if (cakisanAynıDers != null)
+                    timesAndDays.TimeAndDays.RemoveAll(item => item.Day == cakisanAynıDers.DayOfTheWeekType);
+
+                var cakisanGruplar = UnitLessons.FindAll(unit => unit.SemesterType == lesson.SemesterType && unit.GroupType == groupType);
+
+                cakisanGruplar.ForEach(item => {
+                    var ayniGun = timesAndDays.TimeAndDays.FindAll(p => p.Day == item.DayOfTheWeekType).FirstOrDefault();
+
+                    timesAndDays.TimeAndDays.FindAll(u => u.Day == item.DayOfTheWeekType && u.Times.Remove(ayniGun.Times[0]));
+
+                });   
+
+            });
 
 
-                    if (assignLesson.WeeklyHour > 0)
-                    {
-                        AssignLessonCheckCriteria(assignLesson, groupType);
-                    }
-                }
-            }
-            else
-            {
-                if (assignLesson.WeeklyHour == 1)
-                {
-                    //1 tane boş birim bul ata
-                }
-                else
-                {
-                    // 2 tane aynı günde boş birim bul ard arda ata
-                }
-            }
+
         }
         private List<object> UnitToBlock(SyllabusForLessonWithGroupListDto lesson)
         {

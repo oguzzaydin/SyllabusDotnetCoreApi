@@ -21,8 +21,8 @@ namespace DPA.Domain
                 var times = new TimeAndDaysBase(); 
                 for (int j = startTime; j < endTime; j++)
                 {
-                    times.Days = (DayOfTheWeekType)i;
-                    times.times.Add(j);
+                    times.Day = (DayOfTheWeekType)i;
+                    times.Times.Add(j);
                 }
                 TimeAndDays.Add(times);
             }
@@ -34,7 +34,7 @@ namespace DPA.Domain
 
     public class TimeAndDaysBase
     {
-        public DayOfTheWeekType Days { get; set; }
-        public List<int> times { get; set; } = new List<int>();
+        public DayOfTheWeekType Day { get; set; }
+        public List<int> Times { get; set; } = new List<int>();
     }
 }
