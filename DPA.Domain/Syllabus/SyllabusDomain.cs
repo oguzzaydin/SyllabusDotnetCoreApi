@@ -88,42 +88,61 @@ namespace DPA.Domain
             // var timesAndDays = new TimesAndDays(EducationType);
             var blocks = UnitToBlock(lesson);
 
-            blocks.ForEach(block => {
+            blocks.ForEach(block =>
+            {
 
                 var timesAndDays = new TimesAndDays(EducationType);
 
-                var cakisanAynıDers = UnitLessons.FindAll(unit => unit.LessonId == lesson.LessonId && unit.GroupType == groupType).FirstOrDefault(); 
+                var cakisanAynıDers = UnitLessons.FindAll(unit => unit.LessonId == lesson.LessonId && unit.GroupType == groupType).FirstOrDefault();
 
                 if (cakisanAynıDers != null)
                     timesAndDays.TimeAndDays.RemoveAll(item => item.Day == cakisanAynıDers.DayOfTheWeekType);
 
                 var cakisanGruplar = UnitLessons.FindAll(unit => unit.SemesterType == lesson.SemesterType && unit.GroupType == groupType);
 
-                cakisanGruplar.ForEach(item => {
-                    var ayniGun = timesAndDays.TimeAndDays.FindAll(p => p.Day == item.DayOfTheWeekType).FirstOrDefault();
+                cakisanGruplar.ForEach(item =>
+                {
+                    for (int i = 0; i < timesAndDays.TimeAndDays.Count; i++)
+                    {
+                        if (timesAndDays.TimeAndDays[i].Day != item.DayOfTheWeekType)
+                            continue;
 
-                    timesAndDays.TimeAndDays.ForEach(cakisanSaat => {
-                        
-                        if (ayniGun.Day == cakisanSaat.Day)
+                        timesAndDays.TimeAndDays[i].Times.RemoveAll(del => del == item.StarTime);
+                    }
+                });
+
+                timesAndDays.TimeAndDays.ForEach(gn =>
+                {
+                    gn.Times.ForEach(st =>
+                    {
+                        for (int k = 0; k < block.Count - 1; k++)
                         {
-                            ayniGun.Times.ForEach(ayniSaat => {
-                                cakisanSaat.Times.Remove(ayniSaat);
-                            });
+                            bool invalid = false;
+                            if (!gn.Times.Any(tm => tm == st + k))
+                            {
+                                if (timesAndDays.TimeAndDays[k].Day != gn.Day)
+                                    continue;
+
+                                timesAndDays.TimeAndDays[k].Times.RemoveAll(deltm => deltm == st);    
+                                invalid = true;
+                            }
+                            if(invalid)
+                                break;
                         }
-
                     });
+                });
 
-                });   
+
 
             });
 
 
 
         }
-        private List<object> UnitToBlock(SyllabusForLessonWithGroupListDto lesson)
+        private List<List<UnitLessonEntity>> UnitToBlock(SyllabusForLessonWithGroupListDto lesson)
         {
             var units = new List<UnitLessonEntity>();
-            var blocks = new List<object>();
+            var blocks = new List<List<UnitLessonEntity>>();
             int lessonHour = lesson.WeeklyHour;
             while (lessonHour != 0)
             {
