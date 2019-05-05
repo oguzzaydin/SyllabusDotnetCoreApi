@@ -102,7 +102,16 @@ namespace DPA.Domain
                 cakisanGruplar.ForEach(item => {
                     var ayniGun = timesAndDays.TimeAndDays.FindAll(p => p.Day == item.DayOfTheWeekType).FirstOrDefault();
 
-                    timesAndDays.TimeAndDays.FindAll(u => u.Day == item.DayOfTheWeekType && u.Times.Remove(ayniGun.Times[0]));
+                    timesAndDays.TimeAndDays.ForEach(cakisanSaat => {
+                        
+                        if (ayniGun.Day == cakisanSaat.Day)
+                        {
+                            ayniGun.Times.ForEach(ayniSaat => {
+                                cakisanSaat.Times.Remove(ayniSaat);
+                            });
+                        }
+
+                    });
 
                 });   
 
