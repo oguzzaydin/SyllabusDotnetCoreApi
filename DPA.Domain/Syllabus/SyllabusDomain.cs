@@ -81,34 +81,28 @@ namespace DPA.Domain
                     lesson = lessonsss.First();
             }
         }
+
         private void AssignLessonCheckCriteria(SyllabusForLessonWithGroupListDto lesson, LessonGroupType groupType)
         {
             var assignLesson = lesson.Map<SyllabusForLessonWithGroupListDto>();
+            var timesAndDays = new TimesAndDays(EducationType);
             if (lesson.WeeklyHour > 2)
             {
                 //3 saat ard arda ata
                 if (assignLesson.WeeklyHour == 3)
                 {
-                    // UnitAssignToLesson(assignLesson, 3, groupType);
-                    var times = new TimesAndDays(EducationType);
-                    var blocks = new List<UnitLessonEntity>();
-                    for (int i = 0; i < 3; i++)
-                    {
-                        var unitLessonDomain = UnitLessonDomainFactory.Create();
-                        blocks.Add(unitLessonDomain.Map<UnitLessonEntity>());
-                    }
+                    var divideBlocks = DividedBlockForLesson(lesson);
+                    var blocks = new List<object>();
+                    blocks.Add(divideBlocks);
+
+
                 }
                 else
                 {
+
                     //2 saat art arda ata
                     assignLesson.WeeklyHour = assignLesson.WeeklyHour - 2;
-                    var times = new TimesAndDays(EducationType);
-                    var blocks = new List<UnitLessonEntity>();
-                    for (int i = 0; i < 2; i++)
-                    {
-                        var unitLessonDomain = UnitLessonDomainFactory.Create();
-                        blocks.Add(unitLessonDomain.Map<UnitLessonEntity>());
-                    }
+
 
                     if (assignLesson.WeeklyHour > 0)
                     {
@@ -121,14 +115,24 @@ namespace DPA.Domain
                 if (assignLesson.WeeklyHour == 1)
                 {
                     //1 tane boş birim bul ata
-                    UnitAssignToLesson(assignLesson, 1, groupType);
                 }
                 else
                 {
                     // 2 tane aynı günde boş birim bul ard arda ata
-                    UnitAssignToLesson(assignLesson, 2, groupType);
                 }
             }
+        }
+
+
+        private List<UnitLessonEntity> DividedBlockForLesson(SyllabusForLessonWithGroupListDto lesson)
+        {
+            var blocks = new List<UnitLessonEntity>();
+            for (int i = 0; i < lesson.WeeklyHour; i++)
+            {
+                var unitLessonDomain = UnitLessonDomainFactory.Create(lesson.LessonId);
+                blocks.Add(unitLessonDomain.Map<UnitLessonEntity>());
+            }
+            return blocks;
         }
         private void UnitAssignToLesson(SyllabusForLessonWithGroupListDto lesson, int hour, LessonGroupType groupType)
         {

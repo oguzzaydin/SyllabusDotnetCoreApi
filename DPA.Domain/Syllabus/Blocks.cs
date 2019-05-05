@@ -5,6 +5,6 @@ namespace DPA.Domain
 {
     public class Blocks
     {
-        public UnitLessonEntity LessonBlocks { get; set; }
+        
     }
 }
