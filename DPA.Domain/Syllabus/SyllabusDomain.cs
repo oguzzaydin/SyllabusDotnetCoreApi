@@ -86,15 +86,13 @@ namespace DPA.Domain
         {
             var assignLesson = lesson.Map<SyllabusForLessonWithGroupListDto>();
             var timesAndDays = new TimesAndDays(EducationType);
+            var blocks = UnitToBlock(lesson);
+
             if (lesson.WeeklyHour > 2)
             {
                 //3 saat ard arda ata
                 if (assignLesson.WeeklyHour == 3)
                 {
-                    var divideBlocks = DividedBlockForLesson(lesson);
-                    var blocks = new List<object>();
-                    blocks.Add(divideBlocks);
-
 
                 }
                 else
@@ -122,15 +120,40 @@ namespace DPA.Domain
                 }
             }
         }
-
-
-        private List<UnitLessonEntity> DividedBlockForLesson(SyllabusForLessonWithGroupListDto lesson)
+        private List<object> UnitToBlock(SyllabusForLessonWithGroupListDto lesson)
         {
-            var blocks = new List<UnitLessonEntity>();
-            for (int i = 0; i < lesson.WeeklyHour; i++)
+            var units = new List<UnitLessonEntity>();
+            var blocks = new List<object>();
+            int lessonHour = lesson.WeeklyHour;
+            while (lessonHour != 0)
             {
-                var unitLessonDomain = UnitLessonDomainFactory.Create(lesson.LessonId);
-                blocks.Add(unitLessonDomain.Map<UnitLessonEntity>());
+                if (lessonHour % 2 == 0)
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        var unitLessonDomain = UnitLessonDomainFactory.Create(lesson.LessonId);
+                        units.Add(unitLessonDomain.Map<UnitLessonEntity>());
+                    }
+                    blocks.Add(units);
+                    lessonHour = lessonHour - 2;
+                    if (lessonHour == 0)
+                        break;
+                }
+                else
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        var unitLessonDomain = UnitLessonDomainFactory.Create(lesson.LessonId);
+                        units.Add(unitLessonDomain.Map<UnitLessonEntity>());
+                    }
+                    blocks.Add(units);
+                    lessonHour = lessonHour - 3;
+                    if (lessonHour == 0)
+                        break;
+                }
+
+                if (lessonHour == 0)
+                    break;
             }
             return blocks;
         }

@@ -23,7 +23,6 @@ namespace DPA.Domain
                 {
                     times.Days = (DayOfTheWeekType)i;
                     times.times.Add(j);
-
                 }
                 TimeAndDays.Add(times);
             }
