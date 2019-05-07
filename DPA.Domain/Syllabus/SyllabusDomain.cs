@@ -348,6 +348,11 @@ namespace DPA.Domain
                 var isSameDayThisTeacher = UnitLessons.FindAll(x => x.UserId == teacher.UserId && x.DayOfTheWeekType == units.First().DayOfTheWeekType && x.StarTime == units.First().StarTime);
                 var isSameTeacherEndTime = UnitLessons.FindAll(x => x.UserId == teacher.UserId && x.DayOfTheWeekType == units.Last().DayOfTheWeekType && x.EndTime == units.Last().EndTime);
 
+                if(teacher.UserId == 13)
+                {
+
+                }
+
                 if (isSameDayThisTeacher.Count == 0 && isSameTeacherEndTime.Count == 0)
                 {
                     int index = 0;
@@ -357,6 +362,8 @@ namespace DPA.Domain
                          UnitLessons[index].UserId = teacher.UserId;
                      });
                 }
+            } else {
+                //ÇAkışma var
             }
         }
 
