@@ -51,7 +51,7 @@ namespace DPA.Application
                 // syllabus.CreateSyllabusDefaultTable(request.EducationType);
                 syllabus.AssignToLesson(lessons, request);
                 syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0);
-
+,
                 AssignToTeacherOnSyllabus(syllabusLessons, syllabus, request.EducationType);
                 CheckAssignToTeacherOnSyllabus(syllabusLessons, syllabus, request.EducationType);
                 syllabus.UnitLessons.RemoveAll(x => x.LessonId > 0 && x.UserId == 0);
@@ -132,7 +132,6 @@ namespace DPA.Application
                 case Title.OgretimGorevlisi:
                     hour = (int)CompulsoryLessonHoursForTitle.OgrGor;
                     break;
-                    
             }
 
             return hour;

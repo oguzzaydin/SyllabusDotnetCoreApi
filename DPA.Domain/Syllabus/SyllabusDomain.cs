@@ -346,7 +346,7 @@ namespace DPA.Domain
             if (units.Count > 0)
             {
                 var isSameDayThisTeacher = UnitLessons.FindAll(x => x.UserId == teacher.UserId && x.DayOfTheWeekType == units.First().DayOfTheWeekType && x.StarTime == units.First().StarTime);
-                var isSameTeacherEndTime = UnitLessons.FindAll(x => x.UserId == teacher.UserId && x.DayOfTheWeekType == units.Last().DayOfTheWeekType && x.StarTime == units.Last().StarTime);
+                var isSameTeacherEndTime = UnitLessons.FindAll(x => x.UserId == teacher.UserId && x.DayOfTheWeekType == units.Last().DayOfTheWeekType && x.EndTime == units.Last().EndTime);
 
                 if (isSameDayThisTeacher.Count == 0 && isSameTeacherEndTime.Count == 0)
                 {
