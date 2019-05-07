@@ -132,6 +132,7 @@ namespace DPA.Application
                 case Title.OgretimGorevlisi:
                     hour = (int)CompulsoryLessonHoursForTitle.OgrGor;
                     break;
+                    
             }
 
             return hour;
