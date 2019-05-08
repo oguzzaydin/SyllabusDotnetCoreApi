@@ -1386,7 +1386,7 @@ namespace DPA.Database
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
                 UserLessonId = 1,
-                UserId = 5,
+                UserId = 2,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 1
@@ -1394,23 +1394,6 @@ namespace DPA.Database
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
                 UserLessonId = 2,
-                UserId = 8,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 1
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 3,
-                UserId = 11,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 1
-            });
-
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 4,
                 UserId = 2,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
@@ -1418,59 +1401,24 @@ namespace DPA.Database
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 5,
-                UserId = 9,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 2
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 6,
-                UserId = 12,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 2
-            });
-
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 7,
-                UserId = 3,
+                UserLessonId = 3,
+                UserId = 2,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 3
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 8,
-                UserId = 5,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 3
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 9,
-                UserId = 13,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 3
-            });
-
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 10,
-                UserId = 14,
+                UserLessonId = 4,
+                UserId = 2,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 4
             });
-
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 11,
-                UserId = 7,
+                UserLessonId = 5,
+                UserId = 2,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 5
@@ -1478,100 +1426,39 @@ namespace DPA.Database
 
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 12,
-                UserId = 4,
+                UserLessonId = 6,
+                UserId = 3,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 6
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 13,
-                UserId = 10,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 6
-            });
-
-            //----- 3. YARIYIL -----
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 14,
-                UserId = 11,
+                UserLessonId = 7,
+                UserId = 3,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 7
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 15,
-                UserId = 12,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 7
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 16,
-                UserId = 10,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 7
-            });
-
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 17,
-                UserId = 5,
+                UserLessonId = 8,
+                UserId = 3,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 8
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 18,
-                UserId = 13,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 8
-            });
-
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 19,
-                UserId = 8,
+                UserLessonId = 9,
+                UserId = 3,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 9
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 20,
-                UserId = 9,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 9
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 21,
-                UserId = 14,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 9
-            });
-
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 22,
-                UserId = 2,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 10
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 23,
+                UserLessonId = 10,
                 UserId = 3,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
@@ -1580,24 +1467,15 @@ namespace DPA.Database
 
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 24,
-                UserId = 6,
+                UserLessonId = 11,
+                UserId = 4,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 11
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 25,
-                UserId = 7,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 11
-            });
-
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 26,
+                UserLessonId = 12,
                 UserId = 4,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
@@ -1605,83 +1483,24 @@ namespace DPA.Database
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 27,
-                UserId = 12,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 12
-            });
-            //---------5.YARIYIL----------------------------
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 28,
-                UserId = 13,
+                UserLessonId = 13,
+                UserId = 4,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 13
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 29,
-                UserId = 13,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 13
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 30,
-                UserId = 13,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 13
-            });
-
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 31,
-                UserId = 14,
+                UserLessonId = 14,
+                UserId = 4,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 14
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 32,
-                UserId = 14,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 14
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 33,
-                UserId = 14,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 14
-            });
-
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 34,
-                UserId = 15,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 15
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 35,
-                UserId = 15,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 15
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 36,
-                UserId = 15,
+                UserLessonId = 15,
+                UserId = 4,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 15
@@ -1689,40 +1508,215 @@ namespace DPA.Database
 
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 37,
-                UserId = 16,
+                UserLessonId = 16,
+                UserId = 5,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 16
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 38,
-                UserId = 16,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 16
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 39,
-                UserId = 16,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 16
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 40,
-                UserId = 17,
+                UserLessonId = 17,
+                UserId = 5,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 17
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
+                UserLessonId = 18,
+                UserId = 5,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 18
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 19,
+                UserId = 5,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 19
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 20,
+                UserId = 5,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 20
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 21,
+                UserId = 5,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 21
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 22,
+                UserId = 5,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 22
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 23,
+                UserId = 5,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 23
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 24,
+                UserId = 5,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 24
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 25,
+                UserId = 5,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 1
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 26,
+                UserId = 6,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 2
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 27,
+                UserId = 6,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 3
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 28,
+                UserId = 6,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 4
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 29,
+                UserId = 6,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 5
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 30,
+                UserId = 6,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 6
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 31,
+                UserId = 7,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 7
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 32,
+                UserId = 7,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 8
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 33,
+                UserId = 7,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 9
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 34,
+                UserId = 7,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 10
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 35,
+                UserId = 7,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 11
+            });
+
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 36,
+                UserId = 8,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 12
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 37,
+                UserId = 8,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 13
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 38,
+                UserId = 8,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 14
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 39,
+                UserId = 8,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 15
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 40,
+                UserId = 8,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 16
+            });
+
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
                 UserLessonId = 41,
-                UserId = 17,
+                UserId = 9,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 17
@@ -1730,140 +1724,47 @@ namespace DPA.Database
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
                 UserLessonId = 42,
-                UserId = 17,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 17
-            });
-
-            //--------------7.YARIYIL----------------------------------------------
-
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 43,
-                UserId = 18,
+                UserId = 9,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 18
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 43,
+                UserId = 9,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 19
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
                 UserLessonId = 44,
-                UserId = 18,
+                UserId = 9,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
-                LessonId = 18
+                LessonId = 20
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
                 UserLessonId = 45,
-                UserId = 18,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 18
-            });
-
-
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 46,
-                UserId = 19,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 19
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 47,
-                UserId = 19,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 19
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 48,
-                UserId = 19,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 19
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 49,
-                UserId = 20,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 20
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 50,
-                UserId = 20,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 20
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 51,
-                UserId = 20,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 20
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 52,
-                UserId = 8,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 21
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 53,
                 UserId = 9,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 21
             });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 54,
-                UserId = 10,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 21
-            });
 
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 55,
-                UserId = 3,
+                UserLessonId = 46,
+                UserId = 10,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 22
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 56,
-                UserId = 4,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 22
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 57,
-                UserId = 5,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 22
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 58,
+                UserLessonId = 47,
                 UserId = 10,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
@@ -1871,7 +1772,33 @@ namespace DPA.Database
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 59,
+                UserLessonId = 48,
+                UserId = 10,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 24
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 49,
+                UserId = 10,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 1
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 50,
+                UserId = 10,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 2
+            });
+
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 51,
                 UserId = 11,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
@@ -1879,32 +1806,401 @@ namespace DPA.Database
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
+                UserLessonId = 52,
+                UserId = 11,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 24
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 53,
+                UserId = 11,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 1
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 54,
+                UserId = 11,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 2
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 55,
+                UserId = 11,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 3
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 56,
+                UserId = 12,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 4
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 57,
+                UserId = 12,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 5
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 58,
+                UserId = 12,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 6
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 59,
+                UserId = 12,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 7
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
                 UserLessonId = 60,
                 UserId = 12,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 8
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 61,
+                UserId = 13,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 9
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 62,
+                UserId = 13,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 10
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 63,
+                UserId = 13,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 11
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 64,
+                UserId = 13,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 12
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 65,
+                UserId = 13,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 13
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 66,
+                UserId = 14,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 14
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 67,
+                UserId = 14,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 15
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 68,
+                UserId = 14,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 16
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 69,
+                UserId = 14,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 17
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 70,
+                UserId = 14,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 18
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 71,
+                UserId = 15,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 19
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 72,
+                UserId = 15,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 20
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 73,
+                UserId = 15,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 21
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 74,
+                UserId = 15,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 22
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 75,
+                UserId = 15,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 23
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 76,
+                UserId = 16,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 24
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 77,
+                UserId = 16,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 1
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 78,
+                UserId = 16,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 2
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 79,
+                UserId = 16,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 3
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 80,
+                UserId = 16,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 4
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 81,
+                UserId = 17,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 5
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 82,
+                UserId = 17,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 6
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 83,
+                UserId = 17,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 7
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 84,
+                UserId = 17,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 8
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 85,
+                UserId = 17,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 9
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 86,
+                UserId = 18,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 10
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 87,
+                UserId = 18,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 11
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 88,
+                UserId = 18,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 12
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 89,
+                UserId = 18,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 13
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 90,
+                UserId = 18,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 14
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 91,
+                UserId = 19,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 15
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 92,
+                UserId = 19,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 16
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 93,
+                UserId = 19,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 17
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 94,
+                UserId = 19,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 18
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 95,
+                UserId = 20,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 19
+            });
+
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 96,
+                UserId = 20,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 20
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 97,
+                UserId = 20,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 21
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 98,
+                UserId = 20,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                LessonId = 22
+            });
+            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
+            {
+                UserLessonId = 99,
+                UserId = 20,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 23
             });
             modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
             {
-                UserLessonId = 61,
-                UserId = 15,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 24
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 62,
-                UserId = 9,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                LessonId = 24
-            });
-            modelBuilder.Entity<UserLessonEntity>().HasData(new UserLessonEntity
-            {
-                UserLessonId = 63,
-                UserId = 7,
+                UserLessonId = 100,
+                UserId = 20,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 LessonId = 24
