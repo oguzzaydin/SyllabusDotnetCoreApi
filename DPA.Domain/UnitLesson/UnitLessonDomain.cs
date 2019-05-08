@@ -48,7 +48,8 @@ namespace DPA.Domain.UnitLesson
             int endTime,
             SemesterType semesterType,
             LessonGroupType groupType,
-            DayOfTheWeekType dayOfTheWeekType
+            DayOfTheWeekType dayOfTheWeekType,
+            EducationType educationType
         )
         {
             UnitLessonId = unitLessonId;
@@ -61,8 +62,10 @@ namespace DPA.Domain.UnitLesson
             SemesterType = semesterType;
             GroupType = groupType;
             DayOfTheWeekType = dayOfTheWeekType;
+            EducationType = educationType;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
+
         }
 
         public long UnitLessonId { get; private set; }
@@ -72,6 +75,7 @@ namespace DPA.Domain.UnitLesson
         public long SyllabusId { get; private set; }
         public LessonGroupType GroupType { get; private set; }
         public SemesterType SemesterType { get; set; }
+        public EducationType EducationType { get; set; }
         public DateTime CreatedDate { get; private set; }
         public DateTime UpdatedDate { get; private set; }
         public DayOfTheWeekType DayOfTheWeekType { get; private set; }

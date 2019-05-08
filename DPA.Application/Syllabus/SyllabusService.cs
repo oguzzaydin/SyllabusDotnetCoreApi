@@ -45,6 +45,14 @@ namespace DPA.Application
             try
             {
                 Check.NotNullOrEmpty(request, "request");
+                var test = _userRepository.GetTeacherConstraintWithLessons(request.DepartmentId);
+
+                foreach (var item in test)
+                {
+                    var userLessons = _lessonRepository.GetLessonsForTeacher(item.UserId);
+                    item.Lessons = userLessons.Map<List<LessonDto>>();
+                }
+
                 var lessons = _lessonRepository.GetDepartmentLessons(request.FacultyId, request.DepartmentId, request.PeriodType);
                 var syllabusLessons = lessons.Map<List<SyllabusForLessonWithGroupListDto>>();
                 var syllabus = SyllabusDomainFactory.Create(request);

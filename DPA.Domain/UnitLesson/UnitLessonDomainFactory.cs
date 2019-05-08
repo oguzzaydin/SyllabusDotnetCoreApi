@@ -39,7 +39,8 @@ namespace DPA.Domain.UnitLesson
                 unitLessonEntity.EndTime,
                 unitLessonEntity.SemesterType,
                 unitLessonEntity.GroupType,
-                unitLessonEntity.DayOfTheWeekType
+                unitLessonEntity.DayOfTheWeekType,
+                unitLessonEntity.EducationType
             );
         }
     }

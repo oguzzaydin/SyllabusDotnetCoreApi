@@ -14,6 +14,7 @@ namespace DPA.Model
         public SemesterType SemesterType { get; set; }
         public LessonGroupType GroupType { get; set; }
         public DayOfTheWeekType DayOfTheWeekType { get; set; }
+        public EducationType EducationType { get; set; }
         public virtual LessonEntity Lesson { get; set; }
         public virtual UserEntity User { get; set; }
         public virtual LocationEntity Location { get; set; }

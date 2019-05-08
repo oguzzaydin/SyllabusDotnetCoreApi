@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DPA.Model.Models.SyllabusModel.Dtos;
 
 namespace DPA.Database
 {
@@ -26,6 +27,26 @@ namespace DPA.Database
             //     throw new UserFriendlyException($"{lessonId} Id li derse ait hoca bulunamadı.");
             
             return userConstraint.Map<List<SyllabusForUserWithConstraintListDto>>();
+        }
+
+        public List<TeacherConstraintWithLessonsDto> GetTeacherConstraintWithLessons(long departmentId)
+        {
+            var users = Queryable.FromSql($@"SELECT DISTINCT c.StartTime, c.EndTime, c.IsFreeDay, c.WeeklyHour as ConstraintWeeklyHour, c.EducationType, 
+                                l.LessonId, l.WeeklyHour as LessonWeeklyHour, l.LessonCode, l.[Name] as LessonName, l.SemesterType,
+                                l.Credit, l.LessonType, u.* FROM Faculty.Lesson as l
+                                INNER JOIN [User].UserLesson ul on  ul.LessonId = l.LessonId
+                                INNER JOIN Department.DepartmentInstructor as di on di.DepartmentId = {departmentId}
+                                INNER JOIN [User].[User] as u on u.UserId = ul.UserId
+                                LEFT JOIN [User].[Constraint] as c on c.UserId = ul.UserId and u.UserId = c.UserId");
+
+            var usersLessonsAndConstraint = users.Include(x => x.Constraint)
+                .Include(x => x.UserLessons)
+                .ThenInclude(x => x.Lesson).ToList();
+
+            // if (userConstraints.Count == 0)
+            //     throw new UserFriendlyException($"{lessonId} Id li derse ait hoca bulunamadı.");
+
+            return usersLessonsAndConstraint.Map<List<TeacherConstraintWithLessonsDto>>();
         }
 
         public Task<SignedInModel> SignInAsync(SignInModel signInModel)
