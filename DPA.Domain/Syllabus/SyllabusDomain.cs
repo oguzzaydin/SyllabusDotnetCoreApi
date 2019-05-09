@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DotNetCore.Mapping;
+using DPA.Domain.Syllabus;
 using DPA.Domain.UnitLesson;
 using DPA.Model;
 using DPA.Model.Extensions;
@@ -32,6 +33,8 @@ namespace DPA.Domain
         public DateTime UpdatedDate { get; private set; } = DateTime.Now;
 
         public virtual List<UnitLessonEntity> UnitLessons { get; private set; } = new List<UnitLessonEntity>();
+
+        public virtual List<LessonBlock> LessonBlocks { get; private set; } = new List<LessonBlock>();
 
         #endregion
 
@@ -72,8 +75,14 @@ namespace DPA.Domain
             {
                 foreach (var group in lesson.LessonGroups)
                 {
-                    AssignLessonCheckCriteria(lesson, group.GroupType);
+                    var blocks = AssignLessonCheckCriteria(lesson, group.GroupType);
+                    int blckId = LessonBlocks.Count + 1;
 
+                    foreach (var item in blocks)
+                    {
+                        item.BlockId = LessonBlocks.Count + 1;
+                        LessonBlocks.Add(item);
+                    }
                 }
                 lessonsss.Remove(lesson);
                 lessonsss.Shuffle();
@@ -82,12 +91,13 @@ namespace DPA.Domain
             }
         }
 
-        private void AssignLessonCheckCriteria(SyllabusForLessonWithGroupListDto lesson, LessonGroupType groupType)
+        private List<LessonBlock> AssignLessonCheckCriteria(SyllabusForLessonWithGroupListDto lesson, LessonGroupType groupType)
         {
             var assignLesson = lesson.Map<SyllabusForLessonWithGroupListDto>();
             // var timesAndDays = new TimesAndDays(EducationType);
             var blocks = UnitToBlock(lesson);
 
+            var lsBlocks = new List<LessonBlock>();
 
             foreach (var block in blocks.ToList())
             {
@@ -159,11 +169,19 @@ namespace DPA.Domain
                     block[i].EndTime = secilenSaat + i + 1;
                     block[i].GroupType = groupType;
                     block[i].SemesterType = lesson.SemesterType;
+                    block[i].EducationType = EducationType;
 
                     UnitLessons.Add(block[i]);
 
                 }
+                var lsBlock = new LessonBlock
+                {
+                    LessonId = lesson.LessonId,
+                    units = block
+                };
+                lsBlocks.Add(lsBlock);
             }
+            return lsBlocks;
 
         }
         private List<List<UnitLessonEntity>> UnitToBlock(SyllabusForLessonWithGroupListDto lesson)
@@ -210,8 +228,308 @@ namespace DPA.Domain
             }
             return blocks;
         }
-       
+
         #endregion
+
+
+        public void HocaAta(List<TeacherConstraintWithLessonsDto> teachers)
+        {
+            teachers.Shuffle();
+
+            foreach (var teacher in teachers)
+            {
+                switch (teacher.Title)
+                {
+                    case (Title.Profesor):
+                        teacher.MinHour = (int)CompulsoryLessonHoursForTitle.Prof;
+                        break;
+                    case (Title.DocentDoktor):
+                        teacher.MinHour = (int)CompulsoryLessonHoursForTitle.Doc;
+                        break;
+                    case (Title.YardimciDocent):
+                        teacher.MinHour = (int)CompulsoryLessonHoursForTitle.YrDoc;
+                        break;
+                    case (Title.OgretimGorevlisi):
+                        teacher.MinHour = (int)CompulsoryLessonHoursForTitle.OgrGor;
+                        break;
+                    case (Title.Doktor):
+                        teacher.MinHour = (int)CompulsoryLessonHoursForTitle.OgrGor;
+                        break;
+                    default:
+                        teacher.MinHour = 0;
+                        break;
+                }
+            }
+            //ilk atamalar yalnizca minimum saglanacak
+            foreach (var tc in teachers)
+            {
+                tc.IterationCount++;
+                foreach (var ls in tc.Lessons)
+                {
+                    var verebilecegiBloklar = LessonBlocks.FindAll(lsb => lsb.LessonId == ls.LessonId && lsb.UserId == 0);
+                    if (verebilecegiBloklar.Count > 0)
+                    {
+                        if ( UnitLessons.FindAll(x => x.UserId == tc.UserId).Count > tc.MinHour )
+                        {
+                            break;
+                        }
+
+                        var dahaOnceAtandigiBloklar = LessonBlocks.FindAll(x => x.UserId == tc.UserId);
+
+                        List<int> silinecekIdler = new List<int>();
+                        foreach (var vrb in verebilecegiBloklar)
+                        {
+                            bool dersiVeremez = false;
+                            foreach (var atndg in dahaOnceAtandigiBloklar)
+                            {
+                                if (atndg.units[0].DayOfTheWeekType != vrb.units[0].DayOfTheWeekType)
+                                    continue;
+
+                                foreach (var vrun in vrb.units)
+                                {
+                                    foreach (var atun in atndg.units)
+                                    {
+                                        if (vrun.StarTime == atun.StarTime)
+                                        {
+                                            dersiVeremez = true;
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (dersiVeremez)
+                            {
+                                silinecekIdler.Add(vrb.BlockId);
+                            }
+                        }
+
+                        foreach (var id in silinecekIdler)
+                        {
+                            verebilecegiBloklar.RemoveAll(x => x.BlockId == id);
+
+                        }
+
+                        if (verebilecegiBloklar.Count > 0)
+                        {
+                            verebilecegiBloklar.Shuffle();
+                            for (int i = 0; i < UnitLessons.Count; i++)
+                            {
+                                //education type da eklenecek
+                                if (verebilecegiBloklar[0].units[0].GroupType == UnitLessons[i].GroupType && verebilecegiBloklar[0].units[0].LessonId == UnitLessons[i].LessonId && verebilecegiBloklar[0].units[0].DayOfTheWeekType == UnitLessons[i].DayOfTheWeekType && verebilecegiBloklar[0].units[0].SemesterType == UnitLessons[i].SemesterType)
+                                {
+                                    UnitLessons[i].UserId = tc.UserId;
+                                }
+                            }
+                            foreach (var lsblck in LessonBlocks)
+                            {
+                                if (lsblck.BlockId == verebilecegiBloklar[0].BlockId)
+                                {
+                                    lsblck.UserId = tc.UserId;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            foreach (var blck in LessonBlocks)
+            {
+                List<TeacherConstraintWithLessonsDto> dersiVerenler = new List<TeacherConstraintWithLessonsDto>();
+                if (blck.UserId != 0)
+                {
+                    continue;
+                }
+
+                foreach (var tc in teachers)
+                {
+                    foreach (var ls in tc.Lessons)
+                    {
+                        if (ls.LessonId == blck.LessonId)
+                        {
+                            dersiVerenler.Add(tc);
+                            break;
+                        }
+                    }
+                }
+
+                dersiVerenler.Shuffle();
+
+                bool derseHocaAtandiMi = false;
+                foreach (var tc in dersiVerenler)
+                {
+                    bool dersiVeremez = false;
+
+                    var dahaOnceAtandigiBloklar = LessonBlocks.FindAll(x => x.UserId == tc.UserId);
+                    //dahaOnceAtandigiBloklar.Shuffle();
+                    foreach (var atndg in dahaOnceAtandigiBloklar)
+                    {
+                        if (atndg.units[0].DayOfTheWeekType != blck.units[0].DayOfTheWeekType)
+                            continue;
+
+                        foreach (var vrun in blck.units)
+                        {
+                            foreach (var atun in atndg.units)
+                            {
+                                if (vrun.StarTime == atun.StarTime)
+                                {
+                                    dersiVeremez = true;
+                                }
+                            }
+                        }
+                    }
+                    if (dersiVeremez)
+                        continue;
+                    foreach (var lsblck in LessonBlocks)
+                    {
+                        if (lsblck.BlockId == blck.BlockId)
+                        {
+                            lsblck.UserId = tc.UserId;
+                        }
+                    }
+                    derseHocaAtandiMi = true;
+                    foreach (var un in blck.units)
+                    {
+                        for (int i = 0; i < UnitLessons.Count; i++)
+                        {
+                            //EducationType da eklenecek
+                            if (blck.units[0].GroupType == UnitLessons[i].GroupType && blck.units[0].LessonId == UnitLessons[i].LessonId && blck.units[0].DayOfTheWeekType == UnitLessons[i].DayOfTheWeekType && blck.units[0].SemesterType == UnitLessons[i].SemesterType)
+                            {
+                                UnitLessons[i].UserId = tc.UserId;
+                            }
+                        }
+                    }
+                }
+                if (!derseHocaAtandiMi)
+                {
+                    blck.IsDeadLock = true;
+                }
+            }
+            var atanamayanBlocklar = LessonBlocks.FindAll(x => x.IsDeadLock == true);
+
+            //fora çevirmek gerekebilir.
+            foreach (var lsb in LessonBlocks)
+            {
+                if (lsb.IsDeadLock)
+                {
+                    List<TeacherConstraintWithLessonsDto> dersiVerenler = new List<TeacherConstraintWithLessonsDto>();
+                    foreach (var tc in teachers)
+                    {
+                        foreach (var ls in tc.Lessons)
+                        {
+                            if (ls.LessonId == lsb.LessonId)
+                            {
+                                dersiVerenler.Add(tc);
+                                break;
+                            }
+                        }
+                    }
+
+                    dersiVerenler.Shuffle();
+
+                    foreach (var tc in dersiVerenler)
+                    {
+                        var cakisanHoca = LessonBlocks.FindAll(x => x.UserId == tc.UserId);
+
+
+                        //burada bu dersleri tekrardan yerleştir
+                        var gecerliSaatler = new TimesAndDays(EducationType);
+
+                        //educationtype eklenecek
+                        var cakisanAyniDers = LessonBlocks.FindAll(x => x.units[0].LessonId == lsb.units[0].LessonId && x.units[0].GroupType == lsb.units[0].GroupType).FirstOrDefault();
+                        if (cakisanAyniDers != null)
+                        {
+                            gecerliSaatler.TimeAndDays.RemoveAll(x => x.Day == cakisanAyniDers.units[0].DayOfTheWeekType);
+                        }
+
+                        //educationtype eklenecek
+                        var cakisanGruplar = LessonBlocks.FindAll(x => x.units[0].SemesterType == lsb.units[0].SemesterType && x.units[0].GroupType == lsb.units[0].GroupType);
+
+                        foreach (var bl in cakisanGruplar.ToList())
+                        {
+                            foreach (var un in bl.units)
+                            {
+                                for (int i = 0; i < gecerliSaatler.TimeAndDays.Count; i++)
+                                {
+                                    if (gecerliSaatler.TimeAndDays[i].Day != un.DayOfTheWeekType)
+                                        continue;
+
+                                    gecerliSaatler.TimeAndDays[i].Times.RemoveAll(del => del == un.StarTime);
+                                }
+                            }
+                        }
+
+                        foreach (var bl in cakisanHoca.ToList())
+                        {
+                            foreach (var un in bl.units)
+                            {
+                                for (int i = 0; i < gecerliSaatler.TimeAndDays.Count; i++)
+                                {
+                                    if (gecerliSaatler.TimeAndDays[i].Day != un.DayOfTheWeekType)
+                                        continue;
+
+                                    gecerliSaatler.TimeAndDays[i].Times.RemoveAll(del => del == un.StarTime);
+                                }
+                            }
+                        }
+
+                        foreach (var gn in gecerliSaatler.TimeAndDays.ToList())
+                        {
+                            foreach (var st in gn.Times.ToList())
+                            {
+                                for (int k = 0; k < lsb.units.Count; k++)
+                                {
+                                    int sonraki = st + k;
+                                    if (!(gn.Times.Any(tm => tm == sonraki)))
+                                    {
+                                        for (int i = 0; i < gecerliSaatler.TimeAndDays.Count; i++)
+                                        {
+                                            if (gecerliSaatler.TimeAndDays[i].Day != gn.Day)
+                                                continue;
+
+                                            gecerliSaatler.TimeAndDays[i].Times.RemoveAll(deltm => deltm == st);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        int secilenSaat = -1;
+                        int gunSayisi = gecerliSaatler.TimeAndDays.Count;
+                        DayOfTheWeekType secilenGunId = new DayOfTheWeekType();
+                        for (int i = 0; i < gunSayisi; i++)
+                        {
+                            gecerliSaatler.TimeAndDays.Shuffle();
+                            var secilenGun = gecerliSaatler.TimeAndDays.FirstOrDefault();
+                            if (secilenGun.Times.Count > 0)
+                            {
+                                secilenSaat = secilenGun.Times.Min();
+                                secilenGunId = secilenGun.Day;
+                                break;
+                            }
+
+                            gecerliSaatler.TimeAndDays.RemoveAll(x => x.Day == secilenGun.Day);
+                        }
+                        if (secilenSaat == -1)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            for (int i = 0; i < lsb.units.Count; i++)
+                            {
+                                lsb.units[i].DayOfTheWeekType = secilenGunId;
+                                lsb.units[i].StarTime = secilenSaat + i;
+                                lsb.units[i].EndTime = secilenSaat + i + 1;
+                                lsb.units[i].UserId = tc.UserId;
+                            }
+                            lsb.UserId = tc.UserId;
+                        }
+                    }
+                }
+            }
+        }
+
+
 
         #region ÖĞRETMEN ATAMA
         public void AssignToTeacher(List<SyllabusForLessonWithGroupListDto> teacherForLesson, SyllabusForUserWithConstraintListDto teacher)

@@ -45,9 +45,9 @@ namespace DPA.Application
             try
             {
                 Check.NotNullOrEmpty(request, "request");
-                var test = _userRepository.GetTeacherConstraintWithLessons(request.DepartmentId);
+                var users = _userRepository.GetTeacherConstraintWithLessons(request.DepartmentId);
 
-                foreach (var item in test)
+                foreach (var item in users)
                 {
                     var userLessons = _lessonRepository.GetLessonsForTeacher(item.UserId);
                     item.Lessons = userLessons.Map<List<LessonDto>>();
@@ -55,19 +55,37 @@ namespace DPA.Application
 
                 var lessons = _lessonRepository.GetDepartmentLessons(request.FacultyId, request.DepartmentId, request.PeriodType);
                 var syllabusLessons = lessons.Map<List<SyllabusForLessonWithGroupListDto>>();
+                int toplamDersSaati = 0;
+                foreach (var sls in syllabusLessons)
+                {
+                    foreach (var hrp in sls.LessonGroups)
+                    {
+                        toplamDersSaati = toplamDersSaati + sls.WeeklyHour;
+                    }
+                }
                 var syllabus = SyllabusDomainFactory.Create(request);
-                // syllabus.CreateSyllabusDefaultTable(request.EducationType);
-                syllabus.AssignToLesson(lessons, request);
-                syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0);
-                AssignToTeacherOnSyllabus(syllabusLessons, syllabus, request.EducationType);
-                CheckAssignToTeacherOnSyllabus(syllabusLessons, syllabus, request.EducationType);
-                syllabus.UnitLessons.RemoveAll(x => x.LessonId > 0 && x.UserId == 0);
 
-                AssignToLocationsOnSyllabus(syllabus, request.FacultyId);
-                CheckAssignToLocationOnSyllabus(syllabus, request.FacultyId);
-                syllabus.UnitLessons.RemoveAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
+                while (syllabus.WeeklyHour != toplamDersSaati)
+                {
+                    syllabus = SyllabusDomainFactory.Create(request);
+                    syllabus.AssignToLesson(lessons, request);
 
-                syllabus.AddWeeklyHour(syllabus.UnitLessons.Count);
+                    syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0);
+
+                    syllabus.HocaAta(users);
+                    syllabus.UnitLessons.RemoveAll(x => x.LessonId > 0 && x.UserId == 0);
+
+                    AssignToLocationsOnSyllabus(syllabus, request.FacultyId);
+                    CheckAssignToLocationOnSyllabus(syllabus, request.FacultyId);
+                    syllabus.UnitLessons.RemoveAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
+
+                    syllabus.AddWeeklyHour(syllabus.UnitLessons.Count);
+                    if (syllabus.WeeklyHour != toplamDersSaati)
+                    {
+
+                    }
+                }
+
                 var syllabusEntity = syllabus.Map<SyllabusEntity>();
 
                 await _syllabusRepository.AddAsync(syllabusEntity);

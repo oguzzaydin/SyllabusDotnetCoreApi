@@ -14,5 +14,8 @@ namespace DPA.Model.Models.SyllabusModel.Dtos
         public Title Title { get; set; }
         public List<LessonDto> Lessons { get; set; }
         public ConstraintModel Constraint { get; set; }
+        public int IterationCount { get; set; } = 0;
+        public int MinHour { get; set; }
+        public bool IsFullyAssigned { get; set; } = false;
     }
 }

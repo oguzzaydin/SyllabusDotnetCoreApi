@@ -7,7 +7,7 @@ namespace DPA.Database.Database
     {
         public DatabaseContext CreateDbContext(string[] args)
         {
-            const string connectionString = "Server=tcp:dpadbserver.database.windows.net,1433;Initial Catalog=DPAApi-db;Persist Security Info=False;User ID=oguzzaydin@dpadbserver;Password=Oguz00315641;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            const string connectionString = "Server=DESKTOP-9CE342D;Database=DpaDB2;Integrated Security = true; Connection Timeout = 5;";
 
             var builder = new DbContextOptionsBuilder<DatabaseContext>();
 

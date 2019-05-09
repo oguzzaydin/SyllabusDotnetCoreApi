@@ -7,4 +7,5 @@ namespace DPA.Domain
         YrDoc = 10,
         OgrGor = 12,
     }
+
 }
