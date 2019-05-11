@@ -46,7 +46,7 @@ namespace DPA.Application
             {
                 Check.NotNullOrEmpty(request, "request");
                 var users = _userRepository.GetTeacherConstraintWithLessons(request.DepartmentId);
-
+                var locations = _locationRepository.GetFacultyLocations(request.FacultyId);
                 foreach (var item in users)
                 {
                     var userLessons = _lessonRepository.GetLessonsForTeacher(item.UserId);
@@ -63,20 +63,21 @@ namespace DPA.Application
                         toplamDersSaati = toplamDersSaati + sls.WeeklyHour;
                     }
                 }
+                toplamDersSaati = toplamDersSaati * 2;
                 var syllabus = SyllabusDomainFactory.Create(request);
 
                 while (syllabus.WeeklyHour != toplamDersSaati)
                 {
                     syllabus = SyllabusDomainFactory.Create(request);
-                    syllabus.AssignToLesson(lessons, request);
+                    syllabus.AssignToLesson(lessons, request,EducationType.IOgretim);
+                    syllabus.AssignToLesson(lessons, request, EducationType.IIOgretim);
 
                     syllabus.UnitLessons.RemoveAll(x => x.LessonId == 0);
 
                     syllabus.HocaAta(users);
                     syllabus.UnitLessons.RemoveAll(x => x.LessonId > 0 && x.UserId == 0);
 
-                    AssignToLocationsOnSyllabus(syllabus, request.FacultyId);
-                    CheckAssignToLocationOnSyllabus(syllabus, request.FacultyId);
+                    syllabus.DerslikAta(locations);
                     syllabus.UnitLessons.RemoveAll(x => x.LessonId > 0 && x.UserId > 0 && x.LocationId == 0);
 
                     syllabus.AddWeeklyHour(syllabus.UnitLessons.Count);

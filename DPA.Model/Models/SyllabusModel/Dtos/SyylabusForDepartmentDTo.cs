@@ -19,6 +19,7 @@ namespace DPA.Model
         public int StarTime { get; set; }
         public int EndTime { get; set; }
         public LessonGroupType GroupType { get; set; }
+        public EducationType EducationType { get; set; }
         public DayOfTheWeekType DayOfTheWeekType { get; set; }
         public LessonDto Lesson { get; set; }
         public TeacherDto User { get; set; }
