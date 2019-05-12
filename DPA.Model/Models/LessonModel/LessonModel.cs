@@ -10,5 +10,6 @@ namespace DPA.Model
         public int WeeklyHour { get; set; }
         public LessonType LessonType { get; set; }
         public SemesterType SemesterType { get; set; }
+        public int Credit { get; set; }
     }
 }

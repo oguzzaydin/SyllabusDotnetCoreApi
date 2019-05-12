@@ -39,12 +39,12 @@ namespace DPA.Application
 
             var lessonEntity = lessonDomain.Map<LessonEntity>();
 
-            await LessonRepository.AddAsync(lessonEntity);
-
             addLessonModel.LessonGroupTypes.ForEach(x => {
                 var domain = LessonGroupDomainFactory.Create(x, lessonEntity.LessonId);
                 lessonEntity.LessonGroups.Add(domain.Map<LessonGroupEntity>());
             });
+
+            await LessonRepository.AddAsync(lessonEntity);
 
             await DatabaseUnitOfWork.SaveChangesAsync();
 
